@@ -1,4 +1,4 @@
 'use strict'
 
-var MOCKUP = false;
+var MOCKUP = true;
 var INDEX = '/';
