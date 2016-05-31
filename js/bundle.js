@@ -38579,6 +38579,31 @@
 	            otherHoops: null,
 	            tab: 'my-hoops',
 	            editing: false
+	        }, _this.profileInfo = function () {
+	            var user = _this.props.user;
+	            var editing = _this.state.editing;
+	            var elems = [];
+
+	            if (editing) {
+	                // TODO: perhaps add <input /> elements here?
+	            } else {
+	                    elems.push(_react2.default.createElement(
+	                        'h3',
+	                        null,
+	                        user.firstname,
+	                        ' ',
+	                        user.lastname
+	                    ));
+	                    elems.push(_react2.default.createElement(
+	                        'p',
+	                        null,
+	                        user.birthdate,
+	                        ', ',
+	                        user.gender
+	                    ));
+	                }
+
+	            return elems;
 	        }, _this.hoops = function () {
 	            var myHoops = _this.state.myHoops;
 	            var otherHoops = _this.state.otherHoops;
@@ -38607,6 +38632,9 @@
 	            _API2.default.updateUserImage(new FormData(_this.refs.userImageForm), function () {
 	                _Dispatcher2.default.dispatch({ type: 'refresh-user' });
 	            });
+	        }, _this.toggleEdit = function () {
+	            var editing = _this.state.editing;
+	            _this.setState({ editing: !editing });
 	        }, _temp), _possibleConstructorReturn(_this, _ret);
 	    }
 
@@ -38639,20 +38667,7 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'info' },
-	                        _react2.default.createElement(
-	                            'h3',
-	                            null,
-	                            user.firstname,
-	                            ' ',
-	                            user.lastname
-	                        ),
-	                        _react2.default.createElement(
-	                            'p',
-	                            null,
-	                            user.birthdate,
-	                            ', ',
-	                            user.gender
-	                        ),
+	                        this.profileInfo(),
 	                        _react2.default.createElement(
 	                            'button',
 	                            { onClick: this.toggleEdit },

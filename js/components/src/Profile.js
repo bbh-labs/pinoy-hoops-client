@@ -25,8 +25,7 @@ class Profile extends React.Component {
                         </label>
                     </form>
                     <div className='info'>
-                        <h3>{ user.firstname } { user.lastname }</h3>
-                        <p>{ user.birthdate }, { user.gender }</p>
+                        { this.profileInfo() }
                         <button onClick={ this.toggleEdit }>Edit Profile</button>
                     </div>
 
@@ -52,6 +51,20 @@ class Profile extends React.Component {
     componentDidMount() {
        this.getMyHoops(); 
        this.getOtherHoops(); 
+    }
+    profileInfo = () => {
+        let user = this.props.user;
+        let editing = this.state.editing;
+        let elems = [];
+
+        if (editing) {
+            // TODO: perhaps add <input /> elements here?
+        } else {
+            elems.push(<h3>{ user.firstname } { user.lastname }</h3>);
+            elems.push(<p>{ user.birthdate }, { user.gender }</p>);
+        }
+
+        return elems;
     }
     hoops = () => {
         let myHoops = this.state.myHoops;
@@ -89,6 +102,10 @@ class Profile extends React.Component {
         API.updateUserImage(new FormData(this.refs.userImageForm), () => {
             Dispatcher.dispatch({ type: 'refresh-user' });
         }); 
+    }
+    toggleEdit = () => {
+        let editing = this.state.editing;
+        this.setState({ editing: !editing });
     }
 }
 
