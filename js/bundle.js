@@ -58,6 +58,10 @@
 
 	var _reactRouter = __webpack_require__(168);
 
+	var _browserHistory = __webpack_require__(248);
+
+	var _browserHistory2 = _interopRequireDefault(_browserHistory);
+
 	var _Dispatcher = __webpack_require__(229);
 
 	var _Dispatcher2 = _interopRequireDefault(_Dispatcher);
@@ -176,7 +180,7 @@
 	                    case 'refresh-user':
 	                        _this2.checkLoggedIn();
 
-	                        if (payload.goto) _reactRouter.browserHistory.replace(payload.goto);
+	                        if (payload.goto) _browserHistory2.default.replace(payload.goto);
 
 	                        break;
 	                }
@@ -200,7 +204,7 @@
 
 	_reactDom2.default.render(_react2.default.createElement(
 	    _reactRouter.Router,
-	    { history: _reactRouter.browserHistory },
+	    { history: _browserHistory2.default },
 	    _react2.default.createElement(
 	        _reactRouter.Route,
 	        { path: '/', component: App },
@@ -37121,6 +37125,10 @@
 
 	var _reactRouter = __webpack_require__(168);
 
+	var _browserHistory = __webpack_require__(248);
+
+	var _browserHistory2 = _interopRequireDefault(_browserHistory);
+
 	var _API = __webpack_require__(233);
 
 	var _API2 = _interopRequireDefault(_API);
@@ -37253,7 +37261,7 @@
 	                alert('Successfully added hoop!');
 	                _Dispatcher2.default.dispatch({ type: 'get-hoops' });
 	                _Dispatcher2.default.dispatch({ type: 'get-activities' });
-	                _reactRouter.browserHistory.replace('/map');
+	                _browserHistory2.default.replace('/map');
 	            }, function (response) {
 	                alert(response.statusText);
 	            });
@@ -37261,7 +37269,7 @@
 	    }, {
 	        key: 'cancel',
 	        value: function cancel() {
-	            _reactRouter.browserHistory.replace('/map');
+	            _browserHistory2.default.replace('/map');
 	        }
 	    }]);
 
@@ -37917,6 +37925,10 @@
 
 	var _reactRouter = __webpack_require__(168);
 
+	var _browserHistory = __webpack_require__(248);
+
+	var _browserHistory2 = _interopRequireDefault(_browserHistory);
+
 	var _API = __webpack_require__(233);
 
 	var _API2 = _interopRequireDefault(_API);
@@ -38021,7 +38033,7 @@
 	                        title: hoops[i].name
 	                    });
 	                    marker.addListener('click', function () {
-	                        _reactRouter.browserHistory.push('/hoop/' + hoop.id);
+	                        _browserHistory2.default.push('/hoop/' + hoop.id);
 	                        _Dispatcher2.default.dispatch({ type: 'view-hoop', hoop: hoop });
 	                    });
 
@@ -38722,6 +38734,10 @@
 
 	var _reactRouter = __webpack_require__(168);
 
+	var _browserHistory = __webpack_require__(248);
+
+	var _browserHistory2 = _interopRequireDefault(_browserHistory);
+
 	var _API = __webpack_require__(233);
 
 	var _API2 = _interopRequireDefault(_API);
@@ -38886,6 +38902,10 @@
 	var _react2 = _interopRequireDefault(_react);
 
 	var _reactRouter = __webpack_require__(168);
+
+	var _browserHistory = __webpack_require__(248);
+
+	var _browserHistory2 = _interopRequireDefault(_browserHistory);
 
 	var _API = __webpack_require__(233);
 
@@ -39087,6 +39107,20 @@
 	}(_react2.default.Component);
 
 	module.exports = Story;
+
+/***/ },
+/* 248 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _reactRouter = __webpack_require__(168);
+
+	if (MOCKUP) {
+	    module.exports = _reactRouter.hashHistory;
+	} else {
+	    module.exports = _reactRouter.browserHistory;
+	} // This is for switching between browserHistory and hashHistory
 
 /***/ }
 /******/ ]);

@@ -8,6 +8,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouter = require('react-router');
 
+var _browserHistory = require('./browserHistory');
+
+var _browserHistory2 = _interopRequireDefault(_browserHistory);
+
 var _API = require('./API');
 
 var _API2 = _interopRequireDefault(_API);
@@ -140,7 +144,7 @@ var AddHoop = function (_React$Component) {
                 alert('Successfully added hoop!');
                 _Dispatcher2.default.dispatch({ type: 'get-hoops' });
                 _Dispatcher2.default.dispatch({ type: 'get-activities' });
-                _reactRouter.browserHistory.replace('/map');
+                _browserHistory2.default.replace('/map');
             }, function (response) {
                 alert(response.statusText);
             });
@@ -148,7 +152,7 @@ var AddHoop = function (_React$Component) {
     }, {
         key: 'cancel',
         value: function cancel() {
-            _reactRouter.browserHistory.replace('/map');
+            _browserHistory2.default.replace('/map');
         }
     }]);
 

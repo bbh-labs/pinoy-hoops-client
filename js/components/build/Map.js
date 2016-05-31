@@ -8,6 +8,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouter = require('react-router');
 
+var _browserHistory = require('./browserHistory');
+
+var _browserHistory2 = _interopRequireDefault(_browserHistory);
+
 var _API = require('./API');
 
 var _API2 = _interopRequireDefault(_API);
@@ -112,7 +116,7 @@ var MapView = function (_React$Component2) {
                         title: hoops[i].name
                     });
                     marker.addListener('click', function () {
-                        _reactRouter.browserHistory.push('/hoop/' + hoop.id);
+                        _browserHistory2.default.push('/hoop/' + hoop.id);
                         _Dispatcher2.default.dispatch({ type: 'view-hoop', hoop: hoop });
                     });
 

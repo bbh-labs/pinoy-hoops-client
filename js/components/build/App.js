@@ -12,6 +12,10 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _reactRouter = require('react-router');
 
+var _browserHistory = require('./browserHistory');
+
+var _browserHistory2 = _interopRequireDefault(_browserHistory);
+
 var _Dispatcher = require('./Dispatcher');
 
 var _Dispatcher2 = _interopRequireDefault(_Dispatcher);
@@ -130,7 +134,7 @@ var App = function (_React$Component) {
                     case 'refresh-user':
                         _this2.checkLoggedIn();
 
-                        if (payload.goto) _reactRouter.browserHistory.replace(payload.goto);
+                        if (payload.goto) _browserHistory2.default.replace(payload.goto);
 
                         break;
                 }
@@ -154,7 +158,7 @@ var App = function (_React$Component) {
 
 _reactDom2.default.render(_react2.default.createElement(
     _reactRouter.Router,
-    { history: _reactRouter.browserHistory },
+    { history: _browserHistory2.default },
     _react2.default.createElement(
         _reactRouter.Route,
         { path: '/', component: App },

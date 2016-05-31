@@ -2,7 +2,8 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router'
+import { Router, Route, IndexRoute, Link } from 'react-router'
+import browserHistory from './browserHistory'
 
 import Dispatcher from './Dispatcher';
 import API from './API';
