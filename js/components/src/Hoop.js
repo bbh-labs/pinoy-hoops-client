@@ -101,14 +101,17 @@ class Hoop extends React.Component {
             return latestStories ? latestStories.map(function(story) {
                 return <li key={ story.id }><Link to={ '/story/' + story.id }><img src={ INDEX + story.image_url } /></Link></li>
             }) : null;
+
         case 'most-viewed':
             return mostViewedStories ? mostViewedStories.map(function(story) {
                 return <li key={ story.id }><Link to={ '/story/' + story.id }><img src={ INDEX + story.image_url } /></Link></li>
             }) : null;
+
         case 'most-liked':
             return mostLikedStories ? mostLikedStories.map(function(story) {
                 return <li key={ story.id }><Link to={ '/story/' + story.id }><img src={ INDEX + story.image_url } /></Link></li>
             }) : null;
+
         case 'most-commented':
             return mostCommentedStories ? mostCommentedStories.map(function(story) {
                 return <li key={ story.id }><Link to={ '/story/' + story.id }><img src={ INDEX + story.image_url } /></Link></li>

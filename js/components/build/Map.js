@@ -130,17 +130,12 @@ var MapView = function (_React$Component2) {
         }, _this2.clearHoops = function () {
             for (var i in _this2.markers) {
                 _this2.markers[i].setMap(null);
-            }
-            _this2.markers = [];
+            }_this2.markers = [];
         }, _this2.handleSearch = function (event) {
             event.preventDefault();
 
             var name = event.target.value;
-            if (name.length > 0) {
-                _this2.getHoops({ name: name });
-            } else {
-                _this2.getHoops();
-            }
+            if (name.length > 0) _this2.getHoops({ name: name });else _this2.getHoops();
         }, _temp), _possibleConstructorReturn(_this2, _ret);
     }
 
@@ -178,12 +173,15 @@ var MapView = function (_React$Component2) {
                     case 'get-hoops':
                         _this3.getHoops();
                         break;
+
                     case 'get-nearby-hoops':
                         _this3.getNearbyHoops();
                         break;
+
                     case 'get-popular-hoops':
                         _this3.getPopularHoops();
                         break;
+
                     case 'get-latest-hoops':
                         _this3.getLatestHoops();
                         break;

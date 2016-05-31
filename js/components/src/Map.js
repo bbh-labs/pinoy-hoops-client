@@ -56,12 +56,15 @@ class MapView extends React.Component {
             case 'get-hoops':
                 this.getHoops();
                 break;
+
             case 'get-nearby-hoops':
                 this.getNearbyHoops();
                 break;
+
             case 'get-popular-hoops':
                 this.getPopularHoops();
                 break;
+
             case 'get-latest-hoops':
                 this.getLatestHoops();
                 break;
@@ -123,20 +126,19 @@ class MapView extends React.Component {
         }
     }
     clearHoops = () => {
-        for (let i in this.markers) {
+        for (let i in this.markers)
             this.markers[i].setMap(null);
-        }
+
         this.markers = [];
     }
     handleSearch = (event) => {
         event.preventDefault();
 
         let name = event.target.value;
-        if (name.length > 0) {
+        if (name.length > 0)
             this.getHoops({ name: name });
-        } else {
+        else
             this.getHoops();
-        }
     }
 }
 

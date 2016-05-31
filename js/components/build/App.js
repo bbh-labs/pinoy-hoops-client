@@ -108,9 +108,7 @@ var App = function (_React$Component) {
         value: function render() {
             var showNavigation = true;
 
-            if (this.props.location.pathname == '/') {
-                showNavigation = false;
-            }
+            if (this.props.location.pathname == '/') showNavigation = false;
 
             return _react2.default.createElement(
                 'div',

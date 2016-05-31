@@ -81,6 +81,7 @@ var Profile = function (_React$Component) {
                             _react2.default.createElement('img', { key: hoop.data.featured_story.id, src: INDEX + hoop.data.featured_story.image_url })
                         );
                     }) : null;
+
                 case 'other-hoops':
                     return otherHoops ? otherHoops.map(function (hoop) {
                         return _react2.default.createElement(
@@ -106,9 +107,7 @@ var Profile = function (_React$Component) {
         key: 'render',
         value: function render() {
             var user = this.props.user;
-            if (!user) {
-                return null;
-            }
+            if (!user) return null;
 
             var tab = this.state.tab;
 

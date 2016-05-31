@@ -41,9 +41,8 @@ class Activities extends React.Component {
     }
     activities() {
         let activities = this.state.activities;
-        if (!activities) {
+        if (!activities)
             return null;
-        }
 
         return activities.map(function(activity, i) {
             return <Activity key={ i } activity={ activity } />

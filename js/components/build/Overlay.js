@@ -71,6 +71,7 @@ var Overlay = function (_React$Component) {
                     case 'overlay':
                         _this2.setState({ name: payload.name, data: payload.data });
                         break;
+
                     case 'overlay-close':
                         _this2.setState({ name: null, data: null });
                         break;

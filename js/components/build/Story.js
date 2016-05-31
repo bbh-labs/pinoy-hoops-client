@@ -81,9 +81,7 @@ var Story = function (_React$Component) {
             });
         }, _this.comments = function () {
             var comments = _this.state.comments;
-            if (!comments) {
-                return null;
-            }
+            if (!comments) return null;
 
             return comments.map(function (comment, i) {
                 return _react2.default.createElement(

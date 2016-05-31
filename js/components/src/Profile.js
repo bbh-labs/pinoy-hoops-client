@@ -9,9 +9,8 @@ import Dispatcher from './Dispatcher'
 class Profile extends React.Component {
     render() {
         let user = this.props.user;
-        if (!user) {
+        if (!user)
             return null;
-        }
 
         let tab = this.state.tab;
 
@@ -75,6 +74,7 @@ class Profile extends React.Component {
             return myHoops ? myHoops.map(function(hoop) {
                 return <Link key={ hoop.id } to={ '/hoop/' + hoop.id }><img key={ hoop.data.featured_story.id } src={ INDEX + hoop.data.featured_story.image_url } /></Link>
             }) : null;
+
         case 'other-hoops':
             return otherHoops ? otherHoops.map(function(hoop) {
                 return <Link key={ hoop.id } to={ '/hoop/' + hoop.id }><img key={ hoop.data.featured_story.id } src={ INDEX + hoop.data.featured_story.image_url } /></Link>

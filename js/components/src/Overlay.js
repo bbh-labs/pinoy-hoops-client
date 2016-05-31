@@ -32,6 +32,7 @@ class Overlay extends React.Component {
             case 'overlay':
                 this.setState({ name: payload.name, data: payload.data });
                 break;
+
             case 'overlay-close':
                 this.setState({ name: null, data: null });
                 break;

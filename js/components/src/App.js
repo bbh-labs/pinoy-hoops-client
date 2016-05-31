@@ -26,9 +26,8 @@ class App extends React.Component {
     render() {
         let showNavigation = true;
 
-        if (this.props.location.pathname == '/') {
+        if (this.props.location.pathname == '/')
             showNavigation = false;
-        }
 
         return (
             <div id='app'>

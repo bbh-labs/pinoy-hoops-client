@@ -80,9 +80,7 @@ var Activities = function (_React$Component) {
         key: 'activities',
         value: function activities() {
             var activities = this.state.activities;
-            if (!activities) {
-                return null;
-            }
+            if (!activities) return null;
 
             return activities.map(function (activity, i) {
                 return _react2.default.createElement(Activity, { key: i, activity: activity });

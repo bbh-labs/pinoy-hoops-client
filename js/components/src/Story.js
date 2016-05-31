@@ -106,9 +106,8 @@ class Story extends React.Component {
     }
     comments = () => {
         let comments = this.state.comments;
-        if (!comments) {
+        if (!comments)
             return null;
-        }
 
         return comments.map(function(comment, i) {
             return <p key={ i }><strong>{ comment.user.firstname } { comment.user.lastname }</strong> { comment.text }</p>;

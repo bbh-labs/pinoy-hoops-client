@@ -199,6 +199,7 @@ var Hoop = function (_React$Component) {
                             )
                         );
                     }) : null;
+
                 case 'most-viewed':
                     return mostViewedStories ? mostViewedStories.map(function (story) {
                         return _react2.default.createElement(
@@ -211,6 +212,7 @@ var Hoop = function (_React$Component) {
                             )
                         );
                     }) : null;
+
                 case 'most-liked':
                     return mostLikedStories ? mostLikedStories.map(function (story) {
                         return _react2.default.createElement(
@@ -223,6 +225,7 @@ var Hoop = function (_React$Component) {
                             )
                         );
                     }) : null;
+
                 case 'most-commented':
                     return mostCommentedStories ? mostCommentedStories.map(function (story) {
                         return _react2.default.createElement(

@@ -154,9 +154,7 @@
 	        value: function render() {
 	            var showNavigation = true;
 
-	            if (this.props.location.pathname == '/') {
-	                showNavigation = false;
-	            }
+	            if (this.props.location.pathname == '/') showNavigation = false;
 
 	            return _react2.default.createElement(
 	                'div',
@@ -36998,9 +36996,7 @@
 	        key: 'activities',
 	        value: function activities() {
 	            var activities = this.state.activities;
-	            if (!activities) {
-	                return null;
-	            }
+	            if (!activities) return null;
 
 	            return activities.map(function (activity, i) {
 	                return _react2.default.createElement(Activity, { key: i, activity: activity });
@@ -37652,6 +37648,7 @@
 	                            )
 	                        );
 	                    }) : null;
+
 	                case 'most-viewed':
 	                    return mostViewedStories ? mostViewedStories.map(function (story) {
 	                        return _react2.default.createElement(
@@ -37664,6 +37661,7 @@
 	                            )
 	                        );
 	                    }) : null;
+
 	                case 'most-liked':
 	                    return mostLikedStories ? mostLikedStories.map(function (story) {
 	                        return _react2.default.createElement(
@@ -37676,6 +37674,7 @@
 	                            )
 	                        );
 	                    }) : null;
+
 	                case 'most-commented':
 	                    return mostCommentedStories ? mostCommentedStories.map(function (story) {
 	                        return _react2.default.createElement(
@@ -38047,17 +38046,12 @@
 	        }, _this2.clearHoops = function () {
 	            for (var i in _this2.markers) {
 	                _this2.markers[i].setMap(null);
-	            }
-	            _this2.markers = [];
+	            }_this2.markers = [];
 	        }, _this2.handleSearch = function (event) {
 	            event.preventDefault();
 
 	            var name = event.target.value;
-	            if (name.length > 0) {
-	                _this2.getHoops({ name: name });
-	            } else {
-	                _this2.getHoops();
-	            }
+	            if (name.length > 0) _this2.getHoops({ name: name });else _this2.getHoops();
 	        }, _temp), _possibleConstructorReturn(_this2, _ret);
 	    }
 
@@ -38095,12 +38089,15 @@
 	                    case 'get-hoops':
 	                        _this3.getHoops();
 	                        break;
+
 	                    case 'get-nearby-hoops':
 	                        _this3.getNearbyHoops();
 	                        break;
+
 	                    case 'get-popular-hoops':
 	                        _this3.getPopularHoops();
 	                        break;
+
 	                    case 'get-latest-hoops':
 	                        _this3.getLatestHoops();
 	                        break;
@@ -38365,6 +38362,7 @@
 	                    case 'overlay':
 	                        _this2.setState({ name: payload.name, data: payload.data });
 	                        break;
+
 	                    case 'overlay-close':
 	                        _this2.setState({ name: null, data: null });
 	                        break;
@@ -38617,6 +38615,7 @@
 	                            _react2.default.createElement('img', { key: hoop.data.featured_story.id, src: INDEX + hoop.data.featured_story.image_url })
 	                        );
 	                    }) : null;
+
 	                case 'other-hoops':
 	                    return otherHoops ? otherHoops.map(function (hoop) {
 	                        return _react2.default.createElement(
@@ -38642,9 +38641,7 @@
 	        key: 'render',
 	        value: function render() {
 	            var user = this.props.user;
-	            if (!user) {
-	                return null;
-	            }
+	            if (!user) return null;
 
 	            var tab = this.state.tab;
 
@@ -38991,9 +38988,7 @@
 	            });
 	        }, _this.comments = function () {
 	            var comments = _this.state.comments;
-	            if (!comments) {
-	                return null;
-	            }
+	            if (!comments) return null;
 
 	            return comments.map(function (comment, i) {
 	                return _react2.default.createElement(
