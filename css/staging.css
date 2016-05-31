@@ -1,0 +1,7 @@
+.signup .logo img {
+    max-width: 250px;
+}
+
+#user-image {
+    display: none;
+}
