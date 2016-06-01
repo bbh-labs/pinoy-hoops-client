@@ -58,37 +58,18 @@ class Hoop extends React.Component {
 		tab: 'most-recent',
 	}
 	componentDidMount() {
-		let hoopID = this.props.params.hoopID;
+		this.fetchData();
 
-		API.getHoop({ hoopID: hoopID }, (hoop) => {
-			this.setState({ hoop: hoop });
-		}, (response) => {
-			alert('Failed to get hoop');
+		this.dispatcherID = Dispatcher.register((payload) => {
+			switch (payload.type) {
+			case 'refresh-hoop':
+				this.fetchData();
+				break;
+			}
 		});
-
-		API.getMostCommentedStories({ hoop_id: hoopID }, (stories) => {
-			this.setState({ mostCommentedStories: stories });
-		}, (response) => {
-			alert('Failed to get most commented stories');
-		});
-		
-		API.getMostLikedStories({ hoop_id: hoopID }, (stories) => {
-			this.setState({ mostLikedStories: stories });
-		}, (response) => {
-			alert('Failed to get most liked stories');
-		});
-		
-		API.getMostViewedStories({ hoop_id: hoopID }, (stories) => {
-			this.setState({ mostViewedStories: stories });
-		}, (response) => {
-			alert('Failed to get most viewed stories');
-		});
-		
-		API.getLatestStories({ hoop_id: hoopID }, (stories) => {
-			this.setState({ latestStories: stories });
-		}, (response) => {
-			alert('Failed to get latest stories');
-		});
+	}
+	componentWillUnmount() {
+		Dispatcher.unregister(this.dispatcherID);
 	}
 	stories() {
 		let latestStories = this.state.latestStories;
@@ -132,6 +113,39 @@ class Hoop extends React.Component {
 
 		if (hoop)
 			Dispatcher.dispatch({ type: 'overlay', name: 'share-hoop', data: { hoopID: hoop.id } });
+	}
+	fetchData = () => {
+		let hoopID = this.props.params.hoopID;
+
+		API.getHoop({ hoopID: hoopID }, (hoop) => {
+			this.setState({ hoop: hoop });
+		}, (response) => {
+			alert('Failed to get hoop');
+		});
+
+		API.getMostCommentedStories({ hoop_id: hoopID }, (stories) => {
+			this.setState({ mostCommentedStories: stories });
+		}, (response) => {
+			alert('Failed to get most commented stories');
+		});
+		
+		API.getMostLikedStories({ hoop_id: hoopID }, (stories) => {
+			this.setState({ mostLikedStories: stories });
+		}, (response) => {
+			alert('Failed to get most liked stories');
+		});
+		
+		API.getMostViewedStories({ hoop_id: hoopID }, (stories) => {
+			this.setState({ mostViewedStories: stories });
+		}, (response) => {
+			alert('Failed to get most viewed stories');
+		});
+		
+		API.getLatestStories({ hoop_id: hoopID }, (stories) => {
+			this.setState({ latestStories: stories });
+		}, (response) => {
+			alert('Failed to get latest stories');
+		});
 	}
 }
 

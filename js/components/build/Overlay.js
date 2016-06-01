@@ -109,6 +109,7 @@ var AddStory = function (_React$Component2) {
 			event.preventDefault();
 
 			_API2.default.addStory(new FormData(event.target), function () {
+				_Dispatcher2.default.dispatch({ type: 'refresh-hoop' });
 				_this3.close();
 			}, function () {
 				alert('Failed to add story');

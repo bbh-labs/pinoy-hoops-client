@@ -55,6 +55,38 @@ var Hoop = function (_React$Component) {
 			var hoop = _this.state.hoop;
 
 			if (hoop) _Dispatcher2.default.dispatch({ type: 'overlay', name: 'share-hoop', data: { hoopID: hoop.id } });
+		}, _this.fetchData = function () {
+			var hoopID = _this.props.params.hoopID;
+
+			_API2.default.getHoop({ hoopID: hoopID }, function (hoop) {
+				_this.setState({ hoop: hoop });
+			}, function (response) {
+				alert('Failed to get hoop');
+			});
+
+			_API2.default.getMostCommentedStories({ hoop_id: hoopID }, function (stories) {
+				_this.setState({ mostCommentedStories: stories });
+			}, function (response) {
+				alert('Failed to get most commented stories');
+			});
+
+			_API2.default.getMostLikedStories({ hoop_id: hoopID }, function (stories) {
+				_this.setState({ mostLikedStories: stories });
+			}, function (response) {
+				alert('Failed to get most liked stories');
+			});
+
+			_API2.default.getMostViewedStories({ hoop_id: hoopID }, function (stories) {
+				_this.setState({ mostViewedStories: stories });
+			}, function (response) {
+				alert('Failed to get most viewed stories');
+			});
+
+			_API2.default.getLatestStories({ hoop_id: hoopID }, function (stories) {
+				_this.setState({ latestStories: stories });
+			}, function (response) {
+				alert('Failed to get latest stories');
+			});
 		}, _temp), _possibleConstructorReturn(_this, _ret);
 	}
 
@@ -150,37 +182,20 @@ var Hoop = function (_React$Component) {
 		value: function componentDidMount() {
 			var _this2 = this;
 
-			var hoopID = this.props.params.hoopID;
+			this.fetchData();
 
-			_API2.default.getHoop({ hoopID: hoopID }, function (hoop) {
-				_this2.setState({ hoop: hoop });
-			}, function (response) {
-				alert('Failed to get hoop');
+			this.dispatcherID = _Dispatcher2.default.register(function (payload) {
+				switch (payload.type) {
+					case 'refresh-hoop':
+						_this2.fetchData();
+						break;
+				}
 			});
-
-			_API2.default.getMostCommentedStories({ hoop_id: hoopID }, function (stories) {
-				_this2.setState({ mostCommentedStories: stories });
-			}, function (response) {
-				alert('Failed to get most commented stories');
-			});
-
-			_API2.default.getMostLikedStories({ hoop_id: hoopID }, function (stories) {
-				_this2.setState({ mostLikedStories: stories });
-			}, function (response) {
-				alert('Failed to get most liked stories');
-			});
-
-			_API2.default.getMostViewedStories({ hoop_id: hoopID }, function (stories) {
-				_this2.setState({ mostViewedStories: stories });
-			}, function (response) {
-				alert('Failed to get most viewed stories');
-			});
-
-			_API2.default.getLatestStories({ hoop_id: hoopID }, function (stories) {
-				_this2.setState({ latestStories: stories });
-			}, function (response) {
-				alert('Failed to get latest stories');
-			});
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			_Dispatcher2.default.unregister(this.dispatcherID);
 		}
 	}, {
 		key: 'stories',

@@ -68,6 +68,7 @@ class AddStory extends React.Component {
 		event.preventDefault();
 
 		API.addStory(new FormData(event.target), () => {
+			Dispatcher.dispatch({ type: 'refresh-hoop' });
 			this.close();
 		}, () => {
 			alert('Failed to add story');
