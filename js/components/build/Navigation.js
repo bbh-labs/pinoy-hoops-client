@@ -56,7 +56,7 @@ var Navigation = function (_React$Component) {
                             _react2.default.createElement(
                                 'div',
                                 { className: 'menuprofile' },
-                                _react2.default.createElement('img', { src: user.image_url ? INDEX + user.image_url : '/images/avatar.png' }),
+                                _react2.default.createElement('img', { src: contentURL(user.image_url, '/images/avatar.png') }),
                                 user.firstname,
                                 ' ',
                                 user.lastname

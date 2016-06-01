@@ -37533,7 +37533,7 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'heroimage' },
-	                        _react2.default.createElement('img', { src: hoop.data.featured_story ? INDEX + hoop.data.featured_story.image_url : '' }),
+	                        _react2.default.createElement('img', { src: contentURL(hoop.data.featured_story.image_url, '') }),
 	                        _react2.default.createElement(
 	                            'h2',
 	                            null,
@@ -37546,7 +37546,7 @@
 	                        _react2.default.createElement(
 	                            'div',
 	                            { className: 'userprofile' },
-	                            _react2.default.createElement('img', { src: hoop.user.image_url ? INDEX + hoop.user.image_url : '/images/avatar.png' }),
+	                            _react2.default.createElement('img', { src: contentURL(hoop.user.image_url, '/images/avatar.png') }),
 	                            _react2.default.createElement(
 	                                'h6',
 	                                null,
@@ -37656,7 +37656,7 @@
 	                            _react2.default.createElement(
 	                                _reactRouter.Link,
 	                                { to: '/story/' + story.id },
-	                                _react2.default.createElement('img', { src: INDEX + story.image_url })
+	                                _react2.default.createElement('img', { src: contentURL(story.image_url) })
 	                            )
 	                        );
 	                    }) : null;
@@ -37669,7 +37669,7 @@
 	                            _react2.default.createElement(
 	                                _reactRouter.Link,
 	                                { to: '/story/' + story.id },
-	                                _react2.default.createElement('img', { src: INDEX + story.image_url })
+	                                _react2.default.createElement('img', { src: contentURL(story.image_url) })
 	                            )
 	                        );
 	                    }) : null;
@@ -37682,7 +37682,7 @@
 	                            _react2.default.createElement(
 	                                _reactRouter.Link,
 	                                { to: '/story/' + story.id },
-	                                _react2.default.createElement('img', { src: INDEX + story.image_url })
+	                                _react2.default.createElement('img', { src: contentURL(story.image_url) })
 	                            )
 	                        );
 	                    }) : null;
@@ -37695,7 +37695,7 @@
 	                            _react2.default.createElement(
 	                                _reactRouter.Link,
 	                                { to: '/story/' + story.id },
-	                                _react2.default.createElement('img', { src: INDEX + story.image_url })
+	                                _react2.default.createElement('img', { src: contentURL(story.image_url) })
 	                            )
 	                        );
 	                    }) : null;
@@ -38192,7 +38192,7 @@
 	                            _react2.default.createElement(
 	                                'div',
 	                                { className: 'menuprofile' },
-	                                _react2.default.createElement('img', { src: user.image_url ? INDEX + user.image_url : '/images/avatar.png' }),
+	                                _react2.default.createElement('img', { src: contentURL(user.image_url, '/images/avatar.png') }),
 	                                user.firstname,
 	                                ' ',
 	                                user.lastname
@@ -38625,7 +38625,7 @@
 	                        return _react2.default.createElement(
 	                            _reactRouter.Link,
 	                            { key: hoop.id, to: '/hoop/' + hoop.id },
-	                            _react2.default.createElement('img', { key: hoop.data.featured_story.id, src: INDEX + hoop.data.featured_story.image_url })
+	                            _react2.default.createElement('img', { key: hoop.data.featured_story.id, src: contentURL(hoop.data.featured_story.image_url) })
 	                        );
 	                    }) : null;
 
@@ -38634,7 +38634,7 @@
 	                        return _react2.default.createElement(
 	                            _reactRouter.Link,
 	                            { key: hoop.id, to: '/hoop/' + hoop.id },
-	                            _react2.default.createElement('img', { key: hoop.data.featured_story.id, src: INDEX + hoop.data.featured_story.image_url })
+	                            _react2.default.createElement('img', { key: hoop.data.featured_story.id, src: contentURL(hoop.data.featured_story.image_url) })
 	                        );
 	                    }) : null;
 	            }
@@ -38671,7 +38671,7 @@
 	                            'label',
 	                            { htmlFor: 'user-image' },
 	                            _react2.default.createElement('input', { id: 'user-image', type: 'file', name: 'image', onChange: this.handleUserImage }),
-	                            _react2.default.createElement('img', { src: user.image_url ? INDEX + user.image_url : '/images/avatar.png' })
+	                            _react2.default.createElement('img', { src: contentURL(user.image_url, '/images/avatar.png') })
 	                        )
 	                    ),
 	                    _react2.default.createElement(
@@ -39084,7 +39084,7 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'heroimage' },
-	                        _react2.default.createElement('img', { src: story.image_url ? INDEX + story.image_url : '/images/avatar.png' }),
+	                        _react2.default.createElement('img', { src: contentURL(story.image_url, '/images/avatar.png') }),
 	                        _react2.default.createElement(
 	                            'h2',
 	                            null,
@@ -39097,7 +39097,7 @@
 	                        _react2.default.createElement(
 	                            'div',
 	                            { className: 'userprofile' },
-	                            _react2.default.createElement('img', { src: story.user.image_url ? INDEX + story.user.image_url : '/images/avatar.png' }),
+	                            _react2.default.createElement('img', { src: contentURL(story.user.image_url, '/images/avatar.png') }),
 	                            _react2.default.createElement(
 	                                'h6',
 	                                null,

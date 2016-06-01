@@ -16,7 +16,7 @@ class Navigation extends React.Component {
                    <li className='nav-item'>
                        <Link to='/profile'>
                            <div className='menuprofile'>
-                               <img src={ user.image_url ? INDEX + user.image_url : '/images/avatar.png' } />{ user.firstname } { user.lastname }
+                               <img src={ contentURL(user.image_url, '/images/avatar.png') } />{ user.firstname } { user.lastname }
                            </div>
                        </Link>
                    </li>

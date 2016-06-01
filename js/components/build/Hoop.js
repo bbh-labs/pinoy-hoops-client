@@ -72,7 +72,7 @@ var Hoop = function (_React$Component) {
                     _react2.default.createElement(
                         'div',
                         { className: 'heroimage' },
-                        _react2.default.createElement('img', { src: hoop.data.featured_story ? INDEX + hoop.data.featured_story.image_url : '' }),
+                        _react2.default.createElement('img', { src: contentURL(hoop.data.featured_story.image_url, '') }),
                         _react2.default.createElement(
                             'h2',
                             null,
@@ -85,7 +85,7 @@ var Hoop = function (_React$Component) {
                         _react2.default.createElement(
                             'div',
                             { className: 'userprofile' },
-                            _react2.default.createElement('img', { src: hoop.user.image_url ? INDEX + hoop.user.image_url : '/images/avatar.png' }),
+                            _react2.default.createElement('img', { src: contentURL(hoop.user.image_url, '/images/avatar.png') }),
                             _react2.default.createElement(
                                 'h6',
                                 null,
@@ -195,7 +195,7 @@ var Hoop = function (_React$Component) {
                             _react2.default.createElement(
                                 _reactRouter.Link,
                                 { to: '/story/' + story.id },
-                                _react2.default.createElement('img', { src: INDEX + story.image_url })
+                                _react2.default.createElement('img', { src: contentURL(story.image_url) })
                             )
                         );
                     }) : null;
@@ -208,7 +208,7 @@ var Hoop = function (_React$Component) {
                             _react2.default.createElement(
                                 _reactRouter.Link,
                                 { to: '/story/' + story.id },
-                                _react2.default.createElement('img', { src: INDEX + story.image_url })
+                                _react2.default.createElement('img', { src: contentURL(story.image_url) })
                             )
                         );
                     }) : null;
@@ -221,7 +221,7 @@ var Hoop = function (_React$Component) {
                             _react2.default.createElement(
                                 _reactRouter.Link,
                                 { to: '/story/' + story.id },
-                                _react2.default.createElement('img', { src: INDEX + story.image_url })
+                                _react2.default.createElement('img', { src: contentURL(story.image_url) })
                             )
                         );
                     }) : null;
@@ -234,7 +234,7 @@ var Hoop = function (_React$Component) {
                             _react2.default.createElement(
                                 _reactRouter.Link,
                                 { to: '/story/' + story.id },
-                                _react2.default.createElement('img', { src: INDEX + story.image_url })
+                                _react2.default.createElement('img', { src: contentURL(story.image_url) })
                             )
                         );
                     }) : null;

@@ -20,7 +20,7 @@ class Profile extends React.Component {
                     <form ref='userImageForm' className='picture'>
                         <label htmlFor='user-image'>
                             <input id='user-image' type='file' name='image' onChange={ this.handleUserImage } />
-                            <img src={ user.image_url ? INDEX + user.image_url : '/images/avatar.png' } />
+                            <img src={ contentURL(user.image_url, '/images/avatar.png') } />
                         </label>
                     </form>
                     <div className='info'>
@@ -73,12 +73,20 @@ class Profile extends React.Component {
         switch (this.state.tab) {
         case 'my-hoops':
             return myHoops ? myHoops.map(function(hoop) {
-                return <Link key={ hoop.id } to={ '/hoop/' + hoop.id }><img key={ hoop.data.featured_story.id } src={ INDEX + hoop.data.featured_story.image_url } /></Link>
+                return (
+                    <Link key={ hoop.id } to={ '/hoop/' + hoop.id }>
+                        <img key={ hoop.data.featured_story.id } src={ contentURL(hoop.data.featured_story.image_url) } />
+                    </Link>
+                )
             }) : null;
 
         case 'other-hoops':
             return otherHoops ? otherHoops.map(function(hoop) {
-                return <Link key={ hoop.id } to={ '/hoop/' + hoop.id }><img key={ hoop.data.featured_story.id } src={ INDEX + hoop.data.featured_story.image_url } /></Link>
+                return (
+                    <Link key={ hoop.id } to={ '/hoop/' + hoop.id }>
+                        <img key={ hoop.data.featured_story.id } src={ contentURL(hoop.data.featured_story.image_url) } />
+                    </Link>
+                )
             }) : null;
         }
     }

@@ -20,12 +20,12 @@ class Story extends React.Component {
             <div className='site-wrap'>
                  <div className='hoopstory'>
                     <div className='heroimage'>
-                        <img src={ story.image_url ? INDEX + story.image_url : '/images/avatar.png' } />
+                        <img src={ contentURL(story.image_url, '/images/avatar.png') } />
                         <h2>{ story.name }</h2>
                     </div>
                     <div className='hoop-info'>
                         <div className='userprofile'>
-                            <img src={ story.user.image_url ? INDEX + story.user.image_url : '/images/avatar.png' } />
+                            <img src={ contentURL(story.user.image_url, '/images/avatar.png') } />
                             <h6>{ story.user.firstname } { story.user.lastname }</h6>
                         </div>
                         <div className='icons'>

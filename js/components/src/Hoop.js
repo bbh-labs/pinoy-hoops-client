@@ -19,12 +19,12 @@ class Hoop extends React.Component {
             <div className='site-wrap'>
                  <div className='hoopstory'>
                     <div className='heroimage'>
-                        <img src={ hoop.data.featured_story ? INDEX + hoop.data.featured_story.image_url : '' } />
+                        <img src={ contentURL(hoop.data.featured_story.image_url, '') } />
                         <h2>{ hoop.title }</h2>
                     </div>
                     <div className='hoop-info'>
                         <div className='userprofile'>
-                            <img src={ hoop.user.image_url ? INDEX + hoop.user.image_url : '/images/avatar.png' } />
+                            <img src={ contentURL(hoop.user.image_url, '/images/avatar.png') } />
                             <h6>{ hoop.user.firstname } { hoop.user.lastname }</h6>
                         </div>
                         <div className='icons'>
@@ -99,22 +99,22 @@ class Hoop extends React.Component {
         switch (this.state.tab) {
         case 'most-recent':
             return latestStories ? latestStories.map(function(story) {
-                return <li key={ story.id }><Link to={ '/story/' + story.id }><img src={ INDEX + story.image_url } /></Link></li>
+                return <li key={ story.id }><Link to={ '/story/' + story.id }><img src={ contentURL(story.image_url) } /></Link></li>
             }) : null;
 
         case 'most-viewed':
             return mostViewedStories ? mostViewedStories.map(function(story) {
-                return <li key={ story.id }><Link to={ '/story/' + story.id }><img src={ INDEX + story.image_url } /></Link></li>
+                return <li key={ story.id }><Link to={ '/story/' + story.id }><img src={ contentURL(story.image_url) } /></Link></li>
             }) : null;
 
         case 'most-liked':
             return mostLikedStories ? mostLikedStories.map(function(story) {
-                return <li key={ story.id }><Link to={ '/story/' + story.id }><img src={ INDEX + story.image_url } /></Link></li>
+                return <li key={ story.id }><Link to={ '/story/' + story.id }><img src={ contentURL(story.image_url) } /></Link></li>
             }) : null;
 
         case 'most-commented':
             return mostCommentedStories ? mostCommentedStories.map(function(story) {
-                return <li key={ story.id }><Link to={ '/story/' + story.id }><img src={ INDEX + story.image_url } /></Link></li>
+                return <li key={ story.id }><Link to={ '/story/' + story.id }><img src={ contentURL(story.image_url) } /></Link></li>
             }) : null;
         }
     }

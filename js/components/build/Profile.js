@@ -79,7 +79,7 @@ var Profile = function (_React$Component) {
                         return _react2.default.createElement(
                             _reactRouter.Link,
                             { key: hoop.id, to: '/hoop/' + hoop.id },
-                            _react2.default.createElement('img', { key: hoop.data.featured_story.id, src: INDEX + hoop.data.featured_story.image_url })
+                            _react2.default.createElement('img', { key: hoop.data.featured_story.id, src: contentURL(hoop.data.featured_story.image_url) })
                         );
                     }) : null;
 
@@ -88,7 +88,7 @@ var Profile = function (_React$Component) {
                         return _react2.default.createElement(
                             _reactRouter.Link,
                             { key: hoop.id, to: '/hoop/' + hoop.id },
-                            _react2.default.createElement('img', { key: hoop.data.featured_story.id, src: INDEX + hoop.data.featured_story.image_url })
+                            _react2.default.createElement('img', { key: hoop.data.featured_story.id, src: contentURL(hoop.data.featured_story.image_url) })
                         );
                     }) : null;
             }
@@ -125,7 +125,7 @@ var Profile = function (_React$Component) {
                             'label',
                             { htmlFor: 'user-image' },
                             _react2.default.createElement('input', { id: 'user-image', type: 'file', name: 'image', onChange: this.handleUserImage }),
-                            _react2.default.createElement('img', { src: user.image_url ? INDEX + user.image_url : '/images/avatar.png' })
+                            _react2.default.createElement('img', { src: contentURL(user.image_url, '/images/avatar.png') })
                         )
                     ),
                     _react2.default.createElement(

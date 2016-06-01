@@ -123,7 +123,7 @@ var Story = function (_React$Component) {
                     _react2.default.createElement(
                         'div',
                         { className: 'heroimage' },
-                        _react2.default.createElement('img', { src: story.image_url ? INDEX + story.image_url : '/images/avatar.png' }),
+                        _react2.default.createElement('img', { src: contentURL(story.image_url, '/images/avatar.png') }),
                         _react2.default.createElement(
                             'h2',
                             null,
@@ -136,7 +136,7 @@ var Story = function (_React$Component) {
                         _react2.default.createElement(
                             'div',
                             { className: 'userprofile' },
-                            _react2.default.createElement('img', { src: story.user.image_url ? INDEX + story.user.image_url : '/images/avatar.png' }),
+                            _react2.default.createElement('img', { src: contentURL(story.user.image_url, '/images/avatar.png') }),
                             _react2.default.createElement(
                                 'h6',
                                 null,
