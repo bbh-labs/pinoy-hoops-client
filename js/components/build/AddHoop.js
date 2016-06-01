@@ -44,6 +44,23 @@ var AddHoop = function (_React$Component) {
 
 		return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(AddHoop)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
 			latlng: null
+		}, _this.submit = function (event) {
+			event.preventDefault();
+
+			var latlng = _this.state.latlng;
+			if (!latlng) {
+				alert('You must pick a location!');
+				return;
+			}
+
+			_API2.default.addHoop(new FormData(event.target), function () {
+				alert('Successfully added hoop!');
+				_Dispatcher2.default.dispatch({ type: 'get-hoops' });
+				_Dispatcher2.default.dispatch({ type: 'get-activities' });
+				_browserHistory2.default.replace('/map');
+			}, function (response) {
+				alert(response.statusText);
+			});
 		}, _temp), _possibleConstructorReturn(_this, _ret);
 	}
 
@@ -134,26 +151,6 @@ var AddHoop = function (_React$Component) {
 		key: 'comonentWillUnmount',
 		value: function comonentWillUnmount() {
 			_Dispatcher2.default.unregister(this.listenerID);
-		}
-	}, {
-		key: 'submit',
-		value: function submit(event) {
-			event.preventDefault();
-
-			var latlng = this.state.latlng;
-			if (!latlng) {
-				alert('You must pick a location!');
-				return;
-			}
-
-			_API2.default.addHoop(new FormData(event.target), function () {
-				alert('Successfully added hoop!');
-				_Dispatcher2.default.dispatch({ type: 'get-hoops' });
-				_Dispatcher2.default.dispatch({ type: 'get-activities' });
-				_browserHistory2.default.replace('/map');
-			}, function (response) {
-				alert(response.statusText);
-			});
 		}
 	}, {
 		key: 'cancel',

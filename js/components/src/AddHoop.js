@@ -49,7 +49,7 @@ class AddHoop extends React.Component {
 	comonentWillUnmount() {
 		Dispatcher.unregister(this.listenerID);
 	}
-	submit(event) {
+	submit = (event) => {
 		event.preventDefault();
 
 		let latlng = this.state.latlng;
