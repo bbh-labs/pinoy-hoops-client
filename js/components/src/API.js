@@ -258,8 +258,6 @@ class API {
                 url: '/api/user',
                 method: 'PATCH',
                 data: data,
-                processData: false,
-                contentType: false,
             }).done(done).fail(fail);
         }
     }

@@ -258,9 +258,7 @@ var API = function () {
                 _jquery2.default.ajax({
                     url: '/api/user',
                     method: 'PATCH',
-                    data: data,
-                    processData: false,
-                    contentType: false
+                    data: data
                 }).done(done).fail(fail);
             }
         }

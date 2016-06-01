@@ -54,16 +54,17 @@ class Profile extends React.Component {
     profileInfo = () => {
         let user = this.props.user;
         let editing = this.state.editing;
-        let elems = [];
 
         if (editing) {
-            // TODO: perhaps add <input /> elements here?
+            return <ProfileForm user={ user } />
         } else {
-            elems.push(<h3>{ user.firstname } { user.lastname }</h3>);
-            elems.push(<p>{ user.birthdate }, { user.gender }</p>);
+            return (
+                <div>
+                    <h3>{ user.firstname } { user.lastname }</h3>
+                    <p>{ user.birthdate }, { user.gender }</p>
+                </div>
+            )
         }
-
-        return elems;
     }
     hoops = () => {
         let myHoops = this.state.myHoops;
@@ -106,6 +107,31 @@ class Profile extends React.Component {
     toggleEdit = () => {
         let editing = this.state.editing;
         this.setState({ editing: !editing });
+    }
+}
+
+class ProfileForm extends React.Component {
+    render() {
+        let user = this.props.user;
+
+        return (
+            <form ref='userProfileForm'>
+                <input type='text' name='name' defaultValue={ user.firstname + ' ' + user.lastname } /><br />
+                <input type='date' name='birthdate' defaultValue={ user.birthdate } />
+                <input type='gender' name='gender' defaultValue={ user.gender } />
+            </form>
+        )
+    }
+    componentWillUnmount() {
+        let form = this.refs.userProfileForm;
+
+        API.updateUser({
+            name: form.elements['name'].value,
+            birthdate: form.elements['birthdate'].value,
+            gender: form.elements['gender'].value,
+        }, () => {
+            Dispatcher.dispatch({ type: 'refresh-user' });
+        }, () => {});
     }
 }
 

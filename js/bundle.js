@@ -26599,9 +26599,7 @@
 	                _jquery2.default.ajax({
 	                    url: '/api/user',
 	                    method: 'PATCH',
-	                    data: data,
-	                    processData: false,
-	                    contentType: false
+	                    data: data
 	                }).done(done).fail(fail);
 	            }
 	        }
@@ -38594,28 +38592,29 @@
 	        }, _this.profileInfo = function () {
 	            var user = _this.props.user;
 	            var editing = _this.state.editing;
-	            var elems = [];
 
 	            if (editing) {
-	                // TODO: perhaps add <input /> elements here?
+	                return _react2.default.createElement(ProfileForm, { user: user });
 	            } else {
-	                    elems.push(_react2.default.createElement(
+	                return _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    _react2.default.createElement(
 	                        'h3',
 	                        null,
 	                        user.firstname,
 	                        ' ',
 	                        user.lastname
-	                    ));
-	                    elems.push(_react2.default.createElement(
+	                    ),
+	                    _react2.default.createElement(
 	                        'p',
 	                        null,
 	                        user.birthdate,
 	                        ', ',
 	                        user.gender
-	                    ));
-	                }
-
-	            return elems;
+	                    )
+	                );
+	            }
 	        }, _this.hoops = function () {
 	            var myHoops = _this.state.myHoops;
 	            var otherHoops = _this.state.otherHoops;
@@ -38742,6 +38741,47 @@
 	    }]);
 
 	    return Profile;
+	}(_react2.default.Component);
+
+	var ProfileForm = function (_React$Component2) {
+	    _inherits(ProfileForm, _React$Component2);
+
+	    function ProfileForm() {
+	        _classCallCheck(this, ProfileForm);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(ProfileForm).apply(this, arguments));
+	    }
+
+	    _createClass(ProfileForm, [{
+	        key: 'render',
+	        value: function render() {
+	            var user = this.props.user;
+
+	            return _react2.default.createElement(
+	                'form',
+	                { ref: 'userProfileForm' },
+	                _react2.default.createElement('input', { type: 'text', name: 'name', defaultValue: user.firstname + ' ' + user.lastname }),
+	                _react2.default.createElement('br', null),
+	                _react2.default.createElement('input', { type: 'date', name: 'birthdate', defaultValue: user.birthdate }),
+	                _react2.default.createElement('input', { type: 'gender', name: 'gender', defaultValue: user.gender })
+	            );
+	        }
+	    }, {
+	        key: 'componentWillUnmount',
+	        value: function componentWillUnmount() {
+	            var form = this.refs.userProfileForm;
+
+	            _API2.default.updateUser({
+	                name: form.elements['name'].value,
+	                birthdate: form.elements['birthdate'].value,
+	                gender: form.elements['gender'].value
+	            }, function () {
+	                _Dispatcher2.default.dispatch({ type: 'refresh-user' });
+	            }, function () {});
+	        }
+	    }]);
+
+	    return ProfileForm;
 	}(_react2.default.Component);
 
 	module.exports = Profile;
