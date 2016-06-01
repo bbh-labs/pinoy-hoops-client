@@ -26997,7 +26997,6 @@
 		return API;
 	}();
 
-	API.BASE_URL = 'http://localhost:8080';
 	API.geolocating = false;
 
 
@@ -38480,7 +38479,7 @@
 		_createClass(ShareStory, [{
 			key: 'render',
 			value: function render() {
-				var shareURL = _API2.default.BASE_URL + '/story/' + this.props.storyID;
+				var shareURL = BASE_URL + '/story/' + this.props.storyID;
 
 				return _react2.default.createElement(
 					'div',

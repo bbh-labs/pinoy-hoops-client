@@ -88,7 +88,7 @@ class AddStory extends React.Component {
 
 class ShareStory extends React.Component {
 	render() {
-		let shareURL = API.BASE_URL + '/story/' + this.props.storyID;
+		let shareURL = BASE_URL + '/story/' + this.props.storyID;
 
 		return (
 			<div className='sharebox'>

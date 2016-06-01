@@ -177,7 +177,7 @@ var ShareStory = function (_React$Component3) {
 	_createClass(ShareStory, [{
 		key: 'render',
 		value: function render() {
-			var shareURL = _API2.default.BASE_URL + '/story/' + this.props.storyID;
+			var shareURL = BASE_URL + '/story/' + this.props.storyID;
 
 			return _react2.default.createElement(
 				'div',

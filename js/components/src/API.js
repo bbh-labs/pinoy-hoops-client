@@ -198,7 +198,6 @@ if (MOCKUP) {
 }
 
 class API {
-	static BASE_URL = 'http://localhost:8080'
 	static geolocating = false
 	static login(data, done, fail) {
 		if (MOCKUP) {

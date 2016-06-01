@@ -1,4 +1,5 @@
 'use strict'
 
 var MOCKUP = true;
-var INDEX = '/';
+var BASE_URL = 'http://localhost:8080';
+//var BASE_URL = 'https://pinoy-hoops.bbh-labs.com.sg';
