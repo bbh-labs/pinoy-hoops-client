@@ -1,52 +1,53 @@
 @font-face {
-    font-family: TradeGothic;
-    src: url(../fonts/TradeGothicforNike365-BdCn.ttf);
+	font-family: TradeGothic;
+	src: url(../fonts/TradeGothicforNike365-BdCn.ttf);
 }
 
-html, body, #root, #app{
+html, body, #root, #app {
 	font-family: 'Lato', sans-serif;
 	overflow-x: hidden;
 	height: 100%; width: 100%;
 }
 
-button, input{
+button, input {
 	font-family: 'Lato', sans-serif;
-
 }
 
-a{
+a {
 	cursor: pointer;
 }
-#map{
-  height: 100%;
-  width: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  z-index: -2;
+
+#map {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	top: 0;
+	z-index: -2;
 }
 
-.map-btn img{
+.map-btn img {
 	max-width: 25px;
 	margin: 5px;
 	display: block;
 }
 
-.bottom-left{
+.bottom-left {
 	position: fixed;
 	left: 0;
 	bottom: 0;
 }
 
-.bottom-right{
+.bottom-right {
 	position: fixed;
 	right: 0;
 	bottom: 0;
 }
 
 .gmnoprint a, .gmnoprint span {
-    display:none;
+	display:none;
 }
+
 .gmnoprint {
 	display: none;
 }
@@ -57,115 +58,113 @@ a{
 .landingpage {
 	background-color: #000;
 	height: 100%;
-  width: 100%;
-  overflow: hidden;
+	width: 100%;
+	overflow: hidden;
 }
 
 #slideshow {
-  position: absolute;;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
 }
 
 #slideshow > div {
-  position: absolute;
-  width: 100%;
-  max-height: 100%:
+	position: absolute;
+	width: 100%;
+	max-height: 100%:
 }
 
-#slideshow img{
-  width: 100%;
-  height: 100%;
+#slideshow img {
+	width: 100%;
+	height: 100%;
 }
 
-.landingpage .logo{
-  position: relative;;
-  z-index: 4;
-  margin: 0 auto;
-  width: 100%;
-  height: 30%;
-  text-align: center;
-  top: 1%;
+.landingpage .logo {
+	position: relative;
+	z-index: 4;
+	margin: 0 auto;
+	width: 100%;
+	height: 30%;
+	text-align: center;
+	top: 1%;
 }
 
-.landingpage .logo img{
+.landingpage .logo img {
 	max-width: 250px;
-  display: inline-block;
+	display: inline-block;
 }
 
-.landingpage .nav-arrow{
-  position: relative;;
-  z-index: 4;
-  text-align: center;
-  height: 70%;
-  width: 100%;
-  margin: 0 auto;
+.landingpage .nav-arrow {
+	position: relative;
+	z-index: 4;
+	text-align: center;
+	height: 70%;
+	width: 100%;
+	margin: 0 auto;
 }
 
-.landingpage .nav-arrow img{
-  max-width: 50px;
-  display: inline-block;
-  position: absolute;
-  bottom: 3%;
+.landingpage .nav-arrow img {
+	max-width: 50px;
+	display: inline-block;
+	position: absolute;
+	bottom: 3%;
 }
 
-.login{
+.login {
 	display:table-cell;
 	vertical-align:middle;
  	text-align: center;
- 	/*background: linear-gradient(180deg, #f09819  10%,#ff512f 90%);*/
+ 	/*background: linear-gradient(180deg, #f09819	10%,#ff512f 90%);*/
  	/*background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../images/dummy01.jpg);*/
  	background-size: cover;
  	background-position: center;
-
  	background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(../images/login_bg.jpg);
 }
 
-.signup{
+.signup {
 	display:table-cell;
 	vertical-align:middle;
  	text-align: center;
- 	/*background: linear-gradient(180deg, #f09819  10%,#ff512f 90%);*/
+ 	/*background: linear-gradient(180deg, #f09819	10%,#ff512f 90%);*/
  	/*background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../images/dummy01.jpg);*/
  	background-size: cover;
  	background-position: center;
  	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(../images/signup_bg.jpg);
-
- 	}
-
-.login-content,.signup-content {
-  margin-top: 150px;
 }
 
-.login-content img{
+.login-content,.signup-content {
+	margin-top: 150px;
+}
+
+.login-content img {
 	max-width: 220px;
 	margin: 10px;
 }
 
-.login .logo{
-  position: absolute;
-  z-index: 4;
-  text-align: center;
-  margin: 0 auto;
-  width: 100%;
-  top:8%;
+.login .logo {
+	position: absolute;
+	z-index: 4;
+	text-align: center;
+	margin: 0 auto;
+	width: 100%;
+	top:8%;
 }
 
-.login .logo img{
-  max-width: 300px;
-  display: inline-block;
+.login .logo img {
+	max-width: 300px;
+	display: inline-block;
 }
 
-.login a{
+.login a {
 	cursor: pointer;
 	text-decoration: none;
 	color: white;
 }
 
-.login button{
+.login button {
 	width: 220px;
 	padding: 1em;
 	border: none;
@@ -174,41 +173,41 @@ a{
 	font-size: 10pt;
 }
 
-.login-content p, .signup-content p, .login-email p{
+.login-content p, .signup-content p, .login-email p {
 	color: white;
 	font-size: 9pt;
 	font-weight: 300;
 	margin-top: 30px;
 }
 
-.login-email{
-  margin-top: 120px;
+.login-email {
+	margin-top: 120px;
 }
 
-.login-email h4{
-  color: white;
-  font-weight: 300;
-  margin: 10px auto;
+.login-email h4 {
+	color: white;
+	font-weight: 300;
+	margin: 10px auto;
 }
 
-.login-email input{
-  width: 220px;
-  height: 40px;
-  margin: 8px 0;
-  font-size: 10pt;
+.login-email input {
+	width: 220px;
+	height: 40px;
+	margin: 8px 0;
+	font-size: 10pt;
 }
 
-.login-email button{
-  background-color: #111;
+.login-email button {
+	background-color: #111;
 }
 
-.signup-content label{
+.signup-content label {
 	font-size: 8pt;
 	font-weight: 400;
 	margin-right: 10px;
 }
 
-.signup form{
+.signup form {
 	font-weight: 100;
 	color: white;
 	display: inline-block;
@@ -216,11 +215,11 @@ a{
 	font-size: 9pt;
 }
 
-.signup input{
+.signup input {
 	margin: 15px 0;
 }
 
-.signup form button{
+.signup form button {
 	padding: 5px;
 	max-width: 100px;
 	background-color: #333;
@@ -229,20 +228,20 @@ a{
 	padding:0.5em 2em;
 }
 
-
-/*Hoop story*/
+/* Hoop story */
 .heroimage {
 	position: relative;
-	min-height: 380px
+	min-height: 380px;
 }
-.heroimage img{
+
+.heroimage img {
 	width: 100%;
 	position: absolute;
 	z-index: -2;
 	max-height: 400px;
 }
 
-.heroimage h2{
+.heroimage h2 {
 	text-transform: uppercase;
 	position: absolute;
 	bottom: 0;
@@ -256,19 +255,19 @@ a{
 .hoop-info {
 	max-width: 100%;
 	margin: 20px;
-
 }
-.userprofile{
+
+.userprofile {
 	float: left;
 }
 
-.userprofile img{
+.userprofile img {
 	max-width: 60px;
 	border-radius: 120pt;
 	float: left;
 }
 
-.userprofile h6{
+.userprofile h6 {
 	line-height: 32px;
 	display: inline-block;
 	vertical-align: middle;
@@ -278,13 +277,12 @@ a{
 	font-weight: 300;
 }
 
-
-.icons{
+.icons {
 	display: inline-block;
 	float: right;
 }
 
-.icons img{
+.icons img {
 	max-width: 18px;
 	border-radius: none;
 	right: 0;
@@ -292,55 +290,55 @@ a{
 	margin-left: 10px;
 }
 
-.icons p{
+.icons p {
 	font-size: 8pt;
 	float: left;
 	margin-top: 16px;
 }
-.description{
+
+.description {
 	display: inline-block;
 }
-.hoop-info button{
+
+.hoop-info button {
 	background-color: #333;
 	color: white;
 	border: none;
 	padding: 5px 25px;
 }
 
-.description p{
+.description p {
 	font-size: 8pt;
 	line-height: 12pt;
 	margin-top: 10px;
-
 }
 
-
-}
-.hoop-gallery{
+.hoop-gallery {
 	margin: 0 auto;
 	text-align: center;
 	width: 100%;
 	float: left;
 }
 
-.hoop-gallery li{
+.hoop-gallery li {
 	list-style-type: none;
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
-.hoop-gallery li img{
+.hoop-gallery li img {
  	background-color: #e7e7e7;
  	max-width: 33.333%;
-	border-radius: 0px;
+	border-radius: 0;
 	display: block;
 	float: left;
 	padding: .5px;
 }
 
-.hoopstory hr{
+.hoopstory hr {
 	border: 1px solid #e7e7e7;
 }
+
 .comment {
 	margin:0px;
 	width: 380px;
@@ -357,7 +355,8 @@ a{
 	display: block;
 	margin-top: 20px;
 }
-.usercomment p{
+
+.usercomment p {
 	text-align: left;
 	font-size: 8pt;
 	padding: 0;
@@ -367,8 +366,9 @@ a{
 	font-weight: 300;
 	padding: 5px;
 }
-.comment input{
-	margin: 0px;
+
+.comment input {
+	margin: 0;
 	display: inline-block;
 	width: 70%;
 	padding: .7em;
@@ -376,7 +376,7 @@ a{
 	font-weight: 300;
 }
 
-.comment button{
+.comment button {
 	background-color: #ff6b00;
 	width: 30%;
 	display: inline-block;
@@ -385,33 +385,33 @@ a{
 	color: white;
 }
 
-.addhoop #map{
+.addhoop #map {
 	max-height: 60%;
  	width: 100%;
-  	left: 0;
-  	position: absolute;
-  	top: 0;
+	left: 0;
+	position: absolute;
+	top: 0;
 }
 
-.addhoop .content{
+.addhoop .content {
 	position: relative;
 	margin-top: 410px;
 	text-align: center;
 }
 
-.addhoop h3{
+.addhoop h3 {
 	margin:15px auto;
 	font-size: 8pt;
 	font-weight: 400;
 }
 
-.addhoop label{
+.addhoop label {
 	font-size: 8pt;
 	font-weight: 400;
 	margin-right: 10px;
 }
 
-.addhoop form{
+.addhoop form {
 	font-weight: 100;
 	color: #333;
 	display: inline-block;
@@ -420,7 +420,7 @@ a{
 	text-align: right;
 }
 
-.addhoop input, textarea{
+.addhoop input, textarea {
 	border: 1px solid #999;
 	width: 210px;
 	min-height: 25px;
@@ -428,7 +428,7 @@ a{
 	margin-bottom: 10px;
 }
 
-.addhoop .content form button{
+.addhoop .content form button {
 	padding: 10px 20px;
 	border: none;
 	width: 210px;
@@ -438,11 +438,11 @@ a{
 	font-weight: 300;
 }
 
-.addhoop .submit{
+.addhoop .submit {
 	text-align: center;
 }
 
-.addhoop .submit button{
+.addhoop .submit button {
 	width: 140px;
 	background-color: #999;
 	border:none;
@@ -451,83 +451,87 @@ a{
 	margin: 20px 10px;
 }
 
-.sharebox{
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);;
-  position: absolute;
-  z-index: 4;
-  border-top: 1px solid #111;
+.sharebox {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	z-index: 4;
+	border-top: 1px solid #111;
 }
 
-.sharebox .whitebox{
-  background-color: white;
-  width: 100%;
-  height: 40%;
-  bottom: 0;
-  text-align: center;
-  position: absolute;;
-  margin: 0 auto;
-  vertical-align: middle;
+.sharebox .whitebox {
+	background-color: white;
+	width: 100%;
+	height: 40%;
+	bottom: 0;
+	text-align: center;
+	position: absolute;
+	margin: 0 auto;
+	vertical-align: middle;
 }
 
-.sharebox .whitebox h4{
-  font-size: 14pt;
-  margin: 10px auto;
-}
-.sharebox .whitebox li{
-  list-style-type: none;
-  display: inline-block;
-  margin: 20px;
+.sharebox .whitebox h4 {
+	font-size: 14pt;
+	margin: 10px auto;
 }
 
-.sharebox .whitebox li img{
-  max-width: 48px;
+.sharebox .whitebox li {
+	list-style-type: none;
+	display: inline-block;
+	margin: 20px;
 }
 
-.add{
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);;
-  position: absolute;
-  z-index: 4;
+.sharebox .whitebox li img {
+	max-width: 48px;
 }
 
-.add .whitebox h4{
-  font-size: 14pt;
-  margin: 20px auto;
-  position: relative;
-  display: inline-block;
-  width: 100%;
-}
-.add .whitebox{
-  background-color: white;
-  width: 90%;
-  height: 80%;
-  border-radius: 10pt;
-  text-align: center;
-  margin: 50px auto;
-}
-.add .whitebox img{
-  max-width: 250px;
-  display: inline-block;
-
-}
-.add .whitebox input{
-  border: 1px solid #e7e7e7;
-  height: 30px;
-  width: 250px;
-  font-size: 12pt;
+.add {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	z-index: 4;
 }
 
-.add .whitebox button{
-  background-color: #333;
-  border: none;
-  color: white;
-  padding: 5pt 20pt;
-  margin: 20px;
+.add .whitebox h4 {
+	font-size: 14pt;
+	margin: 20px auto;
+	position: relative;
+	display: inline-block;
+	width: 100%;
 }
-.profile{
+
+.add .whitebox {
+	background-color: white;
+	width: 90%;
+	height: 80%;
+	border-radius: 10pt;
+	text-align: center;
+	margin: 50px auto;
+}
+
+.add .whitebox img {
+	max-width: 250px;
+	display: inline-block;
+}
+
+.add .whitebox input {
+	border: 1px solid #e7e7e7;
+	height: 30px;
+	width: 250px;
+	font-size: 12pt;
+}
+
+.add .whitebox button {
+	background-color: #333;
+	border: none;
+	color: white;
+	padding: 5pt 20pt;
+	margin: 20px;
+}
+
+.profile {
 	position: relative;
 	padding-top: 25px;
 	text-align: center;
@@ -536,11 +540,11 @@ a{
 	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(../images/user_bg.jpg);
 }
 
-
-.profile .picture{
+.profile .picture {
 	text-align: center;
 }
-.profile .picture img{
+
+.profile .picture img {
 	max-width: 120px;
 	border-radius: 80pt;
 	display: inline-block;
@@ -551,19 +555,19 @@ a{
 	text-align: center;
 }
 
-.profile .info h3{
+.profile .info h3 {
 	padding-top: 8px;
 	color: white;
 	font-weight: 300;
 }
 
-.profile .info p{
+.profile .info p {
 	padding-top: 8px;
 	font-size: 10pt;
 	color: white;
 }
 
-.profile .info button{
+.profile .info button {
 	margin: 10px auto;
 	background-color: #e7e7e7;
 	border: none;
@@ -576,27 +580,29 @@ a{
 	margin:10px auto;
 	background-color: white;
 }
- .filter{
+
+ .filter {
 	text-align: center;
 	border-top: 1px solid #e7e7e7;
 }
 
-.filter p{
+.filter p {
 	font-size: 9pt;
 	font-weight: 300;
 	display: inline-block;
 	padding: 10px;
 	color: #999;
 }
-.profile .myhoops .gallery img{
+
+.profile .myhoops .gallery img {
 	max-width: 33.333%;
-	border-radius: 0px;
+	border-radius: 0;
 	display: block;
 	float: left;
 	padding: .5px;
 }
 
-.activity{
+.activity {
 	width: 100%;
 	height: 100%;
 	background-color: #e7e7e7;
@@ -605,7 +611,7 @@ a{
 	padding-top: 30px;
 }
 
-.activity li{
+.activity li {
 	padding: 10px;
 	width: 100%;
 	position: relative;
@@ -613,25 +619,26 @@ a{
 	list-style-type: none;
 	float: left;
 }
-.left{
+
+.left {
 	float: left;
 }
 
-.right{
+.right {
 	float: right;
 }
 
 
-.userprofile img{
+.userprofile img {
 	border-radius: 30pt;
 	max-width: 50px;
 }
 
-.userstory img{
+.userstory img {
 	max-width: 50px;
 }
 
-.userfeeds p{
+.userfeeds p {
 	float: left;
 	font-size: 10pt;
 	padding: 15px;
