@@ -52,6 +52,12 @@ class AddHoop extends React.Component {
 	submit(event) {
 		event.preventDefault();
 
+		let latlng = this.state.latlng;
+		if (!latlng) {
+			alert('You must pick a location!');
+			return;
+		}
+
 		API.addHoop(new FormData(event.target), () => {
 			alert('Successfully added hoop!');
 			Dispatcher.dispatch({ type: 'get-hoops' });

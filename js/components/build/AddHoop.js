@@ -140,6 +140,12 @@ var AddHoop = function (_React$Component) {
 		value: function submit(event) {
 			event.preventDefault();
 
+			var latlng = this.state.latlng;
+			if (!latlng) {
+				alert('You must pick a location!');
+				return;
+			}
+
 			_API2.default.addHoop(new FormData(event.target), function () {
 				alert('Successfully added hoop!');
 				_Dispatcher2.default.dispatch({ type: 'get-hoops' });
