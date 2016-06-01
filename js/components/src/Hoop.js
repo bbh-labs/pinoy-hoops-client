@@ -28,7 +28,7 @@ class Hoop extends React.Component {
 							<h6>{ hoop.user.firstname } { hoop.user.lastname }</h6>
 						</div>
 						<div className='icons'>
-							<img src='/images/icon_share.png' />
+							<img src='/images/icon_share.png' onClick={ this.share } />
 						</div>
 						<div className='description'>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec enim dolor, facilisis id interdum id, gravida eget lacus. Nam congue urna massa, sit amet rutrum ipsum pellentesque eu. Praesent et </p>
@@ -126,6 +126,12 @@ class Hoop extends React.Component {
 
 		if (hoop)
 			Dispatcher.dispatch({ type: 'overlay', name: 'add-story', data: { hoopID: hoop.id } });
+	}
+	share = () => {
+		let hoop = this.state.hoop;
+
+		if (hoop)
+			Dispatcher.dispatch({ type: 'overlay', name: 'share-hoop', data: { hoopID: hoop.id } });
 	}
 }
 

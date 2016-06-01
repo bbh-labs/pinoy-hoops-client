@@ -37525,6 +37525,10 @@
 				var hoop = _this.state.hoop;
 
 				if (hoop) _Dispatcher2.default.dispatch({ type: 'overlay', name: 'add-story', data: { hoopID: hoop.id } });
+			}, _this.share = function () {
+				var hoop = _this.state.hoop;
+
+				if (hoop) _Dispatcher2.default.dispatch({ type: 'overlay', name: 'share-hoop', data: { hoopID: hoop.id } });
 			}, _temp), _possibleConstructorReturn(_this, _ret);
 		}
 
@@ -37571,7 +37575,7 @@
 							_react2.default.createElement(
 								'div',
 								{ className: 'icons' },
-								_react2.default.createElement('img', { src: '/images/icon_share.png' })
+								_react2.default.createElement('img', { src: '/images/icon_share.png', onClick: this.share })
 							),
 							_react2.default.createElement(
 								'div',
@@ -38373,6 +38377,9 @@
 					case 'share-story':
 						return _react2.default.createElement(ShareStory, { storyID: data.storyID });
 
+					case 'share-hoop':
+						return _react2.default.createElement(ShareHoop, { hoopID: data.hoopID });
+
 					default:
 						return null;
 				}
@@ -38549,6 +38556,76 @@
 		}]);
 
 		return ShareStory;
+	}(_react2.default.Component);
+
+	var ShareHoop = function (_React$Component4) {
+		_inherits(ShareHoop, _React$Component4);
+
+		function ShareHoop() {
+			_classCallCheck(this, ShareHoop);
+
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(ShareHoop).apply(this, arguments));
+		}
+
+		_createClass(ShareHoop, [{
+			key: 'render',
+			value: function render() {
+				var shareURL = BASE_URL + '/hoop/' + this.props.hoopID;
+
+				return _react2.default.createElement(
+					'div',
+					{ className: 'sharebox' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'whitebox' },
+						_react2.default.createElement(
+							'p',
+							{ style: { float: 'right', margin: '10px' }, onClick: this.close },
+							'X'
+						),
+						_react2.default.createElement(
+							'h4',
+							null,
+							'Share'
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								'a',
+								{ href: 'http://www.facebook.com/sharer.php?u=' + shareURL, target: '_blank' },
+								_react2.default.createElement('img', { src: '/images/icon_fb.png', alt: 'Facebook' })
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								'a',
+								{ href: 'https://twitter.com/share?url=' + shareURL, target: '_blank' },
+								_react2.default.createElement('img', { src: '/images/icon_twitter.png', alt: 'Twitter' })
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								'a',
+								{ href: 'https://plus.google.com/share?url=' + shareURL, target: '_blank' },
+								_react2.default.createElement('img', { src: '/images/icon_gmail.png', alt: 'Google' })
+							)
+						)
+					)
+				);
+			}
+		}, {
+			key: 'close',
+			value: function close() {
+				_Dispatcher2.default.dispatch({ type: 'overlay-close' });
+			}
+		}]);
+
+		return ShareHoop;
 	}(_react2.default.Component);
 
 	module.exports = Overlay;

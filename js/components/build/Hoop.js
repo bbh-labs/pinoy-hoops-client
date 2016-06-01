@@ -51,6 +51,10 @@ var Hoop = function (_React$Component) {
 			var hoop = _this.state.hoop;
 
 			if (hoop) _Dispatcher2.default.dispatch({ type: 'overlay', name: 'add-story', data: { hoopID: hoop.id } });
+		}, _this.share = function () {
+			var hoop = _this.state.hoop;
+
+			if (hoop) _Dispatcher2.default.dispatch({ type: 'overlay', name: 'share-hoop', data: { hoopID: hoop.id } });
 		}, _temp), _possibleConstructorReturn(_this, _ret);
 	}
 
@@ -97,7 +101,7 @@ var Hoop = function (_React$Component) {
 						_react2.default.createElement(
 							'div',
 							{ className: 'icons' },
-							_react2.default.createElement('img', { src: '/images/icon_share.png' })
+							_react2.default.createElement('img', { src: '/images/icon_share.png', onClick: this.share })
 						),
 						_react2.default.createElement(
 							'div',

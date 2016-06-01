@@ -18,6 +18,9 @@ class Overlay extends React.Component {
 		case 'share-story':
 			return <ShareStory storyID={ data.storyID } />
 
+		case 'share-hoop':
+			return <ShareHoop hoopID={ data.hoopID } />
+
 		default:
 			return null;
 		}
@@ -89,6 +92,39 @@ class AddStory extends React.Component {
 class ShareStory extends React.Component {
 	render() {
 		let shareURL = BASE_URL + '/story/' + this.props.storyID;
+
+		return (
+			<div className='sharebox'>
+				<div className='whitebox'>
+					<p style={{ float: 'right', margin: '10px' }} onClick={ this.close }>X</p>
+					<h4>Share</h4>
+					<li>
+						<a href={ 'http://www.facebook.com/sharer.php?u=' + shareURL } target='_blank'>
+							<img src='/images/icon_fb.png' alt='Facebook' />
+						</a>
+					</li>
+					<li>
+						<a href={ 'https://twitter.com/share?url=' + shareURL } target='_blank'>
+							<img src='/images/icon_twitter.png' alt='Twitter' />
+						</a>
+					</li>
+					<li>
+						<a href={ 'https://plus.google.com/share?url=' + shareURL } target='_blank'>
+							<img src='/images/icon_gmail.png' alt='Google' />
+						</a>
+					</li>
+				</div>
+			</div>
+		)
+	}
+	close() {
+		Dispatcher.dispatch({ type: 'overlay-close' });
+	}
+}
+
+class ShareHoop extends React.Component {
+	render() {
+		let shareURL = BASE_URL + '/hoop/' + this.props.hoopID;
 
 		return (
 			<div className='sharebox'>
