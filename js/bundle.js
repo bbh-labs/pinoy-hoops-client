@@ -58,67 +58,67 @@
 
 	var _reactRouter = __webpack_require__(168);
 
-	var _browserHistory = __webpack_require__(248);
+	var _browserHistory = __webpack_require__(229);
 
 	var _browserHistory2 = _interopRequireDefault(_browserHistory);
 
-	var _Dispatcher = __webpack_require__(229);
+	var _Dispatcher = __webpack_require__(230);
 
 	var _Dispatcher2 = _interopRequireDefault(_Dispatcher);
 
-	var _API = __webpack_require__(233);
+	var _API = __webpack_require__(234);
 
 	var _API2 = _interopRequireDefault(_API);
 
-	var _About = __webpack_require__(235);
+	var _About = __webpack_require__(236);
 
 	var _About2 = _interopRequireDefault(_About);
 
-	var _Activities = __webpack_require__(236);
+	var _Activities = __webpack_require__(237);
 
 	var _Activities2 = _interopRequireDefault(_Activities);
 
-	var _AddHoop = __webpack_require__(237);
+	var _AddHoop = __webpack_require__(238);
 
 	var _AddHoop2 = _interopRequireDefault(_AddHoop);
 
-	var _Home = __webpack_require__(238);
+	var _Home = __webpack_require__(239);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _Hoop = __webpack_require__(239);
+	var _Hoop = __webpack_require__(240);
 
 	var _Hoop2 = _interopRequireDefault(_Hoop);
 
-	var _Login = __webpack_require__(240);
+	var _Login = __webpack_require__(241);
 
 	var _Login2 = _interopRequireDefault(_Login);
 
-	var _LoginEmail = __webpack_require__(241);
+	var _LoginEmail = __webpack_require__(242);
 
 	var _LoginEmail2 = _interopRequireDefault(_LoginEmail);
 
-	var _Map = __webpack_require__(242);
+	var _Map = __webpack_require__(243);
 
 	var _Map2 = _interopRequireDefault(_Map);
 
-	var _Navigation = __webpack_require__(243);
+	var _Navigation = __webpack_require__(244);
 
 	var _Navigation2 = _interopRequireDefault(_Navigation);
 
-	var _Overlay = __webpack_require__(244);
+	var _Overlay = __webpack_require__(245);
 
 	var _Overlay2 = _interopRequireDefault(_Overlay);
 
-	var _Profile = __webpack_require__(245);
+	var _Profile = __webpack_require__(246);
 
 	var _Profile2 = _interopRequireDefault(_Profile);
 
-	var _Signup = __webpack_require__(246);
+	var _Signup = __webpack_require__(247);
 
 	var _Signup2 = _interopRequireDefault(_Signup);
 
-	var _Story = __webpack_require__(247);
+	var _Story = __webpack_require__(248);
 
 	var _Story2 = _interopRequireDefault(_Story);
 
@@ -26005,7 +26005,21 @@
 
 	'use strict';
 
-	var _flux = __webpack_require__(230);
+	var _reactRouter = __webpack_require__(168);
+
+	if (MOCKUP) {
+	    module.exports = _reactRouter.hashHistory;
+	} else {
+	    module.exports = _reactRouter.browserHistory;
+	} // This is for switching between browserHistory and hashHistory
+
+/***/ },
+/* 230 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _flux = __webpack_require__(231);
 
 	var _flux2 = _interopRequireDefault(_flux);
 
@@ -26014,7 +26028,7 @@
 	module.exports = new _flux2.default.Dispatcher();
 
 /***/ },
-/* 230 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -26026,11 +26040,11 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 */
 
-	module.exports.Dispatcher = __webpack_require__(231);
+	module.exports.Dispatcher = __webpack_require__(232);
 
 
 /***/ },
-/* 231 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -26052,7 +26066,7 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-	var invariant = __webpack_require__(232);
+	var invariant = __webpack_require__(233);
 
 	var _prefix = 'ID_';
 
@@ -26267,7 +26281,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 232 */
+/* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -26322,14 +26336,14 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 233 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _jquery = __webpack_require__(234);
+	var _jquery = __webpack_require__(235);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -26992,7 +27006,7 @@
 	module.exports = API;
 
 /***/ },
-/* 234 */
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -36812,7 +36826,7 @@
 
 
 /***/ },
-/* 235 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36911,7 +36925,7 @@
 	module.exports = About;
 
 /***/ },
-/* 236 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36924,7 +36938,7 @@
 
 	var _reactRouter = __webpack_require__(168);
 
-	var _API = __webpack_require__(233);
+	var _API = __webpack_require__(234);
 
 	var _API2 = _interopRequireDefault(_API);
 
@@ -37108,7 +37122,7 @@
 	module.exports = Activities;
 
 /***/ },
-/* 237 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37121,15 +37135,15 @@
 
 	var _reactRouter = __webpack_require__(168);
 
-	var _browserHistory = __webpack_require__(248);
+	var _browserHistory = __webpack_require__(229);
 
 	var _browserHistory2 = _interopRequireDefault(_browserHistory);
 
-	var _API = __webpack_require__(233);
+	var _API = __webpack_require__(234);
 
 	var _API2 = _interopRequireDefault(_API);
 
-	var _Dispatcher = __webpack_require__(229);
+	var _Dispatcher = __webpack_require__(230);
 
 	var _Dispatcher2 = _interopRequireDefault(_Dispatcher);
 
@@ -37343,14 +37357,14 @@
 	module.exports = AddHoop;
 
 /***/ },
-/* 238 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _jquery = __webpack_require__(234);
+	var _jquery = __webpack_require__(235);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -37444,7 +37458,7 @@
 	module.exports = Home;
 
 /***/ },
-/* 239 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37457,11 +37471,11 @@
 
 	var _reactRouter = __webpack_require__(168);
 
-	var _API = __webpack_require__(233);
+	var _API = __webpack_require__(234);
 
 	var _API2 = _interopRequireDefault(_API);
 
-	var _Dispatcher = __webpack_require__(229);
+	var _Dispatcher = __webpack_require__(230);
 
 	var _Dispatcher2 = _interopRequireDefault(_Dispatcher);
 
@@ -37697,7 +37711,7 @@
 	module.exports = Hoop;
 
 /***/ },
-/* 240 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37801,7 +37815,7 @@
 	module.exports = Login;
 
 /***/ },
-/* 241 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37814,11 +37828,11 @@
 
 	var _reactRouter = __webpack_require__(168);
 
-	var _API = __webpack_require__(233);
+	var _API = __webpack_require__(234);
 
 	var _API2 = _interopRequireDefault(_API);
 
-	var _Dispatcher = __webpack_require__(229);
+	var _Dispatcher = __webpack_require__(230);
 
 	var _Dispatcher2 = _interopRequireDefault(_Dispatcher);
 
@@ -37911,7 +37925,7 @@
 	module.exports = LoginEmail;
 
 /***/ },
-/* 242 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37924,15 +37938,15 @@
 
 	var _reactRouter = __webpack_require__(168);
 
-	var _browserHistory = __webpack_require__(248);
+	var _browserHistory = __webpack_require__(229);
 
 	var _browserHistory2 = _interopRequireDefault(_browserHistory);
 
-	var _API = __webpack_require__(233);
+	var _API = __webpack_require__(234);
 
 	var _API2 = _interopRequireDefault(_API);
 
-	var _Dispatcher = __webpack_require__(229);
+	var _Dispatcher = __webpack_require__(230);
 
 	var _Dispatcher2 = _interopRequireDefault(_Dispatcher);
 
@@ -38119,7 +38133,7 @@
 	module.exports = Map;
 
 /***/ },
-/* 243 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38132,7 +38146,7 @@
 
 	var _reactRouter = __webpack_require__(168);
 
-	var _API = __webpack_require__(233);
+	var _API = __webpack_require__(234);
 
 	var _API2 = _interopRequireDefault(_API);
 
@@ -38286,7 +38300,7 @@
 	module.exports = Navigation;
 
 /***/ },
-/* 244 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38299,11 +38313,11 @@
 
 	var _reactRouter = __webpack_require__(168);
 
-	var _API = __webpack_require__(233);
+	var _API = __webpack_require__(234);
 
 	var _API2 = _interopRequireDefault(_API);
 
-	var _Dispatcher = __webpack_require__(229);
+	var _Dispatcher = __webpack_require__(230);
 
 	var _Dispatcher2 = _interopRequireDefault(_Dispatcher);
 
@@ -38529,7 +38543,7 @@
 	module.exports = Overlay;
 
 /***/ },
-/* 245 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38542,11 +38556,11 @@
 
 	var _reactRouter = __webpack_require__(168);
 
-	var _API = __webpack_require__(233);
+	var _API = __webpack_require__(234);
 
 	var _API2 = _interopRequireDefault(_API);
 
-	var _Dispatcher = __webpack_require__(229);
+	var _Dispatcher = __webpack_require__(230);
 
 	var _Dispatcher2 = _interopRequireDefault(_Dispatcher);
 
@@ -38733,7 +38747,7 @@
 	module.exports = Profile;
 
 /***/ },
-/* 246 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38746,15 +38760,15 @@
 
 	var _reactRouter = __webpack_require__(168);
 
-	var _browserHistory = __webpack_require__(248);
+	var _browserHistory = __webpack_require__(229);
 
 	var _browserHistory2 = _interopRequireDefault(_browserHistory);
 
-	var _API = __webpack_require__(233);
+	var _API = __webpack_require__(234);
 
 	var _API2 = _interopRequireDefault(_API);
 
-	var _Dispatcher = __webpack_require__(229);
+	var _Dispatcher = __webpack_require__(230);
 
 	var _Dispatcher2 = _interopRequireDefault(_Dispatcher);
 
@@ -38889,7 +38903,7 @@
 
 	            _API2.default.signup(new FormData(event.target), function () {
 	                alert('Successfully signed up!');
-	                _Dispatcher2.default.dispatch({ type: 'refresh-user', path: '/map' });
+	                _Dispatcher2.default.dispatch({ type: 'refresh-user', goto: '/map' });
 	            }, function (response) {
 	                alert(response.statusText + ': failed to sign up!');
 	            });
@@ -38902,7 +38916,7 @@
 	module.exports = Signup;
 
 /***/ },
-/* 247 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38915,15 +38929,15 @@
 
 	var _reactRouter = __webpack_require__(168);
 
-	var _browserHistory = __webpack_require__(248);
+	var _browserHistory = __webpack_require__(229);
 
 	var _browserHistory2 = _interopRequireDefault(_browserHistory);
 
-	var _API = __webpack_require__(233);
+	var _API = __webpack_require__(234);
 
 	var _API2 = _interopRequireDefault(_API);
 
-	var _Dispatcher = __webpack_require__(229);
+	var _Dispatcher = __webpack_require__(230);
 
 	var _Dispatcher2 = _interopRequireDefault(_Dispatcher);
 
@@ -39117,20 +39131,6 @@
 	}(_react2.default.Component);
 
 	module.exports = Story;
-
-/***/ },
-/* 248 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _reactRouter = __webpack_require__(168);
-
-	if (MOCKUP) {
-	    module.exports = _reactRouter.hashHistory;
-	} else {
-	    module.exports = _reactRouter.browserHistory;
-	} // This is for switching between browserHistory and hashHistory
 
 /***/ }
 /******/ ]);

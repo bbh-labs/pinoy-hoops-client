@@ -39,7 +39,7 @@ class Signup extends React.Component {
 
         API.signup(new FormData(event.target), () => {
             alert('Successfully signed up!');
-            Dispatcher.dispatch({ type: 'refresh-user', path: '/map' });
+            Dispatcher.dispatch({ type: 'refresh-user', goto: '/map' });
         }, (response) => {
             alert(response.statusText + ': failed to sign up!');
         });

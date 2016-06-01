@@ -151,7 +151,7 @@ var Signup = function (_React$Component) {
 
             _API2.default.signup(new FormData(event.target), function () {
                 alert('Successfully signed up!');
-                _Dispatcher2.default.dispatch({ type: 'refresh-user', path: '/map' });
+                _Dispatcher2.default.dispatch({ type: 'refresh-user', goto: '/map' });
             }, function (response) {
                 alert(response.statusText + ': failed to sign up!');
             });
