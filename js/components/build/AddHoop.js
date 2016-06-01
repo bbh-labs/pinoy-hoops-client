@@ -110,7 +110,7 @@ var AddHoop = function (_React$Component) {
 								'label',
 								{ htmlFor: 'upload-image' },
 								'Select file',
-								_react2.default.createElement('input', { id: 'upload-image', type: 'file', name: 'image' })
+								_react2.default.createElement('input', { id: 'upload-image', type: 'file', name: 'image', accept: 'image/*' })
 							),
 							_react2.default.createElement('br', null),
 							_react2.default.createElement('input', { type: 'hidden', name: 'latitude', value: latlng ? latlng.lat : 0 }),

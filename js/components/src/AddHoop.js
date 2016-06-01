@@ -21,7 +21,9 @@ class AddHoop extends React.Component {
 							<label>Hoop name: </label><input type='text' name='name' /><br/>
 							<label>Hoop description: </label><textarea rows='6' cols='20' name='description'/><br/>
 							<label>Upload picture: </label>
-							<label htmlFor='upload-image'>Select file<input id='upload-image' type='file' name='image' /></label><br/>
+							<label htmlFor='upload-image'>Select file
+								<input id='upload-image' type='file' name='image' accept='image/*' />
+							</label><br/>
 							<input type='hidden' name='latitude' value={ latlng ? latlng.lat : 0 } />
 							<input type='hidden' name='longitude' value={ latlng ? latlng.lng : 0 } />
 						</div>

@@ -37245,7 +37245,7 @@
 									'label',
 									{ htmlFor: 'upload-image' },
 									'Select file',
-									_react2.default.createElement('input', { id: 'upload-image', type: 'file', name: 'image' })
+									_react2.default.createElement('input', { id: 'upload-image', type: 'file', name: 'image', accept: 'image/*' })
 								),
 								_react2.default.createElement('br', null),
 								_react2.default.createElement('input', { type: 'hidden', name: 'latitude', value: latlng ? latlng.lat : 0 }),
@@ -38426,6 +38426,8 @@
 			}
 
 			return _ret2 = (_temp2 = (_this3 = _possibleConstructorReturn(this, (_Object$getPrototypeO2 = Object.getPrototypeOf(AddStory)).call.apply(_Object$getPrototypeO2, [this].concat(args))), _this3), _this3.submit = function (event) {
+				event.preventDefault();
+
 				_API2.default.addStory(new FormData(event.target), function () {
 					_this3.close();
 				}, function () {
@@ -38465,7 +38467,7 @@
 							'Add your story'
 						),
 						_react2.default.createElement('img', { src: '/images/dummy01.jpg', ref: 'image' }),
-						_react2.default.createElement('input', { type: 'file', name: 'image', onChange: this.previewImage }),
+						_react2.default.createElement('input', { type: 'file', name: 'image', onChange: this.previewImage, accept: 'image/*' }),
 						_react2.default.createElement('input', { type: 'text', placeholder: 'Title', name: 'name' }),
 						_react2.default.createElement('br', null),
 						_react2.default.createElement('input', { type: 'hidden', name: 'description', value: '' }),
