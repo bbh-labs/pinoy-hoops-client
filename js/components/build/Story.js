@@ -55,18 +55,6 @@ var Story = function (_React$Component) {
 					alert('Failed to like story');
 				});
 			}
-		}, _this.comment = function (event) {
-			event.preventDefault();
-
-			var story = _this.state.story;
-			if (story) {
-				var text = event.target.elements['text'].value;
-				_API2.default.commentStory({ 'story-id': story.id, text: text }, function () {
-					_this.getComments(story.id);
-				}, function (response) {
-					alert('Failed to comment on the story!');
-				});
-			}
 		}, _this.getLikes = function (storyID) {
 			_API2.default.getStoryLikes({ 'story-id': storyID }, function (likes) {
 				_this.setState({ likes: likes });
@@ -111,6 +99,7 @@ var Story = function (_React$Component) {
 			var story = this.state.story;
 			if (!story) return null;
 
+			var user = this.props.user;
 			var comments = this.state.comments;
 			var likes = this.state.likes;
 
@@ -173,16 +162,7 @@ var Story = function (_React$Component) {
 						{ className: 'usercomment' },
 						this.comments()
 					),
-					_react2.default.createElement(
-						'form',
-						{ className: 'comment', onSubmit: this.comment },
-						_react2.default.createElement('input', { placeholder: 'add a comment', type: 'text', name: 'text' }),
-						_react2.default.createElement(
-							'button',
-							null,
-							'Send'
-						)
-					)
+					user ? _react2.default.createElement(CommentBox, { story: story }) : null
 				)
 			);
 		}
@@ -203,10 +183,74 @@ var Story = function (_React$Component) {
 			this.getComments(storyID);
 
 			_API2.default.viewStory({ 'story-id': storyID });
+
+			this.dispatcherID = _Dispatcher2.default.register(function (payload) {
+				switch (payload.type) {
+					case 'story-get-comments':
+						_this2.getComments(storyID);
+						break;
+				}
+			});
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			_Dispatcher2.default.unregister(this.dispatcherID);
 		}
 	}]);
 
 	return Story;
+}(_react2.default.Component);
+
+var CommentBox = function (_React$Component2) {
+	_inherits(CommentBox, _React$Component2);
+
+	function CommentBox() {
+		var _Object$getPrototypeO2;
+
+		var _temp2, _this3, _ret2;
+
+		_classCallCheck(this, CommentBox);
+
+		for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+			args[_key2] = arguments[_key2];
+		}
+
+		return _ret2 = (_temp2 = (_this3 = _possibleConstructorReturn(this, (_Object$getPrototypeO2 = Object.getPrototypeOf(CommentBox)).call.apply(_Object$getPrototypeO2, [this].concat(args))), _this3), _this3.comment = function (event) {
+			event.preventDefault();
+
+			var story = _this3.props.story;
+			if (story) {
+				var text = event.target.elements['text'].value;
+
+				_API2.default.commentStory({ 'story-id': story.id, text: text }, function () {
+					_this3.dispatchGetComments();
+				}, function (response) {
+					alert('Failed to comment on the story!');
+				});
+			}
+		}, _this3.dispatchGetComments = function () {
+			_Dispatcher2.default.dispatch({ type: 'story-get-comments' });
+		}, _temp2), _possibleConstructorReturn(_this3, _ret2);
+	}
+
+	_createClass(CommentBox, [{
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'form',
+				{ className: 'comment', onSubmit: this.comment },
+				_react2.default.createElement('input', { placeholder: 'add a comment', type: 'text', name: 'text' }),
+				_react2.default.createElement(
+					'button',
+					null,
+					'Send'
+				)
+			);
+		}
+	}]);
+
+	return CommentBox;
 }(_react2.default.Component);
 
 module.exports = Story;

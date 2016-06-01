@@ -13,6 +13,7 @@ class Story extends React.Component {
 		if (!story)
 			return null;
 
+		let user = this.props.user;
 		let comments = this.state.comments;
 		let likes = this.state.likes;
 
@@ -40,10 +41,8 @@ class Story extends React.Component {
 					<hr/>
 					<div className='usercomment'>
 						{ this.comments() }
-					</div>	
-					<form className='comment' onSubmit={ this.comment }>
-						<input placeholder='add a comment' type='text' name='text' /><button>Send</button>
-					</form> 	
+					</div>
+					{ user ? <CommentBox story={ story } /> : null }
 				 </div>
 			</div>
 		)
@@ -66,6 +65,17 @@ class Story extends React.Component {
 		this.getComments(storyID);
 
 		API.viewStory({ 'story-id': storyID });
+
+		this.dispatcherID = Dispatcher.register((payload) => {
+			switch (payload.type) {
+			case 'story-get-comments':
+				this.getComments(storyID);
+				break;
+			}
+		});
+	}
+	componentWillUnmount() {
+		Dispatcher.unregister(this.dispatcherID);
 	}
 	like = () => {
 		let story = this.state.story;
@@ -74,19 +84,6 @@ class Story extends React.Component {
 				this.getLikes(story.id);
 			}, (response) => {
 				alert('Failed to like story');
-			});
-		}
-	}
-	comment = (event) => {
-		event.preventDefault();
-
-		let story = this.state.story;
-		if (story) {
-			let text = event.target.elements['text'].value;
-			API.commentStory({ 'story-id': story.id, text: text }, () => {
-				this.getComments(story.id);
-			}, (response) => {
-				alert('Failed to comment on the story!');
 			});
 		}
 	}
@@ -118,6 +115,33 @@ class Story extends React.Component {
 
 		if (story)
 			Dispatcher.dispatch({ type: 'overlay', name: 'share-story', data: { storyID: story.id } });
+	}
+}
+
+class CommentBox extends React.Component {
+	render() {
+		return (
+			<form className='comment' onSubmit={ this.comment }>
+				<input placeholder='add a comment' type='text' name='text' /><button>Send</button>
+			</form>
+		)
+	}
+	comment = (event) => {
+		event.preventDefault();
+
+		let story = this.props.story;
+		if (story) {
+			let text = event.target.elements['text'].value;
+
+			API.commentStory({ 'story-id': story.id, text: text }, () => {
+				this.dispatchGetComments();
+			}, (response) => {
+				alert('Failed to comment on the story!');
+			});
+		}
+	}
+	dispatchGetComments = () => {
+		Dispatcher.dispatch({ type: 'story-get-comments' });
 	}
 }
 
