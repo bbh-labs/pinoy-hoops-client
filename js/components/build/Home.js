@@ -21,76 +21,76 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Home = function (_React$Component) {
-    _inherits(Home, _React$Component);
+	_inherits(Home, _React$Component);
 
-    function Home() {
-        _classCallCheck(this, Home);
+	function Home() {
+		_classCallCheck(this, Home);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(Home).apply(this, arguments));
-    }
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(Home).apply(this, arguments));
+	}
 
-    _createClass(Home, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'section',
-                { className: 'landingpage' },
-                _react2.default.createElement(
-                    'div',
-                    { id: 'slideshow' },
-                    _react2.default.createElement(
-                        'div',
-                        null,
-                        _react2.default.createElement('img', { src: '/images/landingpage/hero01.jpg' })
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        null,
-                        _react2.default.createElement('img', { src: '/images/landingpage/hero02.jpg' })
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        null,
-                        _react2.default.createElement('img', { src: '/images/landingpage/hero03.jpg' })
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'logo' },
-                    _react2.default.createElement(
-                        _reactRouter.Link,
-                        { to: '/' },
-                        _react2.default.createElement('img', { src: '/images/logo_light.png', className: 'img-responsive' })
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'nav-arrow' },
-                    _react2.default.createElement(
-                        _reactRouter.Link,
-                        { to: '/map' },
-                        _react2.default.createElement('img', { src: '/images/landingpage/arrow.png' })
-                    )
-                )
-            );
-        }
-    }, {
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            (0, _jquery2.default)("#slideshow > div:gt(0)").hide();
+	_createClass(Home, [{
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'section',
+				{ className: 'landingpage' },
+				_react2.default.createElement(
+					'div',
+					{ id: 'slideshow' },
+					_react2.default.createElement(
+						'div',
+						null,
+						_react2.default.createElement('img', { src: '/images/landingpage/hero01.jpg' })
+					),
+					_react2.default.createElement(
+						'div',
+						null,
+						_react2.default.createElement('img', { src: '/images/landingpage/hero02.jpg' })
+					),
+					_react2.default.createElement(
+						'div',
+						null,
+						_react2.default.createElement('img', { src: '/images/landingpage/hero03.jpg' })
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'logo' },
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ to: '/' },
+						_react2.default.createElement('img', { src: '/images/logo_light.png', className: 'img-responsive' })
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'nav-arrow' },
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ to: '/map' },
+						_react2.default.createElement('img', { src: '/images/landingpage/arrow.png' })
+					)
+				)
+			);
+		}
+	}, {
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			(0, _jquery2.default)("#slideshow > div:gt(0)").hide();
 
-            this.intervalID = setInterval(function () {
-                (0, _jquery2.default)('#slideshow > div:first').fadeOut(1000).next().fadeIn(1000).end().appendTo('#slideshow');
-            }, 5000);
-        }
-    }, {
-        key: 'componentWillUnmount',
-        value: function componentWillUnmount() {
-            clearInterval(this.intervalID);
-        }
-    }]);
+			this.intervalID = setInterval(function () {
+				(0, _jquery2.default)('#slideshow > div:first').fadeOut(1000).next().fadeIn(1000).end().appendTo('#slideshow');
+			}, 5000);
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			clearInterval(this.intervalID);
+		}
+	}]);
 
-    return Home;
+	return Home;
 }(_react2.default.Component);
 
 module.exports = Home;

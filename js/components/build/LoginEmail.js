@@ -25,81 +25,81 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var LoginEmail = function (_React$Component) {
-    _inherits(LoginEmail, _React$Component);
+	_inherits(LoginEmail, _React$Component);
 
-    function LoginEmail() {
-        _classCallCheck(this, LoginEmail);
+	function LoginEmail() {
+		_classCallCheck(this, LoginEmail);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(LoginEmail).apply(this, arguments));
-    }
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(LoginEmail).apply(this, arguments));
+	}
 
-    _createClass(LoginEmail, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                { className: 'site-wrap' },
-                _react2.default.createElement(
-                    'div',
-                    { className: 'login' },
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'logo' },
-                        _react2.default.createElement(
-                            'a',
-                            { href: 'index.html' },
-                            _react2.default.createElement('img', { src: 'images/logo_light.png' })
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'form',
-                        { className: 'login-email', onSubmit: this.submit },
-                        _react2.default.createElement(
-                            'h4',
-                            null,
-                            'Login with email'
-                        ),
-                        _react2.default.createElement('input', { type: 'email', placeholder: 'Email', name: 'email' }),
-                        _react2.default.createElement('br', null),
-                        _react2.default.createElement('input', { type: 'password', placeholder: 'Password', name: 'password' }),
-                        _react2.default.createElement('br', null),
-                        _react2.default.createElement(
-                            'button',
-                            { type: 'submit' },
-                            'Login'
-                        ),
-                        _react2.default.createElement(
-                            'p',
-                            null,
-                            'Don\'t have an account? ',
-                            _react2.default.createElement(
-                                _reactRouter.Link,
-                                { to: '/signup' },
-                                _react2.default.createElement(
-                                    'span',
-                                    { style: { color: '#fff' } },
-                                    'Sign up here'
-                                )
-                            )
-                        )
-                    )
-                )
-            );
-        }
-    }, {
-        key: 'submit',
-        value: function submit(event) {
-            event.preventDefault();
+	_createClass(LoginEmail, [{
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'div',
+				{ className: 'site-wrap' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'login' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'logo' },
+						_react2.default.createElement(
+							'a',
+							{ href: 'index.html' },
+							_react2.default.createElement('img', { src: 'images/logo_light.png' })
+						)
+					),
+					_react2.default.createElement(
+						'form',
+						{ className: 'login-email', onSubmit: this.submit },
+						_react2.default.createElement(
+							'h4',
+							null,
+							'Login with email'
+						),
+						_react2.default.createElement('input', { type: 'email', placeholder: 'Email', name: 'email' }),
+						_react2.default.createElement('br', null),
+						_react2.default.createElement('input', { type: 'password', placeholder: 'Password', name: 'password' }),
+						_react2.default.createElement('br', null),
+						_react2.default.createElement(
+							'button',
+							{ type: 'submit' },
+							'Login'
+						),
+						_react2.default.createElement(
+							'p',
+							null,
+							'Don\'t have an account? ',
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ to: '/signup' },
+								_react2.default.createElement(
+									'span',
+									{ style: { color: '#fff' } },
+									'Sign up here'
+								)
+							)
+						)
+					)
+				)
+			);
+		}
+	}, {
+		key: 'submit',
+		value: function submit(event) {
+			event.preventDefault();
 
-            _API2.default.login(new FormData(event.target), function () {
-                _Dispatcher2.default.dispatch({ type: 'refresh-user', goto: '/map' });
-            }, function (response) {
-                alert(response.statusText + ': failed to log in!');
-            });
-        }
-    }]);
+			_API2.default.login(new FormData(event.target), function () {
+				_Dispatcher2.default.dispatch({ type: 'refresh-user', goto: '/map' });
+			}, function (response) {
+				alert(response.statusText + ': failed to log in!');
+			});
+		}
+	}]);
 
-    return LoginEmail;
+	return LoginEmail;
 }(_react2.default.Component);
 
 module.exports = LoginEmail;

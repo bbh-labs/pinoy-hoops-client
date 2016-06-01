@@ -17,83 +17,83 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Login = function (_React$Component) {
-    _inherits(Login, _React$Component);
+	_inherits(Login, _React$Component);
 
-    function Login() {
-        _classCallCheck(this, Login);
+	function Login() {
+		_classCallCheck(this, Login);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(Login).apply(this, arguments));
-    }
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(Login).apply(this, arguments));
+	}
 
-    _createClass(Login, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                { className: 'site-wrap' },
-                _react2.default.createElement(
-                    'div',
-                    { className: 'login' },
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'logo' },
-                        _react2.default.createElement(
-                            _reactRouter.Link,
-                            { to: '/' },
-                            _react2.default.createElement('img', { src: 'images/logo_light.png' })
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'login-content' },
-                        _react2.default.createElement(
-                            'a',
-                            { href: '/auth/facebook' },
-                            _react2.default.createElement(
-                                'button',
-                                { style: { backgroundColor: '#3c5a99' } },
-                                'Login with Facebook'
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'a',
-                            { href: '/auth/twitter' },
-                            _react2.default.createElement(
-                                'button',
-                                { style: { backgroundColor: '#00abf1' } },
-                                'Login with Twitter'
-                            )
-                        ),
-                        _react2.default.createElement(
-                            _reactRouter.Link,
-                            { to: '/login-email' },
-                            _react2.default.createElement(
-                                'button',
-                                { style: { backgroundColor: '#ff6b00' } },
-                                'Login with Email'
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'p',
-                            null,
-                            'Don\'t have an account? ',
-                            _react2.default.createElement(
-                                _reactRouter.Link,
-                                { to: '/signup' },
-                                _react2.default.createElement(
-                                    'span',
-                                    { style: { color: '#fff' } },
-                                    'Sign up here'
-                                )
-                            )
-                        )
-                    )
-                )
-            );
-        }
-    }]);
+	_createClass(Login, [{
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'div',
+				{ className: 'site-wrap' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'login' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'logo' },
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ to: '/' },
+							_react2.default.createElement('img', { src: 'images/logo_light.png' })
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'login-content' },
+						_react2.default.createElement(
+							'a',
+							{ href: '/auth/facebook' },
+							_react2.default.createElement(
+								'button',
+								{ style: { backgroundColor: '#3c5a99' } },
+								'Login with Facebook'
+							)
+						),
+						_react2.default.createElement(
+							'a',
+							{ href: '/auth/twitter' },
+							_react2.default.createElement(
+								'button',
+								{ style: { backgroundColor: '#00abf1' } },
+								'Login with Twitter'
+							)
+						),
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ to: '/login-email' },
+							_react2.default.createElement(
+								'button',
+								{ style: { backgroundColor: '#ff6b00' } },
+								'Login with Email'
+							)
+						),
+						_react2.default.createElement(
+							'p',
+							null,
+							'Don\'t have an account? ',
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ to: '/signup' },
+								_react2.default.createElement(
+									'span',
+									{ style: { color: '#fff' } },
+									'Sign up here'
+								)
+							)
+						)
+					)
+				)
+			);
+		}
+	}]);
 
-    return Login;
+	return Login;
 }(_react2.default.Component);
 
 module.exports = Login;

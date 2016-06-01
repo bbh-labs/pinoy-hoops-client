@@ -2,7 +2,7 @@
 import { hashHistory, browserHistory } from 'react-router'
 
 if (MOCKUP) {
-    module.exports = hashHistory;
+	module.exports = hashHistory;
 } else {
-    module.exports = browserHistory;
+	module.exports = browserHistory;
 }

@@ -28,165 +28,165 @@ var ACTIVITY_POST_HOOP = 1,
     ACTIVITY_POST_LIKE_STORY = 202;
 
 var Activities = function (_React$Component) {
-    _inherits(Activities, _React$Component);
+	_inherits(Activities, _React$Component);
 
-    function Activities() {
-        var _Object$getPrototypeO;
+	function Activities() {
+		var _Object$getPrototypeO;
 
-        var _temp, _this, _ret;
+		var _temp, _this, _ret;
 
-        _classCallCheck(this, Activities);
+		_classCallCheck(this, Activities);
 
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-        }
+		for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+			args[_key] = arguments[_key];
+		}
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Activities)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
-            activities: null
-        }, _this.getActivities = function () {
-            _API2.default.getActivities(function (activities) {
-                _this.setState({ activities: activities });
-            }, function (response) {
-                alert('Failed to get activities');
-            });
-        }, _temp), _possibleConstructorReturn(_this, _ret);
-    }
+		return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Activities)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
+			activities: null
+		}, _this.getActivities = function () {
+			_API2.default.getActivities(function (activities) {
+				_this.setState({ activities: activities });
+			}, function (response) {
+				alert('Failed to get activities');
+			});
+		}, _temp), _possibleConstructorReturn(_this, _ret);
+	}
 
-    _createClass(Activities, [{
-        key: 'render',
-        value: function render() {
-            var activities = this.state.activities;
+	_createClass(Activities, [{
+		key: 'render',
+		value: function render() {
+			var activities = this.state.activities;
 
-            return _react2.default.createElement(
-                'div',
-                { className: 'site-wrap' },
-                _react2.default.createElement(
-                    'div',
-                    { className: 'activities' },
-                    _react2.default.createElement(
-                        'ul',
-                        null,
-                        this.activities()
-                    )
-                )
-            );
-        }
-    }, {
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            this.getActivities();
-        }
-    }, {
-        key: 'activities',
-        value: function activities() {
-            var activities = this.state.activities;
-            if (!activities) return null;
+			return _react2.default.createElement(
+				'div',
+				{ className: 'site-wrap' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'activities' },
+					_react2.default.createElement(
+						'ul',
+						null,
+						this.activities()
+					)
+				)
+			);
+		}
+	}, {
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			this.getActivities();
+		}
+	}, {
+		key: 'activities',
+		value: function activities() {
+			var activities = this.state.activities;
+			if (!activities) return null;
 
-            return activities.map(function (activity, i) {
-                return _react2.default.createElement(Activity, { key: i, activity: activity });
-            });
-        }
-    }]);
+			return activities.map(function (activity, i) {
+				return _react2.default.createElement(Activity, { key: i, activity: activity });
+			});
+		}
+	}]);
 
-    return Activities;
+	return Activities;
 }(_react2.default.Component);
 
 var Activity = function (_React$Component2) {
-    _inherits(Activity, _React$Component2);
+	_inherits(Activity, _React$Component2);
 
-    function Activity() {
-        _classCallCheck(this, Activity);
+	function Activity() {
+		_classCallCheck(this, Activity);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(Activity).apply(this, arguments));
-    }
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(Activity).apply(this, arguments));
+	}
 
-    _createClass(Activity, [{
-        key: 'render',
-        value: function render() {
-            var activity = this.props.activity;
-            var user = activity.data.user;
-            var story = activity.data.story;
-            var hoop = activity.data.hoop;
+	_createClass(Activity, [{
+		key: 'render',
+		value: function render() {
+			var activity = this.props.activity;
+			var user = activity.data.user;
+			var story = activity.data.story;
+			var hoop = activity.data.hoop;
 
-            return _react2.default.createElement(
-                'li',
-                null,
-                _react2.default.createElement(
-                    'div',
-                    { className: 'userprofile' },
-                    _react2.default.createElement(
-                        'span',
-                        { className: 'left' },
-                        _react2.default.createElement('img', { src: user.image_url })
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'userfeeds' },
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        user.firstname,
-                        ' ',
-                        user.lastname,
-                        ' ',
-                        this.action(),
-                        ' '
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'userstory' },
-                    story ? _react2.default.createElement(
-                        'span',
-                        { className: 'right' },
-                        _react2.default.createElement(
-                            _reactRouter.Link,
-                            { to: '/story/' + story.id },
-                            _react2.default.createElement('img', { src: story.image_url })
-                        )
-                    ) : hoop ? _react2.default.createElement(
-                        'span',
-                        { className: 'right' },
-                        _react2.default.createElement(
-                            _reactRouter.Link,
-                            { to: '/hoop/' + hoop.id },
-                            _react2.default.createElement('img', { src: hoop.data.featured_story.image_url })
-                        )
-                    ) : null
-                )
-            );
-        }
-    }, {
-        key: 'action',
-        value: function action() {
-            var activity = this.props.activity;
-            var hoop = activity.data.hoop;
-            var story = activity.data.story;
+			return _react2.default.createElement(
+				'li',
+				null,
+				_react2.default.createElement(
+					'div',
+					{ className: 'userprofile' },
+					_react2.default.createElement(
+						'span',
+						{ className: 'left' },
+						_react2.default.createElement('img', { src: user.image_url })
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'userfeeds' },
+					_react2.default.createElement(
+						'p',
+						null,
+						user.firstname,
+						' ',
+						user.lastname,
+						' ',
+						this.action(),
+						' '
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'userstory' },
+					story ? _react2.default.createElement(
+						'span',
+						{ className: 'right' },
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ to: '/story/' + story.id },
+							_react2.default.createElement('img', { src: story.image_url })
+						)
+					) : hoop ? _react2.default.createElement(
+						'span',
+						{ className: 'right' },
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ to: '/hoop/' + hoop.id },
+							_react2.default.createElement('img', { src: hoop.data.featured_story.image_url })
+						)
+					) : null
+				)
+			);
+		}
+	}, {
+		key: 'action',
+		value: function action() {
+			var activity = this.props.activity;
+			var hoop = activity.data.hoop;
+			var story = activity.data.story;
 
-            switch (activity.type) {
-                case ACTIVITY_POST_HOOP:
-                    return 'posted hoop \'' + hoop.name + '\'';
+			switch (activity.type) {
+				case ACTIVITY_POST_HOOP:
+					return 'posted hoop \'' + hoop.name + '\'';
 
-                case ACTIVITY_POST_STORY:
-                    return 'posted story \'' + story.name + '\'';
+				case ACTIVITY_POST_STORY:
+					return 'posted story \'' + story.name + '\'';
 
-                case ACTIVITY_POST_COMMENT_HOOP:
-                    return 'posted comment on \'' + hoop.name + '\'';
+				case ACTIVITY_POST_COMMENT_HOOP:
+					return 'posted comment on \'' + hoop.name + '\'';
 
-                case ACTIVITY_POST_COMMENT_STORY:
-                    return 'posted comment on \'' + story.name + '\'';
+				case ACTIVITY_POST_COMMENT_STORY:
+					return 'posted comment on \'' + story.name + '\'';
 
-                case ACTIVITY_POST_LIKE_HOOP:
-                    return 'liked hoop \'' + hoop.name + '\'';
+				case ACTIVITY_POST_LIKE_HOOP:
+					return 'liked hoop \'' + hoop.name + '\'';
 
-                case ACTIVITY_POST_LIKE_STORY:
-                    return 'liked story \'' + story.name + '\'';
-            }
-        }
-    }]);
+				case ACTIVITY_POST_LIKE_STORY:
+					return 'liked story \'' + story.name + '\'';
+			}
+		}
+	}]);
 
-    return Activity;
+	return Activity;
 }(_react2.default.Component);
 
 module.exports = Activities;

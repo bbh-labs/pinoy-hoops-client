@@ -131,93 +131,93 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var App = function (_React$Component) {
-	    _inherits(App, _React$Component);
+		_inherits(App, _React$Component);
 
-	    function App() {
-	        var _Object$getPrototypeO;
+		function App() {
+			var _Object$getPrototypeO;
 
-	        var _temp, _this, _ret;
+			var _temp, _this, _ret;
 
-	        _classCallCheck(this, App);
+			_classCallCheck(this, App);
 
-	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	            args[_key] = arguments[_key];
-	        }
+			for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+				args[_key] = arguments[_key];
+			}
 
-	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(App)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
-	            user: null
-	        }, _temp), _possibleConstructorReturn(_this, _ret);
-	    }
+			return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(App)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
+				user: null
+			}, _temp), _possibleConstructorReturn(_this, _ret);
+		}
 
-	    _createClass(App, [{
-	        key: 'render',
-	        value: function render() {
-	            var showNavigation = true;
+		_createClass(App, [{
+			key: 'render',
+			value: function render() {
+				var showNavigation = true;
 
-	            if (this.props.location.pathname == '/') showNavigation = false;
+				if (this.props.location.pathname == '/') showNavigation = false;
 
-	            return _react2.default.createElement(
-	                'div',
-	                { id: 'app' },
-	                showNavigation ? _react2.default.createElement(_Navigation2.default, this.state) : null,
-	                showNavigation ? _react2.default.createElement('input', { type: 'checkbox', id: 'nav-trigger', className: 'nav-trigger' }) : null,
-	                showNavigation ? _react2.default.createElement('label', { htmlFor: 'nav-trigger' }) : null,
-	                showNavigation ? _react2.default.createElement(_Overlay2.default, null) : null,
-	                this.props.children && _react2.default.cloneElement(this.props.children, this.state)
-	            );
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            var _this2 = this;
+				return _react2.default.createElement(
+					'div',
+					{ id: 'app' },
+					showNavigation ? _react2.default.createElement(_Navigation2.default, this.state) : null,
+					showNavigation ? _react2.default.createElement('input', { type: 'checkbox', id: 'nav-trigger', className: 'nav-trigger' }) : null,
+					showNavigation ? _react2.default.createElement('label', { htmlFor: 'nav-trigger' }) : null,
+					showNavigation ? _react2.default.createElement(_Overlay2.default, null) : null,
+					this.props.children && _react2.default.cloneElement(this.props.children, this.state)
+				);
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var _this2 = this;
 
-	            this.checkLoggedIn();
+				this.checkLoggedIn();
 
-	            this.dispatcherID = _Dispatcher2.default.register(function (payload) {
-	                switch (payload.type) {
-	                    case 'refresh-user':
-	                        _this2.checkLoggedIn();
+				this.dispatcherID = _Dispatcher2.default.register(function (payload) {
+					switch (payload.type) {
+						case 'refresh-user':
+							_this2.checkLoggedIn();
 
-	                        if (payload.goto) _browserHistory2.default.replace(payload.goto);
+							if (payload.goto) _browserHistory2.default.replace(payload.goto);
 
-	                        break;
-	                }
-	            });
-	        }
-	    }, {
-	        key: 'checkLoggedIn',
-	        value: function checkLoggedIn() {
-	            var _this3 = this;
+							break;
+					}
+				});
+			}
+		}, {
+			key: 'checkLoggedIn',
+			value: function checkLoggedIn() {
+				var _this3 = this;
 
-	            _API2.default.isLoggedIn(function (user) {
-	                _this3.setState({ user: user });
-	            }, function () {
-	                _this3.setState({ user: null });
-	            });
-	        }
-	    }]);
+				_API2.default.isLoggedIn(function (user) {
+					_this3.setState({ user: user });
+				}, function () {
+					_this3.setState({ user: null });
+				});
+			}
+		}]);
 
-	    return App;
+		return App;
 	}(_react2.default.Component);
 
 	_reactDom2.default.render(_react2.default.createElement(
-	    _reactRouter.Router,
-	    { history: _browserHistory2.default },
-	    _react2.default.createElement(
-	        _reactRouter.Route,
-	        { path: '/', component: App },
-	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/about', component: _About2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/activities', component: _Activities2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/add-hoop', component: _AddHoop2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/hoop/:hoopID', component: _Hoop2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/login', component: _Login2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/login-email', component: _LoginEmail2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/map', component: _Map2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/profile', component: _Profile2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/signup', component: _Signup2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/story/:storyID', component: _Story2.default })
-	    )
+		_reactRouter.Router,
+		{ history: _browserHistory2.default },
+		_react2.default.createElement(
+			_reactRouter.Route,
+			{ path: '/', component: App },
+			_react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: '/about', component: _About2.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: '/activities', component: _Activities2.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: '/add-hoop', component: _AddHoop2.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: '/hoop/:hoopID', component: _Hoop2.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: '/login', component: _Login2.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: '/login-email', component: _LoginEmail2.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: '/map', component: _Map2.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: '/profile', component: _Profile2.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: '/signup', component: _Signup2.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: '/story/:storyID', component: _Story2.default })
+		)
 	), document.getElementById('root'));
 
 /***/ },
@@ -26008,9 +26008,9 @@
 	var _reactRouter = __webpack_require__(168);
 
 	if (MOCKUP) {
-	    module.exports = _reactRouter.hashHistory;
+		module.exports = _reactRouter.hashHistory;
 	} else {
-	    module.exports = _reactRouter.browserHistory;
+		module.exports = _reactRouter.browserHistory;
 	} // This is for switching between browserHistory and hashHistory
 
 /***/ },
@@ -26352,649 +26352,649 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	if (MOCKUP) {
-	    var LOREM_IPSUM = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum luctus mauris id tincidunt aliquam. Aenean facilisis velit ut erat vehicula, vel tincidunt quam vehicula. Nam tristique massa nec ultrices volutpat.';
+		var LOREM_IPSUM = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum luctus mauris id tincidunt aliquam. Aenean facilisis velit ut erat vehicula, vel tincidunt quam vehicula. Nam tristique massa nec ultrices volutpat.';
 
-	    var USER = {
-	        id: 2,
-	        firstname: 'Jane',
-	        lastname: 'Doe',
-	        gender: 'female',
-	        birthdate: '1972-03-05',
-	        description: LOREM_IPSUM,
-	        email: 'jane.doe@example.com',
-	        image_url: 'images/avatar.png'
-	    };
+		var USER = {
+			id: 2,
+			firstname: 'Jane',
+			lastname: 'Doe',
+			gender: 'female',
+			birthdate: '1972-03-05',
+			description: LOREM_IPSUM,
+			email: 'jane.doe@example.com',
+			image_url: 'images/avatar.png'
+		};
 
-	    var OTHER_USER = {
-	        id: 1,
-	        firstname: 'John',
-	        lastname: 'Doe',
-	        gender: 'male',
-	        birthdate: '1969-12-28',
-	        description: LOREM_IPSUM,
-	        email: 'john.doe@example.com',
-	        image_url: 'images/user01.jpg'
-	    };
+		var OTHER_USER = {
+			id: 1,
+			firstname: 'John',
+			lastname: 'Doe',
+			gender: 'male',
+			birthdate: '1969-12-28',
+			description: LOREM_IPSUM,
+			email: 'john.doe@example.com',
+			image_url: 'images/user01.jpg'
+		};
 
-	    var STORIES = [{
-	        id: 1,
-	        hoop_id: 1,
-	        user: OTHER_USER,
-	        name: 'La Concordia',
-	        description: LOREM_IPSUM,
-	        image_url: 'images/dummy01.jpg',
-	        viewCount: 3 / 3
-	    }, {
-	        id: 2,
-	        hoop_id: 1,
-	        user: OTHER_USER,
-	        name: 'La Concordia',
-	        description: LOREM_IPSUM,
-	        image_url: 'images/dummy02.jpg',
-	        viewCount: 3 / 3
-	    }, {
-	        id: 3,
-	        hoop_id: 1,
-	        user: OTHER_USER,
-	        name: 'La Concordia',
-	        description: LOREM_IPSUM,
-	        image_url: 'images/dummy03.jpg',
-	        viewCount: 3 / 3
-	    }, {
-	        id: 4,
-	        hoop_id: 1,
-	        user: OTHER_USER,
-	        name: 'La Concordia',
-	        description: LOREM_IPSUM,
-	        image_url: 'images/dummy04.jpg',
-	        viewCount: 3 / 3
-	    }, {
-	        id: 5,
-	        hoop_id: 1,
-	        user: OTHER_USER,
-	        name: 'La Concordia',
-	        description: LOREM_IPSUM,
-	        image_url: 'images/dummy05.jpg',
-	        viewCount: 3 / 3
-	    }, {
-	        id: 6,
-	        hoop_id: 1,
-	        user: OTHER_USER,
-	        name: 'La Concordia',
-	        description: LOREM_IPSUM,
-	        image_url: 'images/dummy06.jpg',
-	        viewCount: 3 / 3
-	    }, {
-	        id: 7,
-	        hoop_id: 1,
-	        user: OTHER_USER,
-	        name: 'La Concordia',
-	        description: LOREM_IPSUM,
-	        image_url: 'images/dummy07.jpg',
-	        viewCount: 3 / 3
-	    }, {
-	        id: 8,
-	        hoop_id: 1,
-	        user: OTHER_USER,
-	        name: 'La Concordia',
-	        description: LOREM_IPSUM,
-	        image_url: 'images/dummy08.jpg',
-	        viewCount: 3 / 3
-	    }];
+		var STORIES = [{
+			id: 1,
+			hoop_id: 1,
+			user: OTHER_USER,
+			name: 'La Concordia',
+			description: LOREM_IPSUM,
+			image_url: 'images/dummy01.jpg',
+			viewCount: 3 / 3
+		}, {
+			id: 2,
+			hoop_id: 1,
+			user: OTHER_USER,
+			name: 'La Concordia',
+			description: LOREM_IPSUM,
+			image_url: 'images/dummy02.jpg',
+			viewCount: 3 / 3
+		}, {
+			id: 3,
+			hoop_id: 1,
+			user: OTHER_USER,
+			name: 'La Concordia',
+			description: LOREM_IPSUM,
+			image_url: 'images/dummy03.jpg',
+			viewCount: 3 / 3
+		}, {
+			id: 4,
+			hoop_id: 1,
+			user: OTHER_USER,
+			name: 'La Concordia',
+			description: LOREM_IPSUM,
+			image_url: 'images/dummy04.jpg',
+			viewCount: 3 / 3
+		}, {
+			id: 5,
+			hoop_id: 1,
+			user: OTHER_USER,
+			name: 'La Concordia',
+			description: LOREM_IPSUM,
+			image_url: 'images/dummy05.jpg',
+			viewCount: 3 / 3
+		}, {
+			id: 6,
+			hoop_id: 1,
+			user: OTHER_USER,
+			name: 'La Concordia',
+			description: LOREM_IPSUM,
+			image_url: 'images/dummy06.jpg',
+			viewCount: 3 / 3
+		}, {
+			id: 7,
+			hoop_id: 1,
+			user: OTHER_USER,
+			name: 'La Concordia',
+			description: LOREM_IPSUM,
+			image_url: 'images/dummy07.jpg',
+			viewCount: 3 / 3
+		}, {
+			id: 8,
+			hoop_id: 1,
+			user: OTHER_USER,
+			name: 'La Concordia',
+			description: LOREM_IPSUM,
+			image_url: 'images/dummy08.jpg',
+			viewCount: 3 / 3
+		}];
 
-	    var HOOPS = [{
-	        id: 1,
-	        user_id: 1,
-	        user: OTHER_USER,
-	        name: 'La Concordia',
-	        description: LOREM_IPSUM,
-	        latitude: 14.5980,
-	        longitude: 120.9446,
-	        data: {
-	            featured_story: STORIES[0]
-	        }
-	    }, {
-	        id: 2,
-	        user_id: 1,
-	        user: OTHER_USER,
-	        name: 'La Concordia',
-	        description: LOREM_IPSUM,
-	        latitude: 14.1980,
-	        longitude: 121.2446,
-	        data: {
-	            featured_story: STORIES[0]
-	        }
-	    }];
+		var HOOPS = [{
+			id: 1,
+			user_id: 1,
+			user: OTHER_USER,
+			name: 'La Concordia',
+			description: LOREM_IPSUM,
+			latitude: 14.5980,
+			longitude: 120.9446,
+			data: {
+				featured_story: STORIES[0]
+			}
+		}, {
+			id: 2,
+			user_id: 1,
+			user: OTHER_USER,
+			name: 'La Concordia',
+			description: LOREM_IPSUM,
+			latitude: 14.1980,
+			longitude: 121.2446,
+			data: {
+				featured_story: STORIES[0]
+			}
+		}];
 
-	    for (var i in STORIES) {
-	        STORIES[i].hoop = HOOPS[0];
-	    }
+		for (var i in STORIES) {
+			STORIES[i].hoop = HOOPS[0];
+		}
 
-	    var COMMENTS = [{
-	        id: 1,
-	        user_id: 1,
-	        hoop_id: 1,
-	        story_id: 1,
-	        user: OTHER_USER,
-	        text: 'First comment!',
-	        data: {
-	            user: OTHER_USER
-	        }
-	    }, {
-	        id: 1,
-	        user_id: 1,
-	        hoop_id: 1,
-	        story_id: 1,
-	        user: OTHER_USER,
-	        text: 'Second comment!',
-	        data: {
-	            user: OTHER_USER
-	        }
-	    }];
+		var COMMENTS = [{
+			id: 1,
+			user_id: 1,
+			hoop_id: 1,
+			story_id: 1,
+			user: OTHER_USER,
+			text: 'First comment!',
+			data: {
+				user: OTHER_USER
+			}
+		}, {
+			id: 1,
+			user_id: 1,
+			hoop_id: 1,
+			story_id: 1,
+			user: OTHER_USER,
+			text: 'Second comment!',
+			data: {
+				user: OTHER_USER
+			}
+		}];
 
-	    var LIKES = 40;
+		var LIKES = 40;
 
-	    var ACTIVITIES = [{
-	        user_id: 1,
-	        type: 1,
-	        hoop_id: 1,
-	        story_id: 1,
-	        data: {
-	            user: OTHER_USER,
-	            hoop: HOOPS[0]
-	        }
-	    }, {
-	        user_id: 1,
-	        type: 2,
-	        hoop_id: 1,
-	        story_id: 2,
-	        data: {
-	            user: OTHER_USER,
-	            story: STORIES[0]
-	        }
-	    }, {
-	        user_id: 1,
-	        type: 102,
-	        hoop_id: 1,
-	        story_id: 1,
-	        data: {
-	            user: OTHER_USER,
-	            story: STORIES[0],
-	            comment: COMMENTS[0]
-	        }
-	    }];
+		var ACTIVITIES = [{
+			user_id: 1,
+			type: 1,
+			hoop_id: 1,
+			story_id: 1,
+			data: {
+				user: OTHER_USER,
+				hoop: HOOPS[0]
+			}
+		}, {
+			user_id: 1,
+			type: 2,
+			hoop_id: 1,
+			story_id: 2,
+			data: {
+				user: OTHER_USER,
+				story: STORIES[0]
+			}
+		}, {
+			user_id: 1,
+			type: 102,
+			hoop_id: 1,
+			story_id: 1,
+			data: {
+				user: OTHER_USER,
+				story: STORIES[0],
+				comment: COMMENTS[0]
+			}
+		}];
 
-	    var user = null;
+		var user = null;
 	}
 
 	var API = function () {
-	    function API() {
-	        _classCallCheck(this, API);
-	    }
+		function API() {
+			_classCallCheck(this, API);
+		}
 
-	    _createClass(API, null, [{
-	        key: 'login',
-	        value: function login(data, done, fail) {
-	            if (MOCKUP) {
-	                user = USER;
-	                done();
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/login',
-	                    method: 'POST',
-	                    data: data,
-	                    processData: false,
-	                    contentType: false
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'signup',
-	        value: function signup(data, done, fail) {
-	            if (MOCKUP) {
-	                user = USER;
-	                done();
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/signup',
-	                    method: 'POST',
-	                    data: data,
-	                    processData: false,
-	                    contentType: false
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'isLoggedIn',
-	        value: function isLoggedIn(done, fail) {
-	            if (MOCKUP) {
-	                done(user);
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/login',
-	                    method: 'GET',
-	                    dataType: 'json'
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'logout',
-	        value: function logout(done, fail) {
-	            if (MOCKUP) {
-	                user = null;
-	                done();
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/logout',
-	                    method: 'POST'
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'updateUser',
-	        value: function updateUser(data, done, fail) {
-	            if (MOCKUP) {
-	                done();
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/user',
-	                    method: 'PATCH',
-	                    data: data
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'addHoop',
-	        value: function addHoop(data, done, fail) {
-	            if (MOCKUP) {
-	                done();
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/hoop',
-	                    method: 'POST',
-	                    data: data,
-	                    processData: false,
-	                    contentType: false
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'addStory',
-	        value: function addStory(data, done, fail) {
-	            if (MOCKUP) {
-	                done();
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/story',
-	                    method: 'POST',
-	                    data: data,
-	                    processData: false,
-	                    contentType: false
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'getHoop',
-	        value: function getHoop(data, done, fail) {
-	            if (MOCKUP) {
-	                done(HOOPS[0]);
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/hoop',
-	                    method: 'GET',
-	                    data: data,
-	                    dataType: 'json'
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'getHoops',
-	        value: function getHoops(data, done, fail) {
-	            if (MOCKUP) {
-	                done(HOOPS);
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/hoops',
-	                    method: 'GET',
-	                    data: data,
-	                    dataType: 'json'
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'getStory',
-	        value: function getStory(data, done, fail) {
-	            if (MOCKUP) {
-	                done(STORIES[0]);
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/story',
-	                    method: 'GET',
-	                    data: data,
-	                    dataType: 'json'
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'getStories',
-	        value: function getStories(data, done, fail) {
-	            if (MOCKUP) {
-	                done(STORIES);
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/stories',
-	                    method: 'GET',
-	                    data: data,
-	                    dataType: 'json'
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'getActivities',
-	        value: function getActivities(done, fail) {
-	            if (MOCKUP) {
-	                done(ACTIVITIES);
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/activities',
-	                    method: 'GET',
-	                    dataType: 'json'
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'likeHoop',
-	        value: function likeHoop(data, done, fail) {
-	            if (MOCKUP) {
-	                done();
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/like/hoop',
-	                    method: 'POST',
-	                    data: data
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'likeStory',
-	        value: function likeStory(data, done, fail) {
-	            if (MOCKUP) {
-	                done();
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/like/story',
-	                    method: 'POST',
-	                    data: data
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'comment',
-	        value: function comment(data, done, fail) {
-	            if (MOCKUP) {
-	                done();
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/comment',
-	                    method: 'POST',
-	                    data: data
-	                }).done(done).fail(fail);
-	            }
-	        }
+		_createClass(API, null, [{
+			key: 'login',
+			value: function login(data, done, fail) {
+				if (MOCKUP) {
+					user = USER;
+					done();
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/login',
+						method: 'POST',
+						data: data,
+						processData: false,
+						contentType: false
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'signup',
+			value: function signup(data, done, fail) {
+				if (MOCKUP) {
+					user = USER;
+					done();
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/signup',
+						method: 'POST',
+						data: data,
+						processData: false,
+						contentType: false
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'isLoggedIn',
+			value: function isLoggedIn(done, fail) {
+				if (MOCKUP) {
+					done(user);
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/login',
+						method: 'GET',
+						dataType: 'json'
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'logout',
+			value: function logout(done, fail) {
+				if (MOCKUP) {
+					user = null;
+					done();
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/logout',
+						method: 'POST'
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'updateUser',
+			value: function updateUser(data, done, fail) {
+				if (MOCKUP) {
+					done();
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/user',
+						method: 'PATCH',
+						data: data
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'addHoop',
+			value: function addHoop(data, done, fail) {
+				if (MOCKUP) {
+					done();
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/hoop',
+						method: 'POST',
+						data: data,
+						processData: false,
+						contentType: false
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'addStory',
+			value: function addStory(data, done, fail) {
+				if (MOCKUP) {
+					done();
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/story',
+						method: 'POST',
+						data: data,
+						processData: false,
+						contentType: false
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'getHoop',
+			value: function getHoop(data, done, fail) {
+				if (MOCKUP) {
+					done(HOOPS[0]);
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/hoop',
+						method: 'GET',
+						data: data,
+						dataType: 'json'
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'getHoops',
+			value: function getHoops(data, done, fail) {
+				if (MOCKUP) {
+					done(HOOPS);
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/hoops',
+						method: 'GET',
+						data: data,
+						dataType: 'json'
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'getStory',
+			value: function getStory(data, done, fail) {
+				if (MOCKUP) {
+					done(STORIES[0]);
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/story',
+						method: 'GET',
+						data: data,
+						dataType: 'json'
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'getStories',
+			value: function getStories(data, done, fail) {
+				if (MOCKUP) {
+					done(STORIES);
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/stories',
+						method: 'GET',
+						data: data,
+						dataType: 'json'
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'getActivities',
+			value: function getActivities(done, fail) {
+				if (MOCKUP) {
+					done(ACTIVITIES);
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/activities',
+						method: 'GET',
+						dataType: 'json'
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'likeHoop',
+			value: function likeHoop(data, done, fail) {
+				if (MOCKUP) {
+					done();
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/like/hoop',
+						method: 'POST',
+						data: data
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'likeStory',
+			value: function likeStory(data, done, fail) {
+				if (MOCKUP) {
+					done();
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/like/story',
+						method: 'POST',
+						data: data
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'comment',
+			value: function comment(data, done, fail) {
+				if (MOCKUP) {
+					done();
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/comment',
+						method: 'POST',
+						data: data
+					}).done(done).fail(fail);
+				}
+			}
 
-	        // Extra
+			// Extra
 
-	    }, {
-	        key: 'getNearbyHoops',
-	        value: function getNearbyHoops(data, done, fail) {
-	            if (MOCKUP) {
-	                done(HOOPS);
-	            } else {
-	                if (!API.geolocating) {
-	                    if ('geolocation' in navigator) {
-	                        navigator.geolocation.getCurrentPosition(function (position) {
-	                            API.geolocating = false;
+		}, {
+			key: 'getNearbyHoops',
+			value: function getNearbyHoops(data, done, fail) {
+				if (MOCKUP) {
+					done(HOOPS);
+				} else {
+					if (!API.geolocating) {
+						if ('geolocation' in navigator) {
+							navigator.geolocation.getCurrentPosition(function (position) {
+								API.geolocating = false;
 
-	                            _jquery2.default.ajax({
-	                                url: '/api/hoops/nearby',
-	                                method: 'GET',
-	                                data: _jquery2.default.extend({
-	                                    latitude: position.coords.latitude,
-	                                    longitude: position.coords.longitude
-	                                }, data),
-	                                dataType: 'json'
-	                            }).done(done).fail(fail);
-	                        });
+								_jquery2.default.ajax({
+									url: '/api/hoops/nearby',
+									method: 'GET',
+									data: _jquery2.default.extend({
+										latitude: position.coords.latitude,
+										longitude: position.coords.longitude
+									}, data),
+									dataType: 'json'
+								}).done(done).fail(fail);
+							});
 
-	                        API.geolocating = true;
-	                    } else {
-	                        alert('Sorry, your device or browser doesn\'t support geolocation!');
-	                    }
-	                }
-	            }
-	        }
-	    }, {
-	        key: 'getPopularHoops',
-	        value: function getPopularHoops(data, done, fail) {
-	            if (MOCKUP) {
-	                done(HOOPS);
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/hoops/popular',
-	                    method: 'GET',
-	                    data: data,
-	                    dataType: 'json'
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'getLatestHoops',
-	        value: function getLatestHoops(data, done, fail) {
-	            if (MOCKUP) {
-	                done(HOOPS);
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/hoops/latest',
-	                    method: 'GET',
-	                    data: data,
-	                    dataType: 'json'
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'getMostCommentedStories',
-	        value: function getMostCommentedStories(data, done, fail) {
-	            if (MOCKUP) {
-	                done(HOOPS);
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/stories/mostcommented',
-	                    method: 'GET',
-	                    data: data,
-	                    dataType: 'json'
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'getMostLikedStories',
-	        value: function getMostLikedStories(data, done, fail) {
-	            if (MOCKUP) {
-	                done(HOOPS);
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/stories/mostliked',
-	                    method: 'GET',
-	                    data: data,
-	                    dataType: 'json'
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'getMostViewedStories',
-	        value: function getMostViewedStories(data, done, fail) {
-	            if (MOCKUP) {
-	                done(STORIES);
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/stories/mostviewed',
-	                    method: 'GET',
-	                    data: data,
-	                    dataType: 'json'
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'getLatestStories',
-	        value: function getLatestStories(data, done, fail) {
-	            if (MOCKUP) {
-	                done(STORIES);
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/stories/latest',
-	                    method: 'GET',
-	                    data: data,
-	                    dataType: 'json'
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'getStoryComments',
-	        value: function getStoryComments(data, done, fail) {
-	            if (MOCKUP) {
-	                done(COMMENTS);
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/story/comments',
-	                    method: 'GET',
-	                    data: data,
-	                    dataType: 'json'
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'getHoopLikes',
-	        value: function getHoopLikes(data, done, fail) {
-	            if (MOCKUP) {
-	                done(LIKES);
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/hoop/likes',
-	                    method: 'GET',
-	                    data: data,
-	                    dataType: 'json'
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'getStoryLikes',
-	        value: function getStoryLikes(data, done, fail) {
-	            if (MOCKUP) {
-	                done(LIKES);
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/story/likes',
-	                    method: 'GET',
-	                    data: data,
-	                    dataType: 'json'
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'viewHoop',
-	        value: function viewHoop(data, done, fail) {
-	            if (MOCKUP) {
-	                done();
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/view/hoop',
-	                    method: 'PATCH',
-	                    data: data,
-	                    dataType: 'json'
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'viewStory',
-	        value: function viewStory(data, done, fail) {
-	            if (MOCKUP) {} else {
-	                _jquery2.default.ajax({
-	                    url: '/api/view/story',
-	                    method: 'PATCH',
-	                    data: data,
-	                    dataType: 'json'
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'commentStory',
-	        value: function commentStory(data, done, fail) {
-	            if (MOCKUP) {
-	                done();
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/comment/story',
-	                    method: 'PATCH',
-	                    data: data
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'updateUserLastActivityCheckTime',
-	        value: function updateUserLastActivityCheckTime(data, done, fail) {
-	            if (MOCKUP) {
-	                done();
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/user/lastactivitychecktime',
-	                    method: 'PATCH',
-	                    data: data
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'getMyHoops',
-	        value: function getMyHoops(done, fail) {
-	            if (MOCKUP) {
-	                done(HOOPS);
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/user/myhoops',
-	                    method: 'GET',
-	                    dataType: 'json'
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'getOtherHoops',
-	        value: function getOtherHoops(done, fail) {
-	            if (MOCKUP) {
-	                done(HOOPS);
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/user/otherhoops',
-	                    method: 'GET',
-	                    dataType: 'json'
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }, {
-	        key: 'updateUserImage',
-	        value: function updateUserImage(data, done, fail) {
-	            if (MOCKUP) {
-	                done();
-	            } else {
-	                _jquery2.default.ajax({
-	                    url: '/api/user/image',
-	                    method: 'POST',
-	                    data: data,
-	                    processData: false,
-	                    contentType: false
-	                }).done(done).fail(fail);
-	            }
-	        }
-	    }]);
+							API.geolocating = true;
+						} else {
+							alert('Sorry, your device or browser doesn\'t support geolocation!');
+						}
+					}
+				}
+			}
+		}, {
+			key: 'getPopularHoops',
+			value: function getPopularHoops(data, done, fail) {
+				if (MOCKUP) {
+					done(HOOPS);
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/hoops/popular',
+						method: 'GET',
+						data: data,
+						dataType: 'json'
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'getLatestHoops',
+			value: function getLatestHoops(data, done, fail) {
+				if (MOCKUP) {
+					done(HOOPS);
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/hoops/latest',
+						method: 'GET',
+						data: data,
+						dataType: 'json'
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'getMostCommentedStories',
+			value: function getMostCommentedStories(data, done, fail) {
+				if (MOCKUP) {
+					done(HOOPS);
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/stories/mostcommented',
+						method: 'GET',
+						data: data,
+						dataType: 'json'
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'getMostLikedStories',
+			value: function getMostLikedStories(data, done, fail) {
+				if (MOCKUP) {
+					done(HOOPS);
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/stories/mostliked',
+						method: 'GET',
+						data: data,
+						dataType: 'json'
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'getMostViewedStories',
+			value: function getMostViewedStories(data, done, fail) {
+				if (MOCKUP) {
+					done(STORIES);
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/stories/mostviewed',
+						method: 'GET',
+						data: data,
+						dataType: 'json'
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'getLatestStories',
+			value: function getLatestStories(data, done, fail) {
+				if (MOCKUP) {
+					done(STORIES);
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/stories/latest',
+						method: 'GET',
+						data: data,
+						dataType: 'json'
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'getStoryComments',
+			value: function getStoryComments(data, done, fail) {
+				if (MOCKUP) {
+					done(COMMENTS);
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/story/comments',
+						method: 'GET',
+						data: data,
+						dataType: 'json'
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'getHoopLikes',
+			value: function getHoopLikes(data, done, fail) {
+				if (MOCKUP) {
+					done(LIKES);
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/hoop/likes',
+						method: 'GET',
+						data: data,
+						dataType: 'json'
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'getStoryLikes',
+			value: function getStoryLikes(data, done, fail) {
+				if (MOCKUP) {
+					done(LIKES);
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/story/likes',
+						method: 'GET',
+						data: data,
+						dataType: 'json'
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'viewHoop',
+			value: function viewHoop(data, done, fail) {
+				if (MOCKUP) {
+					done();
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/view/hoop',
+						method: 'PATCH',
+						data: data,
+						dataType: 'json'
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'viewStory',
+			value: function viewStory(data, done, fail) {
+				if (MOCKUP) {} else {
+					_jquery2.default.ajax({
+						url: '/api/view/story',
+						method: 'PATCH',
+						data: data,
+						dataType: 'json'
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'commentStory',
+			value: function commentStory(data, done, fail) {
+				if (MOCKUP) {
+					done();
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/comment/story',
+						method: 'PATCH',
+						data: data
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'updateUserLastActivityCheckTime',
+			value: function updateUserLastActivityCheckTime(data, done, fail) {
+				if (MOCKUP) {
+					done();
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/user/lastactivitychecktime',
+						method: 'PATCH',
+						data: data
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'getMyHoops',
+			value: function getMyHoops(done, fail) {
+				if (MOCKUP) {
+					done(HOOPS);
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/user/myhoops',
+						method: 'GET',
+						dataType: 'json'
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'getOtherHoops',
+			value: function getOtherHoops(done, fail) {
+				if (MOCKUP) {
+					done(HOOPS);
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/user/otherhoops',
+						method: 'GET',
+						dataType: 'json'
+					}).done(done).fail(fail);
+				}
+			}
+		}, {
+			key: 'updateUserImage',
+			value: function updateUserImage(data, done, fail) {
+				if (MOCKUP) {
+					done();
+				} else {
+					_jquery2.default.ajax({
+						url: '/api/user/image',
+						method: 'POST',
+						data: data,
+						processData: false,
+						contentType: false
+					}).done(done).fail(fail);
+				}
+			}
+		}]);
 
-	    return API;
+		return API;
 	}();
 
 	API.BASE_URL = 'http://localhost:8080';
@@ -36844,80 +36844,80 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var About = function (_React$Component) {
-	    _inherits(About, _React$Component);
+		_inherits(About, _React$Component);
 
-	    function About() {
-	        _classCallCheck(this, About);
+		function About() {
+			_classCallCheck(this, About);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(About).apply(this, arguments));
-	    }
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(About).apply(this, arguments));
+		}
 
-	    _createClass(About, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'site-wrap' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'about' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'csslider' },
-	                        _react2.default.createElement('input', { type: 'radio', name: 'slides', id: 'slides_1', defaultChecked: true }),
-	                        _react2.default.createElement('input', { type: 'radio', name: 'slides', id: 'slides_2' }),
-	                        _react2.default.createElement('input', { type: 'radio', name: 'slides', id: 'slides_3' }),
-	                        _react2.default.createElement('input', { type: 'radio', name: 'slides', id: 'slides_4' }),
-	                        _react2.default.createElement('input', { type: 'radio', name: 'slides', id: 'slides_N' }),
-	                        _react2.default.createElement(
-	                            'ul',
-	                            null,
-	                            _react2.default.createElement(
-	                                'li',
-	                                null,
-	                                _react2.default.createElement('img', { src: 'images/about01.jpg' }),
-	                                _react2.default.createElement(
-	                                    'h3',
-	                                    null,
-	                                    'About',
-	                                    _react2.default.createElement('br', null),
-	                                    ' Pinoy Hoop'
-	                                ),
-	                                _react2.default.createElement(
-	                                    'p',
-	                                    null,
-	                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tortor mi, ultrices eu vulputate eu, bibendum et ipsum. In sed sollicitudin mi,'
-	                                )
-	                            ),
-	                            _react2.default.createElement(
-	                                'li',
-	                                null,
-	                                _react2.default.createElement('img', { src: 'images/about02.jpg' })
-	                            ),
-	                            _react2.default.createElement(
-	                                'li',
-	                                null,
-	                                _react2.default.createElement('img', { src: 'images/about03.jpg' })
-	                            )
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'dots' },
-	                            _react2.default.createElement(
-	                                'div',
-	                                null,
-	                                _react2.default.createElement('label', { htmlFor: 'slides_1' }),
-	                                _react2.default.createElement('label', { htmlFor: 'slides_2' }),
-	                                _react2.default.createElement('label', { htmlFor: 'slides_3' })
-	                            )
-	                        )
-	                    )
-	                )
-	            );
-	        }
-	    }]);
+		_createClass(About, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					{ className: 'site-wrap' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'about' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'csslider' },
+							_react2.default.createElement('input', { type: 'radio', name: 'slides', id: 'slides_1', defaultChecked: true }),
+							_react2.default.createElement('input', { type: 'radio', name: 'slides', id: 'slides_2' }),
+							_react2.default.createElement('input', { type: 'radio', name: 'slides', id: 'slides_3' }),
+							_react2.default.createElement('input', { type: 'radio', name: 'slides', id: 'slides_4' }),
+							_react2.default.createElement('input', { type: 'radio', name: 'slides', id: 'slides_N' }),
+							_react2.default.createElement(
+								'ul',
+								null,
+								_react2.default.createElement(
+									'li',
+									null,
+									_react2.default.createElement('img', { src: 'images/about01.jpg' }),
+									_react2.default.createElement(
+										'h3',
+										null,
+										'About',
+										_react2.default.createElement('br', null),
+										' Pinoy Hoop'
+									),
+									_react2.default.createElement(
+										'p',
+										null,
+										'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tortor mi, ultrices eu vulputate eu, bibendum et ipsum. In sed sollicitudin mi,'
+									)
+								),
+								_react2.default.createElement(
+									'li',
+									null,
+									_react2.default.createElement('img', { src: 'images/about02.jpg' })
+								),
+								_react2.default.createElement(
+									'li',
+									null,
+									_react2.default.createElement('img', { src: 'images/about03.jpg' })
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'dots' },
+								_react2.default.createElement(
+									'div',
+									null,
+									_react2.default.createElement('label', { htmlFor: 'slides_1' }),
+									_react2.default.createElement('label', { htmlFor: 'slides_2' }),
+									_react2.default.createElement('label', { htmlFor: 'slides_3' })
+								)
+							)
+						)
+					)
+				);
+			}
+		}]);
 
-	    return About;
+		return About;
 	}(_react2.default.Component);
 
 	module.exports = About;
@@ -36956,165 +36956,165 @@
 	    ACTIVITY_POST_LIKE_STORY = 202;
 
 	var Activities = function (_React$Component) {
-	    _inherits(Activities, _React$Component);
+		_inherits(Activities, _React$Component);
 
-	    function Activities() {
-	        var _Object$getPrototypeO;
+		function Activities() {
+			var _Object$getPrototypeO;
 
-	        var _temp, _this, _ret;
+			var _temp, _this, _ret;
 
-	        _classCallCheck(this, Activities);
+			_classCallCheck(this, Activities);
 
-	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	            args[_key] = arguments[_key];
-	        }
+			for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+				args[_key] = arguments[_key];
+			}
 
-	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Activities)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
-	            activities: null
-	        }, _this.getActivities = function () {
-	            _API2.default.getActivities(function (activities) {
-	                _this.setState({ activities: activities });
-	            }, function (response) {
-	                alert('Failed to get activities');
-	            });
-	        }, _temp), _possibleConstructorReturn(_this, _ret);
-	    }
+			return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Activities)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
+				activities: null
+			}, _this.getActivities = function () {
+				_API2.default.getActivities(function (activities) {
+					_this.setState({ activities: activities });
+				}, function (response) {
+					alert('Failed to get activities');
+				});
+			}, _temp), _possibleConstructorReturn(_this, _ret);
+		}
 
-	    _createClass(Activities, [{
-	        key: 'render',
-	        value: function render() {
-	            var activities = this.state.activities;
+		_createClass(Activities, [{
+			key: 'render',
+			value: function render() {
+				var activities = this.state.activities;
 
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'site-wrap' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'activities' },
-	                    _react2.default.createElement(
-	                        'ul',
-	                        null,
-	                        this.activities()
-	                    )
-	                )
-	            );
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            this.getActivities();
-	        }
-	    }, {
-	        key: 'activities',
-	        value: function activities() {
-	            var activities = this.state.activities;
-	            if (!activities) return null;
+				return _react2.default.createElement(
+					'div',
+					{ className: 'site-wrap' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'activities' },
+						_react2.default.createElement(
+							'ul',
+							null,
+							this.activities()
+						)
+					)
+				);
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				this.getActivities();
+			}
+		}, {
+			key: 'activities',
+			value: function activities() {
+				var activities = this.state.activities;
+				if (!activities) return null;
 
-	            return activities.map(function (activity, i) {
-	                return _react2.default.createElement(Activity, { key: i, activity: activity });
-	            });
-	        }
-	    }]);
+				return activities.map(function (activity, i) {
+					return _react2.default.createElement(Activity, { key: i, activity: activity });
+				});
+			}
+		}]);
 
-	    return Activities;
+		return Activities;
 	}(_react2.default.Component);
 
 	var Activity = function (_React$Component2) {
-	    _inherits(Activity, _React$Component2);
+		_inherits(Activity, _React$Component2);
 
-	    function Activity() {
-	        _classCallCheck(this, Activity);
+		function Activity() {
+			_classCallCheck(this, Activity);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Activity).apply(this, arguments));
-	    }
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Activity).apply(this, arguments));
+		}
 
-	    _createClass(Activity, [{
-	        key: 'render',
-	        value: function render() {
-	            var activity = this.props.activity;
-	            var user = activity.data.user;
-	            var story = activity.data.story;
-	            var hoop = activity.data.hoop;
+		_createClass(Activity, [{
+			key: 'render',
+			value: function render() {
+				var activity = this.props.activity;
+				var user = activity.data.user;
+				var story = activity.data.story;
+				var hoop = activity.data.hoop;
 
-	            return _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'userprofile' },
-	                    _react2.default.createElement(
-	                        'span',
-	                        { className: 'left' },
-	                        _react2.default.createElement('img', { src: user.image_url })
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'userfeeds' },
-	                    _react2.default.createElement(
-	                        'p',
-	                        null,
-	                        user.firstname,
-	                        ' ',
-	                        user.lastname,
-	                        ' ',
-	                        this.action(),
-	                        ' '
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'userstory' },
-	                    story ? _react2.default.createElement(
-	                        'span',
-	                        { className: 'right' },
-	                        _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { to: '/story/' + story.id },
-	                            _react2.default.createElement('img', { src: story.image_url })
-	                        )
-	                    ) : hoop ? _react2.default.createElement(
-	                        'span',
-	                        { className: 'right' },
-	                        _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { to: '/hoop/' + hoop.id },
-	                            _react2.default.createElement('img', { src: hoop.data.featured_story.image_url })
-	                        )
-	                    ) : null
-	                )
-	            );
-	        }
-	    }, {
-	        key: 'action',
-	        value: function action() {
-	            var activity = this.props.activity;
-	            var hoop = activity.data.hoop;
-	            var story = activity.data.story;
+				return _react2.default.createElement(
+					'li',
+					null,
+					_react2.default.createElement(
+						'div',
+						{ className: 'userprofile' },
+						_react2.default.createElement(
+							'span',
+							{ className: 'left' },
+							_react2.default.createElement('img', { src: user.image_url })
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'userfeeds' },
+						_react2.default.createElement(
+							'p',
+							null,
+							user.firstname,
+							' ',
+							user.lastname,
+							' ',
+							this.action(),
+							' '
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'userstory' },
+						story ? _react2.default.createElement(
+							'span',
+							{ className: 'right' },
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ to: '/story/' + story.id },
+								_react2.default.createElement('img', { src: story.image_url })
+							)
+						) : hoop ? _react2.default.createElement(
+							'span',
+							{ className: 'right' },
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ to: '/hoop/' + hoop.id },
+								_react2.default.createElement('img', { src: hoop.data.featured_story.image_url })
+							)
+						) : null
+					)
+				);
+			}
+		}, {
+			key: 'action',
+			value: function action() {
+				var activity = this.props.activity;
+				var hoop = activity.data.hoop;
+				var story = activity.data.story;
 
-	            switch (activity.type) {
-	                case ACTIVITY_POST_HOOP:
-	                    return 'posted hoop \'' + hoop.name + '\'';
+				switch (activity.type) {
+					case ACTIVITY_POST_HOOP:
+						return 'posted hoop \'' + hoop.name + '\'';
 
-	                case ACTIVITY_POST_STORY:
-	                    return 'posted story \'' + story.name + '\'';
+					case ACTIVITY_POST_STORY:
+						return 'posted story \'' + story.name + '\'';
 
-	                case ACTIVITY_POST_COMMENT_HOOP:
-	                    return 'posted comment on \'' + hoop.name + '\'';
+					case ACTIVITY_POST_COMMENT_HOOP:
+						return 'posted comment on \'' + hoop.name + '\'';
 
-	                case ACTIVITY_POST_COMMENT_STORY:
-	                    return 'posted comment on \'' + story.name + '\'';
+					case ACTIVITY_POST_COMMENT_STORY:
+						return 'posted comment on \'' + story.name + '\'';
 
-	                case ACTIVITY_POST_LIKE_HOOP:
-	                    return 'liked hoop \'' + hoop.name + '\'';
+					case ACTIVITY_POST_LIKE_HOOP:
+						return 'liked hoop \'' + hoop.name + '\'';
 
-	                case ACTIVITY_POST_LIKE_STORY:
-	                    return 'liked story \'' + story.name + '\'';
-	            }
-	        }
-	    }]);
+					case ACTIVITY_POST_LIKE_STORY:
+						return 'liked story \'' + story.name + '\'';
+				}
+			}
+		}]);
 
-	    return Activity;
+		return Activity;
 	}(_react2.default.Component);
 
 	module.exports = Activities;
@@ -37154,202 +37154,202 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var AddHoop = function (_React$Component) {
-	    _inherits(AddHoop, _React$Component);
+		_inherits(AddHoop, _React$Component);
 
-	    function AddHoop() {
-	        var _Object$getPrototypeO;
+		function AddHoop() {
+			var _Object$getPrototypeO;
 
-	        var _temp, _this, _ret;
+			var _temp, _this, _ret;
 
-	        _classCallCheck(this, AddHoop);
+			_classCallCheck(this, AddHoop);
 
-	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	            args[_key] = arguments[_key];
-	        }
+			for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+				args[_key] = arguments[_key];
+			}
 
-	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(AddHoop)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
-	            latlng: null
-	        }, _temp), _possibleConstructorReturn(_this, _ret);
-	    }
+			return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(AddHoop)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
+				latlng: null
+			}, _temp), _possibleConstructorReturn(_this, _ret);
+		}
 
-	    _createClass(AddHoop, [{
-	        key: 'render',
-	        value: function render() {
-	            var latlng = this.state.latlng;
+		_createClass(AddHoop, [{
+			key: 'render',
+			value: function render() {
+				var latlng = this.state.latlng;
 
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'site-wrap' },
-	                _react2.default.createElement(
-	                    'form',
-	                    { className: 'addhoop', onSubmit: this.submit },
-	                    _react2.default.createElement(MapView, { onDoubleClick: this.setCoordinate }),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'content' },
-	                        _react2.default.createElement(
-	                            'h3',
-	                            null,
-	                            'Double tap on the map to add a hoop'
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            null,
-	                            _react2.default.createElement(
-	                                'label',
-	                                null,
-	                                'Hoop name: '
-	                            ),
-	                            _react2.default.createElement('input', { type: 'text', name: 'name' }),
-	                            _react2.default.createElement('br', null),
-	                            _react2.default.createElement(
-	                                'label',
-	                                null,
-	                                'Hoop description: '
-	                            ),
-	                            _react2.default.createElement('textarea', { rows: '6', cols: '20', name: 'description' }),
-	                            _react2.default.createElement('br', null),
-	                            _react2.default.createElement(
-	                                'label',
-	                                null,
-	                                'Upload picture: '
-	                            ),
-	                            _react2.default.createElement(
-	                                'label',
-	                                { htmlFor: 'upload-image' },
-	                                'Select file',
-	                                _react2.default.createElement('input', { id: 'upload-image', type: 'file', name: 'image' })
-	                            ),
-	                            _react2.default.createElement('br', null),
-	                            _react2.default.createElement('input', { type: 'hidden', name: 'latitude', value: latlng ? latlng.lat : 0 }),
-	                            _react2.default.createElement('input', { type: 'hidden', name: 'longitude', value: latlng ? latlng.lng : 0 })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'submit' },
-	                        _react2.default.createElement(
-	                            'button',
-	                            { onClick: this.cancel },
-	                            'Cancel'
-	                        ),
-	                        _react2.default.createElement(
-	                            'button',
-	                            { type: 'submit', style: { backgroundColor: '#ff6b00' } },
-	                            'Save'
-	                        )
-	                    )
-	                )
-	            );
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            var _this2 = this;
+				return _react2.default.createElement(
+					'div',
+					{ className: 'site-wrap' },
+					_react2.default.createElement(
+						'form',
+						{ className: 'addhoop', onSubmit: this.submit },
+						_react2.default.createElement(MapView, { onDoubleClick: this.setCoordinate }),
+						_react2.default.createElement(
+							'div',
+							{ className: 'content' },
+							_react2.default.createElement(
+								'h3',
+								null,
+								'Double tap on the map to add a hoop'
+							),
+							_react2.default.createElement(
+								'div',
+								null,
+								_react2.default.createElement(
+									'label',
+									null,
+									'Hoop name: '
+								),
+								_react2.default.createElement('input', { type: 'text', name: 'name' }),
+								_react2.default.createElement('br', null),
+								_react2.default.createElement(
+									'label',
+									null,
+									'Hoop description: '
+								),
+								_react2.default.createElement('textarea', { rows: '6', cols: '20', name: 'description' }),
+								_react2.default.createElement('br', null),
+								_react2.default.createElement(
+									'label',
+									null,
+									'Upload picture: '
+								),
+								_react2.default.createElement(
+									'label',
+									{ htmlFor: 'upload-image' },
+									'Select file',
+									_react2.default.createElement('input', { id: 'upload-image', type: 'file', name: 'image' })
+								),
+								_react2.default.createElement('br', null),
+								_react2.default.createElement('input', { type: 'hidden', name: 'latitude', value: latlng ? latlng.lat : 0 }),
+								_react2.default.createElement('input', { type: 'hidden', name: 'longitude', value: latlng ? latlng.lng : 0 })
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'submit' },
+							_react2.default.createElement(
+								'button',
+								{ onClick: this.cancel },
+								'Cancel'
+							),
+							_react2.default.createElement(
+								'button',
+								{ type: 'submit', style: { backgroundColor: '#ff6b00' } },
+								'Save'
+							)
+						)
+					)
+				);
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var _this2 = this;
 
-	            this.listenerID = _Dispatcher2.default.register(function (payload) {
-	                switch (payload.type) {
-	                    case 'map-click':
-	                        _this2.setState({ latlng: { lat: payload.latlng.lat(), lng: payload.latlng.lng() } });
-	                        break;
-	                }
-	            });
-	        }
-	    }, {
-	        key: 'comonentWillUnmount',
-	        value: function comonentWillUnmount() {
-	            _Dispatcher2.default.unregister(this.listenerID);
-	        }
-	    }, {
-	        key: 'submit',
-	        value: function submit(event) {
-	            event.preventDefault();
+				this.listenerID = _Dispatcher2.default.register(function (payload) {
+					switch (payload.type) {
+						case 'map-click':
+							_this2.setState({ latlng: { lat: payload.latlng.lat(), lng: payload.latlng.lng() } });
+							break;
+					}
+				});
+			}
+		}, {
+			key: 'comonentWillUnmount',
+			value: function comonentWillUnmount() {
+				_Dispatcher2.default.unregister(this.listenerID);
+			}
+		}, {
+			key: 'submit',
+			value: function submit(event) {
+				event.preventDefault();
 
-	            _API2.default.addHoop(new FormData(event.target), function () {
-	                alert('Successfully added hoop!');
-	                _Dispatcher2.default.dispatch({ type: 'get-hoops' });
-	                _Dispatcher2.default.dispatch({ type: 'get-activities' });
-	                _browserHistory2.default.replace('/map');
-	            }, function (response) {
-	                alert(response.statusText);
-	            });
-	        }
-	    }, {
-	        key: 'cancel',
-	        value: function cancel() {
-	            _browserHistory2.default.replace('/map');
-	        }
-	    }]);
+				_API2.default.addHoop(new FormData(event.target), function () {
+					alert('Successfully added hoop!');
+					_Dispatcher2.default.dispatch({ type: 'get-hoops' });
+					_Dispatcher2.default.dispatch({ type: 'get-activities' });
+					_browserHistory2.default.replace('/map');
+				}, function (response) {
+					alert(response.statusText);
+				});
+			}
+		}, {
+			key: 'cancel',
+			value: function cancel() {
+				_browserHistory2.default.replace('/map');
+			}
+		}]);
 
-	    return AddHoop;
+		return AddHoop;
 	}(_react2.default.Component);
 
 	var MapView = function (_React$Component2) {
-	    _inherits(MapView, _React$Component2);
+		_inherits(MapView, _React$Component2);
 
-	    function MapView() {
-	        _classCallCheck(this, MapView);
+		function MapView() {
+			_classCallCheck(this, MapView);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(MapView).apply(this, arguments));
-	    }
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(MapView).apply(this, arguments));
+		}
 
-	    _createClass(MapView, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement('div', { id: 'map' });
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            var _this4 = this;
+		_createClass(MapView, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement('div', { id: 'map' });
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var _this4 = this;
 
-	            // Basic options for a simple Google Map
-	            // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-	            var mapOptions = {
-	                // How zoomed in you want the map to start at (always required)
-	                zoom: 13,
-	                scrollwheel: false,
-	                // The latitude and longitude to center the map (always required)
-	                center: new google.maps.LatLng(14.5980, 120.9446), // Manila
+				// Basic options for a simple Google Map
+				// For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+				var mapOptions = {
+					// How zoomed in you want the map to start at (always required)
+					zoom: 13,
+					scrollwheel: false,
+					// The latitude and longitude to center the map (always required)
+					center: new google.maps.LatLng(14.5980, 120.9446), // Manila
 
-	                // How you would like to style the map.
-	                // This is where you would paste any style found on Snazzy Maps.
-	                styles: [{ "featureType": "all", "elementType": "labels.text.fill", "stylers": [{ "saturation": 36 }, { "color": "#333333" }, { "lightness": 40 }] }, { "featureType": "all", "elementType": "labels.text.stroke", "stylers": [{ "visibility": "on" }, { "color": "#ffffff" }, { "lightness": 16 }] }, { "featureType": "all", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative", "elementType": "geometry.fill", "stylers": [{ "color": "#fefefe" }, { "lightness": 20 }] }, { "featureType": "administrative", "elementType": "geometry.stroke", "stylers": [{ "color": "#fefefe" }, { "lightness": 17 }, { "weight": 1.2 }] }, { "featureType": "administrative", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "administrative.country", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "administrative.province", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative.locality", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "administrative.neighborhood", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative.land_parcel", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "landscape", "elementType": "geometry", "stylers": [{ "color": "#e8e7e7" }, { "lightness": 20 }] }, { "featureType": "landscape", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "landscape.natural", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#f5f5f5" }, { "lightness": 21 }] }, { "featureType": "poi", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.park", "elementType": "geometry", "stylers": [{ "color": "#dedede" }, { "lightness": 21 }] }, { "featureType": "road", "elementType": "all", "stylers": [{ "color": "#ff0000" }, { "visibility": "off" }] }, { "featureType": "road", "elementType": "geometry.fill", "stylers": [{ "color": "#ff0000" }, { "visibility": "off" }] }, { "featureType": "road", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{ "color": "#ffffff" }, { "lightness": 17 }] }, { "featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [{ "color": "#ffffff" }, { "lightness": 29 }, { "weight": 0.2 }] }, { "featureType": "road.highway.controlled_access", "elementType": "geometry", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 18 }, { "visibility": "simplified" }] }, { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 16 }, { "visibility": "simplified" }] }, { "featureType": "transit", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit", "elementType": "geometry", "stylers": [{ "color": "#f2f2f2" }, { "lightness": 19 }] }, { "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#353537" }, { "lightness": 17 }] }]
-	            };
+					// How you would like to style the map.
+					// This is where you would paste any style found on Snazzy Maps.
+					styles: [{ "featureType": "all", "elementType": "labels.text.fill", "stylers": [{ "saturation": 36 }, { "color": "#333333" }, { "lightness": 40 }] }, { "featureType": "all", "elementType": "labels.text.stroke", "stylers": [{ "visibility": "on" }, { "color": "#ffffff" }, { "lightness": 16 }] }, { "featureType": "all", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative", "elementType": "geometry.fill", "stylers": [{ "color": "#fefefe" }, { "lightness": 20 }] }, { "featureType": "administrative", "elementType": "geometry.stroke", "stylers": [{ "color": "#fefefe" }, { "lightness": 17 }, { "weight": 1.2 }] }, { "featureType": "administrative", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "administrative.country", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "administrative.province", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative.locality", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "administrative.neighborhood", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative.land_parcel", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "landscape", "elementType": "geometry", "stylers": [{ "color": "#e8e7e7" }, { "lightness": 20 }] }, { "featureType": "landscape", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "landscape.natural", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#f5f5f5" }, { "lightness": 21 }] }, { "featureType": "poi", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.park", "elementType": "geometry", "stylers": [{ "color": "#dedede" }, { "lightness": 21 }] }, { "featureType": "road", "elementType": "all", "stylers": [{ "color": "#ff0000" }, { "visibility": "off" }] }, { "featureType": "road", "elementType": "geometry.fill", "stylers": [{ "color": "#ff0000" }, { "visibility": "off" }] }, { "featureType": "road", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{ "color": "#ffffff" }, { "lightness": 17 }] }, { "featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [{ "color": "#ffffff" }, { "lightness": 29 }, { "weight": 0.2 }] }, { "featureType": "road.highway.controlled_access", "elementType": "geometry", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 18 }, { "visibility": "simplified" }] }, { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 16 }, { "visibility": "simplified" }] }, { "featureType": "transit", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit", "elementType": "geometry", "stylers": [{ "color": "#f2f2f2" }, { "lightness": 19 }] }, { "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#353537" }, { "lightness": 17 }] }]
+				};
 
-	            // Create the Google Map using our element and options defined above
-	            this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
-	            this.map.addListener('click', function (event) {
-	                _Dispatcher2.default.dispatch({ type: 'map-click', latlng: event.latLng });
+				// Create the Google Map using our element and options defined above
+				this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+				this.map.addListener('click', function (event) {
+					_Dispatcher2.default.dispatch({ type: 'map-click', latlng: event.latLng });
 
-	                if (_this4.marker) {
-	                    _this4.marker.setMap(null);
-	                    _this4.marker = null;
-	                }
+					if (_this4.marker) {
+						_this4.marker.setMap(null);
+						_this4.marker = null;
+					}
 
-	                _this4.marker = new google.maps.Marker({
-	                    position: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
-	                    map: _this4.map,
-	                    title: 'Hoop'
-	                });
-	            });
+					_this4.marker = new google.maps.Marker({
+						position: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
+						map: _this4.map,
+						title: 'Hoop'
+					});
+				});
 
-	            // Let's also add a marker while we're at it
-	            this.marker = new google.maps.Marker({
-	                position: new google.maps.LatLng(14.5980, 120.9446),
-	                map: this.map,
-	                title: 'Hoop'
-	            });
-	        }
-	    }, {
-	        key: 'componentWillUnmount',
-	        value: function componentWillUnmount() {
-	            this.map = null;
-	            this.marker = null;
-	        }
-	    }]);
+				// Let's also add a marker while we're at it
+				this.marker = new google.maps.Marker({
+					position: new google.maps.LatLng(14.5980, 120.9446),
+					map: this.map,
+					title: 'Hoop'
+				});
+			}
+		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {
+				this.map = null;
+				this.marker = null;
+			}
+		}]);
 
-	    return MapView;
+		return MapView;
 	}(_react2.default.Component);
 
 	module.exports = AddHoop;
@@ -37381,76 +37381,76 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var Home = function (_React$Component) {
-	    _inherits(Home, _React$Component);
+		_inherits(Home, _React$Component);
 
-	    function Home() {
-	        _classCallCheck(this, Home);
+		function Home() {
+			_classCallCheck(this, Home);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Home).apply(this, arguments));
-	    }
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Home).apply(this, arguments));
+		}
 
-	    _createClass(Home, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'section',
-	                { className: 'landingpage' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { id: 'slideshow' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        null,
-	                        _react2.default.createElement('img', { src: '/images/landingpage/hero01.jpg' })
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        null,
-	                        _react2.default.createElement('img', { src: '/images/landingpage/hero02.jpg' })
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        null,
-	                        _react2.default.createElement('img', { src: '/images/landingpage/hero03.jpg' })
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'logo' },
-	                    _react2.default.createElement(
-	                        _reactRouter.Link,
-	                        { to: '/' },
-	                        _react2.default.createElement('img', { src: '/images/logo_light.png', className: 'img-responsive' })
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'nav-arrow' },
-	                    _react2.default.createElement(
-	                        _reactRouter.Link,
-	                        { to: '/map' },
-	                        _react2.default.createElement('img', { src: '/images/landingpage/arrow.png' })
-	                    )
-	                )
-	            );
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            (0, _jquery2.default)("#slideshow > div:gt(0)").hide();
+		_createClass(Home, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'section',
+					{ className: 'landingpage' },
+					_react2.default.createElement(
+						'div',
+						{ id: 'slideshow' },
+						_react2.default.createElement(
+							'div',
+							null,
+							_react2.default.createElement('img', { src: '/images/landingpage/hero01.jpg' })
+						),
+						_react2.default.createElement(
+							'div',
+							null,
+							_react2.default.createElement('img', { src: '/images/landingpage/hero02.jpg' })
+						),
+						_react2.default.createElement(
+							'div',
+							null,
+							_react2.default.createElement('img', { src: '/images/landingpage/hero03.jpg' })
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'logo' },
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ to: '/' },
+							_react2.default.createElement('img', { src: '/images/logo_light.png', className: 'img-responsive' })
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'nav-arrow' },
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ to: '/map' },
+							_react2.default.createElement('img', { src: '/images/landingpage/arrow.png' })
+						)
+					)
+				);
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				(0, _jquery2.default)("#slideshow > div:gt(0)").hide();
 
-	            this.intervalID = setInterval(function () {
-	                (0, _jquery2.default)('#slideshow > div:first').fadeOut(1000).next().fadeIn(1000).end().appendTo('#slideshow');
-	            }, 5000);
-	        }
-	    }, {
-	        key: 'componentWillUnmount',
-	        value: function componentWillUnmount() {
-	            clearInterval(this.intervalID);
-	        }
-	    }]);
+				this.intervalID = setInterval(function () {
+					(0, _jquery2.default)('#slideshow > div:first').fadeOut(1000).next().fadeIn(1000).end().appendTo('#slideshow');
+				}, 5000);
+			}
+		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {
+				clearInterval(this.intervalID);
+			}
+		}]);
 
-	    return Home;
+		return Home;
 	}(_react2.default.Component);
 
 	module.exports = Home;
@@ -37486,224 +37486,224 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var Hoop = function (_React$Component) {
-	    _inherits(Hoop, _React$Component);
+		_inherits(Hoop, _React$Component);
 
-	    function Hoop() {
-	        var _Object$getPrototypeO;
+		function Hoop() {
+			var _Object$getPrototypeO;
 
-	        var _temp, _this, _ret;
+			var _temp, _this, _ret;
 
-	        _classCallCheck(this, Hoop);
+			_classCallCheck(this, Hoop);
 
-	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	            args[_key] = arguments[_key];
-	        }
+			for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+				args[_key] = arguments[_key];
+			}
 
-	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Hoop)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
-	            hoop: null,
-	            mostCommentedStories: null,
-	            mostLikedStories: null,
-	            mostViewedStories: null,
-	            latestStories: null,
-	            tab: 'most-recent'
-	        }, _this.setTab = function (tab) {
-	            _this.setState({ tab: tab });
-	        }, _this.addStory = function () {
-	            var hoop = _this.state.hoop;
+			return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Hoop)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
+				hoop: null,
+				mostCommentedStories: null,
+				mostLikedStories: null,
+				mostViewedStories: null,
+				latestStories: null,
+				tab: 'most-recent'
+			}, _this.setTab = function (tab) {
+				_this.setState({ tab: tab });
+			}, _this.addStory = function () {
+				var hoop = _this.state.hoop;
 
-	            if (hoop) _Dispatcher2.default.dispatch({ type: 'overlay', name: 'add-story', data: { hoopID: hoop.id } });
-	        }, _temp), _possibleConstructorReturn(_this, _ret);
-	    }
+				if (hoop) _Dispatcher2.default.dispatch({ type: 'overlay', name: 'add-story', data: { hoopID: hoop.id } });
+			}, _temp), _possibleConstructorReturn(_this, _ret);
+		}
 
-	    _createClass(Hoop, [{
-	        key: 'render',
-	        value: function render() {
-	            var hoop = this.state.hoop;
-	            if (!hoop) return null;
+		_createClass(Hoop, [{
+			key: 'render',
+			value: function render() {
+				var hoop = this.state.hoop;
+				if (!hoop) return null;
 
-	            var latestStories = this.state.latestStories;
-	            var tab = this.state.tab;
+				var latestStories = this.state.latestStories;
+				var tab = this.state.tab;
 
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'site-wrap' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'hoopstory' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'heroimage' },
-	                        _react2.default.createElement('img', { src: contentURL(hoop.data.featured_story.image_url, '') }),
-	                        _react2.default.createElement(
-	                            'h2',
-	                            null,
-	                            hoop.title
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'hoop-info' },
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'userprofile' },
-	                            _react2.default.createElement('img', { src: contentURL(hoop.user.image_url, '/images/avatar.png') }),
-	                            _react2.default.createElement(
-	                                'h6',
-	                                null,
-	                                hoop.user.firstname,
-	                                ' ',
-	                                hoop.user.lastname
-	                            )
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'icons' },
-	                            _react2.default.createElement('img', { src: '/images/icon_share.png' })
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'description' },
-	                            _react2.default.createElement(
-	                                'p',
-	                                null,
-	                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec enim dolor, facilisis id interdum id, gravida eget lacus. Nam congue urna massa, sit amet rutrum ipsum pellentesque eu. Praesent et '
-	                            )
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'filter' },
-	                        _react2.default.createElement(
-	                            'p',
-	                            { onClick: this.setTab.bind(this, 'most-recent'), style: { color: tab == 'most-recent' && '#ff6b00' } },
-	                            'Most Recent'
-	                        ),
-	                        _react2.default.createElement(
-	                            'p',
-	                            { onClick: this.setTab.bind(this, 'most-liked'), style: { color: tab == 'most-liked' && '#ff6b00' } },
-	                            'Most Liked'
-	                        ),
-	                        _react2.default.createElement(
-	                            'p',
-	                            { onClick: this.setTab.bind(this, 'most-viewed'), style: { color: tab == 'most-viewed' && '#ff6b00' } },
-	                            'Most Viewed'
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'hoop-gallery' },
-	                        _react2.default.createElement(
-	                            'li',
-	                            { onClick: this.addStory },
-	                            _react2.default.createElement('img', { src: '/images/icon_plus.png' })
-	                        ),
-	                        this.stories()
-	                    )
-	                )
-	            );
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            var _this2 = this;
+				return _react2.default.createElement(
+					'div',
+					{ className: 'site-wrap' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'hoopstory' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'heroimage' },
+							_react2.default.createElement('img', { src: contentURL(hoop.data.featured_story.image_url, '') }),
+							_react2.default.createElement(
+								'h2',
+								null,
+								hoop.title
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'hoop-info' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'userprofile' },
+								_react2.default.createElement('img', { src: contentURL(hoop.user.image_url, '/images/avatar.png') }),
+								_react2.default.createElement(
+									'h6',
+									null,
+									hoop.user.firstname,
+									' ',
+									hoop.user.lastname
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'icons' },
+								_react2.default.createElement('img', { src: '/images/icon_share.png' })
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'description' },
+								_react2.default.createElement(
+									'p',
+									null,
+									'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec enim dolor, facilisis id interdum id, gravida eget lacus. Nam congue urna massa, sit amet rutrum ipsum pellentesque eu. Praesent et '
+								)
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'filter' },
+							_react2.default.createElement(
+								'p',
+								{ onClick: this.setTab.bind(this, 'most-recent'), style: { color: tab == 'most-recent' && '#ff6b00' } },
+								'Most Recent'
+							),
+							_react2.default.createElement(
+								'p',
+								{ onClick: this.setTab.bind(this, 'most-liked'), style: { color: tab == 'most-liked' && '#ff6b00' } },
+								'Most Liked'
+							),
+							_react2.default.createElement(
+								'p',
+								{ onClick: this.setTab.bind(this, 'most-viewed'), style: { color: tab == 'most-viewed' && '#ff6b00' } },
+								'Most Viewed'
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'hoop-gallery' },
+							_react2.default.createElement(
+								'li',
+								{ onClick: this.addStory },
+								_react2.default.createElement('img', { src: '/images/icon_plus.png' })
+							),
+							this.stories()
+						)
+					)
+				);
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var _this2 = this;
 
-	            var hoopID = this.props.params.hoopID;
+				var hoopID = this.props.params.hoopID;
 
-	            _API2.default.getHoop({ hoopID: hoopID }, function (hoop) {
-	                _this2.setState({ hoop: hoop });
-	            }, function (response) {
-	                alert('Failed to get hoop');
-	            });
+				_API2.default.getHoop({ hoopID: hoopID }, function (hoop) {
+					_this2.setState({ hoop: hoop });
+				}, function (response) {
+					alert('Failed to get hoop');
+				});
 
-	            _API2.default.getMostCommentedStories({ hoop_id: hoopID }, function (stories) {
-	                _this2.setState({ mostCommentedStories: stories });
-	            }, function (response) {
-	                alert('Failed to get most commented stories');
-	            });
+				_API2.default.getMostCommentedStories({ hoop_id: hoopID }, function (stories) {
+					_this2.setState({ mostCommentedStories: stories });
+				}, function (response) {
+					alert('Failed to get most commented stories');
+				});
 
-	            _API2.default.getMostLikedStories({ hoop_id: hoopID }, function (stories) {
-	                _this2.setState({ mostLikedStories: stories });
-	            }, function (response) {
-	                alert('Failed to get most liked stories');
-	            });
+				_API2.default.getMostLikedStories({ hoop_id: hoopID }, function (stories) {
+					_this2.setState({ mostLikedStories: stories });
+				}, function (response) {
+					alert('Failed to get most liked stories');
+				});
 
-	            _API2.default.getMostViewedStories({ hoop_id: hoopID }, function (stories) {
-	                _this2.setState({ mostViewedStories: stories });
-	            }, function (response) {
-	                alert('Failed to get most viewed stories');
-	            });
+				_API2.default.getMostViewedStories({ hoop_id: hoopID }, function (stories) {
+					_this2.setState({ mostViewedStories: stories });
+				}, function (response) {
+					alert('Failed to get most viewed stories');
+				});
 
-	            _API2.default.getLatestStories({ hoop_id: hoopID }, function (stories) {
-	                _this2.setState({ latestStories: stories });
-	            }, function (response) {
-	                alert('Failed to get latest stories');
-	            });
-	        }
-	    }, {
-	        key: 'stories',
-	        value: function stories() {
-	            var latestStories = this.state.latestStories;
-	            var mostViewedStories = this.state.mostViewedStories;
-	            var mostLikedStories = this.state.mostLikedStories;
-	            var mostCommentedStories = this.state.mostCommentedStories;
+				_API2.default.getLatestStories({ hoop_id: hoopID }, function (stories) {
+					_this2.setState({ latestStories: stories });
+				}, function (response) {
+					alert('Failed to get latest stories');
+				});
+			}
+		}, {
+			key: 'stories',
+			value: function stories() {
+				var latestStories = this.state.latestStories;
+				var mostViewedStories = this.state.mostViewedStories;
+				var mostLikedStories = this.state.mostLikedStories;
+				var mostCommentedStories = this.state.mostCommentedStories;
 
-	            switch (this.state.tab) {
-	                case 'most-recent':
-	                    return latestStories ? latestStories.map(function (story) {
-	                        return _react2.default.createElement(
-	                            'li',
-	                            { key: story.id },
-	                            _react2.default.createElement(
-	                                _reactRouter.Link,
-	                                { to: '/story/' + story.id },
-	                                _react2.default.createElement('img', { src: contentURL(story.image_url) })
-	                            )
-	                        );
-	                    }) : null;
+				switch (this.state.tab) {
+					case 'most-recent':
+						return latestStories ? latestStories.map(function (story) {
+							return _react2.default.createElement(
+								'li',
+								{ key: story.id },
+								_react2.default.createElement(
+									_reactRouter.Link,
+									{ to: '/story/' + story.id },
+									_react2.default.createElement('img', { src: contentURL(story.image_url) })
+								)
+							);
+						}) : null;
 
-	                case 'most-viewed':
-	                    return mostViewedStories ? mostViewedStories.map(function (story) {
-	                        return _react2.default.createElement(
-	                            'li',
-	                            { key: story.id },
-	                            _react2.default.createElement(
-	                                _reactRouter.Link,
-	                                { to: '/story/' + story.id },
-	                                _react2.default.createElement('img', { src: contentURL(story.image_url) })
-	                            )
-	                        );
-	                    }) : null;
+					case 'most-viewed':
+						return mostViewedStories ? mostViewedStories.map(function (story) {
+							return _react2.default.createElement(
+								'li',
+								{ key: story.id },
+								_react2.default.createElement(
+									_reactRouter.Link,
+									{ to: '/story/' + story.id },
+									_react2.default.createElement('img', { src: contentURL(story.image_url) })
+								)
+							);
+						}) : null;
 
-	                case 'most-liked':
-	                    return mostLikedStories ? mostLikedStories.map(function (story) {
-	                        return _react2.default.createElement(
-	                            'li',
-	                            { key: story.id },
-	                            _react2.default.createElement(
-	                                _reactRouter.Link,
-	                                { to: '/story/' + story.id },
-	                                _react2.default.createElement('img', { src: contentURL(story.image_url) })
-	                            )
-	                        );
-	                    }) : null;
+					case 'most-liked':
+						return mostLikedStories ? mostLikedStories.map(function (story) {
+							return _react2.default.createElement(
+								'li',
+								{ key: story.id },
+								_react2.default.createElement(
+									_reactRouter.Link,
+									{ to: '/story/' + story.id },
+									_react2.default.createElement('img', { src: contentURL(story.image_url) })
+								)
+							);
+						}) : null;
 
-	                case 'most-commented':
-	                    return mostCommentedStories ? mostCommentedStories.map(function (story) {
-	                        return _react2.default.createElement(
-	                            'li',
-	                            { key: story.id },
-	                            _react2.default.createElement(
-	                                _reactRouter.Link,
-	                                { to: '/story/' + story.id },
-	                                _react2.default.createElement('img', { src: contentURL(story.image_url) })
-	                            )
-	                        );
-	                    }) : null;
-	            }
-	        }
-	    }]);
+					case 'most-commented':
+						return mostCommentedStories ? mostCommentedStories.map(function (story) {
+							return _react2.default.createElement(
+								'li',
+								{ key: story.id },
+								_react2.default.createElement(
+									_reactRouter.Link,
+									{ to: '/story/' + story.id },
+									_react2.default.createElement('img', { src: contentURL(story.image_url) })
+								)
+							);
+						}) : null;
+				}
+			}
+		}]);
 
-	    return Hoop;
+		return Hoop;
 	}(_react2.default.Component);
 
 	module.exports = Hoop;
@@ -37731,83 +37731,83 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var Login = function (_React$Component) {
-	    _inherits(Login, _React$Component);
+		_inherits(Login, _React$Component);
 
-	    function Login() {
-	        _classCallCheck(this, Login);
+		function Login() {
+			_classCallCheck(this, Login);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Login).apply(this, arguments));
-	    }
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Login).apply(this, arguments));
+		}
 
-	    _createClass(Login, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'site-wrap' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'login' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'logo' },
-	                        _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { to: '/' },
-	                            _react2.default.createElement('img', { src: 'images/logo_light.png' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'login-content' },
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '/auth/facebook' },
-	                            _react2.default.createElement(
-	                                'button',
-	                                { style: { backgroundColor: '#3c5a99' } },
-	                                'Login with Facebook'
-	                            )
-	                        ),
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '/auth/twitter' },
-	                            _react2.default.createElement(
-	                                'button',
-	                                { style: { backgroundColor: '#00abf1' } },
-	                                'Login with Twitter'
-	                            )
-	                        ),
-	                        _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { to: '/login-email' },
-	                            _react2.default.createElement(
-	                                'button',
-	                                { style: { backgroundColor: '#ff6b00' } },
-	                                'Login with Email'
-	                            )
-	                        ),
-	                        _react2.default.createElement(
-	                            'p',
-	                            null,
-	                            'Don\'t have an account? ',
-	                            _react2.default.createElement(
-	                                _reactRouter.Link,
-	                                { to: '/signup' },
-	                                _react2.default.createElement(
-	                                    'span',
-	                                    { style: { color: '#fff' } },
-	                                    'Sign up here'
-	                                )
-	                            )
-	                        )
-	                    )
-	                )
-	            );
-	        }
-	    }]);
+		_createClass(Login, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					{ className: 'site-wrap' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'login' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'logo' },
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ to: '/' },
+								_react2.default.createElement('img', { src: 'images/logo_light.png' })
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'login-content' },
+							_react2.default.createElement(
+								'a',
+								{ href: '/auth/facebook' },
+								_react2.default.createElement(
+									'button',
+									{ style: { backgroundColor: '#3c5a99' } },
+									'Login with Facebook'
+								)
+							),
+							_react2.default.createElement(
+								'a',
+								{ href: '/auth/twitter' },
+								_react2.default.createElement(
+									'button',
+									{ style: { backgroundColor: '#00abf1' } },
+									'Login with Twitter'
+								)
+							),
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ to: '/login-email' },
+								_react2.default.createElement(
+									'button',
+									{ style: { backgroundColor: '#ff6b00' } },
+									'Login with Email'
+								)
+							),
+							_react2.default.createElement(
+								'p',
+								null,
+								'Don\'t have an account? ',
+								_react2.default.createElement(
+									_reactRouter.Link,
+									{ to: '/signup' },
+									_react2.default.createElement(
+										'span',
+										{ style: { color: '#fff' } },
+										'Sign up here'
+									)
+								)
+							)
+						)
+					)
+				);
+			}
+		}]);
 
-	    return Login;
+		return Login;
 	}(_react2.default.Component);
 
 	module.exports = Login;
@@ -37843,81 +37843,81 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var LoginEmail = function (_React$Component) {
-	    _inherits(LoginEmail, _React$Component);
+		_inherits(LoginEmail, _React$Component);
 
-	    function LoginEmail() {
-	        _classCallCheck(this, LoginEmail);
+		function LoginEmail() {
+			_classCallCheck(this, LoginEmail);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(LoginEmail).apply(this, arguments));
-	    }
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(LoginEmail).apply(this, arguments));
+		}
 
-	    _createClass(LoginEmail, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'site-wrap' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'login' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'logo' },
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: 'index.html' },
-	                            _react2.default.createElement('img', { src: 'images/logo_light.png' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'form',
-	                        { className: 'login-email', onSubmit: this.submit },
-	                        _react2.default.createElement(
-	                            'h4',
-	                            null,
-	                            'Login with email'
-	                        ),
-	                        _react2.default.createElement('input', { type: 'email', placeholder: 'Email', name: 'email' }),
-	                        _react2.default.createElement('br', null),
-	                        _react2.default.createElement('input', { type: 'password', placeholder: 'Password', name: 'password' }),
-	                        _react2.default.createElement('br', null),
-	                        _react2.default.createElement(
-	                            'button',
-	                            { type: 'submit' },
-	                            'Login'
-	                        ),
-	                        _react2.default.createElement(
-	                            'p',
-	                            null,
-	                            'Don\'t have an account? ',
-	                            _react2.default.createElement(
-	                                _reactRouter.Link,
-	                                { to: '/signup' },
-	                                _react2.default.createElement(
-	                                    'span',
-	                                    { style: { color: '#fff' } },
-	                                    'Sign up here'
-	                                )
-	                            )
-	                        )
-	                    )
-	                )
-	            );
-	        }
-	    }, {
-	        key: 'submit',
-	        value: function submit(event) {
-	            event.preventDefault();
+		_createClass(LoginEmail, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					{ className: 'site-wrap' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'login' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'logo' },
+							_react2.default.createElement(
+								'a',
+								{ href: 'index.html' },
+								_react2.default.createElement('img', { src: 'images/logo_light.png' })
+							)
+						),
+						_react2.default.createElement(
+							'form',
+							{ className: 'login-email', onSubmit: this.submit },
+							_react2.default.createElement(
+								'h4',
+								null,
+								'Login with email'
+							),
+							_react2.default.createElement('input', { type: 'email', placeholder: 'Email', name: 'email' }),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement('input', { type: 'password', placeholder: 'Password', name: 'password' }),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement(
+								'button',
+								{ type: 'submit' },
+								'Login'
+							),
+							_react2.default.createElement(
+								'p',
+								null,
+								'Don\'t have an account? ',
+								_react2.default.createElement(
+									_reactRouter.Link,
+									{ to: '/signup' },
+									_react2.default.createElement(
+										'span',
+										{ style: { color: '#fff' } },
+										'Sign up here'
+									)
+								)
+							)
+						)
+					)
+				);
+			}
+		}, {
+			key: 'submit',
+			value: function submit(event) {
+				event.preventDefault();
 
-	            _API2.default.login(new FormData(event.target), function () {
-	                _Dispatcher2.default.dispatch({ type: 'refresh-user', goto: '/map' });
-	            }, function (response) {
-	                alert(response.statusText + ': failed to log in!');
-	            });
-	        }
-	    }]);
+				_API2.default.login(new FormData(event.target), function () {
+					_Dispatcher2.default.dispatch({ type: 'refresh-user', goto: '/map' });
+				}, function (response) {
+					alert(response.statusText + ': failed to log in!');
+				});
+			}
+		}]);
 
-	    return LoginEmail;
+		return LoginEmail;
 	}(_react2.default.Component);
 
 	module.exports = LoginEmail;
@@ -37957,175 +37957,175 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var Map = function (_React$Component) {
-	    _inherits(Map, _React$Component);
+		_inherits(Map, _React$Component);
 
-	    function Map() {
-	        _classCallCheck(this, Map);
+		function Map() {
+			_classCallCheck(this, Map);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Map).apply(this, arguments));
-	    }
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Map).apply(this, arguments));
+		}
 
-	    _createClass(Map, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'site-wrap' },
-	                _react2.default.createElement(MapView, null),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'map-btn' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'bottom-left' },
-	                        _react2.default.createElement('img', { src: 'images/search.jpg' })
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'bottom-right' },
-	                        _react2.default.createElement('img', { src: 'images/location.jpg' })
-	                    )
-	                )
-	            );
-	        }
-	    }]);
+		_createClass(Map, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					{ className: 'site-wrap' },
+					_react2.default.createElement(MapView, null),
+					_react2.default.createElement(
+						'div',
+						{ className: 'map-btn' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'bottom-left' },
+							_react2.default.createElement('img', { src: 'images/search.jpg' })
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'bottom-right' },
+							_react2.default.createElement('img', { src: 'images/location.jpg' })
+						)
+					)
+				);
+			}
+		}]);
 
-	    return Map;
+		return Map;
 	}(_react2.default.Component);
 
 	var MapView = function (_React$Component2) {
-	    _inherits(MapView, _React$Component2);
+		_inherits(MapView, _React$Component2);
 
-	    function MapView() {
-	        var _Object$getPrototypeO;
+		function MapView() {
+			var _Object$getPrototypeO;
 
-	        var _temp, _this2, _ret;
+			var _temp, _this2, _ret;
 
-	        _classCallCheck(this, MapView);
+			_classCallCheck(this, MapView);
 
-	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	            args[_key] = arguments[_key];
-	        }
+			for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+				args[_key] = arguments[_key];
+			}
 
-	        return _ret = (_temp = (_this2 = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(MapView)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this2), _this2.getHoops = function (data) {
-	            _API2.default.getHoops(data, function (hoops) {
-	                _this2.setHoops(hoops);
-	            }, function (response) {
-	                alert('Failed to get hoops');
-	            });
-	        }, _this2.getNearbyHoops = function (data) {
-	            _API2.default.getNearbyHoops(data, function (hoops) {
-	                _this2.setHoops(hoops);
-	            }, function (response) {
-	                alert('Failed to get hoops');
-	            });
-	        }, _this2.getPopularHoops = function (data) {
-	            _API2.default.getPopularHoops(data, function (hoops) {
-	                _this2.setHoops(hoops);
-	            }, function (response) {
-	                alert('Failed to get hoops');
-	            });
-	        }, _this2.getLatestHoops = function (data) {
-	            _API2.default.getLatestHoops(data, function (hoops) {
-	                _this2.setHoops(hoops);
-	            }, function (response) {
-	                alert('Failed to get hoops');
-	            });
-	        }, _this2.setHoops = function (hoops) {
-	            _this2.clearHoops();
+			return _ret = (_temp = (_this2 = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(MapView)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this2), _this2.getHoops = function (data) {
+				_API2.default.getHoops(data, function (hoops) {
+					_this2.setHoops(hoops);
+				}, function (response) {
+					alert('Failed to get hoops');
+				});
+			}, _this2.getNearbyHoops = function (data) {
+				_API2.default.getNearbyHoops(data, function (hoops) {
+					_this2.setHoops(hoops);
+				}, function (response) {
+					alert('Failed to get hoops');
+				});
+			}, _this2.getPopularHoops = function (data) {
+				_API2.default.getPopularHoops(data, function (hoops) {
+					_this2.setHoops(hoops);
+				}, function (response) {
+					alert('Failed to get hoops');
+				});
+			}, _this2.getLatestHoops = function (data) {
+				_API2.default.getLatestHoops(data, function (hoops) {
+					_this2.setHoops(hoops);
+				}, function (response) {
+					alert('Failed to get hoops');
+				});
+			}, _this2.setHoops = function (hoops) {
+				_this2.clearHoops();
 
-	            if (hoops) {
-	                var _loop = function _loop(i) {
-	                    var hoop = hoops[i];
+				if (hoops) {
+					var _loop = function _loop(i) {
+						var hoop = hoops[i];
 
-	                    var marker = new google.maps.Marker({
-	                        position: new google.maps.LatLng(hoops[i].latitude, hoops[i].longitude),
-	                        map: _this2.map,
-	                        title: hoops[i].name
-	                    });
-	                    marker.addListener('click', function () {
-	                        _browserHistory2.default.push('/hoop/' + hoop.id);
-	                        _Dispatcher2.default.dispatch({ type: 'view-hoop', hoop: hoop });
-	                    });
+						var marker = new google.maps.Marker({
+							position: new google.maps.LatLng(hoops[i].latitude, hoops[i].longitude),
+							map: _this2.map,
+							title: hoops[i].name
+						});
+						marker.addListener('click', function () {
+							_browserHistory2.default.push('/hoop/' + hoop.id);
+							_Dispatcher2.default.dispatch({ type: 'view-hoop', hoop: hoop });
+						});
 
-	                    _this2.markers.push(marker);
-	                };
+						_this2.markers.push(marker);
+					};
 
-	                for (var i in hoops) {
-	                    _loop(i);
-	                }
-	            }
-	        }, _this2.clearHoops = function () {
-	            for (var i in _this2.markers) {
-	                _this2.markers[i].setMap(null);
-	            }_this2.markers = [];
-	        }, _this2.handleSearch = function (event) {
-	            event.preventDefault();
+					for (var i in hoops) {
+						_loop(i);
+					}
+				}
+			}, _this2.clearHoops = function () {
+				for (var i in _this2.markers) {
+					_this2.markers[i].setMap(null);
+				}_this2.markers = [];
+			}, _this2.handleSearch = function (event) {
+				event.preventDefault();
 
-	            var name = event.target.value;
-	            if (name.length > 0) _this2.getHoops({ name: name });else _this2.getHoops();
-	        }, _temp), _possibleConstructorReturn(_this2, _ret);
-	    }
+				var name = event.target.value;
+				if (name.length > 0) _this2.getHoops({ name: name });else _this2.getHoops();
+			}, _temp), _possibleConstructorReturn(_this2, _ret);
+		}
 
-	    _createClass(MapView, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement('div', { id: 'map' });
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            var _this3 = this;
+		_createClass(MapView, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement('div', { id: 'map' });
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var _this3 = this;
 
-	            // Basic options for a simple Google Map
-	            // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-	            var mapOptions = {
-	                // How zoomed in you want the map to start at (always required)
-	                zoom: 13,
-	                scrollwheel: false,
-	                // The latitude and longitude to center the map (always required)
-	                center: new google.maps.LatLng(14.5980, 120.9446), // Manila
+				// Basic options for a simple Google Map
+				// For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+				var mapOptions = {
+					// How zoomed in you want the map to start at (always required)
+					zoom: 13,
+					scrollwheel: false,
+					// The latitude and longitude to center the map (always required)
+					center: new google.maps.LatLng(14.5980, 120.9446), // Manila
 
-	                // How you would like to style the map.
-	                // This is where you would paste any style found on Snazzy Maps.
-	                styles: [{ "featureType": "all", "elementType": "labels.text.fill", "stylers": [{ "saturation": 36 }, { "color": "#333333" }, { "lightness": 40 }] }, { "featureType": "all", "elementType": "labels.text.stroke", "stylers": [{ "visibility": "on" }, { "color": "#ffffff" }, { "lightness": 16 }] }, { "featureType": "all", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative", "elementType": "geometry.fill", "stylers": [{ "color": "#fefefe" }, { "lightness": 20 }] }, { "featureType": "administrative", "elementType": "geometry.stroke", "stylers": [{ "color": "#fefefe" }, { "lightness": 17 }, { "weight": 1.2 }] }, { "featureType": "administrative", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "administrative.country", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "administrative.province", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative.locality", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "administrative.neighborhood", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative.land_parcel", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "landscape", "elementType": "geometry", "stylers": [{ "color": "#e8e7e7" }, { "lightness": 20 }] }, { "featureType": "landscape", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "landscape.natural", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#f5f5f5" }, { "lightness": 21 }] }, { "featureType": "poi", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.park", "elementType": "geometry", "stylers": [{ "color": "#dedede" }, { "lightness": 21 }] }, { "featureType": "road", "elementType": "all", "stylers": [{ "color": "#ff0000" }, { "visibility": "off" }] }, { "featureType": "road", "elementType": "geometry.fill", "stylers": [{ "color": "#ff0000" }, { "visibility": "off" }] }, { "featureType": "road", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{ "color": "#ffffff" }, { "lightness": 17 }] }, { "featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [{ "color": "#ffffff" }, { "lightness": 29 }, { "weight": 0.2 }] }, { "featureType": "road.highway.controlled_access", "elementType": "geometry", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 18 }, { "visibility": "simplified" }] }, { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 16 }, { "visibility": "simplified" }] }, { "featureType": "transit", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit", "elementType": "geometry", "stylers": [{ "color": "#f2f2f2" }, { "lightness": 19 }] }, { "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#353537" }, { "lightness": 17 }] }]
-	            };
+					// How you would like to style the map.
+					// This is where you would paste any style found on Snazzy Maps.
+					styles: [{ "featureType": "all", "elementType": "labels.text.fill", "stylers": [{ "saturation": 36 }, { "color": "#333333" }, { "lightness": 40 }] }, { "featureType": "all", "elementType": "labels.text.stroke", "stylers": [{ "visibility": "on" }, { "color": "#ffffff" }, { "lightness": 16 }] }, { "featureType": "all", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative", "elementType": "geometry.fill", "stylers": [{ "color": "#fefefe" }, { "lightness": 20 }] }, { "featureType": "administrative", "elementType": "geometry.stroke", "stylers": [{ "color": "#fefefe" }, { "lightness": 17 }, { "weight": 1.2 }] }, { "featureType": "administrative", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "administrative.country", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "administrative.province", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative.locality", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "administrative.neighborhood", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative.land_parcel", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "landscape", "elementType": "geometry", "stylers": [{ "color": "#e8e7e7" }, { "lightness": 20 }] }, { "featureType": "landscape", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "landscape.natural", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#f5f5f5" }, { "lightness": 21 }] }, { "featureType": "poi", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.park", "elementType": "geometry", "stylers": [{ "color": "#dedede" }, { "lightness": 21 }] }, { "featureType": "road", "elementType": "all", "stylers": [{ "color": "#ff0000" }, { "visibility": "off" }] }, { "featureType": "road", "elementType": "geometry.fill", "stylers": [{ "color": "#ff0000" }, { "visibility": "off" }] }, { "featureType": "road", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{ "color": "#ffffff" }, { "lightness": 17 }] }, { "featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [{ "color": "#ffffff" }, { "lightness": 29 }, { "weight": 0.2 }] }, { "featureType": "road.highway.controlled_access", "elementType": "geometry", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 18 }, { "visibility": "simplified" }] }, { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 16 }, { "visibility": "simplified" }] }, { "featureType": "transit", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit", "elementType": "geometry", "stylers": [{ "color": "#f2f2f2" }, { "lightness": 19 }] }, { "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#353537" }, { "lightness": 17 }] }]
+				};
 
-	            // Create the Google Map using our element and options defined above
-	            this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+				// Create the Google Map using our element and options defined above
+				this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-	            this.getHoops();
+				this.getHoops();
 
-	            this.dispatcherID = _Dispatcher2.default.register(function (payload) {
-	                switch (payload.type) {
-	                    case 'get-hoops':
-	                        _this3.getHoops();
-	                        break;
+				this.dispatcherID = _Dispatcher2.default.register(function (payload) {
+					switch (payload.type) {
+						case 'get-hoops':
+							_this3.getHoops();
+							break;
 
-	                    case 'get-nearby-hoops':
-	                        _this3.getNearbyHoops();
-	                        break;
+						case 'get-nearby-hoops':
+							_this3.getNearbyHoops();
+							break;
 
-	                    case 'get-popular-hoops':
-	                        _this3.getPopularHoops();
-	                        break;
+						case 'get-popular-hoops':
+							_this3.getPopularHoops();
+							break;
 
-	                    case 'get-latest-hoops':
-	                        _this3.getLatestHoops();
-	                        break;
-	                }
-	            });
-	        }
-	    }, {
-	        key: 'componentWillUnmount',
-	        value: function componentWillUnmount() {
-	            this.map = null;
+						case 'get-latest-hoops':
+							_this3.getLatestHoops();
+							break;
+					}
+				});
+			}
+		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {
+				this.map = null;
 
-	            _Dispatcher2.default.unregister(this.dispatcherID);
-	        }
-	    }]);
+				_Dispatcher2.default.unregister(this.dispatcherID);
+			}
+		}]);
 
-	    return MapView;
+		return MapView;
 	}(_react2.default.Component);
 
 	module.exports = Map;
@@ -38157,142 +38157,142 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var Navigation = function (_React$Component) {
-	    _inherits(Navigation, _React$Component);
+		_inherits(Navigation, _React$Component);
 
-	    function Navigation() {
-	        _classCallCheck(this, Navigation);
+		function Navigation() {
+			_classCallCheck(this, Navigation);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Navigation).apply(this, arguments));
-	    }
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Navigation).apply(this, arguments));
+		}
 
-	    _createClass(Navigation, [{
-	        key: 'render',
-	        value: function render() {
-	            var user = this.props.user;
+		_createClass(Navigation, [{
+			key: 'render',
+			value: function render() {
+				var user = this.props.user;
 
-	            if (user) {
-	                return _react2.default.createElement(
-	                    'ul',
-	                    { className: 'navigation' },
-	                    _react2.default.createElement(
-	                        'li',
-	                        { className: 'nav-item' },
-	                        _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { to: '/' },
-	                            _react2.default.createElement('img', { src: '/images/logo_light.png' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'li',
-	                        { className: 'nav-item' },
-	                        _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { to: '/profile' },
-	                            _react2.default.createElement(
-	                                'div',
-	                                { className: 'menuprofile' },
-	                                _react2.default.createElement('img', { src: contentURL(user.image_url, '/images/avatar.png') }),
-	                                user.firstname,
-	                                ' ',
-	                                user.lastname
-	                            )
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'li',
-	                        { className: 'nav-item' },
-	                        _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { to: '/map' },
-	                            'Map'
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'li',
-	                        { className: 'nav-item' },
-	                        _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { to: '/add-hoop' },
-	                            'Add a hoop'
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'li',
-	                        { className: 'nav-item' },
-	                        _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { to: '/activities' },
-	                            'Activity feed'
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'li',
-	                        { className: 'nav-item' },
-	                        _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { to: '/about' },
-	                            'About'
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'li',
-	                        { className: 'nav-item' },
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '#', onClick: this.logout },
-	                            'Logout'
-	                        )
-	                    )
-	                );
-	            } else {
-	                return _react2.default.createElement(
-	                    'ul',
-	                    { className: 'navigation' },
-	                    _react2.default.createElement(
-	                        'li',
-	                        { className: 'nav-item' },
-	                        _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { to: '/' },
-	                            _react2.default.createElement('img', { src: '/images/logo_light.png' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'li',
-	                        { className: 'nav-item' },
-	                        _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { to: '/about' },
-	                            'About'
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'li',
-	                        { className: 'nav-item' },
-	                        _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { to: '/login' },
-	                            'Add a hoop'
-	                        )
-	                    )
-	                );
-	            }
-	        }
-	    }, {
-	        key: 'logout',
-	        value: function logout(event) {
-	            event.preventDefault();
+				if (user) {
+					return _react2.default.createElement(
+						'ul',
+						{ className: 'navigation' },
+						_react2.default.createElement(
+							'li',
+							{ className: 'nav-item' },
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ to: '/' },
+								_react2.default.createElement('img', { src: '/images/logo_light.png' })
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							{ className: 'nav-item' },
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ to: '/profile' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'menuprofile' },
+									_react2.default.createElement('img', { src: contentURL(user.image_url, '/images/avatar.png') }),
+									user.firstname,
+									' ',
+									user.lastname
+								)
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							{ className: 'nav-item' },
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ to: '/map' },
+								'Map'
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							{ className: 'nav-item' },
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ to: '/add-hoop' },
+								'Add a hoop'
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							{ className: 'nav-item' },
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ to: '/activities' },
+								'Activity feed'
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							{ className: 'nav-item' },
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ to: '/about' },
+								'About'
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							{ className: 'nav-item' },
+							_react2.default.createElement(
+								'a',
+								{ href: '#', onClick: this.logout },
+								'Logout'
+							)
+						)
+					);
+				} else {
+					return _react2.default.createElement(
+						'ul',
+						{ className: 'navigation' },
+						_react2.default.createElement(
+							'li',
+							{ className: 'nav-item' },
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ to: '/' },
+								_react2.default.createElement('img', { src: '/images/logo_light.png' })
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							{ className: 'nav-item' },
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ to: '/about' },
+								'About'
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							{ className: 'nav-item' },
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ to: '/login' },
+								'Add a hoop'
+							)
+						)
+					);
+				}
+			}
+		}, {
+			key: 'logout',
+			value: function logout(event) {
+				event.preventDefault();
 
-	            _API2.default.logout(function () {
-	                window.location.reload();
-	            }, function () {
-	                alert('Failed to log out!');
-	            });
-	        }
-	    }]);
+				_API2.default.logout(function () {
+					window.location.reload();
+				}, function () {
+					alert('Failed to log out!');
+				});
+			}
+		}]);
 
-	    return Navigation;
+		return Navigation;
 	}(_react2.default.Component);
 
 	module.exports = Navigation;
@@ -38328,214 +38328,214 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var Overlay = function (_React$Component) {
-	    _inherits(Overlay, _React$Component);
+		_inherits(Overlay, _React$Component);
 
-	    function Overlay() {
-	        var _Object$getPrototypeO;
+		function Overlay() {
+			var _Object$getPrototypeO;
 
-	        var _temp, _this, _ret;
+			var _temp, _this, _ret;
 
-	        _classCallCheck(this, Overlay);
+			_classCallCheck(this, Overlay);
 
-	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	            args[_key] = arguments[_key];
-	        }
+			for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+				args[_key] = arguments[_key];
+			}
 
-	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Overlay)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
-	            name: null,
-	            data: null
-	        }, _temp), _possibleConstructorReturn(_this, _ret);
-	    }
+			return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Overlay)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
+				name: null,
+				data: null
+			}, _temp), _possibleConstructorReturn(_this, _ret);
+		}
 
-	    _createClass(Overlay, [{
-	        key: 'render',
-	        value: function render() {
-	            var name = this.state.name;
-	            var data = this.state.data;
+		_createClass(Overlay, [{
+			key: 'render',
+			value: function render() {
+				var name = this.state.name;
+				var data = this.state.data;
 
-	            switch (name) {
-	                case 'add-story':
-	                    return _react2.default.createElement(AddStory, { hoopID: data.hoopID });
+				switch (name) {
+					case 'add-story':
+						return _react2.default.createElement(AddStory, { hoopID: data.hoopID });
 
-	                case 'share-story':
-	                    return _react2.default.createElement(ShareStory, { storyID: data.storyID });
+					case 'share-story':
+						return _react2.default.createElement(ShareStory, { storyID: data.storyID });
 
-	                default:
-	                    return null;
-	            }
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            var _this2 = this;
+					default:
+						return null;
+				}
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var _this2 = this;
 
-	            this.dispatcherID = _Dispatcher2.default.register(function (payload) {
-	                switch (payload.type) {
-	                    case 'overlay':
-	                        _this2.setState({ name: payload.name, data: payload.data });
-	                        break;
+				this.dispatcherID = _Dispatcher2.default.register(function (payload) {
+					switch (payload.type) {
+						case 'overlay':
+							_this2.setState({ name: payload.name, data: payload.data });
+							break;
 
-	                    case 'overlay-close':
-	                        _this2.setState({ name: null, data: null });
-	                        break;
-	                }
-	            });
-	        }
-	    }, {
-	        key: 'componentWillUnmount',
-	        value: function componentWillUnmount() {
-	            _Dispatcher2.default.unregister(this.dispatcherID);
-	        }
-	    }]);
+						case 'overlay-close':
+							_this2.setState({ name: null, data: null });
+							break;
+					}
+				});
+			}
+		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {
+				_Dispatcher2.default.unregister(this.dispatcherID);
+			}
+		}]);
 
-	    return Overlay;
+		return Overlay;
 	}(_react2.default.Component);
 
 	var AddStory = function (_React$Component2) {
-	    _inherits(AddStory, _React$Component2);
+		_inherits(AddStory, _React$Component2);
 
-	    function AddStory() {
-	        var _Object$getPrototypeO2;
+		function AddStory() {
+			var _Object$getPrototypeO2;
 
-	        var _temp2, _this3, _ret2;
+			var _temp2, _this3, _ret2;
 
-	        _classCallCheck(this, AddStory);
+			_classCallCheck(this, AddStory);
 
-	        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-	            args[_key2] = arguments[_key2];
-	        }
+			for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+				args[_key2] = arguments[_key2];
+			}
 
-	        return _ret2 = (_temp2 = (_this3 = _possibleConstructorReturn(this, (_Object$getPrototypeO2 = Object.getPrototypeOf(AddStory)).call.apply(_Object$getPrototypeO2, [this].concat(args))), _this3), _this3.submit = function (event) {
-	            _API2.default.addStory(new FormData(event.target), function () {
-	                _this3.close();
-	            }, function () {
-	                alert('Failed to add story');
-	                _this3.close();
-	            });
-	        }, _this3.previewImage = function (event) {
-	            var preview = _this3.refs.image;
-	            var file = event.target.files[0];
-	            var reader = new FileReader();
+			return _ret2 = (_temp2 = (_this3 = _possibleConstructorReturn(this, (_Object$getPrototypeO2 = Object.getPrototypeOf(AddStory)).call.apply(_Object$getPrototypeO2, [this].concat(args))), _this3), _this3.submit = function (event) {
+				_API2.default.addStory(new FormData(event.target), function () {
+					_this3.close();
+				}, function () {
+					alert('Failed to add story');
+					_this3.close();
+				});
+			}, _this3.previewImage = function (event) {
+				var preview = _this3.refs.image;
+				var file = event.target.files[0];
+				var reader = new FileReader();
 
-	            reader.addEventListener('load', function () {
-	                preview.src = reader.result;
-	            });
+				reader.addEventListener('load', function () {
+					preview.src = reader.result;
+				});
 
-	            if (file) reader.readAsDataURL(file);
-	        }, _temp2), _possibleConstructorReturn(_this3, _ret2);
-	    }
+				if (file) reader.readAsDataURL(file);
+			}, _temp2), _possibleConstructorReturn(_this3, _ret2);
+		}
 
-	    _createClass(AddStory, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'form',
-	                { className: 'add', onSubmit: this.submit },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'whitebox' },
-	                    _react2.default.createElement(
-	                        'p',
-	                        { style: { float: 'right', margin: '10px' }, onClick: this.close },
-	                        'X'
-	                    ),
-	                    _react2.default.createElement(
-	                        'h4',
-	                        null,
-	                        'Add your story'
-	                    ),
-	                    _react2.default.createElement('img', { src: '/images/dummy01.jpg', ref: 'image' }),
-	                    _react2.default.createElement('input', { type: 'file', name: 'image', onChange: this.previewImage }),
-	                    _react2.default.createElement('input', { type: 'text', placeholder: 'Title', name: 'name' }),
-	                    _react2.default.createElement('br', null),
-	                    _react2.default.createElement('input', { type: 'hidden', name: 'description', value: '' }),
-	                    _react2.default.createElement('input', { type: 'hidden', name: 'hoop_id', value: this.props.hoopID }),
-	                    _react2.default.createElement(
-	                        'button',
-	                        null,
-	                        'Submit'
-	                    )
-	                )
-	            );
-	        }
-	    }, {
-	        key: 'close',
-	        value: function close() {
-	            _Dispatcher2.default.dispatch({ type: 'overlay-close' });
-	        }
-	    }]);
+		_createClass(AddStory, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'form',
+					{ className: 'add', onSubmit: this.submit },
+					_react2.default.createElement(
+						'div',
+						{ className: 'whitebox' },
+						_react2.default.createElement(
+							'p',
+							{ style: { float: 'right', margin: '10px' }, onClick: this.close },
+							'X'
+						),
+						_react2.default.createElement(
+							'h4',
+							null,
+							'Add your story'
+						),
+						_react2.default.createElement('img', { src: '/images/dummy01.jpg', ref: 'image' }),
+						_react2.default.createElement('input', { type: 'file', name: 'image', onChange: this.previewImage }),
+						_react2.default.createElement('input', { type: 'text', placeholder: 'Title', name: 'name' }),
+						_react2.default.createElement('br', null),
+						_react2.default.createElement('input', { type: 'hidden', name: 'description', value: '' }),
+						_react2.default.createElement('input', { type: 'hidden', name: 'hoop_id', value: this.props.hoopID }),
+						_react2.default.createElement(
+							'button',
+							null,
+							'Submit'
+						)
+					)
+				);
+			}
+		}, {
+			key: 'close',
+			value: function close() {
+				_Dispatcher2.default.dispatch({ type: 'overlay-close' });
+			}
+		}]);
 
-	    return AddStory;
+		return AddStory;
 	}(_react2.default.Component);
 
 	var ShareStory = function (_React$Component3) {
-	    _inherits(ShareStory, _React$Component3);
+		_inherits(ShareStory, _React$Component3);
 
-	    function ShareStory() {
-	        _classCallCheck(this, ShareStory);
+		function ShareStory() {
+			_classCallCheck(this, ShareStory);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(ShareStory).apply(this, arguments));
-	    }
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(ShareStory).apply(this, arguments));
+		}
 
-	    _createClass(ShareStory, [{
-	        key: 'render',
-	        value: function render() {
-	            var shareURL = _API2.default.BASE_URL + '/story/' + this.props.storyID;
+		_createClass(ShareStory, [{
+			key: 'render',
+			value: function render() {
+				var shareURL = _API2.default.BASE_URL + '/story/' + this.props.storyID;
 
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'sharebox' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'whitebox' },
-	                    _react2.default.createElement(
-	                        'p',
-	                        { style: { float: 'right', margin: '10px' }, onClick: this.close },
-	                        'X'
-	                    ),
-	                    _react2.default.createElement(
-	                        'h4',
-	                        null,
-	                        'Share'
-	                    ),
-	                    _react2.default.createElement(
-	                        'li',
-	                        null,
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: 'http://www.facebook.com/sharer.php?u=' + shareURL, target: '_blank' },
-	                            _react2.default.createElement('img', { src: '/images/icon_fb.png', alt: 'Facebook' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'li',
-	                        null,
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: 'https://twitter.com/share?url=' + shareURL, target: '_blank' },
-	                            _react2.default.createElement('img', { src: '/images/icon_twitter.png', alt: 'Twitter' })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'li',
-	                        null,
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: 'https://plus.google.com/share?url=' + shareURL, target: '_blank' },
-	                            _react2.default.createElement('img', { src: '/images/icon_gmail.png', alt: 'Google' })
-	                        )
-	                    )
-	                )
-	            );
-	        }
-	    }, {
-	        key: 'close',
-	        value: function close() {
-	            _Dispatcher2.default.dispatch({ type: 'overlay-close' });
-	        }
-	    }]);
+				return _react2.default.createElement(
+					'div',
+					{ className: 'sharebox' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'whitebox' },
+						_react2.default.createElement(
+							'p',
+							{ style: { float: 'right', margin: '10px' }, onClick: this.close },
+							'X'
+						),
+						_react2.default.createElement(
+							'h4',
+							null,
+							'Share'
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								'a',
+								{ href: 'http://www.facebook.com/sharer.php?u=' + shareURL, target: '_blank' },
+								_react2.default.createElement('img', { src: '/images/icon_fb.png', alt: 'Facebook' })
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								'a',
+								{ href: 'https://twitter.com/share?url=' + shareURL, target: '_blank' },
+								_react2.default.createElement('img', { src: '/images/icon_twitter.png', alt: 'Twitter' })
+							)
+						),
+						_react2.default.createElement(
+							'li',
+							null,
+							_react2.default.createElement(
+								'a',
+								{ href: 'https://plus.google.com/share?url=' + shareURL, target: '_blank' },
+								_react2.default.createElement('img', { src: '/images/icon_gmail.png', alt: 'Google' })
+							)
+						)
+					)
+				);
+			}
+		}, {
+			key: 'close',
+			value: function close() {
+				_Dispatcher2.default.dispatch({ type: 'overlay-close' });
+			}
+		}]);
 
-	    return ShareStory;
+		return ShareStory;
 	}(_react2.default.Component);
 
 	module.exports = Overlay;
@@ -38571,217 +38571,217 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var Profile = function (_React$Component) {
-	    _inherits(Profile, _React$Component);
+		_inherits(Profile, _React$Component);
 
-	    function Profile() {
-	        var _Object$getPrototypeO;
+		function Profile() {
+			var _Object$getPrototypeO;
 
-	        var _temp, _this, _ret;
+			var _temp, _this, _ret;
 
-	        _classCallCheck(this, Profile);
+			_classCallCheck(this, Profile);
 
-	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	            args[_key] = arguments[_key];
-	        }
+			for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+				args[_key] = arguments[_key];
+			}
 
-	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Profile)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
-	            myHoops: null,
-	            otherHoops: null,
-	            tab: 'my-hoops',
-	            editing: false
-	        }, _this.profileInfo = function () {
-	            var user = _this.props.user;
-	            var editing = _this.state.editing;
+			return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Profile)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
+				myHoops: null,
+				otherHoops: null,
+				tab: 'my-hoops',
+				editing: false
+			}, _this.profileInfo = function () {
+				var user = _this.props.user;
+				var editing = _this.state.editing;
 
-	            if (editing) {
-	                return _react2.default.createElement(ProfileForm, { user: user });
-	            } else {
-	                return _react2.default.createElement(
-	                    'div',
-	                    null,
-	                    _react2.default.createElement(
-	                        'h3',
-	                        null,
-	                        user.firstname,
-	                        ' ',
-	                        user.lastname
-	                    ),
-	                    _react2.default.createElement(
-	                        'p',
-	                        null,
-	                        user.birthdate,
-	                        ', ',
-	                        user.gender
-	                    )
-	                );
-	            }
-	        }, _this.hoops = function () {
-	            var myHoops = _this.state.myHoops;
-	            var otherHoops = _this.state.otherHoops;
+				if (editing) {
+					return _react2.default.createElement(ProfileForm, { user: user });
+				} else {
+					return _react2.default.createElement(
+						'div',
+						null,
+						_react2.default.createElement(
+							'h3',
+							null,
+							user.firstname,
+							' ',
+							user.lastname
+						),
+						_react2.default.createElement(
+							'p',
+							null,
+							user.birthdate,
+							', ',
+							user.gender
+						)
+					);
+				}
+			}, _this.hoops = function () {
+				var myHoops = _this.state.myHoops;
+				var otherHoops = _this.state.otherHoops;
 
-	            switch (_this.state.tab) {
-	                case 'my-hoops':
-	                    return myHoops ? myHoops.map(function (hoop) {
-	                        return _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { key: hoop.id, to: '/hoop/' + hoop.id },
-	                            _react2.default.createElement('img', { key: hoop.data.featured_story.id, src: contentURL(hoop.data.featured_story.image_url) })
-	                        );
-	                    }) : null;
+				switch (_this.state.tab) {
+					case 'my-hoops':
+						return myHoops ? myHoops.map(function (hoop) {
+							return _react2.default.createElement(
+								_reactRouter.Link,
+								{ key: hoop.id, to: '/hoop/' + hoop.id },
+								_react2.default.createElement('img', { key: hoop.data.featured_story.id, src: contentURL(hoop.data.featured_story.image_url) })
+							);
+						}) : null;
 
-	                case 'other-hoops':
-	                    return otherHoops ? otherHoops.map(function (hoop) {
-	                        return _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { key: hoop.id, to: '/hoop/' + hoop.id },
-	                            _react2.default.createElement('img', { key: hoop.data.featured_story.id, src: contentURL(hoop.data.featured_story.image_url) })
-	                        );
-	                    }) : null;
-	            }
-	        }, _this.setTab = function (tab) {
-	            _this.setState({ tab: tab });
-	        }, _this.handleUserImage = function (event) {
-	            _API2.default.updateUserImage(new FormData(_this.refs.userImageForm), function () {
-	                _Dispatcher2.default.dispatch({ type: 'refresh-user' });
-	            });
-	        }, _this.toggleEdit = function () {
-	            var editing = _this.state.editing;
-	            _this.setState({ editing: !editing });
-	        }, _temp), _possibleConstructorReturn(_this, _ret);
-	    }
+					case 'other-hoops':
+						return otherHoops ? otherHoops.map(function (hoop) {
+							return _react2.default.createElement(
+								_reactRouter.Link,
+								{ key: hoop.id, to: '/hoop/' + hoop.id },
+								_react2.default.createElement('img', { key: hoop.data.featured_story.id, src: contentURL(hoop.data.featured_story.image_url) })
+							);
+						}) : null;
+				}
+			}, _this.setTab = function (tab) {
+				_this.setState({ tab: tab });
+			}, _this.handleUserImage = function (event) {
+				_API2.default.updateUserImage(new FormData(_this.refs.userImageForm), function () {
+					_Dispatcher2.default.dispatch({ type: 'refresh-user' });
+				});
+			}, _this.toggleEdit = function () {
+				var editing = _this.state.editing;
+				_this.setState({ editing: !editing });
+			}, _temp), _possibleConstructorReturn(_this, _ret);
+		}
 
-	    _createClass(Profile, [{
-	        key: 'render',
-	        value: function render() {
-	            var user = this.props.user;
-	            if (!user) return null;
+		_createClass(Profile, [{
+			key: 'render',
+			value: function render() {
+				var user = this.props.user;
+				if (!user) return null;
 
-	            var tab = this.state.tab;
+				var tab = this.state.tab;
 
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'site-wrap' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'profile' },
-	                    _react2.default.createElement(
-	                        'form',
-	                        { ref: 'userImageForm', className: 'picture' },
-	                        _react2.default.createElement(
-	                            'label',
-	                            { htmlFor: 'user-image' },
-	                            _react2.default.createElement('input', { id: 'user-image', type: 'file', name: 'image', onChange: this.handleUserImage }),
-	                            _react2.default.createElement('img', { src: contentURL(user.image_url, '/images/avatar.png') })
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'info' },
-	                        this.profileInfo(),
-	                        _react2.default.createElement(
-	                            'button',
-	                            { onClick: this.toggleEdit },
-	                            'Edit Profile'
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'myhoops' },
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'filter' },
-	                            _react2.default.createElement(
-	                                'p',
-	                                { onClick: this.setTab.bind(this, 'my-hoops'), style: { color: tab == 'my-hoops' && '#ff6b00' } },
-	                                'My hoops'
-	                            ),
-	                            _react2.default.createElement(
-	                                'p',
-	                                { onClick: this.setTab.bind(this, 'other-hoops'), style: { color: tab == 'other-hoops' && '#ff6b00' } },
-	                                'Other hoops'
-	                            )
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'gallery' },
-	                            this.hoops()
-	                        )
-	                    )
-	                )
-	            );
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            this.getMyHoops();
-	            this.getOtherHoops();
-	        }
-	    }, {
-	        key: 'getMyHoops',
-	        value: function getMyHoops() {
-	            var _this2 = this;
+				return _react2.default.createElement(
+					'div',
+					{ className: 'site-wrap' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'profile' },
+						_react2.default.createElement(
+							'form',
+							{ ref: 'userImageForm', className: 'picture' },
+							_react2.default.createElement(
+								'label',
+								{ htmlFor: 'user-image' },
+								_react2.default.createElement('input', { id: 'user-image', type: 'file', name: 'image', onChange: this.handleUserImage }),
+								_react2.default.createElement('img', { src: contentURL(user.image_url, '/images/avatar.png') })
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'info' },
+							this.profileInfo(),
+							_react2.default.createElement(
+								'button',
+								{ onClick: this.toggleEdit },
+								'Edit Profile'
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'myhoops' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'filter' },
+								_react2.default.createElement(
+									'p',
+									{ onClick: this.setTab.bind(this, 'my-hoops'), style: { color: tab == 'my-hoops' && '#ff6b00' } },
+									'My hoops'
+								),
+								_react2.default.createElement(
+									'p',
+									{ onClick: this.setTab.bind(this, 'other-hoops'), style: { color: tab == 'other-hoops' && '#ff6b00' } },
+									'Other hoops'
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'gallery' },
+								this.hoops()
+							)
+						)
+					)
+				);
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				this.getMyHoops();
+				this.getOtherHoops();
+			}
+		}, {
+			key: 'getMyHoops',
+			value: function getMyHoops() {
+				var _this2 = this;
 
-	            _API2.default.getMyHoops(function (hoops) {
-	                _this2.setState({ myHoops: hoops });
-	            }, function (response) {
-	                alert('Failed to get my hoops!');
-	            });
-	        }
-	    }, {
-	        key: 'getOtherHoops',
-	        value: function getOtherHoops() {
-	            var _this3 = this;
+				_API2.default.getMyHoops(function (hoops) {
+					_this2.setState({ myHoops: hoops });
+				}, function (response) {
+					alert('Failed to get my hoops!');
+				});
+			}
+		}, {
+			key: 'getOtherHoops',
+			value: function getOtherHoops() {
+				var _this3 = this;
 
-	            _API2.default.getOtherHoops(function (hoops) {
-	                _this3.setState({ otherHoops: hoops });
-	            }, function (response) {
-	                alert('Failed to get other hoops');
-	            });
-	        }
-	    }]);
+				_API2.default.getOtherHoops(function (hoops) {
+					_this3.setState({ otherHoops: hoops });
+				}, function (response) {
+					alert('Failed to get other hoops');
+				});
+			}
+		}]);
 
-	    return Profile;
+		return Profile;
 	}(_react2.default.Component);
 
 	var ProfileForm = function (_React$Component2) {
-	    _inherits(ProfileForm, _React$Component2);
+		_inherits(ProfileForm, _React$Component2);
 
-	    function ProfileForm() {
-	        _classCallCheck(this, ProfileForm);
+		function ProfileForm() {
+			_classCallCheck(this, ProfileForm);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(ProfileForm).apply(this, arguments));
-	    }
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(ProfileForm).apply(this, arguments));
+		}
 
-	    _createClass(ProfileForm, [{
-	        key: 'render',
-	        value: function render() {
-	            var user = this.props.user;
+		_createClass(ProfileForm, [{
+			key: 'render',
+			value: function render() {
+				var user = this.props.user;
 
-	            return _react2.default.createElement(
-	                'form',
-	                { ref: 'userProfileForm' },
-	                _react2.default.createElement('input', { type: 'text', name: 'name', defaultValue: user.firstname + ' ' + user.lastname }),
-	                _react2.default.createElement('br', null),
-	                _react2.default.createElement('input', { type: 'date', name: 'birthdate', defaultValue: user.birthdate }),
-	                _react2.default.createElement('input', { type: 'gender', name: 'gender', defaultValue: user.gender })
-	            );
-	        }
-	    }, {
-	        key: 'componentWillUnmount',
-	        value: function componentWillUnmount() {
-	            var form = this.refs.userProfileForm;
+				return _react2.default.createElement(
+					'form',
+					{ ref: 'userProfileForm' },
+					_react2.default.createElement('input', { type: 'text', name: 'name', defaultValue: user.firstname + ' ' + user.lastname }),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('input', { type: 'date', name: 'birthdate', defaultValue: user.birthdate }),
+					_react2.default.createElement('input', { type: 'gender', name: 'gender', defaultValue: user.gender })
+				);
+			}
+		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {
+				var form = this.refs.userProfileForm;
 
-	            _API2.default.updateUser({
-	                name: form.elements['name'].value,
-	                birthdate: form.elements['birthdate'].value,
-	                gender: form.elements['gender'].value
-	            }, function () {
-	                _Dispatcher2.default.dispatch({ type: 'refresh-user' });
-	            }, function () {});
-	        }
-	    }]);
+				_API2.default.updateUser({
+					name: form.elements['name'].value,
+					birthdate: form.elements['birthdate'].value,
+					gender: form.elements['gender'].value
+				}, function () {
+					_Dispatcher2.default.dispatch({ type: 'refresh-user' });
+				}, function () {});
+			}
+		}]);
 
-	    return ProfileForm;
+		return ProfileForm;
 	}(_react2.default.Component);
 
 	module.exports = Profile;
@@ -38821,136 +38821,136 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var Signup = function (_React$Component) {
-	    _inherits(Signup, _React$Component);
+		_inherits(Signup, _React$Component);
 
-	    function Signup() {
-	        _classCallCheck(this, Signup);
+		function Signup() {
+			_classCallCheck(this, Signup);
 
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Signup).apply(this, arguments));
-	    }
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Signup).apply(this, arguments));
+		}
 
-	    _createClass(Signup, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'site-wrap' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'signup' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'logo' },
-	                        _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { to: '/' },
-	                            _react2.default.createElement('img', { src: 'images/logo_light.png' })
-	                        ),
-	                        _react2.default.createElement(
-	                            'p',
-	                            null,
-	                            'The home of all things basketball'
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'signup-content' },
-	                        _react2.default.createElement(
-	                            'form',
-	                            { method: 'POST', onSubmit: this.submit },
-	                            _react2.default.createElement(
-	                                'label',
-	                                null,
-	                                'First name: '
-	                            ),
-	                            _react2.default.createElement('input', { type: 'text', name: 'firstname' }),
-	                            _react2.default.createElement('br', null),
-	                            _react2.default.createElement(
-	                                'label',
-	                                null,
-	                                'Last name: '
-	                            ),
-	                            _react2.default.createElement('input', { type: 'text', name: 'lastname' }),
-	                            _react2.default.createElement('br', null),
-	                            _react2.default.createElement(
-	                                'label',
-	                                null,
-	                                'Email: '
-	                            ),
-	                            _react2.default.createElement('input', { type: 'email', name: 'email' }),
-	                            _react2.default.createElement('br', null),
-	                            _react2.default.createElement(
-	                                'label',
-	                                null,
-	                                'Password: '
-	                            ),
-	                            _react2.default.createElement('input', { type: 'password', name: 'password' }),
-	                            _react2.default.createElement('br', null),
-	                            _react2.default.createElement(
-	                                'label',
-	                                null,
-	                                'Age: '
-	                            ),
-	                            _react2.default.createElement('input', { type: 'date', name: 'birthdate' }),
-	                            _react2.default.createElement('br', null),
-	                            _react2.default.createElement(
-	                                'label',
-	                                null,
-	                                'Gender: '
-	                            ),
-	                            _react2.default.createElement('input', { type: 'text', name: 'gender' }),
-	                            _react2.default.createElement('br', null),
-	                            _react2.default.createElement(
-	                                'label',
-	                                null,
-	                                'Upload picture: '
-	                            ),
-	                            _react2.default.createElement(
-	                                'label',
-	                                { htmlFor: 'upload-image' },
-	                                'Select file',
-	                                _react2.default.createElement('input', { id: 'upload-image', type: 'file', name: 'image' })
-	                            ),
-	                            _react2.default.createElement('br', null),
-	                            _react2.default.createElement(
-	                                'button',
-	                                { type: 'submit' },
-	                                'Signup'
-	                            )
-	                        ),
-	                        _react2.default.createElement(
-	                            'p',
-	                            null,
-	                            'Already have an account? ',
-	                            _react2.default.createElement(
-	                                _reactRouter.Link,
-	                                { to: '/login' },
-	                                _react2.default.createElement(
-	                                    'span',
-	                                    { style: { color: '#fff' } },
-	                                    'Login here'
-	                                )
-	                            )
-	                        )
-	                    )
-	                )
-	            );
-	        }
-	    }, {
-	        key: 'submit',
-	        value: function submit(event) {
-	            event.preventDefault();
+		_createClass(Signup, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					{ className: 'site-wrap' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'signup' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'logo' },
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ to: '/' },
+								_react2.default.createElement('img', { src: 'images/logo_light.png' })
+							),
+							_react2.default.createElement(
+								'p',
+								null,
+								'The home of all things basketball'
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'signup-content' },
+							_react2.default.createElement(
+								'form',
+								{ method: 'POST', onSubmit: this.submit },
+								_react2.default.createElement(
+									'label',
+									null,
+									'First name: '
+								),
+								_react2.default.createElement('input', { type: 'text', name: 'firstname' }),
+								_react2.default.createElement('br', null),
+								_react2.default.createElement(
+									'label',
+									null,
+									'Last name: '
+								),
+								_react2.default.createElement('input', { type: 'text', name: 'lastname' }),
+								_react2.default.createElement('br', null),
+								_react2.default.createElement(
+									'label',
+									null,
+									'Email: '
+								),
+								_react2.default.createElement('input', { type: 'email', name: 'email' }),
+								_react2.default.createElement('br', null),
+								_react2.default.createElement(
+									'label',
+									null,
+									'Password: '
+								),
+								_react2.default.createElement('input', { type: 'password', name: 'password' }),
+								_react2.default.createElement('br', null),
+								_react2.default.createElement(
+									'label',
+									null,
+									'Age: '
+								),
+								_react2.default.createElement('input', { type: 'date', name: 'birthdate' }),
+								_react2.default.createElement('br', null),
+								_react2.default.createElement(
+									'label',
+									null,
+									'Gender: '
+								),
+								_react2.default.createElement('input', { type: 'text', name: 'gender' }),
+								_react2.default.createElement('br', null),
+								_react2.default.createElement(
+									'label',
+									null,
+									'Upload picture: '
+								),
+								_react2.default.createElement(
+									'label',
+									{ htmlFor: 'upload-image' },
+									'Select file',
+									_react2.default.createElement('input', { id: 'upload-image', type: 'file', name: 'image' })
+								),
+								_react2.default.createElement('br', null),
+								_react2.default.createElement(
+									'button',
+									{ type: 'submit' },
+									'Signup'
+								)
+							),
+							_react2.default.createElement(
+								'p',
+								null,
+								'Already have an account? ',
+								_react2.default.createElement(
+									_reactRouter.Link,
+									{ to: '/login' },
+									_react2.default.createElement(
+										'span',
+										{ style: { color: '#fff' } },
+										'Login here'
+									)
+								)
+							)
+						)
+					)
+				);
+			}
+		}, {
+			key: 'submit',
+			value: function submit(event) {
+				event.preventDefault();
 
-	            _API2.default.signup(new FormData(event.target), function () {
-	                alert('Successfully signed up!');
-	                _Dispatcher2.default.dispatch({ type: 'refresh-user', goto: '/map' });
-	            }, function (response) {
-	                alert(response.statusText + ': failed to sign up!');
-	            });
-	        }
-	    }]);
+				_API2.default.signup(new FormData(event.target), function () {
+					alert('Successfully signed up!');
+					_Dispatcher2.default.dispatch({ type: 'refresh-user', goto: '/map' });
+				}, function (response) {
+					alert(response.statusText + ': failed to sign up!');
+				});
+			}
+		}]);
 
-	    return Signup;
+		return Signup;
 	}(_react2.default.Component);
 
 	module.exports = Signup;
@@ -38990,184 +38990,184 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var Story = function (_React$Component) {
-	    _inherits(Story, _React$Component);
+		_inherits(Story, _React$Component);
 
-	    function Story() {
-	        var _Object$getPrototypeO;
+		function Story() {
+			var _Object$getPrototypeO;
 
-	        var _temp, _this, _ret;
+			var _temp, _this, _ret;
 
-	        _classCallCheck(this, Story);
+			_classCallCheck(this, Story);
 
-	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	            args[_key] = arguments[_key];
-	        }
+			for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+				args[_key] = arguments[_key];
+			}
 
-	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Story)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
-	            story: null,
-	            comments: null,
-	            likes: 0
-	        }, _this.like = function () {
-	            var story = _this.state.story;
-	            if (story) {
-	                _API2.default.likeStory({ 'story-id': story.id }, function () {
-	                    _this.getLikes(story.id);
-	                }, function (response) {
-	                    alert('Failed to like story');
-	                });
-	            }
-	        }, _this.comment = function (event) {
-	            event.preventDefault();
+			return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Story)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
+				story: null,
+				comments: null,
+				likes: 0
+			}, _this.like = function () {
+				var story = _this.state.story;
+				if (story) {
+					_API2.default.likeStory({ 'story-id': story.id }, function () {
+						_this.getLikes(story.id);
+					}, function (response) {
+						alert('Failed to like story');
+					});
+				}
+			}, _this.comment = function (event) {
+				event.preventDefault();
 
-	            var story = _this.state.story;
-	            if (story) {
-	                var text = event.target.elements['text'].value;
-	                _API2.default.commentStory({ 'story-id': story.id, text: text }, function () {
-	                    _this.getComments(story.id);
-	                }, function (response) {
-	                    alert('Failed to comment on the story!');
-	                });
-	            }
-	        }, _this.getLikes = function (storyID) {
-	            _API2.default.getStoryLikes({ 'story-id': storyID }, function (likes) {
-	                _this.setState({ likes: likes });
-	            }, function (response) {
-	                alert('Failed to get likes count');
-	            });
-	        }, _this.getComments = function (storyID) {
-	            _API2.default.getStoryComments({ 'story-id': storyID }, function (comments) {
-	                _this.setState({ comments: comments });
-	            }, function (response) {
-	                alert('Failed to get story comments');
-	            });
-	        }, _this.comments = function () {
-	            var comments = _this.state.comments;
-	            if (!comments) return null;
+				var story = _this.state.story;
+				if (story) {
+					var text = event.target.elements['text'].value;
+					_API2.default.commentStory({ 'story-id': story.id, text: text }, function () {
+						_this.getComments(story.id);
+					}, function (response) {
+						alert('Failed to comment on the story!');
+					});
+				}
+			}, _this.getLikes = function (storyID) {
+				_API2.default.getStoryLikes({ 'story-id': storyID }, function (likes) {
+					_this.setState({ likes: likes });
+				}, function (response) {
+					alert('Failed to get likes count');
+				});
+			}, _this.getComments = function (storyID) {
+				_API2.default.getStoryComments({ 'story-id': storyID }, function (comments) {
+					_this.setState({ comments: comments });
+				}, function (response) {
+					alert('Failed to get story comments');
+				});
+			}, _this.comments = function () {
+				var comments = _this.state.comments;
+				if (!comments) return null;
 
-	            return comments.map(function (comment, i) {
-	                return _react2.default.createElement(
-	                    'p',
-	                    { key: i },
-	                    _react2.default.createElement(
-	                        'strong',
-	                        null,
-	                        comment.user.firstname,
-	                        ' ',
-	                        comment.user.lastname
-	                    ),
-	                    ' ',
-	                    comment.text
-	                );
-	            });
-	        }, _this.share = function () {
-	            var story = _this.state.story;
+				return comments.map(function (comment, i) {
+					return _react2.default.createElement(
+						'p',
+						{ key: i },
+						_react2.default.createElement(
+							'strong',
+							null,
+							comment.user.firstname,
+							' ',
+							comment.user.lastname
+						),
+						' ',
+						comment.text
+					);
+				});
+			}, _this.share = function () {
+				var story = _this.state.story;
 
-	            if (story) _Dispatcher2.default.dispatch({ type: 'overlay', name: 'share-story', data: { storyID: story.id } });
-	        }, _temp), _possibleConstructorReturn(_this, _ret);
-	    }
+				if (story) _Dispatcher2.default.dispatch({ type: 'overlay', name: 'share-story', data: { storyID: story.id } });
+			}, _temp), _possibleConstructorReturn(_this, _ret);
+		}
 
-	    _createClass(Story, [{
-	        key: 'render',
-	        value: function render() {
-	            var story = this.state.story;
-	            if (!story) return null;
+		_createClass(Story, [{
+			key: 'render',
+			value: function render() {
+				var story = this.state.story;
+				if (!story) return null;
 
-	            var comments = this.state.comments;
-	            var likes = this.state.likes;
+				var comments = this.state.comments;
+				var likes = this.state.likes;
 
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'site-wrap' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'hoopstory' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'heroimage' },
-	                        _react2.default.createElement('img', { src: contentURL(story.image_url, '/images/avatar.png') }),
-	                        _react2.default.createElement(
-	                            'h2',
-	                            null,
-	                            story.name
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'hoop-info' },
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'userprofile' },
-	                            _react2.default.createElement('img', { src: contentURL(story.user.image_url, '/images/avatar.png') }),
-	                            _react2.default.createElement(
-	                                'h6',
-	                                null,
-	                                story.user.firstname,
-	                                ' ',
-	                                story.user.lastname
-	                            )
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'icons' },
-	                            _react2.default.createElement(
-	                                'p',
-	                                null,
-	                                likes,
-	                                ' likes'
-	                            ),
-	                            _react2.default.createElement('img', { src: '/images/icon_love.png', onClick: this.like }),
-	                            _react2.default.createElement('img', { src: '/images/icon_share.png', onClick: this.share })
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'description' },
-	                            _react2.default.createElement(
-	                                'p',
-	                                null,
-	                                story.description
-	                            )
-	                        )
-	                    ),
-	                    _react2.default.createElement('hr', null),
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'usercomment' },
-	                        this.comments()
-	                    ),
-	                    _react2.default.createElement(
-	                        'form',
-	                        { className: 'comment', onSubmit: this.comment },
-	                        _react2.default.createElement('input', { placeholder: 'add a comment', type: 'text', name: 'text' }),
-	                        _react2.default.createElement(
-	                            'button',
-	                            null,
-	                            'Send'
-	                        )
-	                    )
-	                )
-	            );
-	        }
-	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            var _this2 = this;
+				return _react2.default.createElement(
+					'div',
+					{ className: 'site-wrap' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'hoopstory' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'heroimage' },
+							_react2.default.createElement('img', { src: contentURL(story.image_url, '/images/avatar.png') }),
+							_react2.default.createElement(
+								'h2',
+								null,
+								story.name
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'hoop-info' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'userprofile' },
+								_react2.default.createElement('img', { src: contentURL(story.user.image_url, '/images/avatar.png') }),
+								_react2.default.createElement(
+									'h6',
+									null,
+									story.user.firstname,
+									' ',
+									story.user.lastname
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'icons' },
+								_react2.default.createElement(
+									'p',
+									null,
+									likes,
+									' likes'
+								),
+								_react2.default.createElement('img', { src: '/images/icon_love.png', onClick: this.like }),
+								_react2.default.createElement('img', { src: '/images/icon_share.png', onClick: this.share })
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'description' },
+								_react2.default.createElement(
+									'p',
+									null,
+									story.description
+								)
+							)
+						),
+						_react2.default.createElement('hr', null),
+						_react2.default.createElement(
+							'div',
+							{ className: 'usercomment' },
+							this.comments()
+						),
+						_react2.default.createElement(
+							'form',
+							{ className: 'comment', onSubmit: this.comment },
+							_react2.default.createElement('input', { placeholder: 'add a comment', type: 'text', name: 'text' }),
+							_react2.default.createElement(
+								'button',
+								null,
+								'Send'
+							)
+						)
+					)
+				);
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var _this2 = this;
 
-	            var storyID = this.props.params.storyID;
+				var storyID = this.props.params.storyID;
 
-	            _API2.default.getStory({ storyID: storyID }, function (story) {
-	                _this2.setState({ story: story });
-	            }, function (response) {
-	                alert('Failed to get most story');
-	            });
+				_API2.default.getStory({ storyID: storyID }, function (story) {
+					_this2.setState({ story: story });
+				}, function (response) {
+					alert('Failed to get most story');
+				});
 
-	            this.getLikes(storyID);
-	            this.getComments(storyID);
+				this.getLikes(storyID);
+				this.getComments(storyID);
 
-	            _API2.default.viewStory({ 'story-id': storyID });
-	        }
-	    }]);
+				_API2.default.viewStory({ 'story-id': storyID });
+			}
+		}]);
 
-	    return Story;
+		return Story;
 	}(_react2.default.Component);
 
 	module.exports = Story;
