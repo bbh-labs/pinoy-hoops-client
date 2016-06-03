@@ -4,6 +4,7 @@ import React from 'react'
 import { Link, hashHistory } from 'react-router'
 
 import API from './API'
+import Dispatcher from './Dispatcher'
 
 class Navigation extends React.Component {
 	render() {
@@ -41,7 +42,7 @@ class Navigation extends React.Component {
 		event.preventDefault();
 
 		API.logout(() => {
-			window.location.reload();
+			Dispatcher.dispatch({ type: 'refresh-user', goto: '/login' });
 		}, () => {
 			alert('Failed to log out!');
 		});

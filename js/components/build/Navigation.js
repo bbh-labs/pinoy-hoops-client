@@ -12,6 +12,10 @@ var _API = require('./API');
 
 var _API2 = _interopRequireDefault(_API);
 
+var _Dispatcher = require('./Dispatcher');
+
+var _Dispatcher2 = _interopRequireDefault(_Dispatcher);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -149,7 +153,7 @@ var Navigation = function (_React$Component) {
 			event.preventDefault();
 
 			_API2.default.logout(function () {
-				window.location.reload();
+				_Dispatcher2.default.dispatch({ type: 'refresh-user', goto: '/login' });
 			}, function () {
 				alert('Failed to log out!');
 			});
