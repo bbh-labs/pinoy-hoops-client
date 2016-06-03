@@ -147,7 +147,7 @@ var AddStory = function (_React$Component2) {
 						null,
 						'Add your story'
 					),
-					_react2.default.createElement('img', { src: '/images/dummy01.jpg', ref: 'image' }),
+					_react2.default.createElement('img', { src: '/images/hoop_placeholder.png', ref: 'image' }),
 					_react2.default.createElement('input', { type: 'file', name: 'image', onChange: this.previewImage, accept: 'image/*' }),
 					_react2.default.createElement('input', { type: 'text', placeholder: 'Title', name: 'name' }),
 					_react2.default.createElement('br', null),

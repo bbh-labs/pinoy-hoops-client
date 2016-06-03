@@ -54,7 +54,7 @@ class AddStory extends React.Component {
 				<div className='whitebox'>
 					<p style={{ float: 'right', margin: '10px' }} onClick={ this.close }>X</p>
 					<h4>Add your story</h4>
-					<img src='/images/dummy01.jpg' ref='image' />
+					<img src='/images/hoop_placeholder.png' ref='image' />
 					<input type='file' name='image' onChange={ this.previewImage } accept='image/*' />
 					<input type='text' placeholder='Title' name='name' /><br />
 					<input type='hidden' name='description' value='' /> 
