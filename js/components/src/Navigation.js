@@ -15,16 +15,16 @@ class Navigation extends React.Component {
 			   <ul className='navigation'>
 				   <li className='nav-item'><Link to='/'><img src='/images/logo_light.png' /></Link></li>
 				   <li className='nav-item'>
-					   <Link to='/profile'>
+					   <Link to='/profile' onClick={ hideSidebar }>
 						   <div className='menuprofile'>
 							   <img src={ contentURL(user.image_url, '/images/avatar.png') } />{ user.firstname } { user.lastname }
 						   </div>
 					   </Link>
 				   </li>
-				   <li className='nav-item'><Link to='/map'>Map</Link></li>
-				   <li className='nav-item'><Link to='/add-hoop'>Add a hoop</Link></li>
-				   <li className='nav-item'><Link to='/activities'>Activity feed</Link></li>
-				   <li className='nav-item'><Link to='/about'>About</Link></li>
+				   <li className='nav-item'><Link to='/map' onClick={ hideSidebar }>Map</Link></li>
+				   <li className='nav-item'><Link to='/add-hoop' onClick={ hideSidebar }>Add a hoop</Link></li>
+				   <li className='nav-item'><Link to='/activities' onClick={ hideSidebar }>Activity feed</Link></li>
+				   <li className='nav-item'><Link to='/about' onClick={ hideSidebar }>About</Link></li>
 				   <li className='nav-item'><a href='#' onClick={ this.logout }>Logout</a></li>
 			   </ul>
 			)
@@ -32,8 +32,8 @@ class Navigation extends React.Component {
 			return (
 			   <ul className='navigation'>
 				   <li className='nav-item'><Link to='/'><img src='/images/logo_light.png' /></Link></li>
-				   <li className='nav-item'><Link to='/about'>About</Link></li>
-				   <li className='nav-item'><Link to='/login'>Add a hoop</Link></li>
+				   <li className='nav-item'><Link to='/about' onClick={ hideSidebar }>About</Link></li>
+				   <li className='nav-item'><Link to='/login' onClick={ hideSidebar }>Add a hoop</Link></li>
 			   </ul>
 			)
 		}
@@ -43,10 +43,16 @@ class Navigation extends React.Component {
 
 		API.logout(() => {
 			Dispatcher.dispatch({ type: 'refresh-user', goto: '/login' });
+
+			hideSidebar();
 		}, () => {
 			alert('Failed to log out!');
 		});
 	}
+}
+
+function hideSidebar() {
+	Dispatcher.dispatch({ type: 'hide-sidebar' });
 }
 
 module.exports = Navigation;

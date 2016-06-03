@@ -56,7 +56,7 @@ var Navigation = function (_React$Component) {
 						{ className: 'nav-item' },
 						_react2.default.createElement(
 							_reactRouter.Link,
-							{ to: '/profile' },
+							{ to: '/profile', onClick: hideSidebar },
 							_react2.default.createElement(
 								'div',
 								{ className: 'menuprofile' },
@@ -72,7 +72,7 @@ var Navigation = function (_React$Component) {
 						{ className: 'nav-item' },
 						_react2.default.createElement(
 							_reactRouter.Link,
-							{ to: '/map' },
+							{ to: '/map', onClick: hideSidebar },
 							'Map'
 						)
 					),
@@ -81,7 +81,7 @@ var Navigation = function (_React$Component) {
 						{ className: 'nav-item' },
 						_react2.default.createElement(
 							_reactRouter.Link,
-							{ to: '/add-hoop' },
+							{ to: '/add-hoop', onClick: hideSidebar },
 							'Add a hoop'
 						)
 					),
@@ -90,7 +90,7 @@ var Navigation = function (_React$Component) {
 						{ className: 'nav-item' },
 						_react2.default.createElement(
 							_reactRouter.Link,
-							{ to: '/activities' },
+							{ to: '/activities', onClick: hideSidebar },
 							'Activity feed'
 						)
 					),
@@ -99,7 +99,7 @@ var Navigation = function (_React$Component) {
 						{ className: 'nav-item' },
 						_react2.default.createElement(
 							_reactRouter.Link,
-							{ to: '/about' },
+							{ to: '/about', onClick: hideSidebar },
 							'About'
 						)
 					),
@@ -131,7 +131,7 @@ var Navigation = function (_React$Component) {
 						{ className: 'nav-item' },
 						_react2.default.createElement(
 							_reactRouter.Link,
-							{ to: '/about' },
+							{ to: '/about', onClick: hideSidebar },
 							'About'
 						)
 					),
@@ -140,7 +140,7 @@ var Navigation = function (_React$Component) {
 						{ className: 'nav-item' },
 						_react2.default.createElement(
 							_reactRouter.Link,
-							{ to: '/login' },
+							{ to: '/login', onClick: hideSidebar },
 							'Add a hoop'
 						)
 					)
@@ -154,6 +154,8 @@ var Navigation = function (_React$Component) {
 
 			_API2.default.logout(function () {
 				_Dispatcher2.default.dispatch({ type: 'refresh-user', goto: '/login' });
+
+				hideSidebar();
 			}, function () {
 				alert('Failed to log out!');
 			});
@@ -162,5 +164,9 @@ var Navigation = function (_React$Component) {
 
 	return Navigation;
 }(_react2.default.Component);
+
+function hideSidebar() {
+	_Dispatcher2.default.dispatch({ type: 'hide-sidebar' });
+}
 
 module.exports = Navigation;

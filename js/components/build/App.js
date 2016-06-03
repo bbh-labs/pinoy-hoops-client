@@ -161,25 +161,21 @@ var App = function (_React$Component) {
 	return App;
 }(_react2.default.Component);
 
-function hideSidebar() {
-	_Dispatcher2.default.dispatch({ type: 'hide-sidebar' });
-}
-
 _reactDom2.default.render(_react2.default.createElement(
 	_reactRouter.Router,
 	{ history: _browserHistory2.default },
 	_react2.default.createElement(
 		_reactRouter.Route,
 		{ path: '/', component: App },
-		_react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default, onEnter: hideSidebar }),
-		_react2.default.createElement(_reactRouter.Route, { path: '/about', component: _About2.default, onEnter: hideSidebar }),
-		_react2.default.createElement(_reactRouter.Route, { path: '/activities', component: _Activities2.default, onEnter: hideSidebar }),
-		_react2.default.createElement(_reactRouter.Route, { path: '/add-hoop', component: _AddHoop2.default, onEnter: hideSidebar }),
+		_react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
+		_react2.default.createElement(_reactRouter.Route, { path: '/about', component: _About2.default }),
+		_react2.default.createElement(_reactRouter.Route, { path: '/activities', component: _Activities2.default }),
+		_react2.default.createElement(_reactRouter.Route, { path: '/add-hoop', component: _AddHoop2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: '/hoop/:hoopID', component: _Hoop2.default }),
-		_react2.default.createElement(_reactRouter.Route, { path: '/login', component: _Login2.default, onEnter: hideSidebar }),
+		_react2.default.createElement(_reactRouter.Route, { path: '/login', component: _Login2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: '/login-email', component: _LoginEmail2.default }),
-		_react2.default.createElement(_reactRouter.Route, { path: '/map', component: _Map2.default, onEnter: hideSidebar }),
-		_react2.default.createElement(_reactRouter.Route, { path: '/profile', component: _Profile2.default, onEnter: hideSidebar }),
+		_react2.default.createElement(_reactRouter.Route, { path: '/map', component: _Map2.default }),
+		_react2.default.createElement(_reactRouter.Route, { path: '/profile', component: _Profile2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: '/signup', component: _Signup2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: '/story/:storyID', component: _Story2.default })
 	)

@@ -207,25 +207,21 @@
 		return App;
 	}(_react2.default.Component);
 
-	function hideSidebar() {
-		_Dispatcher2.default.dispatch({ type: 'hide-sidebar' });
-	}
-
 	_reactDom2.default.render(_react2.default.createElement(
 		_reactRouter.Router,
 		{ history: _browserHistory2.default },
 		_react2.default.createElement(
 			_reactRouter.Route,
 			{ path: '/', component: App },
-			_react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default, onEnter: hideSidebar }),
-			_react2.default.createElement(_reactRouter.Route, { path: '/about', component: _About2.default, onEnter: hideSidebar }),
-			_react2.default.createElement(_reactRouter.Route, { path: '/activities', component: _Activities2.default, onEnter: hideSidebar }),
-			_react2.default.createElement(_reactRouter.Route, { path: '/add-hoop', component: _AddHoop2.default, onEnter: hideSidebar }),
+			_react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: '/about', component: _About2.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: '/activities', component: _Activities2.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: '/add-hoop', component: _AddHoop2.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: '/hoop/:hoopID', component: _Hoop2.default }),
-			_react2.default.createElement(_reactRouter.Route, { path: '/login', component: _Login2.default, onEnter: hideSidebar }),
+			_react2.default.createElement(_reactRouter.Route, { path: '/login', component: _Login2.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: '/login-email', component: _LoginEmail2.default }),
-			_react2.default.createElement(_reactRouter.Route, { path: '/map', component: _Map2.default, onEnter: hideSidebar }),
-			_react2.default.createElement(_reactRouter.Route, { path: '/profile', component: _Profile2.default, onEnter: hideSidebar }),
+			_react2.default.createElement(_reactRouter.Route, { path: '/map', component: _Map2.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: '/profile', component: _Profile2.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: '/signup', component: _Signup2.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: '/story/:storyID', component: _Story2.default })
 		)
@@ -38224,7 +38220,7 @@
 							{ className: 'nav-item' },
 							_react2.default.createElement(
 								_reactRouter.Link,
-								{ to: '/profile' },
+								{ to: '/profile', onClick: hideSidebar },
 								_react2.default.createElement(
 									'div',
 									{ className: 'menuprofile' },
@@ -38240,7 +38236,7 @@
 							{ className: 'nav-item' },
 							_react2.default.createElement(
 								_reactRouter.Link,
-								{ to: '/map' },
+								{ to: '/map', onClick: hideSidebar },
 								'Map'
 							)
 						),
@@ -38249,7 +38245,7 @@
 							{ className: 'nav-item' },
 							_react2.default.createElement(
 								_reactRouter.Link,
-								{ to: '/add-hoop' },
+								{ to: '/add-hoop', onClick: hideSidebar },
 								'Add a hoop'
 							)
 						),
@@ -38258,7 +38254,7 @@
 							{ className: 'nav-item' },
 							_react2.default.createElement(
 								_reactRouter.Link,
-								{ to: '/activities' },
+								{ to: '/activities', onClick: hideSidebar },
 								'Activity feed'
 							)
 						),
@@ -38267,7 +38263,7 @@
 							{ className: 'nav-item' },
 							_react2.default.createElement(
 								_reactRouter.Link,
-								{ to: '/about' },
+								{ to: '/about', onClick: hideSidebar },
 								'About'
 							)
 						),
@@ -38299,7 +38295,7 @@
 							{ className: 'nav-item' },
 							_react2.default.createElement(
 								_reactRouter.Link,
-								{ to: '/about' },
+								{ to: '/about', onClick: hideSidebar },
 								'About'
 							)
 						),
@@ -38308,7 +38304,7 @@
 							{ className: 'nav-item' },
 							_react2.default.createElement(
 								_reactRouter.Link,
-								{ to: '/login' },
+								{ to: '/login', onClick: hideSidebar },
 								'Add a hoop'
 							)
 						)
@@ -38322,6 +38318,8 @@
 
 				_API2.default.logout(function () {
 					_Dispatcher2.default.dispatch({ type: 'refresh-user', goto: '/login' });
+
+					hideSidebar();
 				}, function () {
 					alert('Failed to log out!');
 				});
@@ -38330,6 +38328,10 @@
 
 		return Navigation;
 	}(_react2.default.Component);
+
+	function hideSidebar() {
+		_Dispatcher2.default.dispatch({ type: 'hide-sidebar' });
+	}
 
 	module.exports = Navigation;
 

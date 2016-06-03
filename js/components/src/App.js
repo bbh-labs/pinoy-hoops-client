@@ -74,22 +74,18 @@ class App extends React.Component {
 	}
 }
 
-function hideSidebar() {
-	Dispatcher.dispatch({ type: 'hide-sidebar' });
-}
-
 ReactDOM.render((
 	<Router history={ browserHistory }>
 		<Route path='/' component={ App }>
-			<IndexRoute component={ Home } onEnter={ hideSidebar } />
-			<Route path='/about' component={ About } onEnter={ hideSidebar } />
-			<Route path='/activities' component={ Activities } onEnter={ hideSidebar } />
-			<Route path='/add-hoop' component={ AddHoop } onEnter={ hideSidebar } />
+			<IndexRoute component={ Home } />
+			<Route path='/about' component={ About } />
+			<Route path='/activities' component={ Activities } />
+			<Route path='/add-hoop' component={ AddHoop } />
 			<Route path='/hoop/:hoopID' component={ Hoop } />
-			<Route path='/login' component={ Login } onEnter={ hideSidebar } />
+			<Route path='/login' component={ Login } />
 			<Route path='/login-email' component={ LoginEmail } />
-			<Route path='/map' component={ Map } onEnter={ hideSidebar } />
-			<Route path='/profile' component={ Profile } onEnter={ hideSidebar } />
+			<Route path='/map' component={ Map } />
+			<Route path='/profile' component={ Profile } />
 			<Route path='/signup' component={ Signup } />
 			<Route path='/story/:storyID' component={ Story } />
 		</Route>
