@@ -37515,6 +37515,67 @@
 				mostViewedStories: null,
 				latestStories: null,
 				tab: 'most-recent'
+			}, _this.stories = function () {
+				var latestStories = _this.state.latestStories;
+				var mostViewedStories = _this.state.mostViewedStories;
+				var mostLikedStories = _this.state.mostLikedStories;
+				var mostCommentedStories = _this.state.mostCommentedStories;
+
+				console.log('fetching data..');
+
+				switch (_this.state.tab) {
+					case 'most-recent':
+						return latestStories ? latestStories.map(function (story) {
+							return _react2.default.createElement(
+								'li',
+								{ key: story.id },
+								_react2.default.createElement(
+									_reactRouter.Link,
+									{ to: '/story/' + story.id },
+									_react2.default.createElement('img', { src: contentURL(story.image_url) })
+								)
+							);
+						}) : null;
+
+					case 'most-viewed':
+						return mostViewedStories ? mostViewedStories.map(function (story) {
+							return _react2.default.createElement(
+								'li',
+								{ key: story.id },
+								_react2.default.createElement(
+									_reactRouter.Link,
+									{ to: '/story/' + story.id },
+									_react2.default.createElement('img', { src: contentURL(story.image_url) })
+								)
+							);
+						}) : null;
+
+					case 'most-liked':
+						return mostLikedStories ? mostLikedStories.map(function (story) {
+							return _react2.default.createElement(
+								'li',
+								{ key: story.id },
+								_react2.default.createElement(
+									_reactRouter.Link,
+									{ to: '/story/' + story.id },
+									_react2.default.createElement('img', { src: contentURL(story.image_url) })
+								)
+							);
+						}) : null;
+
+					case 'most-commented':
+						return mostCommentedStories ? mostCommentedStories.map(function (story) {
+							return _react2.default.createElement(
+								'li',
+								{ key: story.id },
+								_react2.default.createElement(
+									_reactRouter.Link,
+									{ to: '/story/' + story.id },
+									_react2.default.createElement('img', { src: contentURL(story.image_url) })
+								)
+							);
+						}) : null;
+				}
 			}, _this.setTab = function (tab) {
 				_this.setState({ tab: tab });
 			}, _this.addStory = function () {
@@ -37666,68 +37727,6 @@
 			key: 'componentWillUnmount',
 			value: function componentWillUnmount() {
 				_Dispatcher2.default.unregister(this.dispatcherID);
-			}
-		}, {
-			key: 'stories',
-			value: function stories() {
-				var latestStories = this.state.latestStories;
-				var mostViewedStories = this.state.mostViewedStories;
-				var mostLikedStories = this.state.mostLikedStories;
-				var mostCommentedStories = this.state.mostCommentedStories;
-
-				switch (this.state.tab) {
-					case 'most-recent':
-						return latestStories ? latestStories.map(function (story) {
-							return _react2.default.createElement(
-								'li',
-								{ key: story.id },
-								_react2.default.createElement(
-									_reactRouter.Link,
-									{ to: '/story/' + story.id },
-									_react2.default.createElement('img', { src: contentURL(story.image_url) })
-								)
-							);
-						}) : null;
-
-					case 'most-viewed':
-						return mostViewedStories ? mostViewedStories.map(function (story) {
-							return _react2.default.createElement(
-								'li',
-								{ key: story.id },
-								_react2.default.createElement(
-									_reactRouter.Link,
-									{ to: '/story/' + story.id },
-									_react2.default.createElement('img', { src: contentURL(story.image_url) })
-								)
-							);
-						}) : null;
-
-					case 'most-liked':
-						return mostLikedStories ? mostLikedStories.map(function (story) {
-							return _react2.default.createElement(
-								'li',
-								{ key: story.id },
-								_react2.default.createElement(
-									_reactRouter.Link,
-									{ to: '/story/' + story.id },
-									_react2.default.createElement('img', { src: contentURL(story.image_url) })
-								)
-							);
-						}) : null;
-
-					case 'most-commented':
-						return mostCommentedStories ? mostCommentedStories.map(function (story) {
-							return _react2.default.createElement(
-								'li',
-								{ key: story.id },
-								_react2.default.createElement(
-									_reactRouter.Link,
-									{ to: '/story/' + story.id },
-									_react2.default.createElement('img', { src: contentURL(story.image_url) })
-								)
-							);
-						}) : null;
-				}
 			}
 		}]);
 

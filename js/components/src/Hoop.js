@@ -71,7 +71,7 @@ class Hoop extends React.Component {
 	componentWillUnmount() {
 		Dispatcher.unregister(this.dispatcherID);
 	}
-	stories() {
+	stories = () => {
 		let latestStories = this.state.latestStories;
 		let mostViewedStories = this.state.mostViewedStories;
 		let mostLikedStories = this.state.mostLikedStories;
