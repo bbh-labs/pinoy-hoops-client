@@ -45,9 +45,10 @@ var AddHoop = function (_React$Component) {
 		return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(AddHoop)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
 			latlng: null
 		}, _this.submit = function (event) {
+			var latlng = _this.state.latlng;
+
 			event.preventDefault();
 
-			var latlng = _this.state.latlng;
 			if (!latlng) {
 				alert('You must pick a location!');
 				return;

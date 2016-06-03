@@ -153,10 +153,10 @@ var Hoop = function (_React$Component) {
 		key: 'render',
 		value: function render() {
 			var hoop = this.state.hoop;
-			if (!hoop) return null;
-
 			var latestStories = this.state.latestStories;
 			var tab = this.state.tab;
+
+			if (!hoop) return null;
 
 			return _react2.default.createElement(
 				'div',

@@ -109,12 +109,12 @@ var MapView = function (_React$Component2) {
 			if (hoops) {
 				var _loop = function _loop(i) {
 					var hoop = hoops[i];
-
 					var marker = new google.maps.Marker({
 						position: new google.maps.LatLng(hoops[i].latitude, hoops[i].longitude),
 						map: _this2.map,
 						title: hoops[i].name
 					});
+
 					marker.addListener('click', function () {
 						_browserHistory2.default.push('/hoop/' + hoop.id);
 						_Dispatcher2.default.dispatch({ type: 'view-hoop', hoop: hoop });
@@ -132,9 +132,10 @@ var MapView = function (_React$Component2) {
 				_this2.markers[i].setMap(null);
 			}_this2.markers = [];
 		}, _this2.handleSearch = function (event) {
+			var name = event.target.value;
+
 			event.preventDefault();
 
-			var name = event.target.value;
 			if (name.length > 0) _this2.getHoops({ name: name });else _this2.getHoops();
 		}, _temp), _possibleConstructorReturn(_this2, _ret);
 	}

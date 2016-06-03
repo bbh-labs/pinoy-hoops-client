@@ -48,6 +48,7 @@ var Story = function (_React$Component) {
 			likes: 0
 		}, _this.like = function () {
 			var story = _this.state.story;
+
 			if (story) {
 				_API2.default.likeStory({ 'story-id': story.id }, function () {
 					_this.getLikes(story.id);
@@ -69,6 +70,7 @@ var Story = function (_React$Component) {
 			});
 		}, _this.comments = function () {
 			var comments = _this.state.comments;
+
 			if (!comments) return null;
 
 			return comments.map(function (comment, i) {
@@ -96,12 +98,12 @@ var Story = function (_React$Component) {
 	_createClass(Story, [{
 		key: 'render',
 		value: function render() {
-			var story = this.state.story;
-			if (!story) return null;
-
 			var user = this.props.user;
+			var story = this.state.story;
 			var comments = this.state.comments;
 			var likes = this.state.likes;
+
+			if (!story) return null;
 
 			return _react2.default.createElement(
 				'div',
@@ -182,8 +184,6 @@ var Story = function (_React$Component) {
 			this.getLikes(storyID);
 			this.getComments(storyID);
 
-			_API2.default.viewStory({ 'story-id': storyID });
-
 			this.dispatcherID = _Dispatcher2.default.register(function (payload) {
 				switch (payload.type) {
 					case 'story-get-comments':
@@ -191,6 +191,8 @@ var Story = function (_React$Component) {
 						break;
 				}
 			});
+
+			_API2.default.viewStory({ 'story-id': storyID });
 		}
 	}, {
 		key: 'componentWillUnmount',
@@ -220,6 +222,7 @@ var CommentBox = function (_React$Component2) {
 			event.preventDefault();
 
 			var story = _this3.props.story;
+
 			if (story) {
 				(function () {
 					var form = event.target;

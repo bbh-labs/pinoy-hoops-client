@@ -10,13 +10,13 @@ class Home extends React.Component {
 			<section className='landingpage'>
 				<div id='slideshow'>
 				   <div>
-					   <img src="/images/landingpage/hero01.jpg" />
+					   <img src='/images/landingpage/hero01.jpg' />
 				   </div>
 				   <div>
-					   <img src="/images/landingpage/hero02.jpg" />
+					   <img src='/images/landingpage/hero02.jpg' />
 				   </div>
 				   <div>
-					   <img src="/images/landingpage/hero03.jpg" />
+					   <img src='/images/landingpage/hero03.jpg' />
 				   </div>
 				</div>
 
@@ -31,7 +31,7 @@ class Home extends React.Component {
 		)
 	}
 	componentDidMount() {
-		$("#slideshow > div:gt(0)").hide();
+		$('#slideshow > div:gt(0)').hide();
 
 		this.intervalID = setInterval(function() {
 			$('#slideshow > div:first')

@@ -9,11 +9,11 @@ import Dispatcher from './Dispatcher'
 class Hoop extends React.Component {
 	render() {
 		let hoop = this.state.hoop;
-		if (!hoop)
-			return null;
-
 		let latestStories = this.state.latestStories;
 		let tab = this.state.tab;
+
+		if (!hoop)
+			return null;
 
 		return (
 			<div className='site-wrap'>

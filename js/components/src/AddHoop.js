@@ -52,9 +52,10 @@ class AddHoop extends React.Component {
 		Dispatcher.unregister(this.listenerID);
 	}
 	submit = (event) => {
+		let latlng = this.state.latlng;
+
 		event.preventDefault();
 
-		let latlng = this.state.latlng;
 		if (!latlng) {
 			alert('You must pick a location!');
 			return;
@@ -76,14 +77,12 @@ class AddHoop extends React.Component {
 
 class MapView extends React.Component {
 	render() {
-		return (
-			<div id='map'></div>
-		)
+		return <div id='map'></div>
 	}
 	componentDidMount() {
 		// Basic options for a simple Google Map
 		// For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-		var mapOptions = {
+		let mapOptions = {
 			// How zoomed in you want the map to start at (always required)
 			zoom: 13,
 			scrollwheel: false,

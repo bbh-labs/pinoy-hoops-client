@@ -1,8 +1,7 @@
 // This is for switching between browserHistory and hashHistory
 import { hashHistory, browserHistory } from 'react-router'
 
-if (MOCKUP) {
+if (MOCKUP)
 	module.exports = hashHistory;
-} else {
+else
 	module.exports = browserHistory;
-}

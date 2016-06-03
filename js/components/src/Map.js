@@ -27,9 +27,7 @@ class Map extends React.Component {
 
 class MapView extends React.Component {
 	render() {
-		return (
-			<div id='map'></div>
-		)
+		return <div id='map'></div>
 	}
 	componentDidMount() {
 		// Basic options for a simple Google Map
@@ -110,12 +108,12 @@ class MapView extends React.Component {
 		if (hoops) {
 			for (let i in hoops) {
 				let hoop = hoops[i];
-
 				let marker = new google.maps.Marker({
 					position: new google.maps.LatLng(hoops[i].latitude, hoops[i].longitude),
 					map: this.map,
 					title: hoops[i].name,
 				});
+
 				marker.addListener('click', function() {
 					browserHistory.push('/hoop/' + hoop.id);
 					Dispatcher.dispatch({ type: 'view-hoop', hoop: hoop });
@@ -132,9 +130,10 @@ class MapView extends React.Component {
 		this.markers = [];
 	}
 	handleSearch = (event) => {
+		let name = event.target.value;
+
 		event.preventDefault();
 
-		let name = event.target.value;
 		if (name.length > 0)
 			this.getHoops({ name: name });
 		else

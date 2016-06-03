@@ -72,8 +72,9 @@ var Profile = function (_React$Component) {
 		}, _this.hoops = function () {
 			var myHoops = _this.state.myHoops;
 			var otherHoops = _this.state.otherHoops;
+			var tab = _this.state.tab;
 
-			switch (_this.state.tab) {
+			switch (tab) {
 				case 'my-hoops':
 					return myHoops ? myHoops.map(function (hoop) {
 						return _react2.default.createElement(
@@ -100,6 +101,7 @@ var Profile = function (_React$Component) {
 			});
 		}, _this.toggleEdit = function () {
 			var editing = _this.state.editing;
+
 			_this.setState({ editing: !editing });
 		}, _temp), _possibleConstructorReturn(_this, _ret);
 	}
@@ -108,10 +110,10 @@ var Profile = function (_React$Component) {
 		key: 'render',
 		value: function render() {
 			var user = this.props.user;
-			if (!user) return null;
-
 			var tab = this.state.tab;
 			var editing = this.state.editing;
+
+			if (!user) return null;
 
 			return _react2.default.createElement(
 				'div',

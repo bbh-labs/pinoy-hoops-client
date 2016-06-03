@@ -20,12 +20,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ACTIVITY_POST_HOOP = 1,
-    ACTIVITY_POST_STORY = 2,
-    ACTIVITY_POST_COMMENT_HOOP = 101,
-    ACTIVITY_POST_COMMENT_STORY = 102,
-    ACTIVITY_POST_LIKE_HOOP = 201,
-    ACTIVITY_POST_LIKE_STORY = 202;
+var ACTIVITY_POST_HOOP = 1;
+var ACTIVITY_POST_STORY = 2;
+var ACTIVITY_POST_COMMENT_HOOP = 101;
+var ACTIVITY_POST_COMMENT_STORY = 102;
+var ACTIVITY_POST_LIKE_HOOP = 201;
+var ACTIVITY_POST_LIKE_STORY = 202;
 
 var Activities = function (_React$Component) {
 	_inherits(Activities, _React$Component);
@@ -80,6 +80,7 @@ var Activities = function (_React$Component) {
 		key: 'activities',
 		value: function activities() {
 			var activities = this.state.activities;
+
 			if (!activities) return null;
 
 			return activities.map(function (activity, i) {

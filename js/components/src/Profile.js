@@ -9,11 +9,11 @@ import Dispatcher from './Dispatcher'
 class Profile extends React.Component {
 	render() {
 		let user = this.props.user;
-		if (!user)
-			return null;
-
 		let tab = this.state.tab;
 		let editing = this.state.editing;
+
+		if (!user)
+			return null;
 
 		return (
 			<div className='site-wrap'>
@@ -70,8 +70,9 @@ class Profile extends React.Component {
 	hoops = () => {
 		let myHoops = this.state.myHoops;
 		let otherHoops = this.state.otherHoops;
+		let tab = this.state.tab;
 
-		switch (this.state.tab) {
+		switch (tab) {
 		case 'my-hoops':
 			return myHoops ? myHoops.map(function(hoop) {
 				return (
@@ -115,6 +116,7 @@ class Profile extends React.Component {
 	}
 	toggleEdit = () => {
 		let editing = this.state.editing;
+
 		this.setState({ editing: !editing });
 	}
 }

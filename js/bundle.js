@@ -26014,11 +26014,7 @@
 
 	var _reactRouter = __webpack_require__(168);
 
-	if (MOCKUP) {
-		module.exports = _reactRouter.hashHistory;
-	} else {
-		module.exports = _reactRouter.browserHistory;
-	} // This is for switching between browserHistory and hashHistory
+	if (MOCKUP) module.exports = _reactRouter.hashHistory;else module.exports = _reactRouter.browserHistory; // This is for switching between browserHistory and hashHistory
 
 /***/ },
 /* 230 */
@@ -36985,12 +36981,12 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var ACTIVITY_POST_HOOP = 1,
-	    ACTIVITY_POST_STORY = 2,
-	    ACTIVITY_POST_COMMENT_HOOP = 101,
-	    ACTIVITY_POST_COMMENT_STORY = 102,
-	    ACTIVITY_POST_LIKE_HOOP = 201,
-	    ACTIVITY_POST_LIKE_STORY = 202;
+	var ACTIVITY_POST_HOOP = 1;
+	var ACTIVITY_POST_STORY = 2;
+	var ACTIVITY_POST_COMMENT_HOOP = 101;
+	var ACTIVITY_POST_COMMENT_STORY = 102;
+	var ACTIVITY_POST_LIKE_HOOP = 201;
+	var ACTIVITY_POST_LIKE_STORY = 202;
 
 	var Activities = function (_React$Component) {
 		_inherits(Activities, _React$Component);
@@ -37045,6 +37041,7 @@
 			key: 'activities',
 			value: function activities() {
 				var activities = this.state.activities;
+
 				if (!activities) return null;
 
 				return activities.map(function (activity, i) {
@@ -37207,9 +37204,10 @@
 			return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(AddHoop)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
 				latlng: null
 			}, _this.submit = function (event) {
+				var latlng = _this.state.latlng;
+
 				event.preventDefault();
 
-				var latlng = _this.state.latlng;
 				if (!latlng) {
 					alert('You must pick a location!');
 					return;
@@ -37477,7 +37475,7 @@
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				(0, _jquery2.default)("#slideshow > div:gt(0)").hide();
+				(0, _jquery2.default)('#slideshow > div:gt(0)').hide();
 
 				this.intervalID = setInterval(function () {
 					(0, _jquery2.default)('#slideshow > div:first').fadeOut(1000).next().fadeIn(1000).end().appendTo('#slideshow');
@@ -37654,10 +37652,10 @@
 			key: 'render',
 			value: function render() {
 				var hoop = this.state.hoop;
-				if (!hoop) return null;
-
 				var latestStories = this.state.latestStories;
 				var tab = this.state.tab;
+
+				if (!hoop) return null;
 
 				return _react2.default.createElement(
 					'div',
@@ -38093,12 +38091,12 @@
 				if (hoops) {
 					var _loop = function _loop(i) {
 						var hoop = hoops[i];
-
 						var marker = new google.maps.Marker({
 							position: new google.maps.LatLng(hoops[i].latitude, hoops[i].longitude),
 							map: _this2.map,
 							title: hoops[i].name
 						});
+
 						marker.addListener('click', function () {
 							_browserHistory2.default.push('/hoop/' + hoop.id);
 							_Dispatcher2.default.dispatch({ type: 'view-hoop', hoop: hoop });
@@ -38116,9 +38114,10 @@
 					_this2.markers[i].setMap(null);
 				}_this2.markers = [];
 			}, _this2.handleSearch = function (event) {
+				var name = event.target.value;
+
 				event.preventDefault();
 
-				var name = event.target.value;
 				if (name.length > 0) _this2.getHoops({ name: name });else _this2.getHoops();
 			}, _temp), _possibleConstructorReturn(_this2, _ret);
 		}
@@ -38760,8 +38759,9 @@
 			}, _this.hoops = function () {
 				var myHoops = _this.state.myHoops;
 				var otherHoops = _this.state.otherHoops;
+				var tab = _this.state.tab;
 
-				switch (_this.state.tab) {
+				switch (tab) {
 					case 'my-hoops':
 						return myHoops ? myHoops.map(function (hoop) {
 							return _react2.default.createElement(
@@ -38788,6 +38788,7 @@
 				});
 			}, _this.toggleEdit = function () {
 				var editing = _this.state.editing;
+
 				_this.setState({ editing: !editing });
 			}, _temp), _possibleConstructorReturn(_this, _ret);
 		}
@@ -38796,10 +38797,10 @@
 			key: 'render',
 			value: function render() {
 				var user = this.props.user;
-				if (!user) return null;
-
 				var tab = this.state.tab;
 				var editing = this.state.editing;
+
+				if (!user) return null;
 
 				return _react2.default.createElement(
 					'div',
@@ -39153,6 +39154,7 @@
 				likes: 0
 			}, _this.like = function () {
 				var story = _this.state.story;
+
 				if (story) {
 					_API2.default.likeStory({ 'story-id': story.id }, function () {
 						_this.getLikes(story.id);
@@ -39174,6 +39176,7 @@
 				});
 			}, _this.comments = function () {
 				var comments = _this.state.comments;
+
 				if (!comments) return null;
 
 				return comments.map(function (comment, i) {
@@ -39201,12 +39204,12 @@
 		_createClass(Story, [{
 			key: 'render',
 			value: function render() {
-				var story = this.state.story;
-				if (!story) return null;
-
 				var user = this.props.user;
+				var story = this.state.story;
 				var comments = this.state.comments;
 				var likes = this.state.likes;
+
+				if (!story) return null;
 
 				return _react2.default.createElement(
 					'div',
@@ -39287,8 +39290,6 @@
 				this.getLikes(storyID);
 				this.getComments(storyID);
 
-				_API2.default.viewStory({ 'story-id': storyID });
-
 				this.dispatcherID = _Dispatcher2.default.register(function (payload) {
 					switch (payload.type) {
 						case 'story-get-comments':
@@ -39296,6 +39297,8 @@
 							break;
 					}
 				});
+
+				_API2.default.viewStory({ 'story-id': storyID });
 			}
 		}, {
 			key: 'componentWillUnmount',
@@ -39325,6 +39328,7 @@
 				event.preventDefault();
 
 				var story = _this3.props.story;
+
 				if (story) {
 					(function () {
 						var form = event.target;

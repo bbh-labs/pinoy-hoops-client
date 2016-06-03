@@ -5,12 +5,12 @@ import { Link } from 'react-router';
 
 import API from './API';
 
-const ACTIVITY_POST_HOOP		  = 1,
-	  ACTIVITY_POST_STORY		 = 2,
-	  ACTIVITY_POST_COMMENT_HOOP  = 101,
-	  ACTIVITY_POST_COMMENT_STORY = 102,
-	  ACTIVITY_POST_LIKE_HOOP	 = 201,
-	  ACTIVITY_POST_LIKE_STORY	= 202;
+const ACTIVITY_POST_HOOP = 1;
+const ACTIVITY_POST_STORY = 2;
+const ACTIVITY_POST_COMMENT_HOOP = 101;
+const ACTIVITY_POST_COMMENT_STORY = 102;
+const ACTIVITY_POST_LIKE_HOOP = 201;
+const ACTIVITY_POST_LIKE_STORY = 202;
 
 class Activities extends React.Component {
 	render() {
@@ -41,6 +41,7 @@ class Activities extends React.Component {
 	}
 	activities() {
 		let activities = this.state.activities;
+
 		if (!activities)
 			return null;
 

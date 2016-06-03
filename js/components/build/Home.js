@@ -77,7 +77,7 @@ var Home = function (_React$Component) {
 	}, {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
-			(0, _jquery2.default)("#slideshow > div:gt(0)").hide();
+			(0, _jquery2.default)('#slideshow > div:gt(0)').hide();
 
 			this.intervalID = setInterval(function () {
 				(0, _jquery2.default)('#slideshow > div:first').fadeOut(1000).next().fadeIn(1000).end().appendTo('#slideshow');

@@ -9,13 +9,13 @@ import Dispatcher from './Dispatcher';
 
 class Story extends React.Component {
 	render() {
-		let story = this.state.story;
-		if (!story)
-			return null;
-
 		let user = this.props.user;
+		let story = this.state.story;
 		let comments = this.state.comments;
 		let likes = this.state.likes;
+
+		if (!story)
+			return null;
 
 		return (
 			<div className='site-wrap'>
@@ -64,8 +64,6 @@ class Story extends React.Component {
 		this.getLikes(storyID);
 		this.getComments(storyID);
 
-		API.viewStory({ 'story-id': storyID });
-
 		this.dispatcherID = Dispatcher.register((payload) => {
 			switch (payload.type) {
 			case 'story-get-comments':
@@ -73,12 +71,15 @@ class Story extends React.Component {
 				break;
 			}
 		});
+
+		API.viewStory({ 'story-id': storyID });
 	}
 	componentWillUnmount() {
 		Dispatcher.unregister(this.dispatcherID);
 	}
 	like = () => {
 		let story = this.state.story;
+
 		if (story) {
 			API.likeStory({ 'story-id': story.id }, () => {
 				this.getLikes(story.id);
@@ -103,6 +104,7 @@ class Story extends React.Component {
 	}
 	comments = () => {
 		let comments = this.state.comments;
+
 		if (!comments)
 			return null;
 
@@ -130,6 +132,7 @@ class CommentBox extends React.Component {
 		event.preventDefault();
 
 		let story = this.props.story;
+
 		if (story) {
 			let form = event.target;
 			let text = form.elements['text'].value;
