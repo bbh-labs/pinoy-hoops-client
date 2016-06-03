@@ -51,8 +51,6 @@ var Hoop = function (_React$Component) {
 			var mostLikedStories = _this.state.mostLikedStories;
 			var mostCommentedStories = _this.state.mostCommentedStories;
 
-			console.log('fetching data..');
-
 			switch (_this.state.tab) {
 				case 'most-recent':
 					return latestStories ? latestStories.map(function (story) {
