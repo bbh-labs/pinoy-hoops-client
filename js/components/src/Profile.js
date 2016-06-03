@@ -13,6 +13,7 @@ class Profile extends React.Component {
 			return null;
 
 		let tab = this.state.tab;
+		let editing = this.state.editing;
 
 		return (
 			<div className='site-wrap'>
@@ -25,7 +26,7 @@ class Profile extends React.Component {
 					</form>
 					<div className='info'>
 						{ this.profileInfo() }
-						<button onClick={ this.toggleEdit }>Edit Profile</button>
+						<button onClick={ this.toggleEdit }>{ editing ? 'Done' : 'Edit Profile' } </button>
 					</div>
 
 					<div className='myhoops'>

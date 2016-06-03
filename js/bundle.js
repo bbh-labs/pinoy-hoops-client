@@ -38771,6 +38771,7 @@
 				if (!user) return null;
 
 				var tab = this.state.tab;
+				var editing = this.state.editing;
 
 				return _react2.default.createElement(
 					'div',
@@ -38795,7 +38796,8 @@
 							_react2.default.createElement(
 								'button',
 								{ onClick: this.toggleEdit },
-								'Edit Profile'
+								editing ? 'Done' : 'Edit Profile',
+								' '
 							)
 						),
 						_react2.default.createElement(
