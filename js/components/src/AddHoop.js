@@ -84,7 +84,7 @@ class MapView extends React.Component {
 		// For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
 		let mapOptions = {
 			// How zoomed in you want the map to start at (always required)
-			zoom: 13,
+			zoom: 12,
 			scrollwheel: false,
 			// The latitude and longitude to center the map (always required)
 			center: new google.maps.LatLng(14.5980, 120.9446), // Manila
