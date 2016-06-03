@@ -36849,13 +36849,25 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	var NUM_SLIDES = 3;
+
 	var About = function (_React$Component) {
 		_inherits(About, _React$Component);
 
 		function About() {
+			var _Object$getPrototypeO;
+
+			var _temp, _this, _ret;
+
 			_classCallCheck(this, About);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(About).apply(this, arguments));
+			for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+				args[_key] = arguments[_key];
+			}
+
+			return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(About)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
+				slideIndex: 0
+			}, _temp), _possibleConstructorReturn(_this, _ret);
 		}
 
 		_createClass(About, [{
@@ -36869,7 +36881,7 @@
 						{ className: 'about' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'csslider' },
+							{ className: 'csslider', ref: 'csslider' },
 							_react2.default.createElement('input', { type: 'radio', name: 'slides', id: 'slides_1', defaultChecked: true }),
 							_react2.default.createElement('input', { type: 'radio', name: 'slides', id: 'slides_2' }),
 							_react2.default.createElement('input', { type: 'radio', name: 'slides', id: 'slides_3' }),
@@ -36920,6 +36932,25 @@
 						)
 					)
 				);
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var hammertime = new Hammer(this.refs.csslider);
+				var slideIndex = this.state.slideIndex;
+
+				hammertime.on('swipe', function (event) {
+					var prevSlideIndex = slideIndex;
+					var prevSlide = document.getElementById('slides_' + (prevSlideIndex + 1));
+
+					prevSlide.checked = false;
+
+					if (event.overallVelocity > 0) slideIndex = slideIndex - 1 >= 0 ? slideIndex - 1 : NUM_SLIDES - 1;else slideIndex = (slideIndex + 1) % NUM_SLIDES;
+
+					var slide = document.getElementById('slides_' + (slideIndex + 1));
+
+					slide.checked = true;
+				});
 			}
 		}]);
 

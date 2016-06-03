@@ -2,12 +2,14 @@
 
 import React from 'react';
 
+const NUM_SLIDES = 3;
+
 class About extends React.Component {
 	render() {
 		return (
 			<div className='site-wrap'>
 				<div className='about'>
-					<div className='csslider'>
+					<div className='csslider' ref='csslider'>
 						<input type='radio' name='slides' id='slides_1' defaultChecked />
 						<input type='radio' name='slides' id='slides_2' />
 						<input type='radio' name='slides' id='slides_3' />
@@ -37,6 +39,29 @@ class About extends React.Component {
 				</div>
 			</div>
 		)
+	}
+	state = {
+		slideIndex: 0,
+	}
+	componentDidMount() {
+		let hammertime = new Hammer(this.refs.csslider);
+		let slideIndex = this.state.slideIndex;
+
+		hammertime.on('swipe', function(event) {
+			let prevSlideIndex = slideIndex;
+			let prevSlide = document.getElementById('slides_' + (prevSlideIndex + 1));
+			
+			prevSlide.checked = false;
+
+			if (event.overallVelocity > 0)
+				slideIndex = (slideIndex - 1) >= 0 ? slideIndex - 1 : NUM_SLIDES - 1;
+			else
+				slideIndex = (slideIndex + 1) % NUM_SLIDES;
+
+			let slide = document.getElementById('slides_' + (slideIndex + 1));
+
+			slide.checked = true;
+		});
 	}
 }
 
