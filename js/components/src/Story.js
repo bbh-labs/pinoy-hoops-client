@@ -131,9 +131,12 @@ class CommentBox extends React.Component {
 
 		let story = this.props.story;
 		if (story) {
-			let text = event.target.elements['text'].value;
+			let form = event.target;
+			let text = form.elements['text'].value;
 
 			API.commentStory({ 'story-id': story.id, text: text }, () => {
+				form.reset();
+
 				this.dispatchGetComments();
 			}, (response) => {
 				alert('Failed to comment on the story!');

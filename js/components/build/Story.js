@@ -221,13 +221,18 @@ var CommentBox = function (_React$Component2) {
 
 			var story = _this3.props.story;
 			if (story) {
-				var text = event.target.elements['text'].value;
+				(function () {
+					var form = event.target;
+					var text = form.elements['text'].value;
 
-				_API2.default.commentStory({ 'story-id': story.id, text: text }, function () {
-					_this3.dispatchGetComments();
-				}, function (response) {
-					alert('Failed to comment on the story!');
-				});
+					_API2.default.commentStory({ 'story-id': story.id, text: text }, function () {
+						form.reset();
+
+						_this3.dispatchGetComments();
+					}, function (response) {
+						alert('Failed to comment on the story!');
+					});
+				})();
 			}
 		}, _this3.dispatchGetComments = function () {
 			_Dispatcher2.default.dispatch({ type: 'story-get-comments' });
