@@ -1,0 +1,22 @@
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  .fadein img{
+    height: 45%;
+    margin: 45% -29%;
+  }
+
+  .logo img{
+    max-width: 160px;
+  }
+
+  #about .backgroundimage{
+    top: -0%;
+    left: -60%;
+    width: 200%;
+    height: 100%;
+  }
+
+  #about p{
+    padding-right: 10px;
+  }
+}
