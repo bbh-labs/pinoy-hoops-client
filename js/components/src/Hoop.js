@@ -76,9 +76,6 @@ class Hoop extends React.Component {
 	}
 	state = {
 		hoop: null,
-		mostCommentedStories: null,
-		mostLikedStories: null,
-		mostViewedStories: null,
 		latestStories: null,
 		tab: 'most-recent',
 	}
@@ -98,28 +95,10 @@ class Hoop extends React.Component {
 	}
 	stories = () => {
 		let latestStories = this.state.latestStories;
-		let mostViewedStories = this.state.mostViewedStories;
-		let mostLikedStories = this.state.mostLikedStories;
-		let mostCommentedStories = this.state.mostCommentedStories;
 
 		switch (this.state.tab) {
 		case 'most-recent':
 			return latestStories ? latestStories.map(function(story) {
-				return <li key={ story.id }><Link to={ '/story/' + story.id }><img src={ contentURL(story.image_url) } /></Link></li>
-			}) : null;
-
-		case 'most-viewed':
-			return mostViewedStories ? mostViewedStories.map(function(story) {
-				return <li key={ story.id }><Link to={ '/story/' + story.id }><img src={ contentURL(story.image_url) } /></Link></li>
-			}) : null;
-
-		case 'most-liked':
-			return mostLikedStories ? mostLikedStories.map(function(story) {
-				return <li key={ story.id }><Link to={ '/story/' + story.id }><img src={ contentURL(story.image_url) } /></Link></li>
-			}) : null;
-
-		case 'most-commented':
-			return mostCommentedStories ? mostCommentedStories.map(function(story) {
 				return <li key={ story.id }><Link to={ '/story/' + story.id }><img src={ contentURL(story.image_url) } /></Link></li>
 			}) : null;
 		}
@@ -146,24 +125,6 @@ class Hoop extends React.Component {
 			this.setState({ hoop: hoop });
 		}, (response) => {
 			alert('Failed to get hoop');
-		});
-
-		API.getMostCommentedStories({ hoop_id: hoopID }, (stories) => {
-			this.setState({ mostCommentedStories: stories });
-		}, (response) => {
-			alert('Failed to get most commented stories');
-		});
-
-		API.getMostLikedStories({ hoop_id: hoopID }, (stories) => {
-			this.setState({ mostLikedStories: stories });
-		}, (response) => {
-			alert('Failed to get most liked stories');
-		});
-
-		API.getMostViewedStories({ hoop_id: hoopID }, (stories) => {
-			this.setState({ mostViewedStories: stories });
-		}, (response) => {
-			alert('Failed to get most viewed stories');
 		});
 
 		API.getLatestStories({ hoop_id: hoopID }, (stories) => {

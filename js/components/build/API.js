@@ -461,48 +461,6 @@ var API = function () {
 			}
 		}
 	}, {
-		key: 'getMostCommentedStories',
-		value: function getMostCommentedStories(data, done, fail) {
-			if (MOCKUP) {
-				done(HOOPS);
-			} else {
-				_jquery2.default.ajax({
-					url: '/api/stories/mostcommented',
-					method: 'GET',
-					data: data,
-					dataType: 'json'
-				}).done(done).fail(fail);
-			}
-		}
-	}, {
-		key: 'getMostLikedStories',
-		value: function getMostLikedStories(data, done, fail) {
-			if (MOCKUP) {
-				done(HOOPS);
-			} else {
-				_jquery2.default.ajax({
-					url: '/api/stories/mostliked',
-					method: 'GET',
-					data: data,
-					dataType: 'json'
-				}).done(done).fail(fail);
-			}
-		}
-	}, {
-		key: 'getMostViewedStories',
-		value: function getMostViewedStories(data, done, fail) {
-			if (MOCKUP) {
-				done(STORIES);
-			} else {
-				_jquery2.default.ajax({
-					url: '/api/stories/mostviewed',
-					method: 'GET',
-					data: data,
-					dataType: 'json'
-				}).done(done).fail(fail);
-			}
-		}
-	}, {
 		key: 'getLatestStories',
 		value: function getLatestStories(data, done, fail) {
 			if (MOCKUP) {

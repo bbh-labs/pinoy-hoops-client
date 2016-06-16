@@ -431,42 +431,6 @@ class API {
 			}).done(done).fail(fail);
 		}
 	}
-	static getMostCommentedStories(data, done, fail) {
-		if (MOCKUP) {
-			done(HOOPS);
-		} else {
-			$.ajax({
-				url: '/api/stories/mostcommented',
-				method: 'GET',
-				data: data,
-				dataType: 'json',
-			}).done(done).fail(fail);
-		}
-	}
-	static getMostLikedStories(data, done, fail) {
-		if (MOCKUP) {
-			done(HOOPS);
-		} else {
-			$.ajax({
-				url: '/api/stories/mostliked',
-				method: 'GET',
-				data: data,
-				dataType: 'json',
-			}).done(done).fail(fail);
-		}
-	}
-	static getMostViewedStories(data, done, fail) {
-		if (MOCKUP) {
-			done(STORIES);
-		} else {
-			$.ajax({
-				url: '/api/stories/mostviewed',
-				method: 'GET',
-				data: data,
-				dataType: 'json',
-			}).done(done).fail(fail);
-		}
-	}
 	static getLatestStories(data, done, fail) {
 		if (MOCKUP) {
 			done(STORIES);

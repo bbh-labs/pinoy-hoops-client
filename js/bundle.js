@@ -26856,48 +26856,6 @@
 				}
 			}
 		}, {
-			key: 'getMostCommentedStories',
-			value: function getMostCommentedStories(data, done, fail) {
-				if (MOCKUP) {
-					done(HOOPS);
-				} else {
-					_jquery2.default.ajax({
-						url: '/api/stories/mostcommented',
-						method: 'GET',
-						data: data,
-						dataType: 'json'
-					}).done(done).fail(fail);
-				}
-			}
-		}, {
-			key: 'getMostLikedStories',
-			value: function getMostLikedStories(data, done, fail) {
-				if (MOCKUP) {
-					done(HOOPS);
-				} else {
-					_jquery2.default.ajax({
-						url: '/api/stories/mostliked',
-						method: 'GET',
-						data: data,
-						dataType: 'json'
-					}).done(done).fail(fail);
-				}
-			}
-		}, {
-			key: 'getMostViewedStories',
-			value: function getMostViewedStories(data, done, fail) {
-				if (MOCKUP) {
-					done(STORIES);
-				} else {
-					_jquery2.default.ajax({
-						url: '/api/stories/mostviewed',
-						method: 'GET',
-						data: data,
-						dataType: 'json'
-					}).done(done).fail(fail);
-				}
-			}
-		}, {
 			key: 'getLatestStories',
 			value: function getLatestStories(data, done, fail) {
 				if (MOCKUP) {
@@ -37561,59 +37519,14 @@
 
 			return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Hoop)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
 				hoop: null,
-				mostCommentedStories: null,
-				mostLikedStories: null,
-				mostViewedStories: null,
 				latestStories: null,
 				tab: 'most-recent'
 			}, _this.stories = function () {
 				var latestStories = _this.state.latestStories;
-				var mostViewedStories = _this.state.mostViewedStories;
-				var mostLikedStories = _this.state.mostLikedStories;
-				var mostCommentedStories = _this.state.mostCommentedStories;
 
 				switch (_this.state.tab) {
 					case 'most-recent':
 						return latestStories ? latestStories.map(function (story) {
-							return _react2.default.createElement(
-								'li',
-								{ key: story.id },
-								_react2.default.createElement(
-									_reactRouter.Link,
-									{ to: '/story/' + story.id },
-									_react2.default.createElement('img', { src: contentURL(story.image_url) })
-								)
-							);
-						}) : null;
-
-					case 'most-viewed':
-						return mostViewedStories ? mostViewedStories.map(function (story) {
-							return _react2.default.createElement(
-								'li',
-								{ key: story.id },
-								_react2.default.createElement(
-									_reactRouter.Link,
-									{ to: '/story/' + story.id },
-									_react2.default.createElement('img', { src: contentURL(story.image_url) })
-								)
-							);
-						}) : null;
-
-					case 'most-liked':
-						return mostLikedStories ? mostLikedStories.map(function (story) {
-							return _react2.default.createElement(
-								'li',
-								{ key: story.id },
-								_react2.default.createElement(
-									_reactRouter.Link,
-									{ to: '/story/' + story.id },
-									_react2.default.createElement('img', { src: contentURL(story.image_url) })
-								)
-							);
-						}) : null;
-
-					case 'most-commented':
-						return mostCommentedStories ? mostCommentedStories.map(function (story) {
 							return _react2.default.createElement(
 								'li',
 								{ key: story.id },
@@ -37642,24 +37555,6 @@
 					_this.setState({ hoop: hoop });
 				}, function (response) {
 					alert('Failed to get hoop');
-				});
-
-				_API2.default.getMostCommentedStories({ hoop_id: hoopID }, function (stories) {
-					_this.setState({ mostCommentedStories: stories });
-				}, function (response) {
-					alert('Failed to get most commented stories');
-				});
-
-				_API2.default.getMostLikedStories({ hoop_id: hoopID }, function (stories) {
-					_this.setState({ mostLikedStories: stories });
-				}, function (response) {
-					alert('Failed to get most liked stories');
-				});
-
-				_API2.default.getMostViewedStories({ hoop_id: hoopID }, function (stories) {
-					_this.setState({ mostViewedStories: stories });
-				}, function (response) {
-					alert('Failed to get most viewed stories');
 				});
 
 				_API2.default.getLatestStories({ hoop_id: hoopID }, function (stories) {
