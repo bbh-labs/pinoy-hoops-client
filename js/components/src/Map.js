@@ -40,10 +40,22 @@ class MapView extends React.Component {
 		this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
 		this.map.addListener('click', (event) => {
-			if (user)
+			if (user) {
 				Dispatcher.dispatch({ type: 'map-click', latlng: event.latLng });
-			else
+
+				if (this.marker) {
+					this.marker.setMap(null);
+					this.marker = null;
+				}
+
+				this.marker = new google.maps.Marker({
+					position: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
+					map: this.map,
+					title: 'Hoop',
+				});
+			} else {
 				browserHistory.push('/login');
+			}
 		});
 
 		this.getHoops();

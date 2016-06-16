@@ -163,7 +163,22 @@ var MapView = function (_React$Component2) {
 			this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
 			this.map.addListener('click', function (event) {
-				if (user) _Dispatcher2.default.dispatch({ type: 'map-click', latlng: event.latLng });else _browserHistory2.default.push('/login');
+				if (user) {
+					_Dispatcher2.default.dispatch({ type: 'map-click', latlng: event.latLng });
+
+					if (_this3.marker) {
+						_this3.marker.setMap(null);
+						_this3.marker = null;
+					}
+
+					_this3.marker = new google.maps.Marker({
+						position: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
+						map: _this3.map,
+						title: 'Hoop'
+					});
+				} else {
+					_browserHistory2.default.push('/login');
+				}
 			});
 
 			this.getHoops();
