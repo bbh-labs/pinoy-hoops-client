@@ -549,17 +549,6 @@ class API {
 			}).done(done).fail(fail);
 		}
 	}
-	static updateUserLastActivityCheckTime(data, done, fail) {
-		if (MOCKUP) {
-			done();
-		} else {
-			$.ajax({
-				url: '/api/user/lastactivitychecktime',
-				method: 'PATCH',
-				data: data,
-			}).done(done).fail(fail);
-		}
-	}
 	static getMyHoops(done, fail) {
 		if (MOCKUP) {
 			done(HOOPS);

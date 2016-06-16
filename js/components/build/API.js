@@ -598,19 +598,6 @@ var API = function () {
 			}
 		}
 	}, {
-		key: 'updateUserLastActivityCheckTime',
-		value: function updateUserLastActivityCheckTime(data, done, fail) {
-			if (MOCKUP) {
-				done();
-			} else {
-				_jquery2.default.ajax({
-					url: '/api/user/lastactivitychecktime',
-					method: 'PATCH',
-					data: data
-				}).done(done).fail(fail);
-			}
-		}
-	}, {
 		key: 'getMyHoops',
 		value: function getMyHoops(done, fail) {
 			if (MOCKUP) {
