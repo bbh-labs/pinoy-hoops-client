@@ -130,6 +130,14 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	/*
+		{ showNavigation ? <Navigation { ...this.state } /> : null }
+		{ showNavigation ? <input type='checkbox' id='nav-trigger' className='nav-trigger' /> : null }
+		{ showNavigation ? <label htmlFor='nav-trigger'></label> : null }
+		{ showNavigation ? <Overlay /> : null }
+		{ this.props.children && React.cloneElement(this.props.children, this.state)
+	*/
+
 	var App = function (_React$Component) {
 		_inherits(App, _React$Component);
 
@@ -152,18 +160,28 @@
 		_createClass(App, [{
 			key: 'render',
 			value: function render() {
-				var showNavigation = true;
-
-				if (this.props.location.pathname == '/') showNavigation = false;
-
 				return _react2.default.createElement(
 					'div',
-					{ id: 'app' },
-					showNavigation ? _react2.default.createElement(_Navigation2.default, this.state) : null,
-					showNavigation ? _react2.default.createElement('input', { type: 'checkbox', id: 'nav-trigger', className: 'nav-trigger' }) : null,
-					showNavigation ? _react2.default.createElement('label', { htmlFor: 'nav-trigger' }) : null,
-					showNavigation ? _react2.default.createElement(_Overlay2.default, null) : null,
-					this.props.children && _react2.default.cloneElement(this.props.children, this.state)
+					{ id: 'app', className: 'pushmenu-push' },
+					_react2.default.createElement(_Navigation2.default, this.state),
+					_react2.default.createElement(
+						'div',
+						{ className: 'container-fluid' },
+						_react2.default.createElement(
+							'section',
+							{ className: 'buttonset' },
+							_react2.default.createElement(
+								'div',
+								{ id: 'nav_list' },
+								'Menu'
+							)
+						)
+					),
+					_react2.default.createElement(
+						'section',
+						{ className: 'content' },
+						this.props.children && _react2.default.cloneElement(this.props.children, this.state)
+					)
 				);
 			}
 		}, {
@@ -208,7 +226,7 @@
 	}(_react2.default.Component);
 
 	function hideSidebar() {
-		_Dispatcher2.default.dispatch({ type: 'hide-sidebar' });
+		//Dispatcher.dispatch({ type: 'hide-sidebar' });
 	}
 
 	_reactDom2.default.render(_react2.default.createElement(
@@ -36872,60 +36890,44 @@
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'site-wrap' },
+					{ id: 'about' },
 					_react2.default.createElement(
 						'div',
-						{ className: 'about' },
+						{ className: '.col-xs-12 .col-sm-12 col-md-12 ' },
 						_react2.default.createElement(
-							'div',
-							{ className: 'csslider' },
-							_react2.default.createElement('input', { type: 'radio', name: 'slides', id: 'slides_1', defaultChecked: true }),
-							_react2.default.createElement('input', { type: 'radio', name: 'slides', id: 'slides_2' }),
-							_react2.default.createElement('input', { type: 'radio', name: 'slides', id: 'slides_3' }),
-							_react2.default.createElement('input', { type: 'radio', name: 'slides', id: 'slides_4' }),
-							_react2.default.createElement('input', { type: 'radio', name: 'slides', id: 'slides_N' }),
+							'h2',
+							null,
+							'About'
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: '.col-xs-12 .col-sm-12 col-md-6 ' },
+						_react2.default.createElement(
+							'p',
+							null,
+							'Pinoy Hoops is a collaboration between BBH Asia-Pacific and Mike Swift—rapper, baller, and founder of ',
 							_react2.default.createElement(
-								'ul',
-								null,
-								_react2.default.createElement(
-									'li',
-									null,
-									_react2.default.createElement('img', { src: 'images/about01.jpg' }),
-									_react2.default.createElement(
-										'h3',
-										null,
-										'About',
-										_react2.default.createElement('br', null),
-										' Pinoy Hoop'
-									),
-									_react2.default.createElement(
-										'p',
-										null,
-										'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tortor mi, ultrices eu vulputate eu, bibendum et ipsum. In sed sollicitudin mi,'
-									)
-								),
-								_react2.default.createElement(
-									'li',
-									null,
-									_react2.default.createElement('img', { src: 'images/about02.jpg' })
-								),
-								_react2.default.createElement(
-									'li',
-									null,
-									_react2.default.createElement('img', { src: 'images/about03.jpg' })
-								)
+								'a',
+								{ href: '#' },
+								' @pinoyhoops'
 							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'dots' },
-								_react2.default.createElement(
-									'div',
-									null,
-									_react2.default.createElement('label', { htmlFor: 'slides_1' }),
-									_react2.default.createElement('label', { htmlFor: 'slides_2' }),
-									_react2.default.createElement('label', { htmlFor: 'slides_3' })
-								)
-							)
+							', one of most influential Instagram accounts in the Pinoy basketball. It exists to document the millions of hoops found in every corner of the Philippines, and showcase the countrys mad, maniacal, and magical love of the game.'
+						),
+						_react2.default.createElement(
+							'p',
+							null,
+							'Donate sneaks, gear, and others to the kids who rule these courts.'
+						)
+					),
+					_react2.default.createElement('div', { className: 'col-md-12 ' }),
+					_react2.default.createElement(
+						'div',
+						{ className: '.col-xs-12 .col-sm-12 col-md-12 ' },
+						_react2.default.createElement(
+							'a',
+							{ href: '#', className: 'button' },
+							'Donate'
 						)
 					)
 				);
@@ -37442,8 +37444,8 @@
 									_react2.default.createElement('img', { src: 'images/hero10.jpg' })
 								),
 								_react2.default.createElement(
-									'a',
-									{ href: 'map.html' },
+									_reactRouter.Link,
+									{ to: '/map' },
 									_react2.default.createElement('div', { className: 'arrow bounce' })
 								)
 							)
@@ -37759,6 +37761,14 @@
 
 	var _reactRouter = __webpack_require__(168);
 
+	var _API = __webpack_require__(234);
+
+	var _API2 = _interopRequireDefault(_API);
+
+	var _Dispatcher = __webpack_require__(230);
+
+	var _Dispatcher2 = _interopRequireDefault(_Dispatcher);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -37780,67 +37790,57 @@
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
-					'div',
-					{ className: 'site-wrap' },
+					'section',
+					{ id: 'login' },
 					_react2.default.createElement(
 						'div',
-						{ className: 'login' },
+						{ className: 'container-fluid' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'logo' },
+							{ className: 'row' },
 							_react2.default.createElement(
-								_reactRouter.Link,
-								{ to: '/' },
-								_react2.default.createElement('img', { src: 'images/logo_light.png' })
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'login-content' },
-							_react2.default.createElement(
-								'a',
-								{ href: '/auth/facebook' },
+								'div',
+								{ className: '.col-xs-12 .col-sm-12 col-md-12 nopadding' },
 								_react2.default.createElement(
-									'button',
-									{ style: { backgroundColor: '#3c5a99' } },
-									'Login with Facebook'
-								)
-							),
-							_react2.default.createElement(
-								'a',
-								{ href: '/auth/twitter' },
-								_react2.default.createElement(
-									'button',
-									{ style: { backgroundColor: '#00abf1' } },
-									'Login with Twitter'
-								)
-							),
-							_react2.default.createElement(
-								_reactRouter.Link,
-								{ to: '/login-email' },
-								_react2.default.createElement(
-									'button',
-									{ style: { backgroundColor: '#ff6b00' } },
-									'Login with Email'
-								)
-							),
-							_react2.default.createElement(
-								'p',
-								null,
-								'Don\'t have an account? ',
-								_react2.default.createElement(
-									_reactRouter.Link,
-									{ to: '/signup' },
+									'div',
+									{ className: 'logo' },
+									_react2.default.createElement('img', { src: 'images/logo_light.png' }),
 									_react2.default.createElement(
-										'span',
-										{ style: { color: '#fff' } },
-										'Sign up here'
+										'h3',
+										null,
+										'Login to join the hoops community'
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'sociallogin' },
+										_react2.default.createElement(
+											'a',
+											{ href: '/auth/facebook', onClick: this.login },
+											_react2.default.createElement(
+												'button',
+												null,
+												'Facebook'
+											)
+										)
 									)
 								)
 							)
 						)
 					)
 				);
+			}
+		}, {
+			key: 'login',
+			value: function login(event) {
+				event.preventDefault();
+
+				_API2.default.login(new FormData(event.target), function () {
+					console.log('foo');
+					_Dispatcher2.default.dispatch({ type: 'refresh-user', goto: '/map' });
+					console.log('bar');
+				}, function (response) {
+					alert(response.statusText + ': failed to log in!');
+				});
 			}
 		}]);
 
@@ -37997,33 +37997,52 @@
 		_inherits(Map, _React$Component);
 
 		function Map() {
+			var _Object$getPrototypeO;
+
+			var _temp, _this, _ret;
+
 			_classCallCheck(this, Map);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Map).apply(this, arguments));
+			for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+				args[_key] = arguments[_key];
+			}
+
+			return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Map)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
+				showOverlay: false
+			}, _temp), _possibleConstructorReturn(_this, _ret);
 		}
 
 		_createClass(Map, [{
 			key: 'render',
 			value: function render() {
+				var user = this.props.user;
+				var showOverlay = this.state.showOverlay;
+
 				return _react2.default.createElement(
 					'div',
-					{ className: 'site-wrap' },
-					_react2.default.createElement(MapView, null),
-					_react2.default.createElement(
-						'div',
-						{ className: 'map-btn' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'bottom-left' },
-							_react2.default.createElement('img', { src: 'images/search.jpg' })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'bottom-right' },
-							_react2.default.createElement('img', { src: 'images/location.jpg' })
-						)
-					)
+					{ className: 'map-wrapper' },
+					_react2.default.createElement(MapView, { user: user }),
+					_react2.default.createElement(Overlay, { show: showOverlay })
 				);
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var _this2 = this;
+
+				this.dispatcherID = _Dispatcher2.default.register(function (payload) {
+					switch (payload.type) {
+						case 'toggle-overlay':
+							var showOverlay = _this2.state.showOverlay;
+							_this2.setState({ showOverlay: !showOverlay });
+							break;
+					}
+				});
+			}
+		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {
+				_Dispatcher2.default.unregister(this.dispatcherID);
 			}
 		}]);
 
@@ -38034,42 +38053,42 @@
 		_inherits(MapView, _React$Component2);
 
 		function MapView() {
-			var _Object$getPrototypeO;
+			var _Object$getPrototypeO2;
 
-			var _temp, _this2, _ret;
+			var _temp2, _this3, _ret2;
 
 			_classCallCheck(this, MapView);
 
-			for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-				args[_key] = arguments[_key];
+			for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+				args[_key2] = arguments[_key2];
 			}
 
-			return _ret = (_temp = (_this2 = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(MapView)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this2), _this2.getHoops = function (data) {
+			return _ret2 = (_temp2 = (_this3 = _possibleConstructorReturn(this, (_Object$getPrototypeO2 = Object.getPrototypeOf(MapView)).call.apply(_Object$getPrototypeO2, [this].concat(args))), _this3), _this3.getHoops = function (data) {
 				_API2.default.getHoops(data, function (hoops) {
-					_this2.setHoops(hoops);
+					_this3.setHoops(hoops);
 				}, function (response) {
 					alert('Failed to get hoops');
 				});
-			}, _this2.getNearbyHoops = function (data) {
+			}, _this3.getNearbyHoops = function (data) {
 				_API2.default.getNearbyHoops(data, function (hoops) {
-					_this2.setHoops(hoops);
+					_this3.setHoops(hoops);
 				}, function (response) {
 					alert('Failed to get hoops');
 				});
-			}, _this2.getPopularHoops = function (data) {
+			}, _this3.getPopularHoops = function (data) {
 				_API2.default.getPopularHoops(data, function (hoops) {
-					_this2.setHoops(hoops);
+					_this3.setHoops(hoops);
 				}, function (response) {
 					alert('Failed to get hoops');
 				});
-			}, _this2.getLatestHoops = function (data) {
+			}, _this3.getLatestHoops = function (data) {
 				_API2.default.getLatestHoops(data, function (hoops) {
-					_this2.setHoops(hoops);
+					_this3.setHoops(hoops);
 				}, function (response) {
 					alert('Failed to get hoops');
 				});
-			}, _this2.setHoops = function (hoops) {
-				_this2.clearHoops();
+			}, _this3.setHoops = function (hoops) {
+				_this3.clearHoops();
 
 				if (hoops) {
 					var _loop = function _loop(i) {
@@ -38077,7 +38096,7 @@
 
 						var marker = new google.maps.Marker({
 							position: new google.maps.LatLng(hoops[i].latitude, hoops[i].longitude),
-							map: _this2.map,
+							map: _this3.map,
 							title: hoops[i].name
 						});
 						marker.addListener('click', function () {
@@ -38085,23 +38104,23 @@
 							_Dispatcher2.default.dispatch({ type: 'view-hoop', hoop: hoop });
 						});
 
-						_this2.markers.push(marker);
+						_this3.markers.push(marker);
 					};
 
 					for (var i in hoops) {
 						_loop(i);
 					}
 				}
-			}, _this2.clearHoops = function () {
-				for (var i in _this2.markers) {
-					_this2.markers[i].setMap(null);
-				}_this2.markers = [];
-			}, _this2.handleSearch = function (event) {
+			}, _this3.clearHoops = function () {
+				for (var i in _this3.markers) {
+					_this3.markers[i].setMap(null);
+				}_this3.markers = [];
+			}, _this3.handleSearch = function (event) {
 				event.preventDefault();
 
 				var name = event.target.value;
-				if (name.length > 0) _this2.getHoops({ name: name });else _this2.getHoops();
-			}, _temp), _possibleConstructorReturn(_this2, _ret);
+				if (name.length > 0) _this3.getHoops({ name: name });else _this3.getHoops();
+			}, _temp2), _possibleConstructorReturn(_this3, _ret2);
 		}
 
 		_createClass(MapView, [{
@@ -38112,57 +38131,133 @@
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				var _this3 = this;
+				var user = this.props.user;
 
 				// Basic options for a simple Google Map
 				// For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
 				var mapOptions = {
 					// How zoomed in you want the map to start at (always required)
 					zoom: 13,
-					scrollwheel: false,
+					scrollwheel: true,
 					// The latitude and longitude to center the map (always required)
 					center: new google.maps.LatLng(14.5980, 120.9446), // Manila
 
 					// How you would like to style the map.
 					// This is where you would paste any style found on Snazzy Maps.
-					styles: [{ "featureType": "all", "elementType": "labels.text.fill", "stylers": [{ "saturation": 36 }, { "color": "#333333" }, { "lightness": 40 }] }, { "featureType": "all", "elementType": "labels.text.stroke", "stylers": [{ "visibility": "on" }, { "color": "#ffffff" }, { "lightness": 16 }] }, { "featureType": "all", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative", "elementType": "geometry.fill", "stylers": [{ "color": "#fefefe" }, { "lightness": 20 }] }, { "featureType": "administrative", "elementType": "geometry.stroke", "stylers": [{ "color": "#fefefe" }, { "lightness": 17 }, { "weight": 1.2 }] }, { "featureType": "administrative", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "administrative.country", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "administrative.province", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative.locality", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "administrative.neighborhood", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative.land_parcel", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "landscape", "elementType": "geometry", "stylers": [{ "color": "#e8e7e7" }, { "lightness": 20 }] }, { "featureType": "landscape", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "landscape.natural", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#f5f5f5" }, { "lightness": 21 }] }, { "featureType": "poi", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.park", "elementType": "geometry", "stylers": [{ "color": "#dedede" }, { "lightness": 21 }] }, { "featureType": "road", "elementType": "all", "stylers": [{ "color": "#ff0000" }, { "visibility": "off" }] }, { "featureType": "road", "elementType": "geometry.fill", "stylers": [{ "color": "#ff0000" }, { "visibility": "off" }] }, { "featureType": "road", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{ "color": "#ffffff" }, { "lightness": 17 }] }, { "featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [{ "color": "#ffffff" }, { "lightness": 29 }, { "weight": 0.2 }] }, { "featureType": "road.highway.controlled_access", "elementType": "geometry", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 18 }, { "visibility": "simplified" }] }, { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 16 }, { "visibility": "simplified" }] }, { "featureType": "transit", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit", "elementType": "geometry", "stylers": [{ "color": "#f2f2f2" }, { "lightness": 19 }] }, { "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#353537" }, { "lightness": 17 }] }]
+					styles: [{ "featureType": "all", "elementType": "labels.text", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative", "elementType": "labels.text", "stylers": [{ "visibility": "on" }] }, { "featureType": "administrative.country", "elementType": "labels", "stylers": [{ "visibility": "on" }] }, { "featureType": "administrative.country", "elementType": "labels.text", "stylers": [{ "visibility": "on" }] }, { "featureType": "administrative.country", "elementType": "labels.text.fill", "stylers": [{ "visibility": "on" }] }, { "featureType": "landscape", "elementType": "all", "stylers": [{ "color": "#e5e8e7" }, { "visibility": "off" }] }, { "featureType": "landscape.man_made", "elementType": "geometry.fill", "stylers": [{ "color": "#ffffff" }, { "visibility": "on" }] }, { "featureType": "landscape.natural", "elementType": "geometry.fill", "stylers": [{ "color": "#f5f5f2" }, { "visibility": "on" }] }, { "featureType": "poi", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.attraction", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.business", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.government", "elementType": "geometry", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.medical", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.park", "elementType": "all", "stylers": [{ "color": "#91b65d" }, { "gamma": 1.51 }] }, { "featureType": "poi.park", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.place_of_worship", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.school", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.sports_complex", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.sports_complex", "elementType": "geometry", "stylers": [{ "color": "#c7c7c7" }, { "visibility": "off" }] }, { "featureType": "road", "elementType": "all", "stylers": [{ "color": "#ffffff" }] }, { "featureType": "road", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "visibility": "simplified" }] }, { "featureType": "road.highway", "elementType": "labels.icon", "stylers": [{ "color": "#ffffff" }, { "visibility": "off" }] }, { "featureType": "road.arterial", "elementType": "all", "stylers": [{ "visibility": "simplified" }, { "color": "#ffffff" }] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road.local", "elementType": "all", "stylers": [{ "color": "#ffffff" }, { "visibility": "simplified" }] }, { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "visibility": "on" }] }, { "featureType": "transit", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "water", "elementType": "all", "stylers": [{ "color": "#a0d3d3" }] }]
 				};
 
 				// Create the Google Map using our element and options defined above
 				this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-				this.getHoops();
+				var marker = new google.maps.Marker({
+					position: new google.maps.LatLng(14.5980, 120.9446),
+					map: this.map,
+					title: 'hello'
+				});
 
-				this.dispatcherID = _Dispatcher2.default.register(function (payload) {
-					switch (payload.type) {
-						case 'get-hoops':
-							_this3.getHoops();
-							break;
+				this.map.addListener('click', function (event) {
+					if (user) {
+						/*
+	     let marker = new google.maps.Marker({
+	     	position: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
+	     	map: this.map,
+	     	title: 'hello',
+	     });
+	     */
 
-						case 'get-nearby-hoops':
-							_this3.getNearbyHoops();
-							break;
-
-						case 'get-popular-hoops':
-							_this3.getPopularHoops();
-							break;
-
-						case 'get-latest-hoops':
-							_this3.getLatestHoops();
-							break;
+						// TODO: make add hoop overlay popup
+						_Dispatcher2.default.dispatch({ type: 'toggle-overlay' });
+					} else {
+						_browserHistory2.default.push('/login');
 					}
 				});
+				/*this.getHoops();
+	   	this.dispatcherID = Dispatcher.register((payload) => {
+	   	switch (payload.type) {
+	   	case 'get-hoops':
+	   		this.getHoops();
+	   		break;
+	   		case 'get-nearby-hoops':
+	   		this.getNearbyHoops();
+	   		break;
+	   		case 'get-popular-hoops':
+	   		this.getPopularHoops();
+	   		break;
+	   		case 'get-latest-hoops':
+	   		this.getLatestHoops();
+	   		break;
+	   	}
+	   });*/
 			}
 		}, {
 			key: 'componentWillUnmount',
 			value: function componentWillUnmount() {
 				this.map = null;
-
-				_Dispatcher2.default.unregister(this.dispatcherID);
 			}
 		}]);
 
 		return MapView;
+	}(_react2.default.Component);
+
+	var Overlay = function (_React$Component3) {
+		_inherits(Overlay, _React$Component3);
+
+		function Overlay() {
+			_classCallCheck(this, Overlay);
+
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Overlay).apply(this, arguments));
+		}
+
+		_createClass(Overlay, [{
+			key: 'render',
+			value: function render() {
+				if (this.props.show) return _react2.default.createElement(
+					'div',
+					{ id: 'addhoop' },
+					_react2.default.createElement(
+						'h2',
+						null,
+						'Tell us about the hoop'
+					),
+					_react2.default.createElement('input', { type: 'text', name: 'name', placeholder: 'Hoop Name' }),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('textarea', { rows: '4', cols: '50', name: 'description', placeholder: 'description' }),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement(
+						'div',
+						{ className: 'hoopcategory' },
+						_react2.default.createElement(
+							'h5',
+							null,
+							'Submit your hoop photos under below categories(Mininum one)'
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: '.col-xs-12 col-md-4' },
+							_react2.default.createElement('img', { src: 'images/hoop.jpg' })
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: '.col-xs-12 col-md-4' },
+							_react2.default.createElement('img', { src: 'images/court.jpg' })
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: '.col-xs-12 col-md-4' },
+							_react2.default.createElement('img', { src: 'images/crew.jpg' })
+						),
+						_react2.default.createElement(
+							'button',
+							null,
+							'DONE'
+						)
+					)
+				);else return null;
+			}
+		}]);
+
+		return Overlay;
 	}(_react2.default.Component);
 
 	module.exports = Map;
@@ -38180,6 +38275,10 @@
 	var _react2 = _interopRequireDefault(_react);
 
 	var _reactRouter = __webpack_require__(168);
+
+	var _browserHistory = __webpack_require__(229);
+
+	var _browserHistory2 = _interopRequireDefault(_browserHistory);
 
 	var _API = __webpack_require__(234);
 
@@ -38209,112 +38308,90 @@
 
 				if (user) {
 					return _react2.default.createElement(
-						'ul',
-						{ className: 'navigation' },
+						'nav',
+						{ className: 'pushmenu pushmenu-left' },
 						_react2.default.createElement(
-							'li',
-							{ className: 'nav-item' },
-							_react2.default.createElement(
-								_reactRouter.Link,
-								{ to: '/' },
-								_react2.default.createElement('img', { src: '/images/logo_light.png' })
-							)
+							_reactRouter.Link,
+							{ to: '/map' },
+							_react2.default.createElement('img', { src: 'images/logo_light.png' })
 						),
 						_react2.default.createElement(
-							'li',
-							{ className: 'nav-item' },
+							_reactRouter.Link,
+							{ to: '/profile' },
 							_react2.default.createElement(
-								_reactRouter.Link,
-								{ to: '/profile' },
+								'div',
+								{ className: 'sidebar_userprofile' },
+								_react2.default.createElement('img', { src: user.image_url }),
 								_react2.default.createElement(
-									'div',
-									{ className: 'menuprofile' },
-									_react2.default.createElement('img', { src: contentURL(user.image_url, '/images/avatar.png') }),
-									user.firstname,
-									' ',
-									user.lastname
+									'p',
+									null,
+									user.firstname
 								)
 							)
 						),
 						_react2.default.createElement(
-							'li',
-							{ className: 'nav-item' },
-							_react2.default.createElement(
-								_reactRouter.Link,
-								{ to: '/map' },
-								'Map'
-							)
+							_reactRouter.Link,
+							{ to: '/about' },
+							'About'
 						),
 						_react2.default.createElement(
-							'li',
-							{ className: 'nav-item' },
-							_react2.default.createElement(
-								_reactRouter.Link,
-								{ to: '/add-hoop' },
-								'Add a hoop'
-							)
+							'a',
+							{ href: 'mailto:donate@pinoyhoops.com?Subject=Donation%20for%20hoop', target: '_top' },
+							'Donate'
 						),
 						_react2.default.createElement(
-							'li',
-							{ className: 'nav-item' },
-							_react2.default.createElement(
-								_reactRouter.Link,
-								{ to: '/activities' },
-								'Activity feed'
-							)
-						),
-						_react2.default.createElement(
-							'li',
-							{ className: 'nav-item' },
-							_react2.default.createElement(
-								_reactRouter.Link,
-								{ to: '/about' },
-								'About'
-							)
-						),
-						_react2.default.createElement(
-							'li',
-							{ className: 'nav-item' },
-							_react2.default.createElement(
-								'a',
-								{ href: '#', onClick: this.logout },
-								'Logout'
-							)
+							'a',
+							{ href: '#', onClick: this.logout },
+							'Sign out'
 						)
 					);
 				} else {
 					return _react2.default.createElement(
-						'ul',
-						{ className: 'navigation' },
+						'nav',
+						{ className: 'pushmenu pushmenu-left' },
 						_react2.default.createElement(
-							'li',
-							{ className: 'nav-item' },
-							_react2.default.createElement(
-								_reactRouter.Link,
-								{ to: '/' },
-								_react2.default.createElement('img', { src: '/images/logo_light.png' })
-							)
+							_reactRouter.Link,
+							{ to: '/map' },
+							_react2.default.createElement('img', { src: 'images/logo_light.png' })
 						),
 						_react2.default.createElement(
-							'li',
-							{ className: 'nav-item' },
-							_react2.default.createElement(
-								_reactRouter.Link,
-								{ to: '/about' },
-								'About'
-							)
+							'a',
+							{ href: '#', onClick: this.login },
+							'Login'
 						),
 						_react2.default.createElement(
-							'li',
-							{ className: 'nav-item' },
-							_react2.default.createElement(
-								_reactRouter.Link,
-								{ to: '/login' },
-								'Add a hoop'
-							)
+							_reactRouter.Link,
+							{ to: '/about' },
+							'About'
+						),
+						_react2.default.createElement(
+							'a',
+							{ href: 'mailto:donate@pinoyhoops.com?Subject=Donation%20for%20hoop', target: '_top' },
+							'Donate'
 						)
 					);
 				}
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				$(document).ready(function () {
+					var $menuLeft = $('.pushmenu-left');
+					var $nav_list = $('#nav_list');
+
+					$nav_list.click(function () {
+						$(this).toggleClass('active');
+						$('.pushmenu-push').toggleClass('pushmenu-push-toright');
+						$menuLeft.toggleClass('pushmenu-open');
+					});
+				});
+			}
+		}, {
+			key: 'login',
+			value: function login(event) {
+				event.preventDefault();
+
+				_browserHistory2.default.replace('/login');
 			}
 		}, {
 			key: 'logout',
@@ -38773,52 +38850,48 @@
 
 				return _react2.default.createElement(
 					'div',
-					{ className: 'site-wrap' },
+					{ id: 'profile' },
+					_react2.default.createElement(
+						'form',
+						{ ref: 'userImageForm', className: 'picture' },
+						_react2.default.createElement(
+							'label',
+							{ htmlFor: 'user-image' },
+							_react2.default.createElement('img', { src: contentURL(user.image_url, '/images/avatar.png') }),
+							_react2.default.createElement('input', { id: 'user-image', type: 'file', name: 'image', onChange: this.handleUserImage })
+						)
+					),
 					_react2.default.createElement(
 						'div',
-						{ className: 'profile' },
+						{ className: 'info' },
+						this.profileInfo(),
 						_react2.default.createElement(
-							'form',
-							{ ref: 'userImageForm', className: 'picture' },
-							_react2.default.createElement(
-								'label',
-								{ htmlFor: 'user-image' },
-								_react2.default.createElement('input', { id: 'user-image', type: 'file', name: 'image', onChange: this.handleUserImage }),
-								_react2.default.createElement('img', { src: contentURL(user.image_url, '/images/avatar.png') })
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'info' },
-							this.profileInfo(),
-							_react2.default.createElement(
-								'button',
-								{ onClick: this.toggleEdit },
-								'Edit Profile'
-							)
-						),
+							'button',
+							{ onClick: this.toggleEdit },
+							'Edit Profile'
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'myhoops' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'myhoops' },
+							{ className: 'filter' },
 							_react2.default.createElement(
-								'div',
-								{ className: 'filter' },
-								_react2.default.createElement(
-									'p',
-									{ onClick: this.setTab.bind(this, 'my-hoops'), style: { color: tab == 'my-hoops' && '#ff6b00' } },
-									'My hoops'
-								),
-								_react2.default.createElement(
-									'p',
-									{ onClick: this.setTab.bind(this, 'other-hoops'), style: { color: tab == 'other-hoops' && '#ff6b00' } },
-									'Other hoops'
-								)
+								'p',
+								{ onClick: this.setTab.bind(this, 'my-hoops'), style: { color: tab == 'my-hoops' && '#ff6b00' } },
+								'My hoops'
 							),
 							_react2.default.createElement(
-								'div',
-								{ className: 'gallery' },
-								this.hoops()
+								'p',
+								{ onClick: this.setTab.bind(this, 'other-hoops'), style: { color: tab == 'other-hoops' && '#ff6b00' } },
+								'Other hoops'
 							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'gallery' },
+							this.hoops()
 						)
 					)
 				);

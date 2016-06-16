@@ -32,33 +32,52 @@ var Map = function (_React$Component) {
 	_inherits(Map, _React$Component);
 
 	function Map() {
+		var _Object$getPrototypeO;
+
+		var _temp, _this, _ret;
+
 		_classCallCheck(this, Map);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(Map).apply(this, arguments));
+		for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+			args[_key] = arguments[_key];
+		}
+
+		return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Map)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
+			showOverlay: false
+		}, _temp), _possibleConstructorReturn(_this, _ret);
 	}
 
 	_createClass(Map, [{
 		key: 'render',
 		value: function render() {
+			var user = this.props.user;
+			var showOverlay = this.state.showOverlay;
+
 			return _react2.default.createElement(
 				'div',
-				{ className: 'site-wrap' },
-				_react2.default.createElement(MapView, null),
-				_react2.default.createElement(
-					'div',
-					{ className: 'map-btn' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'bottom-left' },
-						_react2.default.createElement('img', { src: 'images/search.jpg' })
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'bottom-right' },
-						_react2.default.createElement('img', { src: 'images/location.jpg' })
-					)
-				)
+				{ className: 'map-wrapper' },
+				_react2.default.createElement(MapView, { user: user }),
+				_react2.default.createElement(Overlay, { show: showOverlay })
 			);
+		}
+	}, {
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var _this2 = this;
+
+			this.dispatcherID = _Dispatcher2.default.register(function (payload) {
+				switch (payload.type) {
+					case 'toggle-overlay':
+						var showOverlay = _this2.state.showOverlay;
+						_this2.setState({ showOverlay: !showOverlay });
+						break;
+				}
+			});
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			_Dispatcher2.default.unregister(this.dispatcherID);
 		}
 	}]);
 
@@ -69,42 +88,42 @@ var MapView = function (_React$Component2) {
 	_inherits(MapView, _React$Component2);
 
 	function MapView() {
-		var _Object$getPrototypeO;
+		var _Object$getPrototypeO2;
 
-		var _temp, _this2, _ret;
+		var _temp2, _this3, _ret2;
 
 		_classCallCheck(this, MapView);
 
-		for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-			args[_key] = arguments[_key];
+		for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+			args[_key2] = arguments[_key2];
 		}
 
-		return _ret = (_temp = (_this2 = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(MapView)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this2), _this2.getHoops = function (data) {
+		return _ret2 = (_temp2 = (_this3 = _possibleConstructorReturn(this, (_Object$getPrototypeO2 = Object.getPrototypeOf(MapView)).call.apply(_Object$getPrototypeO2, [this].concat(args))), _this3), _this3.getHoops = function (data) {
 			_API2.default.getHoops(data, function (hoops) {
-				_this2.setHoops(hoops);
+				_this3.setHoops(hoops);
 			}, function (response) {
 				alert('Failed to get hoops');
 			});
-		}, _this2.getNearbyHoops = function (data) {
+		}, _this3.getNearbyHoops = function (data) {
 			_API2.default.getNearbyHoops(data, function (hoops) {
-				_this2.setHoops(hoops);
+				_this3.setHoops(hoops);
 			}, function (response) {
 				alert('Failed to get hoops');
 			});
-		}, _this2.getPopularHoops = function (data) {
+		}, _this3.getPopularHoops = function (data) {
 			_API2.default.getPopularHoops(data, function (hoops) {
-				_this2.setHoops(hoops);
+				_this3.setHoops(hoops);
 			}, function (response) {
 				alert('Failed to get hoops');
 			});
-		}, _this2.getLatestHoops = function (data) {
+		}, _this3.getLatestHoops = function (data) {
 			_API2.default.getLatestHoops(data, function (hoops) {
-				_this2.setHoops(hoops);
+				_this3.setHoops(hoops);
 			}, function (response) {
 				alert('Failed to get hoops');
 			});
-		}, _this2.setHoops = function (hoops) {
-			_this2.clearHoops();
+		}, _this3.setHoops = function (hoops) {
+			_this3.clearHoops();
 
 			if (hoops) {
 				var _loop = function _loop(i) {
@@ -112,7 +131,7 @@ var MapView = function (_React$Component2) {
 
 					var marker = new google.maps.Marker({
 						position: new google.maps.LatLng(hoops[i].latitude, hoops[i].longitude),
-						map: _this2.map,
+						map: _this3.map,
 						title: hoops[i].name
 					});
 					marker.addListener('click', function () {
@@ -120,23 +139,23 @@ var MapView = function (_React$Component2) {
 						_Dispatcher2.default.dispatch({ type: 'view-hoop', hoop: hoop });
 					});
 
-					_this2.markers.push(marker);
+					_this3.markers.push(marker);
 				};
 
 				for (var i in hoops) {
 					_loop(i);
 				}
 			}
-		}, _this2.clearHoops = function () {
-			for (var i in _this2.markers) {
-				_this2.markers[i].setMap(null);
-			}_this2.markers = [];
-		}, _this2.handleSearch = function (event) {
+		}, _this3.clearHoops = function () {
+			for (var i in _this3.markers) {
+				_this3.markers[i].setMap(null);
+			}_this3.markers = [];
+		}, _this3.handleSearch = function (event) {
 			event.preventDefault();
 
 			var name = event.target.value;
-			if (name.length > 0) _this2.getHoops({ name: name });else _this2.getHoops();
-		}, _temp), _possibleConstructorReturn(_this2, _ret);
+			if (name.length > 0) _this3.getHoops({ name: name });else _this3.getHoops();
+		}, _temp2), _possibleConstructorReturn(_this3, _ret2);
 	}
 
 	_createClass(MapView, [{
@@ -147,57 +166,133 @@ var MapView = function (_React$Component2) {
 	}, {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
-			var _this3 = this;
+			var user = this.props.user;
 
 			// Basic options for a simple Google Map
 			// For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
 			var mapOptions = {
 				// How zoomed in you want the map to start at (always required)
 				zoom: 13,
-				scrollwheel: false,
+				scrollwheel: true,
 				// The latitude and longitude to center the map (always required)
 				center: new google.maps.LatLng(14.5980, 120.9446), // Manila
 
 				// How you would like to style the map.
 				// This is where you would paste any style found on Snazzy Maps.
-				styles: [{ "featureType": "all", "elementType": "labels.text.fill", "stylers": [{ "saturation": 36 }, { "color": "#333333" }, { "lightness": 40 }] }, { "featureType": "all", "elementType": "labels.text.stroke", "stylers": [{ "visibility": "on" }, { "color": "#ffffff" }, { "lightness": 16 }] }, { "featureType": "all", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative", "elementType": "geometry.fill", "stylers": [{ "color": "#fefefe" }, { "lightness": 20 }] }, { "featureType": "administrative", "elementType": "geometry.stroke", "stylers": [{ "color": "#fefefe" }, { "lightness": 17 }, { "weight": 1.2 }] }, { "featureType": "administrative", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "administrative.country", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "administrative.province", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative.locality", "elementType": "labels", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "administrative.neighborhood", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative.land_parcel", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "landscape", "elementType": "geometry", "stylers": [{ "color": "#e8e7e7" }, { "lightness": 20 }] }, { "featureType": "landscape", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "landscape.natural", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#f5f5f5" }, { "lightness": 21 }] }, { "featureType": "poi", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.park", "elementType": "geometry", "stylers": [{ "color": "#dedede" }, { "lightness": 21 }] }, { "featureType": "road", "elementType": "all", "stylers": [{ "color": "#ff0000" }, { "visibility": "off" }] }, { "featureType": "road", "elementType": "geometry.fill", "stylers": [{ "color": "#ff0000" }, { "visibility": "off" }] }, { "featureType": "road", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{ "color": "#ffffff" }, { "lightness": 17 }] }, { "featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [{ "color": "#ffffff" }, { "lightness": 29 }, { "weight": 0.2 }] }, { "featureType": "road.highway.controlled_access", "elementType": "geometry", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 18 }, { "visibility": "simplified" }] }, { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 16 }, { "visibility": "simplified" }] }, { "featureType": "transit", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit", "elementType": "geometry", "stylers": [{ "color": "#f2f2f2" }, { "lightness": 19 }] }, { "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#353537" }, { "lightness": 17 }] }]
+				styles: [{ "featureType": "all", "elementType": "labels.text", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "administrative", "elementType": "labels.text", "stylers": [{ "visibility": "on" }] }, { "featureType": "administrative.country", "elementType": "labels", "stylers": [{ "visibility": "on" }] }, { "featureType": "administrative.country", "elementType": "labels.text", "stylers": [{ "visibility": "on" }] }, { "featureType": "administrative.country", "elementType": "labels.text.fill", "stylers": [{ "visibility": "on" }] }, { "featureType": "landscape", "elementType": "all", "stylers": [{ "color": "#e5e8e7" }, { "visibility": "off" }] }, { "featureType": "landscape.man_made", "elementType": "geometry.fill", "stylers": [{ "color": "#ffffff" }, { "visibility": "on" }] }, { "featureType": "landscape.natural", "elementType": "geometry.fill", "stylers": [{ "color": "#f5f5f2" }, { "visibility": "on" }] }, { "featureType": "poi", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.attraction", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.business", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.government", "elementType": "geometry", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.medical", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.park", "elementType": "all", "stylers": [{ "color": "#91b65d" }, { "gamma": 1.51 }] }, { "featureType": "poi.park", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.place_of_worship", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.school", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.sports_complex", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi.sports_complex", "elementType": "geometry", "stylers": [{ "color": "#c7c7c7" }, { "visibility": "off" }] }, { "featureType": "road", "elementType": "all", "stylers": [{ "color": "#ffffff" }] }, { "featureType": "road", "elementType": "labels", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "visibility": "simplified" }] }, { "featureType": "road.highway", "elementType": "labels.icon", "stylers": [{ "color": "#ffffff" }, { "visibility": "off" }] }, { "featureType": "road.arterial", "elementType": "all", "stylers": [{ "visibility": "simplified" }, { "color": "#ffffff" }] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road.local", "elementType": "all", "stylers": [{ "color": "#ffffff" }, { "visibility": "simplified" }] }, { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "visibility": "on" }] }, { "featureType": "transit", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "water", "elementType": "all", "stylers": [{ "color": "#a0d3d3" }] }]
 			};
 
 			// Create the Google Map using our element and options defined above
 			this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-			this.getHoops();
+			var marker = new google.maps.Marker({
+				position: new google.maps.LatLng(14.5980, 120.9446),
+				map: this.map,
+				title: 'hello'
+			});
 
-			this.dispatcherID = _Dispatcher2.default.register(function (payload) {
-				switch (payload.type) {
-					case 'get-hoops':
-						_this3.getHoops();
-						break;
+			this.map.addListener('click', function (event) {
+				if (user) {
+					/*
+     let marker = new google.maps.Marker({
+     	position: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
+     	map: this.map,
+     	title: 'hello',
+     });
+     */
 
-					case 'get-nearby-hoops':
-						_this3.getNearbyHoops();
-						break;
-
-					case 'get-popular-hoops':
-						_this3.getPopularHoops();
-						break;
-
-					case 'get-latest-hoops':
-						_this3.getLatestHoops();
-						break;
+					// TODO: make add hoop overlay popup
+					_Dispatcher2.default.dispatch({ type: 'toggle-overlay' });
+				} else {
+					_browserHistory2.default.push('/login');
 				}
 			});
+			/*this.getHoops();
+   	this.dispatcherID = Dispatcher.register((payload) => {
+   	switch (payload.type) {
+   	case 'get-hoops':
+   		this.getHoops();
+   		break;
+   		case 'get-nearby-hoops':
+   		this.getNearbyHoops();
+   		break;
+   		case 'get-popular-hoops':
+   		this.getPopularHoops();
+   		break;
+   		case 'get-latest-hoops':
+   		this.getLatestHoops();
+   		break;
+   	}
+   });*/
 		}
 	}, {
 		key: 'componentWillUnmount',
 		value: function componentWillUnmount() {
 			this.map = null;
-
-			_Dispatcher2.default.unregister(this.dispatcherID);
 		}
 	}]);
 
 	return MapView;
+}(_react2.default.Component);
+
+var Overlay = function (_React$Component3) {
+	_inherits(Overlay, _React$Component3);
+
+	function Overlay() {
+		_classCallCheck(this, Overlay);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(Overlay).apply(this, arguments));
+	}
+
+	_createClass(Overlay, [{
+		key: 'render',
+		value: function render() {
+			if (this.props.show) return _react2.default.createElement(
+				'div',
+				{ id: 'addhoop' },
+				_react2.default.createElement(
+					'h2',
+					null,
+					'Tell us about the hoop'
+				),
+				_react2.default.createElement('input', { type: 'text', name: 'name', placeholder: 'Hoop Name' }),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('textarea', { rows: '4', cols: '50', name: 'description', placeholder: 'description' }),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement(
+					'div',
+					{ className: 'hoopcategory' },
+					_react2.default.createElement(
+						'h5',
+						null,
+						'Submit your hoop photos under below categories(Mininum one)'
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: '.col-xs-12 col-md-4' },
+						_react2.default.createElement('img', { src: 'images/hoop.jpg' })
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: '.col-xs-12 col-md-4' },
+						_react2.default.createElement('img', { src: 'images/court.jpg' })
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: '.col-xs-12 col-md-4' },
+						_react2.default.createElement('img', { src: 'images/crew.jpg' })
+					),
+					_react2.default.createElement(
+						'button',
+						null,
+						'DONE'
+					)
+				)
+			);else return null;
+		}
+	}]);
+
+	return Overlay;
 }(_react2.default.Component);
 
 module.exports = Map;

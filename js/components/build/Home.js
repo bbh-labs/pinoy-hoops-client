@@ -64,8 +64,8 @@ var Home = function (_React$Component) {
 								_react2.default.createElement('img', { src: 'images/hero10.jpg' })
 							),
 							_react2.default.createElement(
-								'a',
-								{ href: 'map.html' },
+								_reactRouter.Link,
+								{ to: '/map' },
 								_react2.default.createElement('div', { className: 'arrow bounce' })
 							)
 						)

@@ -15,30 +15,31 @@ class Profile extends React.Component {
 		let tab = this.state.tab;
 
 		return (
-			<div className='site-wrap'>
-				 <div className='profile'>
+				<div id="profile">
 					<form ref='userImageForm' className='picture'>
 						<label htmlFor='user-image'>
-							<input id='user-image' type='file' name='image' onChange={ this.handleUserImage } />
 							<img src={ contentURL(user.image_url, '/images/avatar.png') } />
+							<input id='user-image' type='file' name='image' onChange={ this.handleUserImage } />
 						</label>
 					</form>
-					<div className='info'>
-						{ this.profileInfo() }
-						<button onClick={ this.toggleEdit }>Edit Profile</button>
-					</div>
+
+						<div className='info'>
+							{ this.profileInfo() }
+							<button onClick={ this.toggleEdit }>Edit Profile</button>
+						</div>
 
 					<div className='myhoops'>
 						<div className='filter'>
 							<p onClick={ this.setTab.bind(this, 'my-hoops') } style={{ color: tab == 'my-hoops' && '#ff6b00' }}>My hoops</p>
 							<p onClick={ this.setTab.bind(this, 'other-hoops') } style={{ color: tab == 'other-hoops' && '#ff6b00' }}>Other hoops</p>
 						</div>
+
 						<div className='gallery'>
 							{ this.hoops() }
 						</div>
 					</div>
+
 				</div>
-			</div>
 		)
 	}
 	state = {
@@ -48,8 +49,8 @@ class Profile extends React.Component {
 		editing: false,
 	}
 	componentDidMount() {
-	   this.getMyHoops(); 
-	   this.getOtherHoops(); 
+	   this.getMyHoops();
+	   this.getOtherHoops();
 	}
 	profileInfo = () => {
 		let user = this.props.user;
@@ -110,7 +111,7 @@ class Profile extends React.Component {
 	handleUserImage = (event) => {
 		API.updateUserImage(new FormData(this.refs.userImageForm), () => {
 			Dispatcher.dispatch({ type: 'refresh-user' });
-		}); 
+		});
 	}
 	toggleEdit = () => {
 		let editing = this.state.editing;

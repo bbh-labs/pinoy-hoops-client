@@ -28,60 +28,44 @@ var About = function (_React$Component) {
 		value: function render() {
 			return _react2.default.createElement(
 				'div',
-				{ className: 'site-wrap' },
+				{ id: 'about' },
 				_react2.default.createElement(
 					'div',
-					{ className: 'about' },
+					{ className: '.col-xs-12 .col-sm-12 col-md-12 ' },
 					_react2.default.createElement(
-						'div',
-						{ className: 'csslider' },
-						_react2.default.createElement('input', { type: 'radio', name: 'slides', id: 'slides_1', defaultChecked: true }),
-						_react2.default.createElement('input', { type: 'radio', name: 'slides', id: 'slides_2' }),
-						_react2.default.createElement('input', { type: 'radio', name: 'slides', id: 'slides_3' }),
-						_react2.default.createElement('input', { type: 'radio', name: 'slides', id: 'slides_4' }),
-						_react2.default.createElement('input', { type: 'radio', name: 'slides', id: 'slides_N' }),
+						'h2',
+						null,
+						'About'
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: '.col-xs-12 .col-sm-12 col-md-6 ' },
+					_react2.default.createElement(
+						'p',
+						null,
+						'Pinoy Hoops is a collaboration between BBH Asia-Pacific and Mike Swift—rapper, baller, and founder of ',
 						_react2.default.createElement(
-							'ul',
-							null,
-							_react2.default.createElement(
-								'li',
-								null,
-								_react2.default.createElement('img', { src: 'images/about01.jpg' }),
-								_react2.default.createElement(
-									'h3',
-									null,
-									'About',
-									_react2.default.createElement('br', null),
-									' Pinoy Hoop'
-								),
-								_react2.default.createElement(
-									'p',
-									null,
-									'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tortor mi, ultrices eu vulputate eu, bibendum et ipsum. In sed sollicitudin mi,'
-								)
-							),
-							_react2.default.createElement(
-								'li',
-								null,
-								_react2.default.createElement('img', { src: 'images/about02.jpg' })
-							),
-							_react2.default.createElement(
-								'li',
-								null,
-								_react2.default.createElement('img', { src: 'images/about03.jpg' })
-							)
+							'a',
+							{ href: '#' },
+							' @pinoyhoops'
 						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'dots' },
-							_react2.default.createElement(
-								'div',
-								null,
-								_react2.default.createElement('label', { htmlFor: 'slides_1' }),
-								_react2.default.createElement('label', { htmlFor: 'slides_2' }),
-								_react2.default.createElement('label', { htmlFor: 'slides_3' })
-							)
-						)
+						', one of most influential Instagram accounts in the Pinoy basketball. It exists to document the millions of hoops found in every corner of the Philippines, and showcase the countrys mad, maniacal, and magical love of the game.'
+					),
+					_react2.default.createElement(
+						'p',
+						null,
+						'Donate sneaks, gear, and others to the kids who rule these courts.'
+					)
+				),
+				_react2.default.createElement('div', { className: 'col-md-12 ' }),
+				_react2.default.createElement(
+					'div',
+					{ className: '.col-xs-12 .col-sm-12 col-md-12 ' },
+					_react2.default.createElement(
+						'a',
+						{ href: '#', className: 'button' },
+						'Donate'
 					)
 				)
 			);

@@ -78,3 +78,17 @@ nav-list.active {
   position: absolute;
   z-index: 4;
  }
+
+ .sidebar_userprofile{
+   width: 100%;
+ }
+
+ .sidebar_userprofile img{
+  border-radius: 60pt;
+  max-width: 40px;
+ }
+
+ .sidebar_userprofile p{
+   display: inline-block;
+   padding-left: 15px;
+ }

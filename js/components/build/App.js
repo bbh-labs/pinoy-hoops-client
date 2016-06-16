@@ -84,6 +84,14 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/*
+	{ showNavigation ? <Navigation { ...this.state } /> : null }
+	{ showNavigation ? <input type='checkbox' id='nav-trigger' className='nav-trigger' /> : null }
+	{ showNavigation ? <label htmlFor='nav-trigger'></label> : null }
+	{ showNavigation ? <Overlay /> : null }
+	{ this.props.children && React.cloneElement(this.props.children, this.state)
+*/
+
 var App = function (_React$Component) {
 	_inherits(App, _React$Component);
 
@@ -106,18 +114,28 @@ var App = function (_React$Component) {
 	_createClass(App, [{
 		key: 'render',
 		value: function render() {
-			var showNavigation = true;
-
-			if (this.props.location.pathname == '/') showNavigation = false;
-
 			return _react2.default.createElement(
 				'div',
-				{ id: 'app' },
-				showNavigation ? _react2.default.createElement(_Navigation2.default, this.state) : null,
-				showNavigation ? _react2.default.createElement('input', { type: 'checkbox', id: 'nav-trigger', className: 'nav-trigger' }) : null,
-				showNavigation ? _react2.default.createElement('label', { htmlFor: 'nav-trigger' }) : null,
-				showNavigation ? _react2.default.createElement(_Overlay2.default, null) : null,
-				this.props.children && _react2.default.cloneElement(this.props.children, this.state)
+				{ id: 'app', className: 'pushmenu-push' },
+				_react2.default.createElement(_Navigation2.default, this.state),
+				_react2.default.createElement(
+					'div',
+					{ className: 'container-fluid' },
+					_react2.default.createElement(
+						'section',
+						{ className: 'buttonset' },
+						_react2.default.createElement(
+							'div',
+							{ id: 'nav_list' },
+							'Menu'
+						)
+					)
+				),
+				_react2.default.createElement(
+					'section',
+					{ className: 'content' },
+					this.props.children && _react2.default.cloneElement(this.props.children, this.state)
+				)
 			);
 		}
 	}, {
@@ -162,7 +180,7 @@ var App = function (_React$Component) {
 }(_react2.default.Component);
 
 function hideSidebar() {
-	_Dispatcher2.default.dispatch({ type: 'hide-sidebar' });
+	//Dispatcher.dispatch({ type: 'hide-sidebar' });
 }
 
 _reactDom2.default.render(_react2.default.createElement(

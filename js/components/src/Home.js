@@ -26,10 +26,10 @@ class Home extends React.Component {
 		            <img src="images/hero09.jpg"/>
 		            <img src="images/hero10.jpg"/>
 		          </div>
-		          <a href="map.html">
+		          <Link to='/map'>
 		            <div className="arrow bounce">
 		            </div>
-		          </a>
+		          </Link>
 		        </div>
 		    </div>
 		    </div>

@@ -8,6 +8,14 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouter = require('react-router');
 
+var _API = require('./API');
+
+var _API2 = _interopRequireDefault(_API);
+
+var _Dispatcher = require('./Dispatcher');
+
+var _Dispatcher2 = _interopRequireDefault(_Dispatcher);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29,67 +37,57 @@ var Login = function (_React$Component) {
 		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(
-				'div',
-				{ className: 'site-wrap' },
+				'section',
+				{ id: 'login' },
 				_react2.default.createElement(
 					'div',
-					{ className: 'login' },
+					{ className: 'container-fluid' },
 					_react2.default.createElement(
 						'div',
-						{ className: 'logo' },
+						{ className: 'row' },
 						_react2.default.createElement(
-							_reactRouter.Link,
-							{ to: '/' },
-							_react2.default.createElement('img', { src: 'images/logo_light.png' })
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'login-content' },
-						_react2.default.createElement(
-							'a',
-							{ href: '/auth/facebook' },
+							'div',
+							{ className: '.col-xs-12 .col-sm-12 col-md-12 nopadding' },
 							_react2.default.createElement(
-								'button',
-								{ style: { backgroundColor: '#3c5a99' } },
-								'Login with Facebook'
-							)
-						),
-						_react2.default.createElement(
-							'a',
-							{ href: '/auth/twitter' },
-							_react2.default.createElement(
-								'button',
-								{ style: { backgroundColor: '#00abf1' } },
-								'Login with Twitter'
-							)
-						),
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ to: '/login-email' },
-							_react2.default.createElement(
-								'button',
-								{ style: { backgroundColor: '#ff6b00' } },
-								'Login with Email'
-							)
-						),
-						_react2.default.createElement(
-							'p',
-							null,
-							'Don\'t have an account? ',
-							_react2.default.createElement(
-								_reactRouter.Link,
-								{ to: '/signup' },
+								'div',
+								{ className: 'logo' },
+								_react2.default.createElement('img', { src: 'images/logo_light.png' }),
 								_react2.default.createElement(
-									'span',
-									{ style: { color: '#fff' } },
-									'Sign up here'
+									'h3',
+									null,
+									'Login to join the hoops community'
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'sociallogin' },
+									_react2.default.createElement(
+										'a',
+										{ href: '/auth/facebook', onClick: this.login },
+										_react2.default.createElement(
+											'button',
+											null,
+											'Facebook'
+										)
+									)
 								)
 							)
 						)
 					)
 				)
 			);
+		}
+	}, {
+		key: 'login',
+		value: function login(event) {
+			event.preventDefault();
+
+			_API2.default.login(new FormData(event.target), function () {
+				console.log('foo');
+				_Dispatcher2.default.dispatch({ type: 'refresh-user', goto: '/map' });
+				console.log('bar');
+			}, function (response) {
+				alert(response.statusText + ': failed to log in!');
+			});
 		}
 	}]);
 
