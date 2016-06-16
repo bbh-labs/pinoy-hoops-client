@@ -38201,10 +38201,25 @@
 				// Create the Google Map using our element and options defined above
 				this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
+				var image = {
+					url: 'images/dummy01.jpg',
+					scaledSize: new google.maps.Size(32, 32),
+					size: new google.maps.Size(32, 48),
+					origin: new google.maps.Point(0, 0),
+					anchor: new google.maps.Point(0, 48)
+				};
+
+				var shape = {
+					coords: [0, 0, 32, 0, 32, 32, 16, 48, 0, 32],
+					type: 'poly'
+				};
+
 				var marker = new google.maps.Marker({
 					position: new google.maps.LatLng(14.5980, 120.9446),
 					map: this.map,
-					title: 'hello'
+					title: 'hello',
+					icon: image,
+					shape: shape
 				});
 
 				this.map.addListener('click', function (event) {
