@@ -10,30 +10,13 @@ import Dispatcher from './Dispatcher'
 class Map extends React.Component {
 	render() {
 		let user = this.props.user;
-		let showOverlay = this.state.showOverlay;
 
 		return (
 				<div className='map-wrapper'>
 					<MapView user={ user } />
-					<Overlay show={ showOverlay } />
+					<Overlay />
 				</div>
 		)
-	}
-	state = {
-		showOverlay: false,
-	}
-	componentDidMount() {
-		this.dispatcherID = Dispatcher.register((payload) => {
-			switch (payload.type) {
-			case 'toggle-overlay':
-				let showOverlay = this.state.showOverlay;
-				this.setState({ showOverlay: !showOverlay });
-				break;
-			}
-		});
-	}
-	componentWillUnmount() {
-		Dispatcher.unregister(this.dispatcherID);
 	}
 }
 
@@ -76,20 +59,10 @@ class MapView extends React.Component {
 		});
 
 		this.map.addListener('click', (event) => {
-				if (user) {
-					/*
-					let marker = new google.maps.Marker({
-						position: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
-						map: this.map,
-						title: 'hello',
-					});
-					*/
-
-					// TODO: make add hoop overlay popup
-					Dispatcher.dispatch({ type: 'toggle-overlay' });
-				} else {
-					browserHistory.push('/login');
-				}
+			if (user)
+				Dispatcher.dispatch({ type: 'map-click', latlng: event.latLng });
+			else
+				browserHistory.push('/login');
 		});
 		/*this.getHoops();
 
@@ -185,27 +158,99 @@ class MapView extends React.Component {
 
 class Overlay extends React.Component {
 	render() {
-		if (this.props.show)
-			return <div id="addhoop">
-				  <h2>Tell us about the hoop</h2>
+		let latlng = this.state.latlng;
+		if (latlng)
+			return (
+				<form id="addhoop" onSubmit={ this.submit } enctype='multipart/form-data' >
+					<h2>Tell us about the hoop</h2>
 					<input type='text' name='name' placeholder="Hoop Name" /><br/>
 					<textarea rows="4" cols="50"  name='description' placeholder="description"/><br/>
 					<div className="hoopcategory">
 						<h5>Submit your hoop photos under below categories(Mininum one)</h5>
-						<div className=".col-xs-12 col-md-4">
-							<img src="images/hoop.jpg"/>
-						</div>
-						<div className=".col-xs-12 col-md-4">
-							<img src="images/court.jpg"/>
-						</div>
-						<div className=".col-xs-12 col-md-4">
-							<img src="images/crew.jpg"/>
-						</div>
-						<button>DONE</button>
-          </div>
-			</div>
+						<label className=".col-xs-12 col-md-4" htmlFor='hoop-image-input'>
+							<img ref='hoopImage' src="images/hoop.jpg"/>
+							<input id='hoop-image-input' type='file' name='hoop-image' accept='image/*' onChange={ this.previewImage } />
+						</label>
+						<label className=".col-xs-12 col-md-4" htmlFor='court-image-input'>
+							<img ref='courtImage' src="images/court.jpg"/>
+							<input id='court-image-input' type='file' name='court-image' accept='image/*' onChange={ this.previewImage } />
+						</label>
+						<label className=".col-xs-12 col-md-4" htmlFor='crew-image-input'>
+							<img ref='crewImage' src="images/crew.jpg"/>
+							<input id='crew-image-input' type='file' name='crew-image' accept='image/*' onChange={ this.previewImage } />
+						</label>
+						<button type='submit'>DONE</button>
+					</div>
+					<input type='hidden' name='latitude' value={ latlng.lat } />
+					<input type='hidden' name='longitude' value={ latlng.lng } />
+				</form>
+			)
 		else
 			return null;
+	}
+	state = {
+		latlng: null,
+	}
+	componentDidMount() {
+		this.dispatcherID = Dispatcher.register((payload) => {
+			switch (payload.type) {
+			case 'map-click':
+				let lat = payload.latlng.lat();
+				let lng = payload.latlng.lng();
+				this.setState({ latlng: { lat: lat, lng: lng } });
+				break;
+			}
+		});
+	}
+	componentWillUnmount() {
+		Dispatcher.unregister(this.dispatcherID);
+	}
+	previewImage = (event) => {
+		let preview;
+		let file = event.target.files[0];
+		let reader = new FileReader();
+
+		switch (event.target.id) {
+		case 'hoop-image-input':
+			preview = this.refs.hoopImage;
+			break;
+
+		case 'court-image-input':
+			preview = this.refs.courtImage;
+			break;
+
+		case 'crew-image-input':
+			preview = this.refs.crewImage;
+			break;
+		}
+
+		reader.addEventListener('load', function() {
+			preview.src = reader.result;
+		});
+
+		if (file)
+			reader.readAsDataURL(file);
+	}
+	submit = (event) => {
+		let latlng = this.state.latlng;
+
+		event.preventDefault();
+
+		if (!latlng) {
+			alert('You must pick a location!');
+			return;
+		}
+
+		API.addHoop(new FormData(event.target), () => {
+			alert('Successfully added hoop!');
+			this.setState({ latlng: null });
+			Dispatcher.dispatch({ type: 'get-hoops' });
+			Dispatcher.dispatch({ type: 'get-activities' });
+			browserHistory.replace('/map');
+		}, (response) => {
+			this.setState({ latlng: null });
+			alert(response.statusText);
+		});
 	}
 }
 

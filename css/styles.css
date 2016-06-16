@@ -308,6 +308,13 @@ section.content {
   margin: 20pt auto;
 }
 
+#hoop-image-input,
+#court-image-input,
+#crew-image-input {
+	display: none;
+	cursor: pointer;
+}
+
 
 @-webkit-keyframes moveup {
     0% {

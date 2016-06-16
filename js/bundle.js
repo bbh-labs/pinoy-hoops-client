@@ -38072,52 +38072,22 @@
 		_inherits(Map, _React$Component);
 
 		function Map() {
-			var _Object$getPrototypeO;
-
-			var _temp, _this, _ret;
-
 			_classCallCheck(this, Map);
 
-			for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-				args[_key] = arguments[_key];
-			}
-
-			return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Map)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
-				showOverlay: false
-			}, _temp), _possibleConstructorReturn(_this, _ret);
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Map).apply(this, arguments));
 		}
 
 		_createClass(Map, [{
 			key: 'render',
 			value: function render() {
 				var user = this.props.user;
-				var showOverlay = this.state.showOverlay;
 
 				return _react2.default.createElement(
 					'div',
 					{ className: 'map-wrapper' },
 					_react2.default.createElement(MapView, { user: user }),
-					_react2.default.createElement(Overlay, { show: showOverlay })
+					_react2.default.createElement(Overlay, null)
 				);
-			}
-		}, {
-			key: 'componentDidMount',
-			value: function componentDidMount() {
-				var _this2 = this;
-
-				this.dispatcherID = _Dispatcher2.default.register(function (payload) {
-					switch (payload.type) {
-						case 'toggle-overlay':
-							var showOverlay = _this2.state.showOverlay;
-							_this2.setState({ showOverlay: !showOverlay });
-							break;
-					}
-				});
-			}
-		}, {
-			key: 'componentWillUnmount',
-			value: function componentWillUnmount() {
-				_Dispatcher2.default.unregister(this.dispatcherID);
 			}
 		}]);
 
@@ -38128,49 +38098,49 @@
 		_inherits(MapView, _React$Component2);
 
 		function MapView() {
-			var _Object$getPrototypeO2;
+			var _Object$getPrototypeO;
 
-			var _temp2, _this3, _ret2;
+			var _temp, _this2, _ret;
 
 			_classCallCheck(this, MapView);
 
-			for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-				args[_key2] = arguments[_key2];
+			for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+				args[_key] = arguments[_key];
 			}
 
-			return _ret2 = (_temp2 = (_this3 = _possibleConstructorReturn(this, (_Object$getPrototypeO2 = Object.getPrototypeOf(MapView)).call.apply(_Object$getPrototypeO2, [this].concat(args))), _this3), _this3.getHoops = function (data) {
+			return _ret = (_temp = (_this2 = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(MapView)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this2), _this2.getHoops = function (data) {
 				_API2.default.getHoops(data, function (hoops) {
-					_this3.setHoops(hoops);
+					_this2.setHoops(hoops);
 				}, function (response) {
 					alert('Failed to get hoops');
 				});
-			}, _this3.getNearbyHoops = function (data) {
+			}, _this2.getNearbyHoops = function (data) {
 				_API2.default.getNearbyHoops(data, function (hoops) {
-					_this3.setHoops(hoops);
+					_this2.setHoops(hoops);
 				}, function (response) {
 					alert('Failed to get hoops');
 				});
-			}, _this3.getPopularHoops = function (data) {
+			}, _this2.getPopularHoops = function (data) {
 				_API2.default.getPopularHoops(data, function (hoops) {
-					_this3.setHoops(hoops);
+					_this2.setHoops(hoops);
 				}, function (response) {
 					alert('Failed to get hoops');
 				});
-			}, _this3.getLatestHoops = function (data) {
+			}, _this2.getLatestHoops = function (data) {
 				_API2.default.getLatestHoops(data, function (hoops) {
-					_this3.setHoops(hoops);
+					_this2.setHoops(hoops);
 				}, function (response) {
 					alert('Failed to get hoops');
 				});
-			}, _this3.setHoops = function (hoops) {
-				_this3.clearHoops();
+			}, _this2.setHoops = function (hoops) {
+				_this2.clearHoops();
 
 				if (hoops) {
 					var _loop = function _loop(i) {
 						var hoop = hoops[i];
 						var marker = new google.maps.Marker({
 							position: new google.maps.LatLng(hoops[i].latitude, hoops[i].longitude),
-							map: _this3.map,
+							map: _this2.map,
 							title: hoops[i].name
 						});
 
@@ -38179,24 +38149,24 @@
 							_Dispatcher2.default.dispatch({ type: 'view-hoop', hoop: hoop });
 						});
 
-						_this3.markers.push(marker);
+						_this2.markers.push(marker);
 					};
 
 					for (var i in hoops) {
 						_loop(i);
 					}
 				}
-			}, _this3.clearHoops = function () {
-				for (var i in _this3.markers) {
-					_this3.markers[i].setMap(null);
-				}_this3.markers = [];
-			}, _this3.handleSearch = function (event) {
+			}, _this2.clearHoops = function () {
+				for (var i in _this2.markers) {
+					_this2.markers[i].setMap(null);
+				}_this2.markers = [];
+			}, _this2.handleSearch = function (event) {
 				var name = event.target.value;
 
 				event.preventDefault();
 
-				if (name.length > 0) _this3.getHoops({ name: name });else _this3.getHoops();
-			}, _temp2), _possibleConstructorReturn(_this3, _ret2);
+				if (name.length > 0) _this2.getHoops({ name: name });else _this2.getHoops();
+			}, _temp), _possibleConstructorReturn(_this2, _ret);
 		}
 
 		_createClass(MapView, [{
@@ -38241,20 +38211,7 @@
 				});
 
 				this.map.addListener('click', function (event) {
-					if (user) {
-						/*
-	     let marker = new google.maps.Marker({
-	     	position: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
-	     	map: this.map,
-	     	title: 'hello',
-	     });
-	     */
-
-						// TODO: make add hoop overlay popup
-						_Dispatcher2.default.dispatch({ type: 'toggle-overlay' });
-					} else {
-						_browserHistory2.default.push('/login');
-					}
+					if (user) _Dispatcher2.default.dispatch({ type: 'map-click', latlng: event.latLng });else _browserHistory2.default.push('/login');
 				});
 				/*this.getHoops();
 	   	this.dispatcherID = Dispatcher.register((payload) => {
@@ -38288,17 +38245,72 @@
 		_inherits(Overlay, _React$Component3);
 
 		function Overlay() {
+			var _Object$getPrototypeO2;
+
+			var _temp2, _this3, _ret3;
+
 			_classCallCheck(this, Overlay);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Overlay).apply(this, arguments));
+			for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+				args[_key2] = arguments[_key2];
+			}
+
+			return _ret3 = (_temp2 = (_this3 = _possibleConstructorReturn(this, (_Object$getPrototypeO2 = Object.getPrototypeOf(Overlay)).call.apply(_Object$getPrototypeO2, [this].concat(args))), _this3), _this3.state = {
+				latlng: null
+			}, _this3.previewImage = function (event) {
+				var preview = void 0;
+				var file = event.target.files[0];
+				var reader = new FileReader();
+
+				switch (event.target.id) {
+					case 'hoop-image-input':
+						preview = _this3.refs.hoopImage;
+						break;
+
+					case 'court-image-input':
+						preview = _this3.refs.courtImage;
+						break;
+
+					case 'crew-image-input':
+						preview = _this3.refs.crewImage;
+						break;
+				}
+
+				reader.addEventListener('load', function () {
+					preview.src = reader.result;
+				});
+
+				if (file) reader.readAsDataURL(file);
+			}, _this3.submit = function (event) {
+				var latlng = _this3.state.latlng;
+
+				event.preventDefault();
+
+				if (!latlng) {
+					alert('You must pick a location!');
+					return;
+				}
+
+				_API2.default.addHoop(new FormData(event.target), function () {
+					alert('Successfully added hoop!');
+					_this3.setState({ latlng: null });
+					_Dispatcher2.default.dispatch({ type: 'get-hoops' });
+					_Dispatcher2.default.dispatch({ type: 'get-activities' });
+					_browserHistory2.default.replace('/map');
+				}, function (response) {
+					_this3.setState({ latlng: null });
+					alert(response.statusText);
+				});
+			}, _temp2), _possibleConstructorReturn(_this3, _ret3);
 		}
 
 		_createClass(Overlay, [{
 			key: 'render',
 			value: function render() {
-				if (this.props.show) return _react2.default.createElement(
-					'div',
-					{ id: 'addhoop' },
+				var latlng = this.state.latlng;
+				if (latlng) return _react2.default.createElement(
+					'form',
+					{ id: 'addhoop', onSubmit: this.submit, enctype: 'multipart/form-data' },
 					_react2.default.createElement(
 						'h2',
 						null,
@@ -38317,27 +38329,52 @@
 							'Submit your hoop photos under below categories(Mininum one)'
 						),
 						_react2.default.createElement(
-							'div',
-							{ className: '.col-xs-12 col-md-4' },
-							_react2.default.createElement('img', { src: 'images/hoop.jpg' })
+							'label',
+							{ className: '.col-xs-12 col-md-4', htmlFor: 'hoop-image-input' },
+							_react2.default.createElement('img', { ref: 'hoopImage', src: 'images/hoop.jpg' }),
+							_react2.default.createElement('input', { id: 'hoop-image-input', type: 'file', name: 'hoop-image', accept: 'image/*', onChange: this.previewImage })
 						),
 						_react2.default.createElement(
-							'div',
-							{ className: '.col-xs-12 col-md-4' },
-							_react2.default.createElement('img', { src: 'images/court.jpg' })
+							'label',
+							{ className: '.col-xs-12 col-md-4', htmlFor: 'court-image-input' },
+							_react2.default.createElement('img', { ref: 'courtImage', src: 'images/court.jpg' }),
+							_react2.default.createElement('input', { id: 'court-image-input', type: 'file', name: 'court-image', accept: 'image/*', onChange: this.previewImage })
 						),
 						_react2.default.createElement(
-							'div',
-							{ className: '.col-xs-12 col-md-4' },
-							_react2.default.createElement('img', { src: 'images/crew.jpg' })
+							'label',
+							{ className: '.col-xs-12 col-md-4', htmlFor: 'crew-image-input' },
+							_react2.default.createElement('img', { ref: 'crewImage', src: 'images/crew.jpg' }),
+							_react2.default.createElement('input', { id: 'crew-image-input', type: 'file', name: 'crew-image', accept: 'image/*', onChange: this.previewImage })
 						),
 						_react2.default.createElement(
 							'button',
-							null,
+							{ type: 'submit' },
 							'DONE'
 						)
-					)
+					),
+					_react2.default.createElement('input', { type: 'hidden', name: 'latitude', value: latlng.lat }),
+					_react2.default.createElement('input', { type: 'hidden', name: 'longitude', value: latlng.lng })
 				);else return null;
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				var _this4 = this;
+
+				this.dispatcherID = _Dispatcher2.default.register(function (payload) {
+					switch (payload.type) {
+						case 'map-click':
+							var lat = payload.latlng.lat();
+							var lng = payload.latlng.lng();
+							_this4.setState({ latlng: { lat: lat, lng: lng } });
+							break;
+					}
+				});
+			}
+		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {
+				_Dispatcher2.default.unregister(this.dispatcherID);
 			}
 		}]);
 
