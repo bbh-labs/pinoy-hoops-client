@@ -29,10 +29,10 @@ class Login extends React.Component {
 	login(event) {
 		event.preventDefault();
 
-		API.login(new FormData(event.target), () => {
-			console.log('foo');
+		let data = MOCKUP ? null : new FormData(event.target);
+
+		API.login(data, () => {
 			Dispatcher.dispatch({ type: 'refresh-user', goto: '/map' });
-			console.log('bar');
 		}, (response) => {
 			alert(response.statusText + ': failed to log in!');
 		});

@@ -81,10 +81,10 @@ var Login = function (_React$Component) {
 		value: function login(event) {
 			event.preventDefault();
 
-			_API2.default.login(new FormData(event.target), function () {
-				console.log('foo');
+			var data = MOCKUP ? null : new FormData(event.target);
+
+			_API2.default.login(data, function () {
 				_Dispatcher2.default.dispatch({ type: 'refresh-user', goto: '/map' });
-				console.log('bar');
 			}, function (response) {
 				alert(response.statusText + ': failed to log in!');
 			});
