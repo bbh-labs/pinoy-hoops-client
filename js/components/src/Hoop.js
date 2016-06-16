@@ -16,37 +16,62 @@ class Hoop extends React.Component {
 			return null;
 
 		return (
-			<div className='site-wrap'>
-				 <div className='hoopstory'>
-					<div className='heroimage'>
-						<img src={ contentURL(hoop.data.featured_story.image_url, '') } />
-						<h2>{ hoop.title }</h2>
-					</div>
-					<div className='hoop-info'>
-						<div className='userprofile'>
-							<img src={ contentURL(hoop.user.image_url, '/images/avatar.png') } />
-							<h6>{ hoop.user.firstname } { hoop.user.lastname }</h6>
-						</div>
-						<div className='icons'>
-							<img src='/images/icon_share.png' onClick={ this.share } />
-						</div>
-						<div className='description'>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec enim dolor, facilisis id interdum id, gravida eget lacus. Nam congue urna massa, sit amet rutrum ipsum pellentesque eu. Praesent et </p>
-						</div>
-					</div>
-					<div className='filter'>
-						<p onClick={ this.setTab.bind(this, 'most-recent') } style={{ color: tab == 'most-recent' && '#ff6b00' }}>Most Recent</p>
-						<p onClick={ this.setTab.bind(this, 'most-liked') } style={{ color: tab == 'most-liked' && '#ff6b00' }}>Most Liked</p>
-						<p onClick={ this.setTab.bind(this, 'most-viewed') } style={{ color: tab == 'most-viewed' && '#ff6b00' }}>Most Viewed</p>
-					</div>
-					<div className='hoop-gallery'>
-						<li onClick={ this.addStory }>
-							<img src='/images/icon_plus.png' />
-						</li>
-						{ this.stories() }
-					</div> 	
-				 </div>
-			</div>
+			<div id="story">
+        <div className="row">
+          <div className=".col-xs-12 .col-sm-12 col-md-12 nopadding">
+            <div className="left">
+              <img src="images/image1.jpg"/>
+            </div>
+          </div>
+          <div className=".col-xs-12 .col-sm-12 col-md-12 nopadding">
+            <div className="right">
+              <img src="images/image1.jpg"/>
+            </div>
+          </div>
+          <div className=".col-xs-12 .col-sm-12 col-md-12 nopadding">
+            <div className="left">
+              <img src="images/image1.jpg"/>
+            </div>
+          </div>
+            <div className="title">
+              <img src="images/hoop_frame.png"/>
+              <h3>Hoop Name</h3>
+              <div className="social">
+                <a href="#"><img src="images/icon_share.png"/></a>
+                <a href="#"><img src="images/icon_like.png"/></a>
+                <a href="#"><img src="images/icon_comment.png"/></a>
+              </div>
+            </div>
+
+            <div className="desciption">
+              <div className=".col-xs-6.col-sm-6 col-md-6 nopadding"></div>
+              <div className=".col-xs-6.col-sm-6 col-md-6 nopadding">
+                <h3>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vestibulum quis sem a tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquet sed sem quis suscipit. Maecenas viverra metus ut nisl ornare molestie et id nisi. Sed eu elementum urna. Phasellus id dui erat. Integer volutpat ut quam ut mollis."</h3>
+              </div>
+            </div>
+
+            <div className="gallery">
+              <div className=".col-xs-4.col-sm-4 col-md-4 nopadding">
+                <div className="uploadhoop">
+                  <a href="#"><img src="images/uploadimage.jpg"/></a>
+                </div>
+              </div>
+              <div className=".col-xs-4.col-sm-4 col-md-4 nopadding">
+                <img src="images/image1.jpg"/>
+              </div>
+              <div className=".col-xs-4.col-sm-4 col-md-4 nopadding">
+                <img src="images/image1.jpg"/>
+              </div>
+              <div className=".col-xs-4.col-sm-4 col-md-4 nopadding">
+                <img src="images/image1.jpg"/>
+              </div>
+              <div className=".col-xs-4.col-sm-4 col-md-4 nopadding">
+                <img src="images/image1.jpg"/>
+              </div>
+            </div>
+
+      </div>
+       </div>
 		)
 	}
 	state = {
@@ -128,19 +153,19 @@ class Hoop extends React.Component {
 		}, (response) => {
 			alert('Failed to get most commented stories');
 		});
-		
+
 		API.getMostLikedStories({ hoop_id: hoopID }, (stories) => {
 			this.setState({ mostLikedStories: stories });
 		}, (response) => {
 			alert('Failed to get most liked stories');
 		});
-		
+
 		API.getMostViewedStories({ hoop_id: hoopID }, (stories) => {
 			this.setState({ mostViewedStories: stories });
 		}, (response) => {
 			alert('Failed to get most viewed stories');
 		});
-		
+
 		API.getLatestStories({ hoop_id: hoopID }, (stories) => {
 			this.setState({ latestStories: stories });
 		}, (response) => {

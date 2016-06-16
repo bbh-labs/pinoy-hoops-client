@@ -160,78 +160,116 @@ var Hoop = function (_React$Component) {
 
 			return _react2.default.createElement(
 				'div',
-				{ className: 'site-wrap' },
+				{ id: 'story' },
 				_react2.default.createElement(
 					'div',
-					{ className: 'hoopstory' },
+					{ className: 'row' },
 					_react2.default.createElement(
 						'div',
-						{ className: 'heroimage' },
-						_react2.default.createElement('img', { src: contentURL(hoop.data.featured_story.image_url, '') }),
+						{ className: '.col-xs-12 .col-sm-12 col-md-12 nopadding' },
 						_react2.default.createElement(
-							'h2',
+							'div',
+							{ className: 'left' },
+							_react2.default.createElement('img', { src: 'images/image1.jpg' })
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: '.col-xs-12 .col-sm-12 col-md-12 nopadding' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'right' },
+							_react2.default.createElement('img', { src: 'images/image1.jpg' })
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: '.col-xs-12 .col-sm-12 col-md-12 nopadding' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'left' },
+							_react2.default.createElement('img', { src: 'images/image1.jpg' })
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'title' },
+						_react2.default.createElement('img', { src: 'images/hoop_frame.png' }),
+						_react2.default.createElement(
+							'h3',
 							null,
-							hoop.title
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'hoop-info' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'userprofile' },
-							_react2.default.createElement('img', { src: contentURL(hoop.user.image_url, '/images/avatar.png') }),
-							_react2.default.createElement(
-								'h6',
-								null,
-								hoop.user.firstname,
-								' ',
-								hoop.user.lastname
-							)
+							'Hoop Name'
 						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'icons' },
-							_react2.default.createElement('img', { src: '/images/icon_share.png', onClick: this.share })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'description' },
+							{ className: 'social' },
 							_react2.default.createElement(
-								'p',
-								null,
-								'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec enim dolor, facilisis id interdum id, gravida eget lacus. Nam congue urna massa, sit amet rutrum ipsum pellentesque eu. Praesent et '
+								'a',
+								{ href: '#' },
+								_react2.default.createElement('img', { src: 'images/icon_share.png' })
+							),
+							_react2.default.createElement(
+								'a',
+								{ href: '#' },
+								_react2.default.createElement('img', { src: 'images/icon_like.png' })
+							),
+							_react2.default.createElement(
+								'a',
+								{ href: '#' },
+								_react2.default.createElement('img', { src: 'images/icon_comment.png' })
 							)
 						)
 					),
 					_react2.default.createElement(
 						'div',
-						{ className: 'filter' },
+						{ className: 'desciption' },
+						_react2.default.createElement('div', { className: '.col-xs-6.col-sm-6 col-md-6 nopadding' }),
 						_react2.default.createElement(
-							'p',
-							{ onClick: this.setTab.bind(this, 'most-recent'), style: { color: tab == 'most-recent' && '#ff6b00' } },
-							'Most Recent'
-						),
-						_react2.default.createElement(
-							'p',
-							{ onClick: this.setTab.bind(this, 'most-liked'), style: { color: tab == 'most-liked' && '#ff6b00' } },
-							'Most Liked'
-						),
-						_react2.default.createElement(
-							'p',
-							{ onClick: this.setTab.bind(this, 'most-viewed'), style: { color: tab == 'most-viewed' && '#ff6b00' } },
-							'Most Viewed'
+							'div',
+							{ className: '.col-xs-6.col-sm-6 col-md-6 nopadding' },
+							_react2.default.createElement(
+								'h3',
+								null,
+								'"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vestibulum quis sem a tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquet sed sem quis suscipit. Maecenas viverra metus ut nisl ornare molestie et id nisi. Sed eu elementum urna. Phasellus id dui erat. Integer volutpat ut quam ut mollis."'
+							)
 						)
 					),
 					_react2.default.createElement(
 						'div',
-						{ className: 'hoop-gallery' },
+						{ className: 'gallery' },
 						_react2.default.createElement(
-							'li',
-							{ onClick: this.addStory },
-							_react2.default.createElement('img', { src: '/images/icon_plus.png' })
+							'div',
+							{ className: '.col-xs-4.col-sm-4 col-md-4 nopadding' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'uploadhoop' },
+								_react2.default.createElement(
+									'a',
+									{ href: '#' },
+									_react2.default.createElement('img', { src: 'images/uploadimage.jpg' })
+								)
+							)
 						),
-						this.stories()
+						_react2.default.createElement(
+							'div',
+							{ className: '.col-xs-4.col-sm-4 col-md-4 nopadding' },
+							_react2.default.createElement('img', { src: 'images/image1.jpg' })
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: '.col-xs-4.col-sm-4 col-md-4 nopadding' },
+							_react2.default.createElement('img', { src: 'images/image1.jpg' })
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: '.col-xs-4.col-sm-4 col-md-4 nopadding' },
+							_react2.default.createElement('img', { src: 'images/image1.jpg' })
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: '.col-xs-4.col-sm-4 col-md-4 nopadding' },
+							_react2.default.createElement('img', { src: 'images/image1.jpg' })
+						)
 					)
 				)
 			);
