@@ -8,6 +8,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouter = require('react-router');
 
+var _browserHistory = require('./browserHistory');
+
+var _browserHistory2 = _interopRequireDefault(_browserHistory);
+
 var _API = require('./API');
 
 var _API2 = _interopRequireDefault(_API);
@@ -40,112 +44,90 @@ var Navigation = function (_React$Component) {
 
 			if (user) {
 				return _react2.default.createElement(
-					'ul',
-					{ className: 'navigation' },
+					'nav',
+					{ className: 'pushmenu pushmenu-left' },
 					_react2.default.createElement(
-						'li',
-						{ className: 'nav-item' },
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ to: '/' },
-							_react2.default.createElement('img', { src: '/images/logo_light.png' })
-						)
+						_reactRouter.Link,
+						{ to: '/map' },
+						_react2.default.createElement('img', { src: 'images/logo_light.png' })
 					),
 					_react2.default.createElement(
-						'li',
-						{ className: 'nav-item' },
+						_reactRouter.Link,
+						{ to: '/profile' },
 						_react2.default.createElement(
-							_reactRouter.Link,
-							{ to: '/profile', onClick: hideSidebar },
+							'div',
+							{ className: 'sidebar_userprofile' },
+							_react2.default.createElement('img', { src: user.image_url }),
 							_react2.default.createElement(
-								'div',
-								{ className: 'menuprofile' },
-								_react2.default.createElement('img', { src: contentURL(user.image_url, '/images/avatar.png') }),
-								user.firstname,
-								' ',
-								user.lastname
+								'p',
+								null,
+								user.firstname
 							)
 						)
 					),
 					_react2.default.createElement(
-						'li',
-						{ className: 'nav-item' },
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ to: '/map', onClick: hideSidebar },
-							'Map'
-						)
+						_reactRouter.Link,
+						{ to: '/about' },
+						'About'
 					),
 					_react2.default.createElement(
-						'li',
-						{ className: 'nav-item' },
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ to: '/add-hoop', onClick: hideSidebar },
-							'Add a hoop'
-						)
+						'a',
+						{ href: 'mailto:donate@pinoyhoops.com?Subject=Donation%20for%20hoop', target: '_top' },
+						'Donate'
 					),
 					_react2.default.createElement(
-						'li',
-						{ className: 'nav-item' },
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ to: '/activities', onClick: hideSidebar },
-							'Activity feed'
-						)
-					),
-					_react2.default.createElement(
-						'li',
-						{ className: 'nav-item' },
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ to: '/about', onClick: hideSidebar },
-							'About'
-						)
-					),
-					_react2.default.createElement(
-						'li',
-						{ className: 'nav-item' },
-						_react2.default.createElement(
-							'a',
-							{ href: '#', onClick: this.logout },
-							'Logout'
-						)
+						'a',
+						{ href: '#', onClick: this.logout },
+						'Sign out'
 					)
 				);
 			} else {
 				return _react2.default.createElement(
-					'ul',
-					{ className: 'navigation' },
+					'nav',
+					{ className: 'pushmenu pushmenu-left' },
 					_react2.default.createElement(
-						'li',
-						{ className: 'nav-item' },
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ to: '/' },
-							_react2.default.createElement('img', { src: '/images/logo_light.png' })
-						)
+						_reactRouter.Link,
+						{ to: '/map' },
+						_react2.default.createElement('img', { src: 'images/logo_light.png' })
 					),
 					_react2.default.createElement(
-						'li',
-						{ className: 'nav-item' },
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ to: '/about', onClick: hideSidebar },
-							'About'
-						)
+						'a',
+						{ href: '#', onClick: this.login },
+						'Login'
 					),
 					_react2.default.createElement(
-						'li',
-						{ className: 'nav-item' },
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ to: '/login', onClick: hideSidebar },
-							'Add a hoop'
-						)
+						_reactRouter.Link,
+						{ to: '/about' },
+						'About'
+					),
+					_react2.default.createElement(
+						'a',
+						{ href: 'mailto:donate@pinoyhoops.com?Subject=Donation%20for%20hoop', target: '_top' },
+						'Donate'
 					)
 				);
 			}
+		}
+	}, {
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			$(document).ready(function () {
+				var $menuLeft = $('.pushmenu-left');
+				var $nav_list = $('#nav_list');
+
+				$nav_list.click(function () {
+					$(this).toggleClass('active');
+					$('.pushmenu-push').toggleClass('pushmenu-push-toright');
+					$menuLeft.toggleClass('pushmenu-open');
+				});
+			});
+		}
+	}, {
+		key: 'login',
+		value: function login(event) {
+			event.preventDefault();
+
+			_browserHistory2.default.replace('/login');
 		}
 	}, {
 		key: 'logout',

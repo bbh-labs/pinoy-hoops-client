@@ -22,20 +22,29 @@ import Profile from './Profile'
 import Signup from './Signup'
 import Story from './Story'
 
+/*
+	{ showNavigation ? <Navigation { ...this.state } /> : null }
+	{ showNavigation ? <input type='checkbox' id='nav-trigger' className='nav-trigger' /> : null }
+	{ showNavigation ? <label htmlFor='nav-trigger'></label> : null }
+	{ showNavigation ? <Overlay /> : null }
+	{ this.props.children && React.cloneElement(this.props.children, this.state)
+*/
+
 class App extends React.Component {
 	render() {
-		let showNavigation = true;
-
-		if (this.props.location.pathname == '/')
-			showNavigation = false;
-
 		return (
-			<div id='app'>
-				{ showNavigation ? <Navigation { ...this.state } /> : null }
-				{ showNavigation ? <input type='checkbox' id='nav-trigger' className='nav-trigger' /> : null }
-				{ showNavigation ? <label htmlFor='nav-trigger'></label> : null }
-				{ showNavigation ? <Overlay /> : null }
-				{ this.props.children && React.cloneElement(this.props.children, this.state) }
+			<div id='app' className="pushmenu-push">
+				<Navigation { ...this.state } />
+
+				<div className="container-fluid">
+					<section className="buttonset">
+						<div id="nav_list">Menu</div>
+					</section>
+				</div>
+
+		    <section className="content">
+					{ this.props.children && React.cloneElement(this.props.children, this.state) }
+				</section>
 			</div>
 		)
 	}
@@ -72,6 +81,10 @@ class App extends React.Component {
 			this.setState({ user: null });
 		});
 	}
+}
+
+function hideSidebar() {
+	//Dispatcher.dispatch({ type: 'hide-sidebar' });
 }
 
 ReactDOM.render((

@@ -117,53 +117,48 @@ var Profile = function (_React$Component) {
 
 			return _react2.default.createElement(
 				'div',
-				{ className: 'site-wrap' },
+				{ id: 'profile' },
+				_react2.default.createElement(
+					'form',
+					{ ref: 'userImageForm', className: 'picture' },
+					_react2.default.createElement(
+						'label',
+						{ htmlFor: 'user-image' },
+						_react2.default.createElement('img', { src: contentURL(user.image_url, '/images/avatar.png') }),
+						_react2.default.createElement('input', { id: 'user-image', type: 'file', name: 'image', onChange: this.handleUserImage })
+					)
+				),
 				_react2.default.createElement(
 					'div',
-					{ className: 'profile' },
+					{ className: 'info' },
+					this.profileInfo(),
 					_react2.default.createElement(
-						'form',
-						{ ref: 'userImageForm', className: 'picture' },
-						_react2.default.createElement(
-							'label',
-							{ htmlFor: 'user-image' },
-							_react2.default.createElement('input', { id: 'user-image', type: 'file', name: 'image', onChange: this.handleUserImage }),
-							_react2.default.createElement('img', { src: contentURL(user.image_url, '/images/avatar.png') })
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'info' },
-						this.profileInfo(),
-						_react2.default.createElement(
-							'button',
-							{ onClick: this.toggleEdit },
-							editing ? 'Done' : 'Edit Profile',
-							' '
-						)
-					),
+						'button',
+						{ onClick: this.toggleEdit },
+						'Edit Profile'
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'myhoops' },
 					_react2.default.createElement(
 						'div',
-						{ className: 'myhoops' },
+						{ className: 'filter' },
 						_react2.default.createElement(
-							'div',
-							{ className: 'filter' },
-							_react2.default.createElement(
-								'p',
-								{ onClick: this.setTab.bind(this, 'my-hoops'), style: { color: tab == 'my-hoops' && '#ff6b00' } },
-								'My hoops'
-							),
-							_react2.default.createElement(
-								'p',
-								{ onClick: this.setTab.bind(this, 'other-hoops'), style: { color: tab == 'other-hoops' && '#ff6b00' } },
-								'Other hoops'
-							)
+							'p',
+							{ onClick: this.setTab.bind(this, 'my-hoops'), style: { color: tab == 'my-hoops' && '#ff6b00' } },
+							'My hoops'
 						),
 						_react2.default.createElement(
-							'div',
-							{ className: 'gallery' },
-							this.hoops()
+							'p',
+							{ onClick: this.setTab.bind(this, 'other-hoops'), style: { color: tab == 'other-hoops' && '#ff6b00' } },
+							'Other hoops'
 						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'gallery' },
+						this.hoops()
 					)
 				)
 			);

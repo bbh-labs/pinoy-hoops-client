@@ -34,42 +34,41 @@ var Home = function (_React$Component) {
 		value: function render() {
 			return _react2.default.createElement(
 				'section',
-				{ className: 'landingpage' },
+				{ id: 'landingpage' },
 				_react2.default.createElement(
 					'div',
-					{ id: 'slideshow' },
+					{ className: 'container-fluid' },
 					_react2.default.createElement(
 						'div',
-						null,
-						_react2.default.createElement('img', { src: '/images/landingpage/hero01.jpg' })
-					),
-					_react2.default.createElement(
-						'div',
-						null,
-						_react2.default.createElement('img', { src: '/images/landingpage/hero02.jpg' })
-					),
-					_react2.default.createElement(
-						'div',
-						null,
-						_react2.default.createElement('img', { src: '/images/landingpage/hero03.jpg' })
-					)
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'logo' },
-					_react2.default.createElement(
-						_reactRouter.Link,
-						{ to: '/' },
-						_react2.default.createElement('img', { src: '/images/logo_light.png', className: 'img-responsive' })
-					)
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'nav-arrow' },
-					_react2.default.createElement(
-						_reactRouter.Link,
-						{ to: '/map' },
-						_react2.default.createElement('img', { src: '/images/landingpage/arrow.png' })
+						{ className: 'row' },
+						_react2.default.createElement(
+							'div',
+							{ className: '.col-xs-12 .col-sm-12 col-md-12 nopadding' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'logo' },
+								_react2.default.createElement('img', { src: 'images/logo_light.png' })
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'fadein' },
+								_react2.default.createElement('img', { src: 'images/hero01.jpg' }),
+								_react2.default.createElement('img', { src: 'images/hero02.jpg' }),
+								_react2.default.createElement('img', { src: 'images/hero03.jpg' }),
+								_react2.default.createElement('img', { src: 'images/hero04.jpg' }),
+								_react2.default.createElement('img', { src: 'images/hero05.jpg' }),
+								_react2.default.createElement('img', { src: 'images/hero06.jpg' }),
+								_react2.default.createElement('img', { src: 'images/hero07.jpg' }),
+								_react2.default.createElement('img', { src: 'images/hero08.jpg' }),
+								_react2.default.createElement('img', { src: 'images/hero09.jpg' }),
+								_react2.default.createElement('img', { src: 'images/hero10.jpg' })
+							),
+							_react2.default.createElement(
+								_reactRouter.Link,
+								{ to: '/map' },
+								_react2.default.createElement('div', { className: 'arrow bounce' })
+							)
+						)
 					)
 				)
 			);
@@ -77,11 +76,12 @@ var Home = function (_React$Component) {
 	}, {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
-			(0, _jquery2.default)('#slideshow > div:gt(0)').hide();
-
-			this.intervalID = setInterval(function () {
-				(0, _jquery2.default)('#slideshow > div:first').fadeOut(1000).next().fadeIn(1000).end().appendTo('#slideshow');
-			}, 5000);
+			(0, _jquery2.default)(function () {
+				(0, _jquery2.default)('.fadein img:gt(0)').hide();
+				this.intervalID = setInterval(function () {
+					(0, _jquery2.default)('.fadein :first-child').fadeOut().next('img').fadeIn().end().appendTo('.fadein');
+				}, 3000);
+			});
 		}
 	}, {
 		key: 'componentWillUnmount',

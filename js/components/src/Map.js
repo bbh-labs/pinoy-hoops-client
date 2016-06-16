@@ -9,19 +9,31 @@ import Dispatcher from './Dispatcher'
 
 class Map extends React.Component {
 	render() {
+		let user = this.props.user;
+		let showOverlay = this.state.showOverlay;
+
 		return (
-			<div className='site-wrap'>
-				<MapView />
-				 <div className='map-btn'>
-					<div className='bottom-left'>
-						<img src='images/search.jpg' />
-					</div>
-					<div className='bottom-right'>
-						<img src='images/location.jpg' />
-					</div>
+				<div className='map-wrapper'>
+					<MapView user={ user } />
+					<Overlay show={ showOverlay } />
 				</div>
-			</div>
 		)
+	}
+	state = {
+		showOverlay: false,
+	}
+	componentDidMount() {
+		this.dispatcherID = Dispatcher.register((payload) => {
+			switch (payload.type) {
+			case 'toggle-overlay':
+				let showOverlay = this.state.showOverlay;
+				this.setState({ showOverlay: !showOverlay });
+				break;
+			}
+		});
+	}
+	componentWillUnmount() {
+		Dispatcher.unregister(this.dispatcherID);
 	}
 }
 
@@ -30,24 +42,48 @@ class MapView extends React.Component {
 		return <div id='map'></div>
 	}
 	componentDidMount() {
+		let user = this.props.user;
+
 		// Basic options for a simple Google Map
 		// For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
 		var mapOptions = {
 			// How zoomed in you want the map to start at (always required)
-			zoom: 12,
-			scrollwheel: false,
+			zoom: 13,
+			scrollwheel: true,
 			// The latitude and longitude to center the map (always required)
 			center: new google.maps.LatLng(14.5980, 120.9446), // Manila
 
-			// How you would like to style the map. 
+			// How you would like to style the map.
 			// This is where you would paste any style found on Snazzy Maps.
-			styles: MAP_STYLE,
-		};
+			styles: [{"featureType":"all","elementType":"labels.text","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"labels.text","stylers":[{"visibility":"on"}]},{"featureType":"administrative.country","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"administrative.country","elementType":"labels.text","stylers":[{"visibility":"on"}]},{"featureType":"administrative.country","elementType":"labels.text.fill","stylers":[{"visibility":"on"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#e5e8e7"},{"visibility":"off"}]},{"featureType":"landscape.man_made","elementType":"geometry.fill","stylers":[{"color":"#ffffff"},{"visibility":"on"}]},{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"color":"#f5f5f2"},{"visibility":"on"}]},{"featureType":"poi","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.attraction","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.business","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.government","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"poi.medical","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.park","elementType":"all","stylers":[{"color":"#91b65d"},{"gamma":1.51}]},{"featureType":"poi.park","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.place_of_worship","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.school","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.sports_complex","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.sports_complex","elementType":"geometry","stylers":[{"color":"#c7c7c7"},{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"color":"#ffffff"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#ffffff"},{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"labels.icon","stylers":[{"color":"#ffffff"},{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"all","stylers":[{"visibility":"simplified"},{"color":"#ffffff"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"visibility":"simplified"}]},{"featureType":"road.local","elementType":"all","stylers":[{"color":"#ffffff"},{"visibility":"simplified"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#a0d3d3"}]}]
+	};
 
 		// Create the Google Map using our element and options defined above
 		this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-		this.getHoops();
+		let marker = new google.maps.Marker({
+			position: new google.maps.LatLng(14.5980, 120.9446),
+			map: this.map,
+			title: 'hello',
+		});
+
+		this.map.addListener('click', (event) => {
+				if (user) {
+					/*
+					let marker = new google.maps.Marker({
+						position: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
+						map: this.map,
+						title: 'hello',
+					});
+					*/
+
+					// TODO: make add hoop overlay popup
+					Dispatcher.dispatch({ type: 'toggle-overlay' });
+				} else {
+					browserHistory.push('/login');
+				}
+		});
+		/*this.getHoops();
 
 		this.dispatcherID = Dispatcher.register((payload) => {
 			switch (payload.type) {
@@ -67,12 +103,10 @@ class MapView extends React.Component {
 				this.getLatestHoops();
 				break;
 			}
-		});
+		});*/
 	}
 	componentWillUnmount() {
 		this.map = null;
-
-		Dispatcher.unregister(this.dispatcherID);
 	}
 	getHoops = (data) => {
 		API.getHoops(data, (hoops) => {
@@ -138,6 +172,32 @@ class MapView extends React.Component {
 			this.getHoops({ name: name });
 		else
 			this.getHoops();
+	}
+}
+
+class Overlay extends React.Component {
+	render() {
+		if (this.props.show)
+			return <div id="addhoop">
+				  <h2>Tell us about the hoop</h2>
+					<input type='text' name='name' placeholder="Hoop Name" /><br/>
+					<textarea rows="4" cols="50"  name='description' placeholder="description"/><br/>
+					<div className="hoopcategory">
+						<h5>Submit your hoop photos under below categories(Mininum one)</h5>
+						<div className=".col-xs-12 col-md-4">
+							<img src="images/hoop.jpg"/>
+						</div>
+						<div className=".col-xs-12 col-md-4">
+							<img src="images/court.jpg"/>
+						</div>
+						<div className=".col-xs-12 col-md-4">
+							<img src="images/crew.jpg"/>
+						</div>
+						<button>DONE</button>
+          </div>
+			</div>
+		else
+			return null;
 	}
 }
 
