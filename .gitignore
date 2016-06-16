@@ -1,6 +1,7 @@
 # Custom
 *.swp
 *~
+js/bundle.js
 content/
 
 # Logs
