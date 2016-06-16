@@ -332,3 +332,58 @@ section.content {
         top: 60%;
     }
 }
+
+#story{
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+#story img{
+  max-width: 800px;
+  margin-bottom: 60px;
+}
+
+#story .title{
+  position: absolute;
+  z-index: 4;
+  top:2%;
+  right: 0%;
+}
+
+#story .title img{
+  max-width: 200px;
+}
+#story .title h3{
+  margin-top: -75%;
+  text-align: center;
+}
+
+#story .social{
+  position: absolute;
+  z-index: 4;
+  margin-top: 35%;
+  left: 5%;
+}
+
+#story .social img{
+  max-width: 32px;
+  margin-left: 20px;
+}
+
+#story .desciption{
+  position: absolute;
+  z-index: 4;
+  top:15%;
+}
+
+#story .desciption h3{
+  font-size: 20pt;
+  line-height: 26pt;
+  text-shadow: 1px 0px 0px #999;
+}
+
+#story .gallery img{
+  max-width: 100%;
+  margin: 0;
+}
