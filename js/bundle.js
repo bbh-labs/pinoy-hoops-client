@@ -38138,10 +38138,19 @@
 				if (hoops) {
 					var _loop = function _loop(i) {
 						var hoop = hoops[i];
+
+						var image = {
+							url: hoops[i].data.featured_story.image_url,
+							scaledSize: new google.maps.Size(64, 64),
+							origin: new google.maps.Point(0, 0),
+							anchor: new google.maps.Point(0, 64)
+						};
+
 						var marker = new google.maps.Marker({
 							position: new google.maps.LatLng(hoops[i].latitude, hoops[i].longitude),
 							map: _this2.map,
-							title: hoops[i].name
+							title: hoops[i].name,
+							icon: image
 						});
 
 						marker.addListener('click', function () {
@@ -38177,6 +38186,8 @@
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
+				var _this3 = this;
+
 				var user = this.props.user;
 
 				// Basic options for a simple Google Map
@@ -38191,40 +38202,31 @@
 				// Create the Google Map using our element and options defined above
 				this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-				var image = {
-					url: 'images/dummy01.jpg',
-					scaledSize: new google.maps.Size(64, 64),
-					origin: new google.maps.Point(0, 0),
-					anchor: new google.maps.Point(0, 64)
-				};
-
-				var marker = new google.maps.Marker({
-					position: new google.maps.LatLng(14.5980, 120.9446),
-					map: this.map,
-					title: 'hello',
-					icon: image
-				});
-
 				this.map.addListener('click', function (event) {
 					if (user) _Dispatcher2.default.dispatch({ type: 'map-click', latlng: event.latLng });else _browserHistory2.default.push('/login');
 				});
-				/*this.getHoops();
-	   	this.dispatcherID = Dispatcher.register((payload) => {
-	   	switch (payload.type) {
-	   	case 'get-hoops':
-	   		this.getHoops();
-	   		break;
-	   		case 'get-nearby-hoops':
-	   		this.getNearbyHoops();
-	   		break;
-	   		case 'get-popular-hoops':
-	   		this.getPopularHoops();
-	   		break;
-	   		case 'get-latest-hoops':
-	   		this.getLatestHoops();
-	   		break;
-	   	}
-	   });*/
+
+				this.getHoops();
+
+				this.dispatcherID = _Dispatcher2.default.register(function (payload) {
+					switch (payload.type) {
+						case 'get-hoops':
+							_this3.getHoops();
+							break;
+
+						case 'get-nearby-hoops':
+							_this3.getNearbyHoops();
+							break;
+
+						case 'get-popular-hoops':
+							_this3.getPopularHoops();
+							break;
+
+						case 'get-latest-hoops':
+							_this3.getLatestHoops();
+							break;
+					}
+				});
 			}
 		}, {
 			key: 'componentWillUnmount',
@@ -38242,7 +38244,7 @@
 		function Overlay() {
 			var _Object$getPrototypeO2;
 
-			var _temp2, _this3, _ret3;
+			var _temp2, _this4, _ret3;
 
 			_classCallCheck(this, Overlay);
 
@@ -38250,24 +38252,24 @@
 				args[_key2] = arguments[_key2];
 			}
 
-			return _ret3 = (_temp2 = (_this3 = _possibleConstructorReturn(this, (_Object$getPrototypeO2 = Object.getPrototypeOf(Overlay)).call.apply(_Object$getPrototypeO2, [this].concat(args))), _this3), _this3.state = {
+			return _ret3 = (_temp2 = (_this4 = _possibleConstructorReturn(this, (_Object$getPrototypeO2 = Object.getPrototypeOf(Overlay)).call.apply(_Object$getPrototypeO2, [this].concat(args))), _this4), _this4.state = {
 				latlng: null
-			}, _this3.previewImage = function (event) {
+			}, _this4.previewImage = function (event) {
 				var preview = void 0;
 				var file = event.target.files[0];
 				var reader = new FileReader();
 
 				switch (event.target.id) {
 					case 'hoop-image-input':
-						preview = _this3.refs.hoopImage;
+						preview = _this4.refs.hoopImage;
 						break;
 
 					case 'court-image-input':
-						preview = _this3.refs.courtImage;
+						preview = _this4.refs.courtImage;
 						break;
 
 					case 'crew-image-input':
-						preview = _this3.refs.crewImage;
+						preview = _this4.refs.crewImage;
 						break;
 				}
 
@@ -38276,8 +38278,8 @@
 				});
 
 				if (file) reader.readAsDataURL(file);
-			}, _this3.submit = function (event) {
-				var latlng = _this3.state.latlng;
+			}, _this4.submit = function (event) {
+				var latlng = _this4.state.latlng;
 
 				event.preventDefault();
 
@@ -38288,15 +38290,15 @@
 
 				_API2.default.addHoop(new FormData(event.target), function () {
 					alert('Successfully added hoop!');
-					_this3.setState({ latlng: null });
+					_this4.setState({ latlng: null });
 					_Dispatcher2.default.dispatch({ type: 'get-hoops' });
 					_Dispatcher2.default.dispatch({ type: 'get-activities' });
 					_browserHistory2.default.replace('/map');
 				}, function (response) {
-					_this3.setState({ latlng: null });
+					_this4.setState({ latlng: null });
 					alert(response.statusText);
 				});
-			}, _temp2), _possibleConstructorReturn(_this3, _ret3);
+			}, _temp2), _possibleConstructorReturn(_this4, _ret3);
 		}
 
 		_createClass(Overlay, [{
@@ -38354,14 +38356,14 @@
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				var _this4 = this;
+				var _this5 = this;
 
 				this.dispatcherID = _Dispatcher2.default.register(function (payload) {
 					switch (payload.type) {
 						case 'map-click':
 							var lat = payload.latlng.lat();
 							var lng = payload.latlng.lng();
-							_this4.setState({ latlng: { lat: lat, lng: lng } });
+							_this5.setState({ latlng: { lat: lat, lng: lng } });
 							break;
 					}
 				});

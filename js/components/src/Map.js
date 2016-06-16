@@ -39,27 +39,14 @@ class MapView extends React.Component {
 		// Create the Google Map using our element and options defined above
 		this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-		let image = {
-			url: 'images/dummy01.jpg',
-			scaledSize: new google.maps.Size(64, 64),
-			origin: new google.maps.Point(0, 0),
-			anchor: new google.maps.Point(0, 64),
-		};
-
-		let marker = new google.maps.Marker({
-			position: new google.maps.LatLng(14.5980, 120.9446),
-			map: this.map,
-			title: 'hello',
-			icon: image,
-		});
-
 		this.map.addListener('click', (event) => {
 			if (user)
 				Dispatcher.dispatch({ type: 'map-click', latlng: event.latLng });
 			else
 				browserHistory.push('/login');
 		});
-		/*this.getHoops();
+
+		this.getHoops();
 
 		this.dispatcherID = Dispatcher.register((payload) => {
 			switch (payload.type) {
@@ -79,7 +66,7 @@ class MapView extends React.Component {
 				this.getLatestHoops();
 				break;
 			}
-		});*/
+		});
 	}
 	componentWillUnmount() {
 		this.map = null;
@@ -118,10 +105,19 @@ class MapView extends React.Component {
 		if (hoops) {
 			for (let i in hoops) {
 				let hoop = hoops[i];
+
+				let image = {
+					url: hoops[i].data.featured_story.image_url,
+					scaledSize: new google.maps.Size(64, 64),
+					origin: new google.maps.Point(0, 0),
+					anchor: new google.maps.Point(0, 64),
+				};
+
 				let marker = new google.maps.Marker({
 					position: new google.maps.LatLng(hoops[i].latitude, hoops[i].longitude),
 					map: this.map,
 					title: hoops[i].name,
+					icon: image,
 				});
 
 				marker.addListener('click', function() {
