@@ -18,21 +18,23 @@ class Hoop extends React.Component {
 		return (
 			<div id="story">
         <div className="row">
-          <div className=".col-xs-12 .col-sm-12 col-md-12 nopadding">
-            <div className="left">
-              <img src="images/image1.jpg"/>
-            </div>
-          </div>
-          <div className=".col-xs-12 .col-sm-12 col-md-12 nopadding">
-            <div className="right">
-              <img src="images/image1.jpg"/>
-            </div>
-          </div>
-          <div className=".col-xs-12 .col-sm-12 col-md-12 nopadding">
-            <div className="left">
-              <img src="images/image1.jpg"/>
-            </div>
-          </div>
+					<div className="heroimage">
+	          <div className=".col-xs-12 .col-sm-12 col-md-12 nopadding">
+	            <div className="left">
+	              <img src="images/image1.jpg"/>
+	            </div>
+	          </div>
+	          <div className=".col-xs-12 .col-sm-12 col-md-12 nopadding">
+	            <div className="right">
+	              <img src="images/image1.jpg"/>
+	            </div>
+	          </div>
+	          <div className=".col-xs-12 .col-sm-12 col-md-12 nopadding">
+	            <div className="left">
+	              <img src="images/image1.jpg"/>
+	            </div>
+	          </div>
+					</div>
             <div className="title">
               <img src="images/hoop_frame.png"/>
               <h3>Hoop Name</h3>

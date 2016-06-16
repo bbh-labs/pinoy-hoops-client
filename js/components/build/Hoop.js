@@ -103,29 +103,33 @@ var Hoop = function (_React$Component) {
 					{ className: 'row' },
 					_react2.default.createElement(
 						'div',
-						{ className: '.col-xs-12 .col-sm-12 col-md-12 nopadding' },
+						{ className: 'heroimage' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'left' },
-							_react2.default.createElement('img', { src: 'images/image1.jpg' })
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: '.col-xs-12 .col-sm-12 col-md-12 nopadding' },
+							{ className: '.col-xs-12 .col-sm-12 col-md-12 nopadding' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'left' },
+								_react2.default.createElement('img', { src: 'images/image1.jpg' })
+							)
+						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'right' },
-							_react2.default.createElement('img', { src: 'images/image1.jpg' })
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: '.col-xs-12 .col-sm-12 col-md-12 nopadding' },
+							{ className: '.col-xs-12 .col-sm-12 col-md-12 nopadding' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'right' },
+								_react2.default.createElement('img', { src: 'images/image1.jpg' })
+							)
+						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'left' },
-							_react2.default.createElement('img', { src: 'images/image1.jpg' })
+							{ className: '.col-xs-12 .col-sm-12 col-md-12 nopadding' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'left' },
+								_react2.default.createElement('img', { src: 'images/image1.jpg' })
+							)
 						)
 					),
 					_react2.default.createElement(

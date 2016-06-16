@@ -25,58 +25,69 @@
     padding-right: 10px;
   }
 
-  #story img{
-    max-width: 300px;
-    margin-bottom: 30px;
+  #story .heroimage {
+    margin-top: 40%;
+  }
+
+  #story .heroimage img{
+    max-width: 250px;
+    margin-bottom: 15%;
   }
 
   #story .title{
     position: absolute;
     z-index: 4;
     top:1%;
-    right: 0%;
+    right: 5%;
   }
 
   #story .title img{
-    max-width: 150px;
+    max-width: 120px;
   }
   #story .title h3{
-    margin-top: -65%;
+    margin-top: -45%;
     text-align: center;
+    font-size: 12pt;
   }
 
   #story .social{
     position: absolute;
     z-index: 4;
     margin-top: 35%;
-    left: 5%;
+    left: 0%;
   }
 
   #story .social img{
     max-width: 20px;
-    margin-left: 18px;
+    margin-left: 15px;
   }
 
   #story .desciption{
     position: absolute;
     z-index: 4;
-    top:30%;
-    right: 0;
+    top:40%;
+    left: 10%;
+    right: 10%;
     max-width: 300px;
-
+    background: rgba(255, 255, 255, 0.7);
   }
 
   #story .desciption h3{
-    font-size: 14pt;
-    line-height: 18pt;
-    text-shadow: 1px 0px 0px #999;
+    font-size: 12pt;
+    line-height: 16pt;
+    font-weight: bold;
+    padding: 20px;
   }
 
-
+  #story .gallery{
+      clear: both;
+  }
 
   #story .gallery img{
     max-width: 33.3333%;
     margin: 0;
+    padding: 0;
     float: left;
+    border: none;
   }
 }

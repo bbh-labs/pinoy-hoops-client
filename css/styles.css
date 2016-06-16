@@ -344,10 +344,13 @@ section.content {
 #story{
   height: 100%;
   width: 100%;
-  position: relative;
 }
 
-#story img{
+#story .heroimage {
+
+}
+
+#story .heroimage img{
   max-width: 800px;
   margin-bottom: 60px;
 }
@@ -356,15 +359,18 @@ section.content {
   position: absolute;
   z-index: 4;
   top:2%;
-  right: 0%;
+  right: 13%;
 }
 
 #story .title img{
   max-width: 200px;
 }
+
 #story .title h3{
-  margin-top: -75%;
+  margin-top: -45%;
   text-align: center;
+  font-family: 'hoopfont';
+  text-transform: uppercase;
 }
 
 #story .social{
@@ -382,13 +388,13 @@ section.content {
 #story .desciption{
   position: absolute;
   z-index: 4;
-  top:40%;
+  top:50%;
 }
 
 #story .desciption h3{
   font-size: 20pt;
   line-height: 26pt;
-  text-shadow: 1px 0px 0px #999;
+  padding-right: 50px;
 }
 
 #story .gallery img{
