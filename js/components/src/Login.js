@@ -32,7 +32,7 @@ class Login extends React.Component {
 
 		event.preventDefault();
 
-		API.login(data, () => {
+		API.login(null, () => {
 			Dispatcher.dispatch({ type: 'refresh-user', goto: '/map' });
 		}, (response) => {
 			alert(response.statusText + ': failed to log in!');

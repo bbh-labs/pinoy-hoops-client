@@ -37895,7 +37895,7 @@
 
 				event.preventDefault();
 
-				_API2.default.login(data, function () {
+				_API2.default.login(null, function () {
 					_Dispatcher2.default.dispatch({ type: 'refresh-user', goto: '/map' });
 				}, function (response) {
 					alert(response.statusText + ': failed to log in!');
