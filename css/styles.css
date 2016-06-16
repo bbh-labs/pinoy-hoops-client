@@ -26,6 +26,14 @@ a:hover{
   text-decoration: none !important;
 }
 
+.left{
+  float: left;
+}
+
+.right{
+  float: right;
+}
+
 .nopadding{
   padding: 0 !important;
   margin: 0 !important;
