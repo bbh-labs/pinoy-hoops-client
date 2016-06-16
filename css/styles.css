@@ -51,7 +51,7 @@ section.content {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  margin-top: 150px;
+  margin-top: 10%;
 }
 
 .logo img{
@@ -114,6 +114,9 @@ section.content {
   width: 100%;
 }
 
+#login .logo{
+  margin-top: 15%;
+}
 .sociallogin {
   width: 100%;
 }
@@ -130,25 +133,6 @@ section.content {
 .sociallogin button:hover{
   background-color: white;
   color: #3b5998;
-}
-
-.loginbg{
-  position: relative;;
-  width: 200%;
-  height: 200%;
-  top: -50%;
-  left: -50%;
-}
-
-.loginbg img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  min-width: 50%;
-  min-height: 50%;
 }
 
 
