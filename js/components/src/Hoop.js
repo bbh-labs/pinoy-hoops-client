@@ -17,63 +17,61 @@ class Hoop extends React.Component {
 
 		return (
 			<div id="story">
-        <div className="row">
+				<div className="row">
 					<div className="heroimage">
-	          <div className=".col-xs-12 .col-sm-12 col-md-12 nopadding">
-	            <div className="left">
-	              <img src="images/image1.jpg"/>
-	            </div>
-	          </div>
-	          <div className=".col-xs-12 .col-sm-12 col-md-12 nopadding">
-	            <div className="right">
-	              <img src="images/image1.jpg"/>
-	            </div>
-	          </div>
-	          <div className=".col-xs-12 .col-sm-12 col-md-12 nopadding">
-	            <div className="left">
-	              <img src="images/image1.jpg"/>
-	            </div>
-	          </div>
+						<div className=".col-xs-12 .col-sm-12 col-md-12 nopadding">
+							<div className="left">
+								<img src="images/image1.jpg"/>
+							</div>
+						</div>
+						<div className=".col-xs-12 .col-sm-12 col-md-12 nopadding">
+							<div className="right">
+								<img src="images/image1.jpg"/>
+							</div>
+						</div>
+						<div className=".col-xs-12 .col-sm-12 col-md-12 nopadding">
+							<div className="left">
+								<img src="images/image1.jpg"/>
+							</div>
+						</div>
 					</div>
-            <div className="title">
-              <img src="images/hoop_frame.png"/>
-              <h3>Hoop Name</h3>
-              <div className="social">
-                <a href="#"><img src="images/icon_share.png"/></a>
-                <a href="#"><img src="images/icon_like.png"/></a>
-                <a href="#"><img src="images/icon_comment.png"/></a>
-              </div>
-            </div>
+					<div className="title">
+						<img src="images/hoop_frame.png"/>
+						<h3>Hoop Name</h3>
+						<div className="social">
+							<a href="#"><img src="images/icon_share.png"/></a>
+							<a href="#"><img src="images/icon_like.png"/></a>
+							<a href="#"><img src="images/icon_comment.png"/></a>
+						</div>
+					</div>
+					<div className="desciption">
+						<div className=".col-xs-6.col-sm-6 col-md-6 nopadding"></div>
+						<div className=".col-xs-6.col-sm-6 col-md-6 nopadding">
+							<h3>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vestibulum quis sem a tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquet sed sem quis suscipit. Maecenas viverra metus ut nisl ornare molestie et id nisi. Sed eu elementum urna. Phasellus id dui erat. Integer volutpat ut quam ut mollis."</h3>
+						</div>
+					</div>
 
-            <div className="desciption">
-              <div className=".col-xs-6.col-sm-6 col-md-6 nopadding"></div>
-              <div className=".col-xs-6.col-sm-6 col-md-6 nopadding">
-                <h3>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vestibulum quis sem a tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquet sed sem quis suscipit. Maecenas viverra metus ut nisl ornare molestie et id nisi. Sed eu elementum urna. Phasellus id dui erat. Integer volutpat ut quam ut mollis."</h3>
-              </div>
-            </div>
-
-            <div className="gallery">
-              <div className=".col-xs-4.col-sm-4 col-md-4 nopadding">
-                <div className="uploadhoop">
-                  <a href="#"><img src="images/uploadimage.jpg"/></a>
-                </div>
-              </div>
-              <div className=".col-xs-4.col-sm-4 col-md-4 nopadding">
-                <img src="images/image1.jpg"/>
-              </div>
-              <div className=".col-xs-4.col-sm-4 col-md-4 nopadding">
-                <img src="images/image1.jpg"/>
-              </div>
-              <div className=".col-xs-4.col-sm-4 col-md-4 nopadding">
-                <img src="images/image1.jpg"/>
-              </div>
-              <div className=".col-xs-4.col-sm-4 col-md-4 nopadding">
-                <img src="images/image1.jpg"/>
-              </div>
-            </div>
-
-      </div>
-       </div>
+					<div className="gallery">
+						<div className=".col-xs-4.col-sm-4 col-md-4 nopadding">
+							<div className="uploadhoop">
+								<a href="#"><img src="images/uploadimage.jpg"/></a>
+							</div>
+						</div>
+						<div className=".col-xs-4.col-sm-4 col-md-4 nopadding">
+							<img src="images/image1.jpg"/>
+						</div>
+						<div className=".col-xs-4.col-sm-4 col-md-4 nopadding">
+							<img src="images/image1.jpg"/>
+						</div>
+						<div className=".col-xs-4.col-sm-4 col-md-4 nopadding">
+							<img src="images/image1.jpg"/>
+						</div>
+						<div className=".col-xs-4.col-sm-4 col-md-4 nopadding">
+							<img src="images/image1.jpg"/>
+						</div>
+					</div>
+				</div>
+			</div>
 		)
 	}
 	state = {
