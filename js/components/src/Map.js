@@ -63,15 +63,9 @@ class MapView extends React.Component {
 
 		let image = {
 			url: 'images/dummy01.jpg',
-			scaledSize: new google.maps.Size(32, 32),
-			size: new google.maps.Size(32, 48),
+			scaledSize: new google.maps.Size(64, 64),
 			origin: new google.maps.Point(0, 0),
-			anchor: new google.maps.Point(0, 48),
-		};
-
-		let shape = {
-			coords: [0, 0, 32, 0, 32, 32, 16, 48, 0, 32],
-			type: 'poly',
+			anchor: new google.maps.Point(0, 64),
 		};
 
 		let marker = new google.maps.Marker({
@@ -79,7 +73,6 @@ class MapView extends React.Component {
 			map: this.map,
 			title: 'hello',
 			icon: image,
-			shape: shape,
 		});
 
 		this.map.addListener('click', (event) => {

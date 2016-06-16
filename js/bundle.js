@@ -38228,23 +38228,16 @@
 
 				var image = {
 					url: 'images/dummy01.jpg',
-					scaledSize: new google.maps.Size(32, 32),
-					size: new google.maps.Size(32, 48),
+					scaledSize: new google.maps.Size(64, 64),
 					origin: new google.maps.Point(0, 0),
-					anchor: new google.maps.Point(0, 48)
-				};
-
-				var shape = {
-					coords: [0, 0, 32, 0, 32, 32, 16, 48, 0, 32],
-					type: 'poly'
+					anchor: new google.maps.Point(0, 64)
 				};
 
 				var marker = new google.maps.Marker({
 					position: new google.maps.LatLng(14.5980, 120.9446),
 					map: this.map,
 					title: 'hello',
-					icon: image,
-					shape: shape
+					icon: image
 				});
 
 				this.map.addListener('click', function (event) {
