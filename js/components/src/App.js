@@ -32,15 +32,22 @@ import Story from './Story'
 
 class App extends React.Component {
 	render() {
+		let showNavigation = true;
+
+		if (this.props.location.pathname == '/')
+			showNavigation = false;
+
 		return (
 			<div id='app' className="pushmenu-push">
-				<Navigation { ...this.state } />
+				{ showNavigation ? <Navigation { ...this.state } /> : null }
 
-				<div className="container-fluid">
-					<section className="buttonset">
-						<div id="nav_list">Menu</div>
-					</section>
-				</div>
+				{
+					showNavigation ? <div className="container-fluid">
+						<section className="buttonset">
+							<div id="nav_list">Menu</div>
+						</section>
+					</div> : null
+				}
 
 		    <section className="content">
 					{ this.props.children && React.cloneElement(this.props.children, this.state) }

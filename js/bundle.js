@@ -160,11 +160,15 @@
 		_createClass(App, [{
 			key: 'render',
 			value: function render() {
+				var showNavigation = true;
+
+				if (this.props.location.pathname == '/') showNavigation = false;
+
 				return _react2.default.createElement(
 					'div',
 					{ id: 'app', className: 'pushmenu-push' },
-					_react2.default.createElement(_Navigation2.default, this.state),
-					_react2.default.createElement(
+					showNavigation ? _react2.default.createElement(_Navigation2.default, this.state) : null,
+					showNavigation ? _react2.default.createElement(
 						'div',
 						{ className: 'container-fluid' },
 						_react2.default.createElement(
@@ -176,7 +180,7 @@
 								'Menu'
 							)
 						)
-					),
+					) : null,
 					_react2.default.createElement(
 						'section',
 						{ className: 'content' },
