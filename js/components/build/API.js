@@ -11,7 +11,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 if (MOCKUP) {
-	var LOREM_IPSUM = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum luctus mauris id tincidunt aliquam. Aenean facilisis velit ut erat vehicula, vel tincidunt quam vehicula. Nam tristique massa nec ultrices volutpat.';
+	var LOREM_IPSUM = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vestibulum quis sem a tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquet sed sem quis suscipit. Maecenas viverra metus ut nisl ornare molestie et id nisi. Sed eu elementum urna. Phasellus id dui erat. Integer volutpat ut quam ut mollis.';
 
 	var USER = {
 		id: 2,
@@ -41,7 +41,7 @@ if (MOCKUP) {
 		user: OTHER_USER,
 		name: 'La Concordia',
 		description: LOREM_IPSUM,
-		image_url: 'images/dummy01.jpg',
+		image_url: 'images/image1.jpg',
 		viewCount: 3 / 3
 	}, {
 		id: 2,

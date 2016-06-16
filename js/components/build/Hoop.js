@@ -110,7 +110,7 @@ var Hoop = function (_React$Component) {
 							_react2.default.createElement(
 								'div',
 								{ className: 'left' },
-								_react2.default.createElement('img', { src: 'images/image1.jpg' })
+								_react2.default.createElement('img', { src: contentURL(hoop.data.featured_story.image_url) })
 							)
 						),
 						_react2.default.createElement(
@@ -119,7 +119,7 @@ var Hoop = function (_React$Component) {
 							_react2.default.createElement(
 								'div',
 								{ className: 'right' },
-								_react2.default.createElement('img', { src: 'images/image1.jpg' })
+								_react2.default.createElement('img', { src: contentURL(hoop.data.featured_story.image_url) })
 							)
 						),
 						_react2.default.createElement(
@@ -128,14 +128,14 @@ var Hoop = function (_React$Component) {
 							_react2.default.createElement(
 								'div',
 								{ className: 'left' },
-								_react2.default.createElement('img', { src: 'images/image1.jpg' })
+								_react2.default.createElement('img', { src: contentURL(hoop.data.featured_story.image_url) })
 							)
 						)
 					),
 					_react2.default.createElement(
 						'div',
 						{ className: 'title' },
-						_react2.default.createElement('img', { src: 'images/hoop_frame.png' }),
+						_react2.default.createElement('img', { src: '/images/hoop_frame.png' }),
 						_react2.default.createElement(
 							'h3',
 							null,
@@ -147,17 +147,17 @@ var Hoop = function (_React$Component) {
 							_react2.default.createElement(
 								'a',
 								{ href: '#' },
-								_react2.default.createElement('img', { src: 'images/icon_share.png' })
+								_react2.default.createElement('img', { src: '/images/icon_share.png' })
 							),
 							_react2.default.createElement(
 								'a',
 								{ href: '#' },
-								_react2.default.createElement('img', { src: 'images/icon_like.png' })
+								_react2.default.createElement('img', { src: '/images/icon_like.png' })
 							),
 							_react2.default.createElement(
 								'a',
 								{ href: '#' },
-								_react2.default.createElement('img', { src: 'images/icon_comment.png' })
+								_react2.default.createElement('img', { src: '/images/icon_comment.png' })
 							)
 						)
 					),
@@ -171,7 +171,8 @@ var Hoop = function (_React$Component) {
 							_react2.default.createElement(
 								'h3',
 								null,
-								'"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vestibulum quis sem a tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquet sed sem quis suscipit. Maecenas viverra metus ut nisl ornare molestie et id nisi. Sed eu elementum urna. Phasellus id dui erat. Integer volutpat ut quam ut mollis."'
+								'"',
+								hoop.description
 							)
 						)
 					),
@@ -187,29 +188,29 @@ var Hoop = function (_React$Component) {
 								_react2.default.createElement(
 									'a',
 									{ href: '#' },
-									_react2.default.createElement('img', { src: 'images/uploadimage.jpg' })
+									_react2.default.createElement('img', { src: '/images/uploadimage.jpg' })
 								)
 							)
 						),
 						_react2.default.createElement(
 							'div',
 							{ className: '.col-xs-4.col-sm-4 col-md-4 nopadding' },
-							_react2.default.createElement('img', { src: 'images/image1.jpg' })
+							_react2.default.createElement('img', { src: '/images/image1.jpg' })
 						),
 						_react2.default.createElement(
 							'div',
 							{ className: '.col-xs-4.col-sm-4 col-md-4 nopadding' },
-							_react2.default.createElement('img', { src: 'images/image1.jpg' })
+							_react2.default.createElement('img', { src: '/images/image1.jpg' })
 						),
 						_react2.default.createElement(
 							'div',
 							{ className: '.col-xs-4.col-sm-4 col-md-4 nopadding' },
-							_react2.default.createElement('img', { src: 'images/image1.jpg' })
+							_react2.default.createElement('img', { src: '/images/image1.jpg' })
 						),
 						_react2.default.createElement(
 							'div',
 							{ className: '.col-xs-4.col-sm-4 col-md-4 nopadding' },
-							_react2.default.createElement('img', { src: 'images/image1.jpg' })
+							_react2.default.createElement('img', { src: '/images/image1.jpg' })
 						)
 					)
 				)
