@@ -37907,9 +37907,9 @@
 		}, {
 			key: 'login',
 			value: function login(event) {
-				event.preventDefault();
+				if (!MOCKUP) return;
 
-				var data = MOCKUP ? null : new FormData(event.target);
+				event.preventDefault();
 
 				_API2.default.login(data, function () {
 					_Dispatcher2.default.dispatch({ type: 'refresh-user', goto: '/map' });
