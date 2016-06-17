@@ -61,7 +61,8 @@ var Map = function (_React$Component) {
 				'div',
 				{ className: 'map-wrapper' },
 				_react2.default.createElement(MapView, { user: user, clickMap: this.clickMap }),
-				_react2.default.createElement(Overlay, { latlng: latlng, address: address })
+				_react2.default.createElement(SearchBar, null),
+				_react2.default.createElement(AddHoop, { latlng: latlng, address: address })
 			);
 		}
 	}, {
@@ -79,7 +80,7 @@ var Map = function (_React$Component) {
 						_this2.setState({ address: payload.address });
 						break;
 
-					case 'close-overlay':
+					case 'close-AddHoop':
 						_this2.setState({ latlng: null });
 						break;
 				}
@@ -270,36 +271,60 @@ var MapView = function (_React$Component2) {
 	return MapView;
 }(_react2.default.Component);
 
-var Overlay = function (_React$Component3) {
-	_inherits(Overlay, _React$Component3);
+var SearchBar = function (_React$Component3) {
+	_inherits(SearchBar, _React$Component3);
 
-	function Overlay() {
+	function SearchBar() {
+		_classCallCheck(this, SearchBar);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(SearchBar).apply(this, arguments));
+	}
+
+	_createClass(SearchBar, [{
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'div',
+				{ className: 'MapSearch' },
+				_react2.default.createElement('img', { src: 'images/icon_locate.png' }),
+				_react2.default.createElement('input', { type: 'text', placeholder: 'Search...', required: true })
+			);
+		}
+	}]);
+
+	return SearchBar;
+}(_react2.default.Component);
+
+var AddHoop = function (_React$Component4) {
+	_inherits(AddHoop, _React$Component4);
+
+	function AddHoop() {
 		var _Object$getPrototypeO3;
 
-		var _temp3, _this5, _ret4;
+		var _temp3, _this6, _ret4;
 
-		_classCallCheck(this, Overlay);
+		_classCallCheck(this, AddHoop);
 
 		for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
 			args[_key3] = arguments[_key3];
 		}
 
-		return _ret4 = (_temp3 = (_this5 = _possibleConstructorReturn(this, (_Object$getPrototypeO3 = Object.getPrototypeOf(Overlay)).call.apply(_Object$getPrototypeO3, [this].concat(args))), _this5), _this5.previewImage = function (event) {
+		return _ret4 = (_temp3 = (_this6 = _possibleConstructorReturn(this, (_Object$getPrototypeO3 = Object.getPrototypeOf(AddHoop)).call.apply(_Object$getPrototypeO3, [this].concat(args))), _this6), _this6.previewImage = function (event) {
 			var preview = void 0;
 			var file = event.target.files[0];
 			var reader = new FileReader();
 
 			switch (event.target.id) {
 				case 'hoop-image-input':
-					preview = _this5.refs.hoopImage;
+					preview = _this6.refs.hoopImage;
 					break;
 
 				case 'court-image-input':
-					preview = _this5.refs.courtImage;
+					preview = _this6.refs.courtImage;
 					break;
 
 				case 'crew-image-input':
-					preview = _this5.refs.crewImage;
+					preview = _this6.refs.crewImage;
 					break;
 			}
 
@@ -308,8 +333,8 @@ var Overlay = function (_React$Component3) {
 			});
 
 			if (file) reader.readAsDataURL(file);
-		}, _this5.submit = function (event) {
-			var latlng = _this5.props.latlng;
+		}, _this6.submit = function (event) {
+			var latlng = _this6.props.latlng;
 
 			event.preventDefault();
 
@@ -320,20 +345,20 @@ var Overlay = function (_React$Component3) {
 
 			_API2.default.addHoop(new FormData(event.target), function () {
 				alert('Successfully added hoop!');
-				_this5.setState({ latlng: null });
+				_this6.setState({ latlng: null });
 				_Dispatcher2.default.dispatch({ type: 'get-hoops' });
 				_Dispatcher2.default.dispatch({ type: 'get-activities' });
 				_browserHistory2.default.replace('/map');
 			}, function (response) {
-				_this5.setState({ latlng: null });
+				_this6.setState({ latlng: null });
 				alert(response.statusText);
 			});
-		}, _this5.close = function (event) {
-			_Dispatcher2.default.dispatch({ type: 'close-overlay' });
-		}, _temp3), _possibleConstructorReturn(_this5, _ret4);
+		}, _this6.close = function (event) {
+			_Dispatcher2.default.dispatch({ type: 'close-AddHoop' });
+		}, _temp3), _possibleConstructorReturn(_this6, _ret4);
 	}
 
-	_createClass(Overlay, [{
+	_createClass(AddHoop, [{
 		key: 'render',
 		value: function render() {
 			var latlng = this.props.latlng;
@@ -399,7 +424,7 @@ var Overlay = function (_React$Component3) {
 		}
 	}]);
 
-	return Overlay;
+	return AddHoop;
 }(_react2.default.Component);
 
 module.exports = Map;

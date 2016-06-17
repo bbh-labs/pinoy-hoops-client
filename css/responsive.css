@@ -17,6 +17,15 @@
     margin-top: 50%;
   }
 
+  .MapSearch{
+    right: 2%;
+    top: 1%;
+  }
+
+  .MapSearch input{
+    min-width: 100px;
+  }
+
   #about .backgroundimage{
     top: -0%;
     left: -60%;

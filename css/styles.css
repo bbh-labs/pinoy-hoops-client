@@ -163,7 +163,22 @@ section.content {
 .gmnoprint {
 	display: none;
 }
+.MapSearch{
+  position: absolute;
+  z-index: 4;
+  right: 1%;
+  top: 2%;
 
+}
+
+.MapSearch img{
+  max-width: 16px;
+  margin-right: 10px;
+}
+.MapSearch input{
+  min-width: 200px;
+  padding: 5px 10px;
+}
 
 /*About*/
 #about{
