@@ -170,9 +170,13 @@ section.content {
   top: 2%;
 
 }
-
+.MapSearch img{
+  max-width: 18px;
+  margin-right: 10px;
+}
 .MapSearch input{
-
+  min-width: 200px;
+  padding: 5px 10px;
 }
 
 /*About*/
