@@ -102,8 +102,8 @@ var Profile = function (_React$Component) {
 			}
 		}, _this.setTab = function (tab) {
 			_this.setState({ tab: tab });
-		}, _this.handleUserImage = function (event) {
-			_API2.default.updateUserImage(new FormData(_this.refs.userImageForm), function () {
+		}, _this.changeCover = function (event) {
+			_API2.default.updateUserBackground(new FormData(_this.refs.userBackgroundForm), function () {
 				_Dispatcher2.default.dispatch({ type: 'refresh-user' });
 			});
 		}, _this.toggleEdit = function () {
@@ -122,12 +122,14 @@ var Profile = function (_React$Component) {
 
 			if (!user) return null;
 
+			var coverStyle = user.background_url ? { background: 'url(' + contentURL(user.background_url) + ')' } : {};
+
 			return _react2.default.createElement(
 				'div',
 				{ id: 'profile' },
 				_react2.default.createElement(
 					'form',
-					{ ref: 'userImageForm', className: 'picture' },
+					{ ref: 'userBackgroundForm', className: 'picture', style: coverStyle },
 					_react2.default.createElement(
 						'label',
 						{ htmlFor: 'user-image' },
@@ -146,9 +148,10 @@ var Profile = function (_React$Component) {
 						'div',
 						{ className: 'coverphoto' },
 						_react2.default.createElement(
-							'button',
-							null,
-							'Change cover photo'
+							'label',
+							{ htmlFor: 'change-cover-photo' },
+							'Change cover photo',
+							_react2.default.createElement('input', { type: 'file', id: 'change-cover-photo', name: 'image', onChange: this.changeCover })
 						)
 					)
 				),

@@ -15,9 +15,11 @@ class Profile extends React.Component {
 		if (!user)
 			return null;
 
+		let coverStyle = user.background_url ? { background: 'url(' + contentURL(user.background_url) + ')' } : {};
+
 		return (
 				<div id="profile">
-					<form ref='userImageForm' className='picture'>
+					<form ref='userBackgroundForm' className='picture' style={ coverStyle }>
 						<label htmlFor='user-image'>
 							<div className="userinfo">
 								<img src={ contentURL(user.image_url, '/images/avatar.png') } />
@@ -25,7 +27,10 @@ class Profile extends React.Component {
 							</div>
 						</label>
 						<div className="coverphoto">
-							<button>Change cover photo</button>
+							<label htmlFor='change-cover-photo'>
+								Change cover photo
+								<input type='file' id='change-cover-photo' name='image' onChange={ this.changeCover } />
+							</label>
 						</div>
 					</form>
 
@@ -122,8 +127,8 @@ class Profile extends React.Component {
 	setTab = (tab) => {
 		this.setState({ tab: tab });
 	}
-	handleUserImage = (event) => {
-		API.updateUserImage(new FormData(this.refs.userImageForm), () => {
+	changeCover = (event) => {
+		API.updateUserBackground(new FormData(this.refs.userBackgroundForm), () => {
 			Dispatcher.dispatch({ type: 'refresh-user' });
 		});
 	}

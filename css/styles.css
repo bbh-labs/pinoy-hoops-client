@@ -259,12 +259,17 @@ section.content {
   z-index: 4;
 }
 
-#profile .picture .coverphoto button {
+#profile .picture .coverphoto label {
 	margin: 10px auto;
 	background-color: #e7e7e7;
 	border: none;
 	padding: 5px 20px;
 	color: #111;
+	cursor: pointer;
+}
+
+#change-cover-photo {
+	display: none;
 }
 
 #profile .myhoops .gallery img {

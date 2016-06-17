@@ -652,6 +652,19 @@ class API {
 			}).done(done).fail(fail);
 		}
 	}
+	static updateUserBackground(data, done, fail) {
+		if (MOCKUP) {
+			done();
+		} else {
+			$.ajax({
+				url: '/api/user/background',
+				method: 'POST',
+				data: data,
+				processData: false,
+				contentType: false,
+			}).done(done).fail(fail);
+		}
+	}
 	static hasLikedHoop(data, done, fail) {
 		if (MOCKUP) {
 			done(false);

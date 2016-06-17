@@ -695,6 +695,21 @@ var API = function () {
 			}
 		}
 	}, {
+		key: 'updateUserBackground',
+		value: function updateUserBackground(data, done, fail) {
+			if (MOCKUP) {
+				done();
+			} else {
+				_jquery2.default.ajax({
+					url: '/api/user/background',
+					method: 'POST',
+					data: data,
+					processData: false,
+					contentType: false
+				}).done(done).fail(fail);
+			}
+		}
+	}, {
 		key: 'hasLikedHoop',
 		value: function hasLikedHoop(data, done, fail) {
 			if (MOCKUP) {
