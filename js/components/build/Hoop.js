@@ -141,7 +141,7 @@ var Hoop = function (_React$Component) {
 						_react2.default.createElement(
 							'h3',
 							null,
-							'Hoop Name'
+							hoop.name
 						),
 						_react2.default.createElement(
 							'div',

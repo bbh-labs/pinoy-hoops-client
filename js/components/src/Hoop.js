@@ -30,7 +30,7 @@ class Hoop extends React.Component {
 					</div>
 					<div className="title">
 						<img src="/images/hoop_frame.png"/>
-						<h3>Hoop Name</h3>
+						<h3>{ hoop.name }</h3>
 						<div className="social">
 							<a href="#"><img src="/images/icon_share.png"/></a>
 							<a href="#" onClick={ this.like } ><img src="/images/icon_like.png"/></a>
