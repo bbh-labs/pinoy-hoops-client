@@ -10,13 +10,35 @@ import Dispatcher from './Dispatcher'
 class Map extends React.Component {
 	render() {
 		let user = this.props.user;
+		let latlng = this.state.latlng;
+		let address = this.state.address;
 
 		return (
 				<div className='map-wrapper'>
 					<MapView user={ user } />
-					<Overlay />
+					<Overlay latlng={ latlng } address={ address } />
 				</div>
 		)
+	}
+	state = {
+		latlng: null,
+		address: null,
+	}
+	componentDidMount() {
+		this.dispatcherID = Dispatcher.register((payload) => {
+			switch (payload.type) {
+			case 'map-click':
+				this.setState({ latlng: payload.latlng });
+				break;
+
+			case 'set-address':
+				this.setState({ address: payload.address });
+				break;
+			}
+		});
+	}
+	componentWillUnmount() {
+		Dispatcher.unregister(this.dispatcherID);
 	}
 }
 
@@ -39,9 +61,14 @@ class MapView extends React.Component {
 		// Create the Google Map using our element and options defined above
 		this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
+		// Create a reverse geocoder
+		this.geocoder = new google.maps.Geocoder;
+
 		this.map.addListener('click', (event) => {
 			if (user) {
-				Dispatcher.dispatch({ type: 'map-click', latlng: event.latLng });
+				let latlng = { lat: event.latLng.lat(), lng: event.latLng.lng() };
+
+				Dispatcher.dispatch({ type: 'map-click', latlng: latlng });
 
 				if (this.marker) {
 					this.marker.setMap(null);
@@ -49,9 +76,16 @@ class MapView extends React.Component {
 				}
 
 				this.marker = new google.maps.Marker({
-					position: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
+					position: new google.maps.LatLng(latlng.lat, latlng.lng),
 					map: this.map,
 					title: 'Hoop',
+				});
+
+				this.geocoder.geocode({ location: latlng }, (results, status) => {
+					if (status == google.maps.GeocoderStatus.OK) {
+						if (results[1])
+							Dispatcher.dispatch({ type: 'set-address', address: results[1].formatted_address });
+					}
 				});
 			} else {
 				browserHistory.push('/login');
@@ -82,6 +116,9 @@ class MapView extends React.Component {
 	}
 	componentWillUnmount() {
 		this.map = null;
+		this.geocoder = null;
+
+		Dispatcher.unregister(this.dispatcherID);
 	}
 	getHoops = (data) => {
 		API.getHoops(data, (hoops) => {
@@ -161,11 +198,14 @@ class MapView extends React.Component {
 
 class Overlay extends React.Component {
 	render() {
-		let latlng = this.state.latlng;
+		let latlng = this.props.latlng;
+		let address = this.props.address;
+
 		if (latlng)
 			return (
 				<form id="addhoop" onSubmit={ this.submit } enctype='multipart/form-data' >
 					<h2>Tell us about the hoop</h2>
+					{ address ? <p>{ address }</p> : null }
 					<input type='text' name='name' placeholder="Hoop Name" /><br/>
 					<textarea rows="4" cols="50"  name='description' placeholder="description"/><br/>
 					<div className="hoopcategory">
@@ -190,23 +230,6 @@ class Overlay extends React.Component {
 			)
 		else
 			return null;
-	}
-	state = {
-		latlng: null,
-	}
-	componentDidMount() {
-		this.dispatcherID = Dispatcher.register((payload) => {
-			switch (payload.type) {
-			case 'map-click':
-				let lat = payload.latlng.lat();
-				let lng = payload.latlng.lng();
-				this.setState({ latlng: { lat: lat, lng: lng } });
-				break;
-			}
-		});
-	}
-	componentWillUnmount() {
-		Dispatcher.unregister(this.dispatcherID);
 	}
 	previewImage = (event) => {
 		let preview;
@@ -235,7 +258,7 @@ class Overlay extends React.Component {
 			reader.readAsDataURL(file);
 	}
 	submit = (event) => {
-		let latlng = this.state.latlng;
+		let latlng = this.props.latlng;
 
 		event.preventDefault();
 
