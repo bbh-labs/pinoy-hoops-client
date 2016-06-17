@@ -64,9 +64,13 @@ var Navigation = function (_React$Component) {
 					'nav',
 					{ className: (0, _classnames2.default)('pushmenu pushmenu-left', pushMenuOpen && 'pushmenu-open') },
 					_react2.default.createElement(
-						_reactRouter.Link,
-						{ to: '/map', onClick: this.props.hideMenu },
-						_react2.default.createElement('img', { src: 'images/logo_light.png' })
+						'div',
+						{ className: 'menulogo' },
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ to: '/map', onClick: this.props.hideMenu },
+							_react2.default.createElement('img', { src: 'images/logo_light.png' })
+						)
 					),
 					_react2.default.createElement(
 						_reactRouter.Link,
@@ -103,9 +107,13 @@ var Navigation = function (_React$Component) {
 					'nav',
 					{ className: (0, _classnames2.default)('pushmenu pushmenu-left', pushMenuOpen && 'pushmenu-open') },
 					_react2.default.createElement(
-						_reactRouter.Link,
-						{ to: '/map', onClick: this.props.hideMenu },
-						_react2.default.createElement('img', { src: 'images/logo_light.png' })
+						'div',
+						{ className: 'menulogo' },
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ to: '/map', onClick: this.props.hideMenu },
+							_react2.default.createElement('img', { src: 'images/logo_light.png' })
+						)
 					),
 					_react2.default.createElement(
 						'a',

@@ -16,7 +16,8 @@ class Map extends React.Component {
 		return (
 				<div className='map-wrapper'>
 					<MapView user={ user } clickMap={ this.clickMap } />
-					<Overlay latlng={ latlng } address={ address } />
+					<SearchBar />
+					<AddHoop latlng={ latlng } address={ address } />
 				</div>
 		)
 	}
@@ -35,7 +36,7 @@ class Map extends React.Component {
 				this.setState({ address: payload.address });
 				break;
 
-			case 'close-overlay':
+			case 'close-AddHoop':
 				this.setState({ latlng: null });
 				break;
 			}
@@ -207,7 +208,18 @@ class MapView extends React.Component {
 	}
 }
 
-class Overlay extends React.Component {
+class SearchBar extends React.Component {
+	render() {
+			return (
+				<div className="MapSearch">
+					<img src="images/icon_locate.png"/>
+					 <input type="text" placeholder="Search..." required></input>
+				</div>
+			)
+}
+}
+
+class AddHoop extends React.Component {
 	render() {
 		let latlng = this.props.latlng;
 		let address = this.props.address;
@@ -293,7 +305,7 @@ class Overlay extends React.Component {
 		});
 	}
 	close = (event) => {
-		Dispatcher.dispatch({ type: 'close-overlay' });
+		Dispatcher.dispatch({ type: 'close-AddHoop' });
 	}
 }
 
