@@ -24,9 +24,9 @@ class Hoop extends React.Component {
 			<div id="story">
 				<div className="row">
 					<div className="heroimage">
-						<HeroImageItem imageURL={ hoopImageURL } />
-						<HeroImageItem imageURL={ courtImageURL } />
-						<HeroImageItem imageURL={ crewImageURL } />
+						<HeroImageItem imageURL={ hoopImageURL } left={ true } />
+						<HeroImageItem imageURL={ courtImageURL } left={ false } />
+						<HeroImageItem imageURL={ crewImageURL } left={ true } />
 					</div>
 					<div className="title">
 						<img src="/images/hoop_frame.png"/>
@@ -139,7 +139,7 @@ class HeroImageItem extends React.Component {
 
 		return (
 			<div className=".col-xs-12 .col-sm-12 col-md-12 nopadding">
-				<div className="left">
+				<div className={ this.props.left ? "left" : "right" }>
 					<img src={ contentURL(imageURL) } />
 				</div>
 			</div>

@@ -115,9 +115,9 @@ var Hoop = function (_React$Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'heroimage' },
-						_react2.default.createElement(HeroImageItem, { imageURL: hoopImageURL }),
-						_react2.default.createElement(HeroImageItem, { imageURL: courtImageURL }),
-						_react2.default.createElement(HeroImageItem, { imageURL: crewImageURL })
+						_react2.default.createElement(HeroImageItem, { imageURL: hoopImageURL, left: true }),
+						_react2.default.createElement(HeroImageItem, { imageURL: courtImageURL, left: false }),
+						_react2.default.createElement(HeroImageItem, { imageURL: crewImageURL, left: true })
 					),
 					_react2.default.createElement(
 						'div',
@@ -230,7 +230,7 @@ var HeroImageItem = function (_React$Component2) {
 				{ className: '.col-xs-12 .col-sm-12 col-md-12 nopadding' },
 				_react2.default.createElement(
 					'div',
-					{ className: 'left' },
+					{ className: this.props.left ? "left" : "right" },
 					_react2.default.createElement('img', { src: contentURL(imageURL) })
 				)
 			);
