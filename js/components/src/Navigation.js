@@ -27,7 +27,7 @@ class Navigation extends React.Component {
 						</Link>
 						<Link to='/about' onClick={ this.props.hideMenu }>About</Link>
 						<a href="mailto:donate@pinoyhoops.com?Subject=Donation%20for%20hoop" target="_top" onClick={ this.props.hideMenu }>Donate</a>
-						<a href="#" onClick={ this.logout } onClick={ this.props.hideMenu }>Sign out</a>
+						<a href="#" onClick={ this.logout }>Sign out</a>
 					</nav>
 			)
 		} else {
@@ -68,15 +68,16 @@ class Navigation extends React.Component {
 		event.preventDefault();
 
 		this.props.hideMenu();
+
 		browserHistory.replace('/login');
 	}
-	logout(event) {
+	logout = (event) => {
 		event.preventDefault();
+
+		this.props.hideMenu();
 
 		API.logout(() => {
 			Dispatcher.dispatch({ type: 'refresh-user', goto: '/login' });
-
-			hideSidebar();
 		}, () => {
 			alert('Failed to log out!');
 		});
