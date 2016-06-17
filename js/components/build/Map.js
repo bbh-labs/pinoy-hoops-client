@@ -76,6 +76,10 @@ var Map = function (_React$Component) {
 					case 'set-address':
 						_this2.setState({ address: payload.address });
 						break;
+
+					case 'close-overlay':
+						_this2.setState({ latlng: null });
+						break;
 				}
 			});
 		}
@@ -322,6 +326,8 @@ var Overlay = function (_React$Component3) {
 				_this5.setState({ latlng: null });
 				alert(response.statusText);
 			});
+		}, _this5.close = function (event) {
+			_Dispatcher2.default.dispatch({ type: 'close-overlay' });
 		}, _temp3), _possibleConstructorReturn(_this5, _ret4);
 	}
 
@@ -337,7 +343,7 @@ var Overlay = function (_React$Component3) {
 				_react2.default.createElement(
 					'div',
 					{ className: 'close' },
-					_react2.default.createElement('img', { src: 'images/close.png' })
+					_react2.default.createElement('img', { src: 'images/close.png', onClick: this.close })
 				),
 				_react2.default.createElement(
 					'h2',

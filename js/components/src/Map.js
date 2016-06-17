@@ -34,6 +34,10 @@ class Map extends React.Component {
 			case 'set-address':
 				this.setState({ address: payload.address });
 				break;
+
+			case 'close-overlay':
+				this.setState({ latlng: null });
+				break;
 			}
 		});
 	}
@@ -209,7 +213,7 @@ class Overlay extends React.Component {
 			return (
 				<form id="addhoop" onSubmit={ this.submit } enctype='multipart/form-data' >
 					<div className="close">
-						<img src="images/close.png"/>
+						<img src="images/close.png" onClick={ this.close } />
 					</div>
 					<h2>Tell us about the hoop</h2>
 					{ address ? <p>{ address }</p> : null }
@@ -284,6 +288,9 @@ class Overlay extends React.Component {
 			this.setState({ latlng: null });
 			alert(response.statusText);
 		});
+	}
+	close = (event) => {
+		Dispatcher.dispatch({ type: 'close-overlay' });
 	}
 }
 
