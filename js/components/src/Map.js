@@ -123,6 +123,10 @@ class MapView extends React.Component {
 			case 'search-hoops':
 				this.searchHoops(payload.name);
 				break;
+
+			case 'go-to-current-location':
+				this.gotoCurrentLocation();
+				break;
 			}
 		});
 	}
@@ -206,17 +210,25 @@ class MapView extends React.Component {
 		else
 			this.getHoops();
 	}
+	gotoCurrentLocation = () => {
+		navigator.geolocation.getCurrentPosition((position) => {
+			this.map.setCenter({ lat: position.coords.latitude, lng: position.coords.longitude });
+		});
+	}
 }
 
 class SearchBar extends React.Component {
 	render() {
-			return (
-				<div className="MapSearch">
-					<img src="images/icon_locate.png"/>
-					 <input type="text" placeholder="Search..." onChange={ this.handleSearch } required></input>
-				</div>
-			)
-}
+		return (
+			<div className="MapSearch">
+				<img src="images/icon_locate.png" onClick={ this.gotoCurrentLocation } />
+				 <input type="text" placeholder="Search..." onChange={ this.handleSearch } required></input>
+			</div>
+		)
+	}
+	gotoCurrentLocation = () => {
+		Dispatcher.dispatch({ type: 'go-to-current-location' });
+	}
 	handleSearch = (event) => {
 		Dispatcher.dispatch({ type: 'search-hoops', name: event.target.value });
 	}

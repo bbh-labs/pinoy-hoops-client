@@ -175,6 +175,10 @@ var MapView = function (_React$Component2) {
 			}_this3.markers = [];
 		}, _this3.searchHoops = function (name) {
 			if (name.length > 0) _this3.getHoops({ name: name });else _this3.getHoops();
+		}, _this3.gotoCurrentLocation = function () {
+			navigator.geolocation.getCurrentPosition(function (position) {
+				_this3.map.setCenter({ lat: position.coords.latitude, lng: position.coords.longitude });
+			});
 		}, _temp2), _possibleConstructorReturn(_this3, _ret2);
 	}
 
@@ -255,6 +259,10 @@ var MapView = function (_React$Component2) {
 					case 'search-hoops':
 						_this4.searchHoops(payload.name);
 						break;
+
+					case 'go-to-current-location':
+						_this4.gotoCurrentLocation();
+						break;
 				}
 			});
 		}
@@ -285,7 +293,9 @@ var SearchBar = function (_React$Component3) {
 			args[_key3] = arguments[_key3];
 		}
 
-		return _ret4 = (_temp3 = (_this5 = _possibleConstructorReturn(this, (_Object$getPrototypeO3 = Object.getPrototypeOf(SearchBar)).call.apply(_Object$getPrototypeO3, [this].concat(args))), _this5), _this5.handleSearch = function (event) {
+		return _ret4 = (_temp3 = (_this5 = _possibleConstructorReturn(this, (_Object$getPrototypeO3 = Object.getPrototypeOf(SearchBar)).call.apply(_Object$getPrototypeO3, [this].concat(args))), _this5), _this5.gotoCurrentLocation = function () {
+			_Dispatcher2.default.dispatch({ type: 'go-to-current-location' });
+		}, _this5.handleSearch = function (event) {
 			_Dispatcher2.default.dispatch({ type: 'search-hoops', name: event.target.value });
 		}, _temp3), _possibleConstructorReturn(_this5, _ret4);
 	}
@@ -296,7 +306,7 @@ var SearchBar = function (_React$Component3) {
 			return _react2.default.createElement(
 				'div',
 				{ className: 'MapSearch' },
-				_react2.default.createElement('img', { src: 'images/icon_locate.png' }),
+				_react2.default.createElement('img', { src: 'images/icon_locate.png', onClick: this.gotoCurrentLocation }),
 				_react2.default.createElement('input', { type: 'text', placeholder: 'Search...', onChange: this.handleSearch, required: true })
 			);
 		}
