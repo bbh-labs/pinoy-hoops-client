@@ -38,16 +38,14 @@ class Navigation extends React.Component {
 		}
 	}
 	componentDidMount() {
-		$(document).ready(function() {
-	    let $menuLeft = $('.pushmenu-left');
-	    let $nav_list = $('#nav_list');
+		let $menuLeft = $('.pushmenu-left');
+		let $nav_list = $('#nav_list');
 
-	    $nav_list.click(function() {
-	      $(this).toggleClass('active');
-	      $('.pushmenu-push').toggleClass('pushmenu-push-toright');
-	      $menuLeft.toggleClass('pushmenu-open');
-	    });
-	  });
+		$nav_list.click(function() {
+			$(this).toggleClass('active');
+			$('.pushmenu-push').toggleClass('pushmenu-push-toright');
+			$menuLeft.toggleClass('pushmenu-open');
+		});
 	}
 	login(event) {
 		event.preventDefault();

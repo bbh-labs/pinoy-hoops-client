@@ -49,7 +49,7 @@ class App extends React.Component {
 					</div> : null
 				}
 
-		    <section className="content">
+				<section className="content">
 					{ this.props.children && React.cloneElement(this.props.children, this.state) }
 				</section>
 			</div>
