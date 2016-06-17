@@ -119,6 +119,10 @@ class MapView extends React.Component {
 			case 'get-latest-hoops':
 				this.getLatestHoops();
 				break;
+
+			case 'search-hoops':
+				this.searchHoops(payload.name);
+				break;
 			}
 		});
 	}
@@ -196,11 +200,7 @@ class MapView extends React.Component {
 
 		this.markers = [];
 	}
-	handleSearch = (event) => {
-		let name = event.target.value;
-
-		event.preventDefault();
-
+	searchHoops = (name) => {
 		if (name.length > 0)
 			this.getHoops({ name: name });
 		else
@@ -213,10 +213,13 @@ class SearchBar extends React.Component {
 			return (
 				<div className="MapSearch">
 					<img src="images/icon_locate.png"/>
-					 <input type="text" placeholder="Search..." required></input>
+					 <input type="text" placeholder="Search..." onChange={ this.handleSearch } required></input>
 				</div>
 			)
 }
+	handleSearch = (event) => {
+		Dispatcher.dispatch({ type: 'search-hoops', name: event.target.value });
+	}
 }
 
 class AddHoop extends React.Component {

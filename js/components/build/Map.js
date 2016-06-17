@@ -173,11 +173,7 @@ var MapView = function (_React$Component2) {
 			for (var i in _this3.markers) {
 				_this3.markers[i].setMap(null);
 			}_this3.markers = [];
-		}, _this3.handleSearch = function (event) {
-			var name = event.target.value;
-
-			event.preventDefault();
-
+		}, _this3.searchHoops = function (name) {
 			if (name.length > 0) _this3.getHoops({ name: name });else _this3.getHoops();
 		}, _temp2), _possibleConstructorReturn(_this3, _ret2);
 	}
@@ -255,6 +251,10 @@ var MapView = function (_React$Component2) {
 					case 'get-latest-hoops':
 						_this4.getLatestHoops();
 						break;
+
+					case 'search-hoops':
+						_this4.searchHoops(payload.name);
+						break;
 				}
 			});
 		}
@@ -275,9 +275,19 @@ var SearchBar = function (_React$Component3) {
 	_inherits(SearchBar, _React$Component3);
 
 	function SearchBar() {
+		var _Object$getPrototypeO3;
+
+		var _temp3, _this5, _ret4;
+
 		_classCallCheck(this, SearchBar);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(SearchBar).apply(this, arguments));
+		for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+			args[_key3] = arguments[_key3];
+		}
+
+		return _ret4 = (_temp3 = (_this5 = _possibleConstructorReturn(this, (_Object$getPrototypeO3 = Object.getPrototypeOf(SearchBar)).call.apply(_Object$getPrototypeO3, [this].concat(args))), _this5), _this5.handleSearch = function (event) {
+			_Dispatcher2.default.dispatch({ type: 'search-hoops', name: event.target.value });
+		}, _temp3), _possibleConstructorReturn(_this5, _ret4);
 	}
 
 	_createClass(SearchBar, [{
@@ -287,7 +297,7 @@ var SearchBar = function (_React$Component3) {
 				'div',
 				{ className: 'MapSearch' },
 				_react2.default.createElement('img', { src: 'images/icon_locate.png' }),
-				_react2.default.createElement('input', { type: 'text', placeholder: 'Search...', required: true })
+				_react2.default.createElement('input', { type: 'text', placeholder: 'Search...', onChange: this.handleSearch, required: true })
 			);
 		}
 	}]);
@@ -299,17 +309,17 @@ var AddHoop = function (_React$Component4) {
 	_inherits(AddHoop, _React$Component4);
 
 	function AddHoop() {
-		var _Object$getPrototypeO3;
+		var _Object$getPrototypeO4;
 
-		var _temp3, _this6, _ret4;
+		var _temp4, _this6, _ret5;
 
 		_classCallCheck(this, AddHoop);
 
-		for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-			args[_key3] = arguments[_key3];
+		for (var _len4 = arguments.length, args = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+			args[_key4] = arguments[_key4];
 		}
 
-		return _ret4 = (_temp3 = (_this6 = _possibleConstructorReturn(this, (_Object$getPrototypeO3 = Object.getPrototypeOf(AddHoop)).call.apply(_Object$getPrototypeO3, [this].concat(args))), _this6), _this6.previewImage = function (event) {
+		return _ret5 = (_temp4 = (_this6 = _possibleConstructorReturn(this, (_Object$getPrototypeO4 = Object.getPrototypeOf(AddHoop)).call.apply(_Object$getPrototypeO4, [this].concat(args))), _this6), _this6.previewImage = function (event) {
 			var preview = void 0;
 			var file = event.target.files[0];
 			var reader = new FileReader();
@@ -355,7 +365,7 @@ var AddHoop = function (_React$Component4) {
 			});
 		}, _this6.close = function (event) {
 			_Dispatcher2.default.dispatch({ type: 'close-AddHoop' });
-		}, _temp3), _possibleConstructorReturn(_this6, _ret4);
+		}, _temp4), _possibleConstructorReturn(_this6, _ret5);
 	}
 
 	_createClass(AddHoop, [{
