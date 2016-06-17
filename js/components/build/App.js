@@ -1,5 +1,7 @@
 'use strict';
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
@@ -122,6 +124,10 @@ var App = function (_React$Component) {
 
 			_this.setState({ pushSidebar: !pushSidebar });
 			_Dispatcher2.default.dispatch({ type: 'nav-list-click' });
+		}, _this.hide = function () {
+			console.log('test');
+			_this.setState({ pushSidebar: false });
+			_Dispatcher2.default.dispatch({ type: 'hide-sidebar' });
 		}, _temp), _possibleConstructorReturn(_this, _ret);
 	}
 
@@ -136,7 +142,7 @@ var App = function (_React$Component) {
 			return _react2.default.createElement(
 				'div',
 				{ id: 'app', className: (0, _classnames2.default)('pushmenu-push', pushSidebar && 'pushmenu-push-toright') },
-				showNavigation ? _react2.default.createElement(_Navigation2.default, this.state) : null,
+				showNavigation ? _react2.default.createElement(_Navigation2.default, _extends({}, this.state, { hideMenu: this.hide })) : null,
 				showNavigation ? _react2.default.createElement(
 					'div',
 					{ className: 'container-fluid' },
@@ -152,7 +158,7 @@ var App = function (_React$Component) {
 				) : null,
 				_react2.default.createElement(
 					'section',
-					{ className: 'content' },
+					{ className: 'content', onClick: this.hide },
 					this.props.children && _react2.default.cloneElement(this.props.children, this.state)
 				)
 			);

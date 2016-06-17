@@ -16,25 +16,25 @@ class Navigation extends React.Component {
 		if (user) {
 			return (
 					<nav className={cx('pushmenu pushmenu-left', pushMenuOpen && 'pushmenu-open')}>
-						<Link to='/map'><img src="images/logo_light.png"/></Link>
-						<Link to='/profile'>
+						<Link to='/map' onClick={ this.props.hideMenu }><img src="images/logo_light.png"/></Link>
+						<Link to='/profile' onClick={ this.props.hideMenu }>
 							<div className="sidebar_userprofile">
 								<img src={ user.image_url } />
 								<p>{ user.firstname }</p>
 							</div>
 						</Link>
-						<Link to='/about'>About</Link>
-						<a href="mailto:donate@pinoyhoops.com?Subject=Donation%20for%20hoop" target="_top">Donate</a>
-						<a href="#" onClick={ this.logout }>Sign out</a>
+						<Link to='/about' onClick={ this.props.hideMenu }>About</Link>
+						<a href="mailto:donate@pinoyhoops.com?Subject=Donation%20for%20hoop" target="_top" onClick={ this.props.hideMenu }>Donate</a>
+						<a href="#" onClick={ this.logout } onClick={ this.props.hideMenu }>Sign out</a>
 					</nav>
 			)
 		} else {
 			return (
 					<nav className={cx('pushmenu pushmenu-left', pushMenuOpen && 'pushmenu-open')}>
-						<Link to='/map'><img src="images/logo_light.png"/></Link>
+						<Link to='/map' onClick={ this.props.hideMenu }><img src="images/logo_light.png"/></Link>
 						<a href="#" onClick={ this.login }>Login</a>
-						<Link to='/about'>About</Link>
-						<a href="mailto:donate@pinoyhoops.com?Subject=Donation%20for%20hoop" target="_top">Donate</a>
+						<Link to='/about' onClick={ this.props.hideMenu }>About</Link>
+						<a href="mailto:donate@pinoyhoops.com?Subject=Donation%20for%20hoop" target="_top" onClick={ this.props.hideMenu }>Donate</a>
 					</nav>
 			)
 		}
@@ -47,9 +47,12 @@ class Navigation extends React.Component {
 			switch (payload.type) {
 			case 'nav-list-click':
 				let pushMenuOpen = this.state.pushMenuOpen;
-				console.log(!pushMenuOpen);
 
 				this.setState({ pushMenuOpen: !pushMenuOpen });
+				break;
+
+			case 'hide-sidebar':
+				this.setState({ pushMenuOpen: false });
 				break;
 			}
 		});
@@ -60,6 +63,7 @@ class Navigation extends React.Component {
 	login(event) {
 		event.preventDefault();
 
+		this.props.hide();
 		browserHistory.replace('/login');
 	}
 	logout(event) {
@@ -73,10 +77,6 @@ class Navigation extends React.Component {
 			alert('Failed to log out!');
 		});
 	}
-}
-
-function hideSidebar() {
-	Dispatcher.dispatch({ type: 'hide-sidebar' });
 }
 
 module.exports = Navigation;

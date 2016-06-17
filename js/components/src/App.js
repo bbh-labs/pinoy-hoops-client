@@ -42,7 +42,7 @@ class App extends React.Component {
 
 		return (
 			<div id='app' className={cx('pushmenu-push', pushSidebar && 'pushmenu-push-toright')}>
-				{ showNavigation ? <Navigation { ...this.state } /> : null }
+				{ showNavigation ? <Navigation { ...this.state } hideMenu={ this.hide } /> : null }
 
 				{
 					showNavigation ? <div className="container-fluid">
@@ -52,7 +52,7 @@ class App extends React.Component {
 					</div> : null
 				}
 
-				<section className="content">
+				<section className="content" onClick={ this.hide }>
 					{ this.props.children && React.cloneElement(this.props.children, this.state) }
 				</section>
 			</div>
@@ -97,6 +97,11 @@ class App extends React.Component {
 
 		this.setState({ pushSidebar: !pushSidebar });
 		Dispatcher.dispatch({ type: 'nav-list-click' });
+	}
+	hide = () => {
+		console.log('test');
+		this.setState({ pushSidebar: false });
+		Dispatcher.dispatch({ type: 'hide-sidebar' });
 	}
 }
 

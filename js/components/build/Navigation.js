@@ -26,6 +26,8 @@ var _Dispatcher2 = _interopRequireDefault(_Dispatcher);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -63,12 +65,12 @@ var Navigation = function (_React$Component) {
 					{ className: (0, _classnames2.default)('pushmenu pushmenu-left', pushMenuOpen && 'pushmenu-open') },
 					_react2.default.createElement(
 						_reactRouter.Link,
-						{ to: '/map' },
+						{ to: '/map', onClick: this.props.hideMenu },
 						_react2.default.createElement('img', { src: 'images/logo_light.png' })
 					),
 					_react2.default.createElement(
 						_reactRouter.Link,
-						{ to: '/profile' },
+						{ to: '/profile', onClick: this.props.hideMenu },
 						_react2.default.createElement(
 							'div',
 							{ className: 'sidebar_userprofile' },
@@ -82,17 +84,17 @@ var Navigation = function (_React$Component) {
 					),
 					_react2.default.createElement(
 						_reactRouter.Link,
-						{ to: '/about' },
+						{ to: '/about', onClick: this.props.hideMenu },
 						'About'
 					),
 					_react2.default.createElement(
 						'a',
-						{ href: 'mailto:donate@pinoyhoops.com?Subject=Donation%20for%20hoop', target: '_top' },
+						{ href: 'mailto:donate@pinoyhoops.com?Subject=Donation%20for%20hoop', target: '_top', onClick: this.props.hideMenu },
 						'Donate'
 					),
 					_react2.default.createElement(
 						'a',
-						{ href: '#', onClick: this.logout },
+						_defineProperty({ href: '#', onClick: this.logout }, 'onClick', this.props.hideMenu),
 						'Sign out'
 					)
 				);
@@ -102,7 +104,7 @@ var Navigation = function (_React$Component) {
 					{ className: (0, _classnames2.default)('pushmenu pushmenu-left', pushMenuOpen && 'pushmenu-open') },
 					_react2.default.createElement(
 						_reactRouter.Link,
-						{ to: '/map' },
+						{ to: '/map', onClick: this.props.hideMenu },
 						_react2.default.createElement('img', { src: 'images/logo_light.png' })
 					),
 					_react2.default.createElement(
@@ -112,12 +114,12 @@ var Navigation = function (_React$Component) {
 					),
 					_react2.default.createElement(
 						_reactRouter.Link,
-						{ to: '/about' },
+						{ to: '/about', onClick: this.props.hideMenu },
 						'About'
 					),
 					_react2.default.createElement(
 						'a',
-						{ href: 'mailto:donate@pinoyhoops.com?Subject=Donation%20for%20hoop', target: '_top' },
+						{ href: 'mailto:donate@pinoyhoops.com?Subject=Donation%20for%20hoop', target: '_top', onClick: this.props.hideMenu },
 						'Donate'
 					)
 				);
@@ -132,9 +134,12 @@ var Navigation = function (_React$Component) {
 				switch (payload.type) {
 					case 'nav-list-click':
 						var pushMenuOpen = _this2.state.pushMenuOpen;
-						console.log(!pushMenuOpen);
 
 						_this2.setState({ pushMenuOpen: !pushMenuOpen });
+						break;
+
+					case 'hide-sidebar':
+						_this2.setState({ pushMenuOpen: false });
 						break;
 				}
 			});
@@ -149,6 +154,7 @@ var Navigation = function (_React$Component) {
 		value: function login(event) {
 			event.preventDefault();
 
+			this.props.hide();
 			_browserHistory2.default.replace('/login');
 		}
 	}, {
@@ -168,9 +174,5 @@ var Navigation = function (_React$Component) {
 
 	return Navigation;
 }(_react2.default.Component);
-
-function hideSidebar() {
-	_Dispatcher2.default.dispatch({ type: 'hide-sidebar' });
-}
 
 module.exports = Navigation;
