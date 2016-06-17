@@ -12,6 +12,10 @@ var _browserHistory = require('./browserHistory');
 
 var _browserHistory2 = _interopRequireDefault(_browserHistory);
 
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 var _API = require('./API');
 
 var _API2 = _interopRequireDefault(_API);
@@ -32,20 +36,31 @@ var Navigation = function (_React$Component) {
 	_inherits(Navigation, _React$Component);
 
 	function Navigation() {
+		var _Object$getPrototypeO;
+
+		var _temp, _this, _ret;
+
 		_classCallCheck(this, Navigation);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(Navigation).apply(this, arguments));
+		for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+			args[_key] = arguments[_key];
+		}
+
+		return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Navigation)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
+			pushMenuOpen: false
+		}, _temp), _possibleConstructorReturn(_this, _ret);
 	}
 
 	_createClass(Navigation, [{
 		key: 'render',
 		value: function render() {
 			var user = this.props.user;
+			var pushMenuOpen = this.state.pushMenuOpen;
 
 			if (user) {
 				return _react2.default.createElement(
 					'nav',
-					{ className: 'pushmenu pushmenu-left' },
+					{ className: (0, _classnames2.default)('pushmenu pushmenu-left', pushMenuOpen && 'pushmenu-open') },
 					_react2.default.createElement(
 						_reactRouter.Link,
 						{ to: '/map' },
@@ -84,7 +99,7 @@ var Navigation = function (_React$Component) {
 			} else {
 				return _react2.default.createElement(
 					'nav',
-					{ className: 'pushmenu pushmenu-left' },
+					{ className: (0, _classnames2.default)('pushmenu pushmenu-left', pushMenuOpen && 'pushmenu-open') },
 					_react2.default.createElement(
 						_reactRouter.Link,
 						{ to: '/map' },
@@ -111,14 +126,23 @@ var Navigation = function (_React$Component) {
 	}, {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
-			var $menuLeft = $('.pushmenu-left');
-			var $nav_list = $('#nav_list');
+			var _this2 = this;
 
-			$nav_list.click(function () {
-				$(this).toggleClass('active');
-				$('.pushmenu-push').toggleClass('pushmenu-push-toright');
-				$menuLeft.toggleClass('pushmenu-open');
+			this.dispatcherID = _Dispatcher2.default.register(function (payload) {
+				switch (payload.type) {
+					case 'nav-list-click':
+						var pushMenuOpen = _this2.state.pushMenuOpen;
+						console.log(!pushMenuOpen);
+
+						_this2.setState({ pushMenuOpen: !pushMenuOpen });
+						break;
+				}
 			});
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			_Dispatcher2.default.unregister(this.dispatcherID);
 		}
 	}, {
 		key: 'login',

@@ -3,6 +3,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import browserHistory from './browserHistory'
+import cx from 'classnames'
 
 import API from './API'
 import Dispatcher from './Dispatcher'
@@ -10,10 +11,11 @@ import Dispatcher from './Dispatcher'
 class Navigation extends React.Component {
 	render() {
 		let user = this.props.user;
+		let pushMenuOpen = this.state.pushMenuOpen;
 
 		if (user) {
 			return (
-					<nav className="pushmenu pushmenu-left">
+					<nav className={cx('pushmenu pushmenu-left', pushMenuOpen && 'pushmenu-open')}>
 						<Link to='/map'><img src="images/logo_light.png"/></Link>
 						<Link to='/profile'>
 							<div className="sidebar_userprofile">
@@ -28,7 +30,7 @@ class Navigation extends React.Component {
 			)
 		} else {
 			return (
-					<nav className="pushmenu pushmenu-left">
+					<nav className={cx('pushmenu pushmenu-left', pushMenuOpen && 'pushmenu-open')}>
 						<Link to='/map'><img src="images/logo_light.png"/></Link>
 						<a href="#" onClick={ this.login }>Login</a>
 						<Link to='/about'>About</Link>
@@ -37,15 +39,23 @@ class Navigation extends React.Component {
 			)
 		}
 	}
+	state = {
+		pushMenuOpen: false,
+	}
 	componentDidMount() {
-		let $menuLeft = $('.pushmenu-left');
-		let $nav_list = $('#nav_list');
+		this.dispatcherID = Dispatcher.register((payload) => {
+			switch (payload.type) {
+			case 'nav-list-click':
+				let pushMenuOpen = this.state.pushMenuOpen;
+				console.log(!pushMenuOpen);
 
-		$nav_list.click(function() {
-			$(this).toggleClass('active');
-			$('.pushmenu-push').toggleClass('pushmenu-push-toright');
-			$menuLeft.toggleClass('pushmenu-open');
+				this.setState({ pushMenuOpen: !pushMenuOpen });
+				break;
+			}
 		});
+	}
+	componentWillUnmount() {
+		Dispatcher.unregister(this.dispatcherID);
 	}
 	login(event) {
 		event.preventDefault();

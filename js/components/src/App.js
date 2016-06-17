@@ -4,6 +4,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, IndexRoute, Link } from 'react-router'
 import browserHistory from './browserHistory'
+import cx from 'classnames'
 
 import Dispatcher from './Dispatcher';
 import API from './API';
@@ -34,18 +35,19 @@ import Story from './Story'
 class App extends React.Component {
 	render() {
 		let showNavigation = true;
+		let pushSidebar = this.state.pushSidebar;
 
 		if (this.props.location.pathname == '/')
 			showNavigation = false;
 
 		return (
-			<div id='app' className="pushmenu-push">
+			<div id='app' className={cx('pushmenu-push', pushSidebar && 'pushmenu-push-toright')}>
 				{ showNavigation ? <Navigation { ...this.state } /> : null }
 
 				{
 					showNavigation ? <div className="container-fluid">
 						<section className="buttonset">
-							<div id="nav_list">Menu</div>
+							<div id='nav_list' className={ pushSidebar && 'active' } onClick={ this.navClick }>Menu</div>
 						</section>
 					</div> : null
 				}
@@ -58,6 +60,7 @@ class App extends React.Component {
 	}
 	state = {
 		user: null,
+		pushSidebar: false,
 	}
 	componentDidMount() {
 		this.checkLoggedIn();
@@ -88,6 +91,12 @@ class App extends React.Component {
 		}, () => {
 			this.setState({ user: null });
 		});
+	}
+	navClick = () => {
+		let pushSidebar = this.state.pushSidebar;
+
+		this.setState({ pushSidebar: !pushSidebar });
+		Dispatcher.dispatch({ type: 'nav-list-click' });
 	}
 }
 

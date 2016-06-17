@@ -16,6 +16,10 @@ var _browserHistory = require('./browserHistory');
 
 var _browserHistory2 = _interopRequireDefault(_browserHistory);
 
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 var _Dispatcher = require('./Dispatcher');
 
 var _Dispatcher2 = _interopRequireDefault(_Dispatcher);
@@ -111,7 +115,13 @@ var App = function (_React$Component) {
 		}
 
 		return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(App)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
-			user: null
+			user: null,
+			pushSidebar: false
+		}, _this.navClick = function () {
+			var pushSidebar = _this.state.pushSidebar;
+
+			_this.setState({ pushSidebar: !pushSidebar });
+			_Dispatcher2.default.dispatch({ type: 'nav-list-click' });
 		}, _temp), _possibleConstructorReturn(_this, _ret);
 	}
 
@@ -119,12 +129,13 @@ var App = function (_React$Component) {
 		key: 'render',
 		value: function render() {
 			var showNavigation = true;
+			var pushSidebar = this.state.pushSidebar;
 
 			if (this.props.location.pathname == '/') showNavigation = false;
 
 			return _react2.default.createElement(
 				'div',
-				{ id: 'app', className: 'pushmenu-push' },
+				{ id: 'app', className: (0, _classnames2.default)('pushmenu-push', pushSidebar && 'pushmenu-push-toright') },
 				showNavigation ? _react2.default.createElement(_Navigation2.default, this.state) : null,
 				showNavigation ? _react2.default.createElement(
 					'div',
@@ -134,7 +145,7 @@ var App = function (_React$Component) {
 						{ className: 'buttonset' },
 						_react2.default.createElement(
 							'div',
-							{ id: 'nav_list' },
+							{ id: 'nav_list', className: pushSidebar && 'active', onClick: this.navClick },
 							'Menu'
 						)
 					)
