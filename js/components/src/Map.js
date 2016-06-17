@@ -208,22 +208,25 @@ class Overlay extends React.Component {
 		if (latlng)
 			return (
 				<form id="addhoop" onSubmit={ this.submit } enctype='multipart/form-data' >
+					<div className="close">
+						<img src="images/close.png"/>
+					</div>
 					<h2>Tell us about the hoop</h2>
 					{ address ? <p>{ address }</p> : null }
 					<input type='text' name='name' placeholder="Hoop Name" /><br/>
 					<textarea rows="4" cols="50"  name='description' placeholder="description"/><br/>
+					<h5>Submit your hoop photos under below categories(Mininum one)</h5>
 					<div className="hoopcategory">
-						<h5>Submit your hoop photos under below categories(Mininum one)</h5>
 						<label className=".col-xs-12 col-md-4" htmlFor='hoop-image-input'>
-							<img ref='hoopImage' src="images/hoop.jpg"/>
+							<div ref='hoopImage' className="hoopupload"></div>
 							<input id='hoop-image-input' type='file' name='hoop-image' accept='image/*' onChange={ this.previewImage } />
 						</label>
 						<label className=".col-xs-12 col-md-4" htmlFor='court-image-input'>
-							<img ref='courtImage' src="images/court.jpg"/>
+							<div ref='courtImage' className="courtupload"></div>
 							<input id='court-image-input' type='file' name='court-image' accept='image/*' onChange={ this.previewImage } />
 						</label>
 						<label className=".col-xs-12 col-md-4" htmlFor='crew-image-input'>
-							<img ref='crewImage' src="images/crew.jpg"/>
+							<div ref='crewImage' className="crewupload"></div>
 							<input id='crew-image-input' type='file' name='crew-image' accept='image/*' onChange={ this.previewImage } />
 						</label>
 						<button type='submit'>DONE</button>

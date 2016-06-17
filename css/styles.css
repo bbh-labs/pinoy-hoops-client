@@ -313,9 +313,63 @@ section.content {
   width: 370px;
 }
 
-#addhoop .hoopcategory img{
-  max-width: 350px;
-  margin-top: 20px;
+#addhoop .close{
+  position: absolute;
+  z-index: 4;
+  right: 2%;
+  top: 2%;
+}
+#addhoop .close img{
+  width: 24px;
+  height: 24px;
+}
+
+#addhoop .hoopcategory{
+  margin-top: 40px;
+}
+
+#addhoop .hoopcategory .hoopupload{
+  background-image: url("../images/hoop_b.jpg");
+  background-size: cover;
+  height: 350px;
+  width: 350px;
+  margin: 0 auto;
+}
+
+#addhoop .hoopcategory .hoopupload:hover{
+  background-image: url("../images/hoop_w.jpg");
+  background-size: cover;
+  margin: 0 auto;
+  border: 1px dashed #666;
+}
+
+#addhoop .hoopcategory .courtupload{
+  background-image: url("../images/court_b.jpg");
+  background-size: cover;
+  height: 350px;
+  width: 350px;
+  margin: 0 auto;
+}
+
+#addhoop .hoopcategory .courtupload:hover{
+  background-image: url("../images/court_w.jpg");
+  background-size: cover;
+  margin: 0 auto;
+  border: 1px dashed #666;
+}
+
+#addhoop .hoopcategory .crewupload{
+  background-image: url("../images/crew_b.jpg");
+  background-size: cover;
+  height: 350px;
+  width: 350px;
+  margin: 0 auto;
+}
+
+#addhoop .hoopcategory .crewupload:hover{
+  background-image: url("../images/crew_w.jpg");
+  background-size: cover;
+  margin: 0 auto;
   border: 1px dashed #666;
 }
 

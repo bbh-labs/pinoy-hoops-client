@@ -7,6 +7,9 @@ git rebase origin/boen
 make changes
 (sometimes) solve merge conflict
 
+git stash
+previous line
+git stash pop 
 # Make sure you're up-to-date again
 
 # Commit after you're sure there's no conflict
