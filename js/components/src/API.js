@@ -604,6 +604,18 @@ class API {
 			}).done(done).fail(fail);
 		}
 	}
+	static hasLikedHoop(data, done, fail) {
+		if (MOCKUP) {
+			done(false);
+		} else {
+			$.ajax({
+				url: '/api/hoop/mylike',
+				method: 'GET',
+				data: data,
+				dataType: 'json',
+			}).done(done).fail(fail);
+		}
+	}
 }
 
 module.exports = API;

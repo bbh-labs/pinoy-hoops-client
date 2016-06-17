@@ -33,7 +33,7 @@ class Hoop extends React.Component {
 						<h3>Hoop Name</h3>
 						<div className="social">
 							<a href="#"><img src="/images/icon_share.png"/></a>
-							<a href="#"><img src="/images/icon_like.png"/></a>
+							<a href="#" onClick={ this.like } ><img src="/images/icon_like.png"/></a>
 							<Link to="/hoop/comment"><img src="/images/icon_comment.png"/></Link>
 						</div>
 					</div>
@@ -66,6 +66,7 @@ class Hoop extends React.Component {
 		hoop: null,
 		latestStories: null,
 		tab: 'most-recent',
+		liked: false,
 	}
 	componentDidMount() {
 		this.fetchData();
@@ -106,6 +107,15 @@ class Hoop extends React.Component {
 		if (hoop)
 			Dispatcher.dispatch({ type: 'overlay', name: 'share-hoop', data: { hoopID: hoop.id } });
 	}
+	like = () => {
+		let hoopID = this.props.params.hoopID;
+
+		API.likeHoop({ hoopID: hoopID }, () => {
+			console.log('liked hoop');
+		}, () => {
+			console.log('failed to like hoop');
+		});
+	}
 	fetchData = () => {
 		let hoopID = this.props.params.hoopID;
 
@@ -119,6 +129,12 @@ class Hoop extends React.Component {
 			this.setState({ latestStories: stories });
 		}, (response) => {
 			alert('Failed to get latest stories');
+		});
+
+		API.hasLikedHoop({ hoopID: hoopID }, (liked) => {
+			this.setState({ liked: liked });
+		}, () => {
+			console.log('Failed to get my hoop like');
 		});
 	}
 	submit = (event) => {

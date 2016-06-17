@@ -649,6 +649,20 @@ var API = function () {
 				}).done(done).fail(fail);
 			}
 		}
+	}, {
+		key: 'hasLikedHoop',
+		value: function hasLikedHoop(data, done, fail) {
+			if (MOCKUP) {
+				done(false);
+			} else {
+				_jquery2.default.ajax({
+					url: '/api/hoop/mylike',
+					method: 'GET',
+					data: data,
+					dataType: 'json'
+				}).done(done).fail(fail);
+			}
+		}
 	}]);
 
 	return API;

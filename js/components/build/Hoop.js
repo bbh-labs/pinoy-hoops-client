@@ -41,7 +41,8 @@ var Hoop = function (_React$Component) {
 		return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Hoop)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
 			hoop: null,
 			latestStories: null,
-			tab: 'most-recent'
+			tab: 'most-recent',
+			liked: false
 		}, _this.stories = function () {
 			var latestStories = _this.state.latestStories;
 
@@ -69,6 +70,14 @@ var Hoop = function (_React$Component) {
 			var hoop = _this.state.hoop;
 
 			if (hoop) _Dispatcher2.default.dispatch({ type: 'overlay', name: 'share-hoop', data: { hoopID: hoop.id } });
+		}, _this.like = function () {
+			var hoopID = _this.props.params.hoopID;
+
+			_API2.default.likeHoop({ hoopID: hoopID }, function () {
+				console.log('liked hoop');
+			}, function () {
+				console.log('failed to like hoop');
+			});
 		}, _this.fetchData = function () {
 			var hoopID = _this.props.params.hoopID;
 
@@ -82,6 +91,12 @@ var Hoop = function (_React$Component) {
 				_this.setState({ latestStories: stories });
 			}, function (response) {
 				alert('Failed to get latest stories');
+			});
+
+			_API2.default.hasLikedHoop({ hoopID: hoopID }, function (liked) {
+				_this.setState({ liked: liked });
+			}, function () {
+				console.log('Failed to get my hoop like');
 			});
 		}, _this.submit = function (event) {
 			_API2.default.addStory(new FormData(_this.refs.storyForm), function () {
@@ -138,7 +153,7 @@ var Hoop = function (_React$Component) {
 							),
 							_react2.default.createElement(
 								'a',
-								{ href: '#' },
+								{ href: '#', onClick: this.like },
 								_react2.default.createElement('img', { src: '/images/icon_like.png' })
 							),
 							_react2.default.createElement(
