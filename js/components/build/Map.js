@@ -45,6 +45,8 @@ var Map = function (_React$Component) {
 		return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Map)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
 			latlng: null,
 			address: null
+		}, _this.clickMap = function (latlng) {
+			_this.setState({ latlng: latlng });
 		}, _temp), _possibleConstructorReturn(_this, _ret);
 	}
 
@@ -58,7 +60,7 @@ var Map = function (_React$Component) {
 			return _react2.default.createElement(
 				'div',
 				{ className: 'map-wrapper' },
-				_react2.default.createElement(MapView, { user: user }),
+				_react2.default.createElement(MapView, { user: user, clickMap: this.clickMap }),
 				_react2.default.createElement(Overlay, { latlng: latlng, address: address })
 			);
 		}
@@ -210,7 +212,7 @@ var MapView = function (_React$Component2) {
 				if (user) {
 					var latlng = { lat: event.latLng.lat(), lng: event.latLng.lng() };
 
-					_Dispatcher2.default.dispatch({ type: 'map-click', latlng: latlng });
+					_this4.props.clickMap(latlng);
 
 					if (_this4.marker) {
 						_this4.marker.setMap(null);

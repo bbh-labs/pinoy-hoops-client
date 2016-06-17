@@ -15,7 +15,7 @@ class Map extends React.Component {
 
 		return (
 				<div className='map-wrapper'>
-					<MapView user={ user } />
+					<MapView user={ user } clickMap={ this.clickMap } />
 					<Overlay latlng={ latlng } address={ address } />
 				</div>
 		)
@@ -43,6 +43,9 @@ class Map extends React.Component {
 	}
 	componentWillUnmount() {
 		Dispatcher.unregister(this.dispatcherID);
+	}
+	clickMap = (latlng) => {
+		this.setState({ latlng: latlng });
 	}
 }
 
@@ -72,7 +75,7 @@ class MapView extends React.Component {
 			if (user) {
 				let latlng = { lat: event.latLng.lat(), lng: event.latLng.lng() };
 
-				Dispatcher.dispatch({ type: 'map-click', latlng: latlng });
+				this.props.clickMap(latlng);
 
 				if (this.marker) {
 					this.marker.setMap(null);
