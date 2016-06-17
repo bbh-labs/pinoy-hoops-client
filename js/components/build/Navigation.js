@@ -50,6 +50,11 @@ var Navigation = function (_React$Component) {
 
 		return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Navigation)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
 			pushMenuOpen: false
+		}, _this.login = function (event) {
+			event.preventDefault();
+
+			_this.props.hideMenu();
+			_browserHistory2.default.replace('/login');
 		}, _temp), _possibleConstructorReturn(_this, _ret);
 	}
 
@@ -156,14 +161,6 @@ var Navigation = function (_React$Component) {
 		key: 'componentWillUnmount',
 		value: function componentWillUnmount() {
 			_Dispatcher2.default.unregister(this.dispatcherID);
-		}
-	}, {
-		key: 'login',
-		value: function login(event) {
-			event.preventDefault();
-
-			this.props.hide();
-			_browserHistory2.default.replace('/login');
 		}
 	}, {
 		key: 'logout',

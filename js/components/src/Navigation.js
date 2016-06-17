@@ -64,10 +64,10 @@ class Navigation extends React.Component {
 	componentWillUnmount() {
 		Dispatcher.unregister(this.dispatcherID);
 	}
-	login(event) {
+	login = (event) => {
 		event.preventDefault();
 
-		this.props.hide();
+		this.props.hideMenu();
 		browserHistory.replace('/login');
 	}
 	logout(event) {
