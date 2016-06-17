@@ -13,6 +13,9 @@
     background-image: url('../images/login_mobile.jpg');
   }
 
+  #login .logo{
+    margin-top: 50%;
+  }
 
   #about .backgroundimage{
     top: -0%;
