@@ -95,6 +95,11 @@ var Hoop = function (_React$Component) {
 
 			if (!hoop) return null;
 
+			var featuredStories = hoop.data.featured_stories;
+			var hoopImageURL = featuredStories.hoop ? featuredStories.hoop.image_url : null;
+			var courtImageURL = featuredStories.court ? featuredStories.court.image_url : null;
+			var crewImageURL = featuredStories.crew ? featuredStories.crew.image_url : null;
+
 			return _react2.default.createElement(
 				'div',
 				{ id: 'story' },
@@ -104,33 +109,9 @@ var Hoop = function (_React$Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'heroimage' },
-						_react2.default.createElement(
-							'div',
-							{ className: '.col-xs-12 .col-sm-12 col-md-12 nopadding' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'left' },
-								_react2.default.createElement('img', { src: contentURL(hoop.data.featured_story.image_url) })
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: '.col-xs-12 .col-sm-12 col-md-12 nopadding' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'right' },
-								_react2.default.createElement('img', { src: contentURL(hoop.data.featured_story.image_url) })
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: '.col-xs-12 .col-sm-12 col-md-12 nopadding' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'left' },
-								_react2.default.createElement('img', { src: contentURL(hoop.data.featured_story.image_url) })
-							)
-						)
+						_react2.default.createElement(HeroImageItem, { imageURL: hoopImageURL }),
+						_react2.default.createElement(HeroImageItem, { imageURL: courtImageURL }),
+						_react2.default.createElement(HeroImageItem, { imageURL: crewImageURL })
 					),
 					_react2.default.createElement(
 						'div',
@@ -239,6 +220,37 @@ var Hoop = function (_React$Component) {
 	}]);
 
 	return Hoop;
+}(_react2.default.Component);
+
+var HeroImageItem = function (_React$Component2) {
+	_inherits(HeroImageItem, _React$Component2);
+
+	function HeroImageItem() {
+		_classCallCheck(this, HeroImageItem);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(HeroImageItem).apply(this, arguments));
+	}
+
+	_createClass(HeroImageItem, [{
+		key: 'render',
+		value: function render() {
+			var imageURL = this.props.imageURL;
+
+			if (!imageURL) return null;
+
+			return _react2.default.createElement(
+				'div',
+				{ className: '.col-xs-12 .col-sm-12 col-md-12 nopadding' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'left' },
+					_react2.default.createElement('img', { src: contentURL(imageURL) })
+				)
+			);
+		}
+	}]);
+
+	return HeroImageItem;
 }(_react2.default.Component);
 
 module.exports = Hoop;

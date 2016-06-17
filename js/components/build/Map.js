@@ -133,9 +133,11 @@ var MapView = function (_React$Component2) {
 			if (hoops) {
 				var _loop = function _loop(i) {
 					var hoop = hoops[i];
+					var featuredStories = hoops[i].data.featured_stories;
+					var imageURL = featuredStories['hoop'] ? featuredStories['hoop'].image_url : featuredStories['court'] ? featuredStories['court'].image_url : featuredStories['crew'] ? featuredStories['crew'].image_url : null;
 
 					var image = {
-						url: hoops[i].data.featured_story.image_url,
+						url: imageURL,
 						scaledSize: new google.maps.Size(64, 64),
 						origin: new google.maps.Point(0, 0),
 						anchor: new google.maps.Point(0, 64)

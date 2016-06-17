@@ -15,25 +15,18 @@ class Hoop extends React.Component {
 		if (!hoop)
 			return null;
 
+		let featuredStories = hoop.data.featured_stories;
+		let hoopImageURL = featuredStories.hoop ? featuredStories.hoop.image_url : null;
+		let courtImageURL = featuredStories.court ? featuredStories.court.image_url : null;
+		let crewImageURL = featuredStories.crew ? featuredStories.crew.image_url : null;
+
 		return (
 			<div id="story">
 				<div className="row">
 					<div className="heroimage">
-						<div className=".col-xs-12 .col-sm-12 col-md-12 nopadding">
-							<div className="left">
-								<img src={ contentURL(hoop.data.featured_story.image_url) } />
-							</div>
-						</div>
-						<div className=".col-xs-12 .col-sm-12 col-md-12 nopadding">
-							<div className="right">
-								<img src={ contentURL(hoop.data.featured_story.image_url) } />
-							</div>
-						</div>
-						<div className=".col-xs-12 .col-sm-12 col-md-12 nopadding">
-							<div className="left">
-								<img src={ contentURL(hoop.data.featured_story.image_url) } />
-							</div>
-						</div>
+						<HeroImageItem imageURL={ hoopImageURL } />
+						<HeroImageItem imageURL={ courtImageURL } />
+						<HeroImageItem imageURL={ crewImageURL } />
 					</div>
 					<div className="title">
 						<img src="/images/hoop_frame.png"/>
@@ -132,6 +125,23 @@ class Hoop extends React.Component {
 		}, (response) => {
 			alert('Failed to get latest stories');
 		});
+	}
+}
+
+class HeroImageItem extends React.Component {
+	render() {
+		let imageURL = this.props.imageURL;
+
+		if (!imageURL)
+			return null;
+
+		return (
+			<div className=".col-xs-12 .col-sm-12 col-md-12 nopadding">
+				<div className="left">
+					<img src={ contentURL(imageURL) } />
+				</div>
+			</div>
+		)
 	}
 }
 

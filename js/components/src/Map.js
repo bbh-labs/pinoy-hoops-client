@@ -154,9 +154,13 @@ class MapView extends React.Component {
 		if (hoops) {
 			for (let i in hoops) {
 				let hoop = hoops[i];
+				let featuredStories = hoops[i].data.featured_stories;
+				let imageURL = featuredStories['hoop'] ? featuredStories['hoop'].image_url :
+						featuredStories['court'] ? featuredStories['court'].image_url :
+						featuredStories['crew'] ? featuredStories['crew'].image_url : null;
 
 				let image = {
-					url: hoops[i].data.featured_story.image_url,
+					url: imageURL,
 					scaledSize: new google.maps.Size(64, 64),
 					origin: new google.maps.Point(0, 0),
 					anchor: new google.maps.Point(0, 64),
