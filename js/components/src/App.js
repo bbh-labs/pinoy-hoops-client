@@ -99,7 +99,6 @@ class App extends React.Component {
 		Dispatcher.dispatch({ type: 'nav-list-click' });
 	}
 	hide = () => {
-		console.log('test');
 		this.setState({ pushSidebar: false });
 		Dispatcher.dispatch({ type: 'hide-sidebar' });
 	}

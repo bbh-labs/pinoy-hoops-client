@@ -125,7 +125,6 @@ var App = function (_React$Component) {
 			_this.setState({ pushSidebar: !pushSidebar });
 			_Dispatcher2.default.dispatch({ type: 'nav-list-click' });
 		}, _this.hide = function () {
-			console.log('test');
 			_this.setState({ pushSidebar: false });
 			_Dispatcher2.default.dispatch({ type: 'hide-sidebar' });
 		}, _temp), _possibleConstructorReturn(_this, _ret);
