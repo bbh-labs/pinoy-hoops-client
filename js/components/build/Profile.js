@@ -47,28 +47,26 @@ var Profile = function (_React$Component) {
 			var user = _this.props.user;
 			var editing = _this.state.editing;
 
-			if (editing) {
-				return _react2.default.createElement(ProfileForm, { user: user });
-			} else {
-				return _react2.default.createElement(
-					'div',
+			if (editing) return _react2.default.createElement(ProfileForm, { user: user });
+
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					'h3',
 					null,
-					_react2.default.createElement(
-						'h3',
-						null,
-						user.firstname,
-						' ',
-						user.lastname
-					),
-					_react2.default.createElement(
-						'p',
-						null,
-						user.birthdate,
-						', ',
-						user.gender
-					)
-				);
-			}
+					user.firstname,
+					' ',
+					user.lastname
+				),
+				_react2.default.createElement(
+					'p',
+					null,
+					user.birthdate,
+					', ',
+					user.gender
+				)
+			);
 		}, _this.hoops = function () {
 			var myHoops = _this.state.myHoops;
 			var otherHoops = _this.state.otherHoops;
@@ -140,7 +138,7 @@ var Profile = function (_React$Component) {
 							_react2.default.createElement(
 								'h2',
 								null,
-								'Username'
+								user.firstname + ' ' + user.lastname
 							)
 						)
 					),

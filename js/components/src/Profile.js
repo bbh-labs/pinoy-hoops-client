@@ -23,7 +23,7 @@ class Profile extends React.Component {
 						<label htmlFor='user-image'>
 							<div className="userinfo">
 								<img src={ contentURL(user.image_url, '/images/avatar.png') } />
-								<h2>Username</h2>
+								<h2>{ user.firstname + ' ' + user.lastname }</h2>
 							</div>
 						</label>
 						<div className="coverphoto">
@@ -63,16 +63,15 @@ class Profile extends React.Component {
 		let user = this.props.user;
 		let editing = this.state.editing;
 
-		if (editing) {
+		if (editing)
 			return <ProfileForm user={ user } />
-		} else {
-			return (
-				<div>
-					<h3>{ user.firstname } { user.lastname }</h3>
-					<p>{ user.birthdate }, { user.gender }</p>
-				</div>
-			)
-		}
+
+		return (
+			<div>
+				<h3>{ user.firstname } { user.lastname }</h3>
+				<p>{ user.birthdate }, { user.gender }</p>
+			</div>
+		)
 	}
 	hoops = () => {
 		let myHoops = this.state.myHoops;
