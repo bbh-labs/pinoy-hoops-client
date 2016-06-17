@@ -51,6 +51,10 @@ section.content {
   width: 100%;
 }
 
+.file-label {
+	cursor: pointer;
+}
+
 /**********Landing Page**********/
 .logo{
   position: absolute;
@@ -320,9 +324,7 @@ section.content {
 #court-image-input,
 #crew-image-input {
 	display: none;
-	cursor: pointer;
 }
-
 
 @-webkit-keyframes moveup {
     0% {
@@ -400,4 +402,8 @@ section.content {
 #story .gallery img{
   max-width: 100%;
   margin: 0;
+}
+
+#uploadhoop {
+	display: none;
 }

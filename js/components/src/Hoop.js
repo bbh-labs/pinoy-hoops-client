@@ -45,23 +45,18 @@ class Hoop extends React.Component {
 					</div>
 
 					<div className="gallery">
-						<div className=".col-xs-4.col-sm-4 col-md-4 nopadding">
-							<div className="uploadhoop">
-								<a href="#"><img src="/images/uploadimage.jpg"/></a>
-							</div>
-						</div>
-						<div className=".col-xs-4.col-sm-4 col-md-4 nopadding">
-							<img src="/images/image1.jpg"/>
-						</div>
-						<div className=".col-xs-4.col-sm-4 col-md-4 nopadding">
-							<img src="/images/image1.jpg"/>
-						</div>
-						<div className=".col-xs-4.col-sm-4 col-md-4 nopadding">
-							<img src="/images/image1.jpg"/>
-						</div>
-						<div className=".col-xs-4.col-sm-4 col-md-4 nopadding">
-							<img src="/images/image1.jpg"/>
-						</div>
+						<form ref='storyForm' className=".col-xs-4.col-sm-4 col-md-4 nopadding">
+							<label htmlFor='uploadhoop' className='uploadhoop file-label'>
+								<input id='uploadhoop' type='file' name='image' accept='image/*' onChange={ this.submit } />
+								<img src="/images/uploadimage.jpg"/>
+							</label>
+							<input type='hidden' name='hoop_id' value={ hoop.id } />
+						</form>
+						{
+							latestStories ? latestStories.map(function(story) {
+								return <Story story={ story } />;
+							}) : null
+						}
 					</div>
 				</div>
 			</div>
@@ -126,6 +121,13 @@ class Hoop extends React.Component {
 			alert('Failed to get latest stories');
 		});
 	}
+	submit = (event) => {
+		API.addStory(new FormData(this.refs.storyForm), () => {
+			alert('Successfully added story!');
+		}, () => {
+			alert('Failed to add story!');
+		});
+	}
 }
 
 class HeroImageItem extends React.Component {
@@ -140,6 +142,21 @@ class HeroImageItem extends React.Component {
 				<div className="left">
 					<img src={ contentURL(imageURL) } />
 				</div>
+			</div>
+		)
+	}
+}
+
+class Story extends React.Component {
+	render() {
+		let story = this.props.story;
+
+		if (!story)
+			return null;
+
+		return (
+			<div className=".col-xs-4.col-sm-4 col-md-4 nopadding">
+				<img src={ contentURL(story.image_url) } />
 			</div>
 		)
 	}

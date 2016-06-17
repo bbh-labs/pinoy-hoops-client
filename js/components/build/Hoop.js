@@ -83,6 +83,12 @@ var Hoop = function (_React$Component) {
 			}, function (response) {
 				alert('Failed to get latest stories');
 			});
+		}, _this.submit = function (event) {
+			_API2.default.addStory(new FormData(_this.refs.storyForm), function () {
+				alert('Successfully added story!');
+			}, function () {
+				alert('Failed to add story!');
+			});
 		}, _temp), _possibleConstructorReturn(_this, _ret);
 	}
 
@@ -161,38 +167,19 @@ var Hoop = function (_React$Component) {
 						'div',
 						{ className: 'gallery' },
 						_react2.default.createElement(
-							'div',
-							{ className: '.col-xs-4.col-sm-4 col-md-4 nopadding' },
+							'form',
+							{ ref: 'storyForm', className: '.col-xs-4.col-sm-4 col-md-4 nopadding' },
 							_react2.default.createElement(
-								'div',
-								{ className: 'uploadhoop' },
-								_react2.default.createElement(
-									'a',
-									{ href: '#' },
-									_react2.default.createElement('img', { src: '/images/uploadimage.jpg' })
-								)
-							)
+								'label',
+								{ htmlFor: 'uploadhoop', className: 'uploadhoop file-label' },
+								_react2.default.createElement('input', { id: 'uploadhoop', type: 'file', name: 'image', accept: 'image/*', onChange: this.submit }),
+								_react2.default.createElement('img', { src: '/images/uploadimage.jpg' })
+							),
+							_react2.default.createElement('input', { type: 'hidden', name: 'hoop_id', value: hoop.id })
 						),
-						_react2.default.createElement(
-							'div',
-							{ className: '.col-xs-4.col-sm-4 col-md-4 nopadding' },
-							_react2.default.createElement('img', { src: '/images/image1.jpg' })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: '.col-xs-4.col-sm-4 col-md-4 nopadding' },
-							_react2.default.createElement('img', { src: '/images/image1.jpg' })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: '.col-xs-4.col-sm-4 col-md-4 nopadding' },
-							_react2.default.createElement('img', { src: '/images/image1.jpg' })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: '.col-xs-4.col-sm-4 col-md-4 nopadding' },
-							_react2.default.createElement('img', { src: '/images/image1.jpg' })
-						)
+						latestStories ? latestStories.map(function (story) {
+							return _react2.default.createElement(Story, { story: story });
+						}) : null
 					)
 				)
 			);
@@ -251,6 +238,33 @@ var HeroImageItem = function (_React$Component2) {
 	}]);
 
 	return HeroImageItem;
+}(_react2.default.Component);
+
+var Story = function (_React$Component3) {
+	_inherits(Story, _React$Component3);
+
+	function Story() {
+		_classCallCheck(this, Story);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(Story).apply(this, arguments));
+	}
+
+	_createClass(Story, [{
+		key: 'render',
+		value: function render() {
+			var story = this.props.story;
+
+			if (!story) return null;
+
+			return _react2.default.createElement(
+				'div',
+				{ className: '.col-xs-4.col-sm-4 col-md-4 nopadding' },
+				_react2.default.createElement('img', { src: contentURL(story.image_url) })
+			);
+		}
+	}]);
+
+	return Story;
 }(_react2.default.Component);
 
 module.exports = Hoop;
