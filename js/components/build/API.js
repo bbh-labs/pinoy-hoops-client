@@ -126,7 +126,52 @@ if (MOCKUP) {
 		longitude: 121.2446,
 		data: {
 			featured_stories: {
-				hoop: STORIES[0],
+				hoop: STORIES[1],
+				court: STORIES[0],
+				crew: STORIES[0]
+			}
+		}
+	}, {
+		id: 3,
+		user_id: 1,
+		user: OTHER_USER,
+		name: 'La Concordia',
+		description: LOREM_IPSUM,
+		latitude: 14.1980,
+		longitude: 121.2446,
+		data: {
+			featured_stories: {
+				hoop: STORIES[2],
+				court: STORIES[0],
+				crew: STORIES[0]
+			}
+		}
+	}, {
+		id: 4,
+		user_id: 1,
+		user: OTHER_USER,
+		name: 'La Concordia',
+		description: LOREM_IPSUM,
+		latitude: 14.1980,
+		longitude: 121.2446,
+		data: {
+			featured_stories: {
+				hoop: STORIES[3],
+				court: STORIES[0],
+				crew: STORIES[0]
+			}
+		}
+	}, {
+		id: 5,
+		user_id: 1,
+		user: OTHER_USER,
+		name: 'La Concordia',
+		description: LOREM_IPSUM,
+		latitude: 14.1980,
+		longitude: 121.2446,
+		data: {
+			featured_stories: {
+				hoop: STORIES[4],
 				court: STORIES[0],
 				crew: STORIES[0]
 			}

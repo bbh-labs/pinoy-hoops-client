@@ -77,18 +77,29 @@ class Profile extends React.Component {
 		switch (tab) {
 		case 'my-hoops':
 			return myHoops ? myHoops.map(function(hoop) {
+				let featuredStories = hoop.data.featured_stories;
+
+				let story = featuredStories['hoop'] ? featuredStories['hoop'] :
+						featuredStories['court'] ? featuredStories['court'] :
+						featuredStories['crew'] ? featuredStories['crew'] : null;
+
 				return (
 					<Link key={ hoop.id } to={ '/hoop/' + hoop.id }>
-						<img key={ hoop.data.featured_story.id } src={ contentURL(hoop.data.featured_story.image_url) } />
+						<img key={ story.id } src={ contentURL(story.image_url) } />
 					</Link>
 				)
 			}) : null;
 
 		case 'other-hoops':
 			return otherHoops ? otherHoops.map(function(hoop) {
+				let featuredStories = hoop.data.featured_stories;
+
+				let story = featuredStories['hoop'] ? featuredStories['hoop'] :
+						featuredStories['court'] ? featuredStories['court'] :
+						featuredStories['crew'] ? featuredStories['crew'] : null;
 				return (
 					<Link key={ hoop.id } to={ '/hoop/' + hoop.id }>
-						<img key={ hoop.data.featured_story.id } src={ contentURL(hoop.data.featured_story.image_url) } />
+						<img key={ story.id } src={ contentURL(story.image_url) } />
 					</Link>
 				)
 			}) : null;
