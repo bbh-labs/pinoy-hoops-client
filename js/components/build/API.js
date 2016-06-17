@@ -176,6 +176,51 @@ if (MOCKUP) {
 				crew: STORIES[0]
 			}
 		}
+	}, {
+		id: 6,
+		user_id: 1,
+		user: OTHER_USER,
+		name: 'La Concordia',
+		description: LOREM_IPSUM,
+		latitude: 14.1980,
+		longitude: 121.2446,
+		data: {
+			featured_stories: {
+				hoop: STORIES[5],
+				court: STORIES[0],
+				crew: STORIES[0]
+			}
+		}
+	}, {
+		id: 7,
+		user_id: 1,
+		user: OTHER_USER,
+		name: 'La Concordia',
+		description: LOREM_IPSUM,
+		latitude: 14.1980,
+		longitude: 121.2446,
+		data: {
+			featured_stories: {
+				hoop: STORIES[6],
+				court: STORIES[0],
+				crew: STORIES[0]
+			}
+		}
+	}, {
+		id: 8,
+		user_id: 1,
+		user: OTHER_USER,
+		name: 'La Concordia',
+		description: LOREM_IPSUM,
+		latitude: 14.1980,
+		longitude: 121.2446,
+		data: {
+			featured_stories: {
+				hoop: STORIES[7],
+				court: STORIES[0],
+				crew: STORIES[0]
+			}
+		}
 	}];
 
 	for (var i in STORIES) {
