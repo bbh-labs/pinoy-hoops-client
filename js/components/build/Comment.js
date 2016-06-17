@@ -36,7 +36,20 @@ var Comment = function (_React$Component) {
   _createClass(Comment, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement('div', null);
+      return _react2.default.createElement(
+        'div',
+        { id: 'comment' },
+        _react2.default.createElement(
+          'div',
+          { className: 'commentbox' },
+          _react2.default.createElement('input', { type: 'text', name: 'comment' }),
+          _react2.default.createElement(
+            'button',
+            null,
+            'send'
+          )
+        )
+      );
     }
   }]);
 

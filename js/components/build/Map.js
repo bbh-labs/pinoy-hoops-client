@@ -388,7 +388,7 @@ var AddHoop = function (_React$Component4) {
 					'Tell us about the hoop'
 				),
 				address ? _react2.default.createElement(
-					'p',
+					'h6',
 					null,
 					address
 				) : null,

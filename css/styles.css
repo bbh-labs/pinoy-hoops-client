@@ -327,6 +327,11 @@ section.content {
   width: 370px;
 }
 
+#addhoop h6{
+  font-weight: bold;
+  color: green;
+}
+
 #addhoop .close{
   position: absolute;
   z-index: 4;
@@ -487,4 +492,16 @@ section.content {
 
 #uploadhoop {
 	display: none;
+}
+
+
+#comment{
+  height: 100%;
+  width: 100%;
+}
+
+#comment .commentbox{
+  position: absolute;
+  z-index: 4;
+  bottom: 0;
 }

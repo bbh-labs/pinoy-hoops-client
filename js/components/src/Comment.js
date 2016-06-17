@@ -9,8 +9,11 @@ import Dispatcher from './Dispatcher'
 class Comment extends React.Component {
 	render() {
     return (
-      <div>
-
+      <div id="comment">
+				<div className="commentbox">
+						<input type="text" name="comment"/>
+					 <button>send</button>
+				</div>
       </div>
     )
   }

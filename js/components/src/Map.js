@@ -234,7 +234,7 @@ class AddHoop extends React.Component {
 						<img src="images/close.png" onClick={ this.close } />
 					</div>
 					<h2>Tell us about the hoop</h2>
-					{ address ? <p>{ address }</p> : null }
+					{ address ? <h6>{ address }</h6> : null }
 					<input type='text' name='name' placeholder="Hoop Name" /><br/>
 					<textarea rows="4" cols="50"  name='description' placeholder="description"/><br/>
 					<h5>Submit your hoop photos under below categories(Mininum one)</h5>
