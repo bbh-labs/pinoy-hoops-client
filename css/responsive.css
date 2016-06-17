@@ -26,11 +26,13 @@
     min-width: 100px;
   }
 
-  #about .backgroundimage{
-    top: -0%;
-    left: -60%;
-    width: 200%;
-    height: 100%;
+  #about{
+    position: absolute;
+    background-image: url('../images/about_mobile.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
   }
 
   #about p{
