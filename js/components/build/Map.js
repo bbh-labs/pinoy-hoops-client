@@ -298,7 +298,7 @@ var Overlay = function (_React$Component3) {
 			}
 
 			reader.addEventListener('load', function () {
-				preview.src = reader.result;
+				preview.style.backgroundImage = 'url(' + reader.result + ')';
 			});
 
 			if (file) reader.readAsDataURL(file);

@@ -258,7 +258,7 @@ class Overlay extends React.Component {
 		}
 
 		reader.addEventListener('load', function() {
-			preview.src = reader.result;
+			preview.style.backgroundImage = 'url(' + reader.result + ')';
 		});
 
 		if (file)
