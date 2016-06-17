@@ -34,7 +34,7 @@ if (MOCKUP) {
 			user: OTHER_USER,
 			name: 'La Concordia',
 			description: LOREM_IPSUM,
-			image_url: 'images/image1.jpg',
+			image_url: 'images/hoop01.jpg',
 			viewCount: 3/3,
 		},
 		{
@@ -43,7 +43,7 @@ if (MOCKUP) {
 			user: OTHER_USER,
 			name: 'La Concordia',
 			description: LOREM_IPSUM,
-			image_url: 'images/image1.jpg',
+			image_url: 'images/hoop02.jpg',
 			viewCount: 3/3,
 		},
 		{
@@ -52,7 +52,7 @@ if (MOCKUP) {
 			user: OTHER_USER,
 			name: 'La Concordia',
 			description: LOREM_IPSUM,
-			image_url: 'images/image1.jpg',
+			image_url: 'images/hoop03.jpg',
 			viewCount: 3/3,
 		},
 		{
@@ -61,7 +61,7 @@ if (MOCKUP) {
 			user: OTHER_USER,
 			name: 'La Concordia',
 			description: LOREM_IPSUM,
-			image_url: 'images/image1.jpg',
+			image_url: 'images/hoop04.jpg',
 			viewCount: 3/3,
 		},
 		{
@@ -70,7 +70,7 @@ if (MOCKUP) {
 			user: OTHER_USER,
 			name: 'La Concordia',
 			description: LOREM_IPSUM,
-			image_url: 'images/image1.jpg',
+			image_url: 'images/hoop05.jpg',
 			viewCount: 3/3,
 		},
 		{
@@ -79,7 +79,7 @@ if (MOCKUP) {
 			user: OTHER_USER,
 			name: 'La Concordia',
 			description: LOREM_IPSUM,
-			image_url: 'images/image1.jpg',
+			image_url: 'images/hoop06.jpg',
 			viewCount: 3/3
 		},
 		{
@@ -88,7 +88,7 @@ if (MOCKUP) {
 			user: OTHER_USER,
 			name: 'La Concordia',
 			description: LOREM_IPSUM,
-			image_url: 'images/image1.jpg',
+			image_url: 'images/hoop07.jpg',
 			viewCount: 3/3,
 		},
 		{
@@ -97,7 +97,7 @@ if (MOCKUP) {
 			user: OTHER_USER,
 			name: 'La Concordia',
 			description: LOREM_IPSUM,
-			image_url: 'images/image1.jpg',
+			image_url: 'images/hoop08.jpg',
 			viewCount: 3/3,
 		},
 	];

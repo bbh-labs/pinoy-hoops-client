@@ -12,6 +12,10 @@
 	margin: 0 auto;
 }
 
+.pushmenu .menulogo a:hover{
+  background-color: #111;
+}
+
 .pushmenu a {
   display: block; /* drops the nav vertically*/
   color: #fff;
@@ -24,9 +28,9 @@
 }
 
 .pushmenu a:hover {
-  background:#203880;
+  background:#fff;
   text-decoration: none;
-  color: white;
+  color: #333;
 }
 
 .pushmenu a:active {

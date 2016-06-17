@@ -16,7 +16,9 @@ class Navigation extends React.Component {
 		if (user) {
 			return (
 					<nav className={cx('pushmenu pushmenu-left', pushMenuOpen && 'pushmenu-open')}>
-						<Link to='/map' onClick={ this.props.hideMenu }><img src="images/logo_light.png"/></Link>
+						<div className="menulogo">
+							<Link to='/map' onClick={ this.props.hideMenu }><img src="images/logo_light.png"/></Link>
+						</div>
 						<Link to='/profile' onClick={ this.props.hideMenu }>
 							<div className="sidebar_userprofile">
 								<img src={ user.image_url } />
@@ -31,7 +33,9 @@ class Navigation extends React.Component {
 		} else {
 			return (
 					<nav className={cx('pushmenu pushmenu-left', pushMenuOpen && 'pushmenu-open')}>
-						<Link to='/map' onClick={ this.props.hideMenu }><img src="images/logo_light.png"/></Link>
+						<div className="menulogo">
+							<Link to='/map' onClick={ this.props.hideMenu }><img src="images/logo_light.png"/></Link>
+						</div>
 						<a href="#" onClick={ this.login }>Login</a>
 						<Link to='/about' onClick={ this.props.hideMenu }>About</Link>
 						<a href="mailto:donate@pinoyhoops.com?Subject=Donation%20for%20hoop" target="_top" onClick={ this.props.hideMenu }>Donate</a>
