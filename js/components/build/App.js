@@ -36,6 +36,10 @@ var _AddHoop = require('./AddHoop');
 
 var _AddHoop2 = _interopRequireDefault(_AddHoop);
 
+var _Comment = require('./Comment');
+
+var _Comment2 = _interopRequireDefault(_Comment);
+
 var _Home = require('./Home');
 
 var _Home2 = _interopRequireDefault(_Home);
@@ -197,6 +201,7 @@ _reactDom2.default.render(_react2.default.createElement(
 		_react2.default.createElement(_reactRouter.Route, { path: '/about', component: _About2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: '/activities', component: _Activities2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: '/add-hoop', component: _AddHoop2.default }),
+		_react2.default.createElement(_reactRouter.Route, { path: '/hoop/comment', component: _Comment2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: '/hoop/:hoopID', component: _Hoop2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: '/login', component: _Login2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: '/login-email', component: _LoginEmail2.default }),

@@ -76,6 +76,10 @@ var Map = function (_React$Component) {
 					case 'set-address':
 						_this2.setState({ address: payload.address });
 						break;
+
+					case 'close-overlay':
+						_this2.setState({ latlng: null });
+						break;
 				}
 			});
 		}
@@ -298,7 +302,7 @@ var Overlay = function (_React$Component3) {
 			}
 
 			reader.addEventListener('load', function () {
-				preview.src = reader.result;
+				preview.style.backgroundImage = 'url(' + reader.result + ')';
 			});
 
 			if (file) reader.readAsDataURL(file);
@@ -322,6 +326,8 @@ var Overlay = function (_React$Component3) {
 				_this5.setState({ latlng: null });
 				alert(response.statusText);
 			});
+		}, _this5.close = function (event) {
+			_Dispatcher2.default.dispatch({ type: 'close-overlay' });
 		}, _temp3), _possibleConstructorReturn(_this5, _ret4);
 	}
 
@@ -334,6 +340,11 @@ var Overlay = function (_React$Component3) {
 			if (latlng) return _react2.default.createElement(
 				'form',
 				{ id: 'addhoop', onSubmit: this.submit, enctype: 'multipart/form-data' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'close' },
+					_react2.default.createElement('img', { src: 'images/close.png', onClick: this.close })
+				),
 				_react2.default.createElement(
 					'h2',
 					null,
@@ -349,29 +360,29 @@ var Overlay = function (_React$Component3) {
 				_react2.default.createElement('textarea', { rows: '4', cols: '50', name: 'description', placeholder: 'description' }),
 				_react2.default.createElement('br', null),
 				_react2.default.createElement(
+					'h5',
+					null,
+					'Submit your hoop photos under below categories(Mininum one)'
+				),
+				_react2.default.createElement(
 					'div',
 					{ className: 'hoopcategory' },
 					_react2.default.createElement(
-						'h5',
-						null,
-						'Submit your hoop photos under below categories(Mininum one)'
-					),
-					_react2.default.createElement(
 						'label',
 						{ className: '.col-xs-12 col-md-4', htmlFor: 'hoop-image-input' },
-						_react2.default.createElement('img', { ref: 'hoopImage', src: 'images/hoop.jpg' }),
+						_react2.default.createElement('div', { ref: 'hoopImage', className: 'hoopupload' }),
 						_react2.default.createElement('input', { id: 'hoop-image-input', type: 'file', name: 'hoop-image', accept: 'image/*', onChange: this.previewImage })
 					),
 					_react2.default.createElement(
 						'label',
 						{ className: '.col-xs-12 col-md-4', htmlFor: 'court-image-input' },
-						_react2.default.createElement('img', { ref: 'courtImage', src: 'images/court.jpg' }),
+						_react2.default.createElement('div', { ref: 'courtImage', className: 'courtupload' }),
 						_react2.default.createElement('input', { id: 'court-image-input', type: 'file', name: 'court-image', accept: 'image/*', onChange: this.previewImage })
 					),
 					_react2.default.createElement(
 						'label',
 						{ className: '.col-xs-12 col-md-4', htmlFor: 'crew-image-input' },
-						_react2.default.createElement('img', { ref: 'crewImage', src: 'images/crew.jpg' }),
+						_react2.default.createElement('div', { ref: 'crewImage', className: 'crewupload' }),
 						_react2.default.createElement('input', { id: 'crew-image-input', type: 'file', name: 'crew-image', accept: 'image/*', onChange: this.previewImage })
 					),
 					_react2.default.createElement(

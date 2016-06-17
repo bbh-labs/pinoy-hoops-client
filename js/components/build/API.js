@@ -49,7 +49,7 @@ if (MOCKUP) {
 		user: OTHER_USER,
 		name: 'La Concordia',
 		description: LOREM_IPSUM,
-		image_url: 'images/dummy02.jpg',
+		image_url: 'images/image1.jpg',
 		viewCount: 3 / 3
 	}, {
 		id: 3,
@@ -57,7 +57,7 @@ if (MOCKUP) {
 		user: OTHER_USER,
 		name: 'La Concordia',
 		description: LOREM_IPSUM,
-		image_url: 'images/dummy03.jpg',
+		image_url: 'images/image1.jpg',
 		viewCount: 3 / 3
 	}, {
 		id: 4,
@@ -65,7 +65,7 @@ if (MOCKUP) {
 		user: OTHER_USER,
 		name: 'La Concordia',
 		description: LOREM_IPSUM,
-		image_url: 'images/dummy04.jpg',
+		image_url: 'images/image1.jpg',
 		viewCount: 3 / 3
 	}, {
 		id: 5,
@@ -73,7 +73,7 @@ if (MOCKUP) {
 		user: OTHER_USER,
 		name: 'La Concordia',
 		description: LOREM_IPSUM,
-		image_url: 'images/dummy05.jpg',
+		image_url: 'images/image1.jpg',
 		viewCount: 3 / 3
 	}, {
 		id: 6,
@@ -81,7 +81,7 @@ if (MOCKUP) {
 		user: OTHER_USER,
 		name: 'La Concordia',
 		description: LOREM_IPSUM,
-		image_url: 'images/dummy06.jpg',
+		image_url: 'images/image1.jpg',
 		viewCount: 3 / 3
 	}, {
 		id: 7,
@@ -89,7 +89,7 @@ if (MOCKUP) {
 		user: OTHER_USER,
 		name: 'La Concordia',
 		description: LOREM_IPSUM,
-		image_url: 'images/dummy07.jpg',
+		image_url: 'images/image1.jpg',
 		viewCount: 3 / 3
 	}, {
 		id: 8,
@@ -97,7 +97,7 @@ if (MOCKUP) {
 		user: OTHER_USER,
 		name: 'La Concordia',
 		description: LOREM_IPSUM,
-		image_url: 'images/dummy08.jpg',
+		image_url: 'images/image1.jpg',
 		viewCount: 3 / 3
 	}];
 
@@ -110,7 +110,11 @@ if (MOCKUP) {
 		latitude: 14.5980,
 		longitude: 120.9446,
 		data: {
-			featured_story: STORIES[0]
+			featured_stories: {
+				hoop: STORIES[0],
+				court: STORIES[0],
+				crew: STORIES[0]
+			}
 		}
 	}, {
 		id: 2,
@@ -121,7 +125,11 @@ if (MOCKUP) {
 		latitude: 14.1980,
 		longitude: 121.2446,
 		data: {
-			featured_story: STORIES[0]
+			featured_stories: {
+				hoop: STORIES[0],
+				court: STORIES[0],
+				crew: STORIES[0]
+			}
 		}
 	}];
 

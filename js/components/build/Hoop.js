@@ -142,8 +142,8 @@ var Hoop = function (_React$Component) {
 								_react2.default.createElement('img', { src: '/images/icon_like.png' })
 							),
 							_react2.default.createElement(
-								'a',
-								{ href: '#' },
+								_reactRouter.Link,
+								{ to: '/hoop/comment' },
 								_react2.default.createElement('img', { src: '/images/icon_comment.png' })
 							)
 						)
@@ -158,7 +158,6 @@ var Hoop = function (_React$Component) {
 							_react2.default.createElement(
 								'h3',
 								null,
-								'"',
 								hoop.description
 							)
 						)

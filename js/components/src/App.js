@@ -11,6 +11,7 @@ import API from './API';
 import About from './About'
 import Activities from './Activities'
 import AddHoop from './AddHoop'
+import Comment from './Comment'
 import Home from './Home'
 import Hoop from './Hoop'
 import Login from './Login'
@@ -101,6 +102,7 @@ ReactDOM.render((
 			<Route path='/about' component={ About } />
 			<Route path='/activities' component={ Activities } />
 			<Route path='/add-hoop' component={ AddHoop } />
+			<Route path='/hoop/comment' component={ Comment } />
 			<Route path='/hoop/:hoopID' component={ Hoop } />
 			<Route path='/login' component={ Login } />
 			<Route path='/login-email' component={ LoginEmail } />

@@ -124,18 +124,25 @@ var Profile = function (_React$Component) {
 					_react2.default.createElement(
 						'label',
 						{ htmlFor: 'user-image' },
-						_react2.default.createElement('img', { src: contentURL(user.image_url, '/images/avatar.png') }),
-						_react2.default.createElement('input', { id: 'user-image', type: 'file', name: 'image', onChange: this.handleUserImage })
-					)
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'info' },
-					this.profileInfo(),
+						_react2.default.createElement(
+							'div',
+							{ className: 'userinfo' },
+							_react2.default.createElement('img', { src: contentURL(user.image_url, '/images/avatar.png') }),
+							_react2.default.createElement(
+								'h2',
+								null,
+								'Username'
+							)
+						)
+					),
 					_react2.default.createElement(
-						'button',
-						{ onClick: this.toggleEdit },
-						'Edit Profile'
+						'div',
+						{ className: 'coverphoto' },
+						_react2.default.createElement(
+							'button',
+							null,
+							'Change cover photo'
+						)
 					)
 				),
 				_react2.default.createElement(

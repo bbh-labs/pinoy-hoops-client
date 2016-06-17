@@ -19,15 +19,16 @@ class Profile extends React.Component {
 				<div id="profile">
 					<form ref='userImageForm' className='picture'>
 						<label htmlFor='user-image'>
-							<img src={ contentURL(user.image_url, '/images/avatar.png') } />
-							<input id='user-image' type='file' name='image' onChange={ this.handleUserImage } />
+							<div className="userinfo">
+								<img src={ contentURL(user.image_url, '/images/avatar.png') } />
+								<h2>Username</h2>
+							</div>
 						</label>
+						<div className="coverphoto">
+							<button>Change cover photo</button>
+						</div>
 					</form>
 
-						<div className='info'>
-							{ this.profileInfo() }
-							<button onClick={ this.toggleEdit }>Edit Profile</button>
-						</div>
 
 					<div className='myhoops'>
 						<div className='filter'>

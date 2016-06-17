@@ -34,13 +34,13 @@ class Hoop extends React.Component {
 						<div className="social">
 							<a href="#"><img src="/images/icon_share.png"/></a>
 							<a href="#"><img src="/images/icon_like.png"/></a>
-							<a href="#"><img src="/images/icon_comment.png"/></a>
+							<Link to="/hoop/comment"><img src="/images/icon_comment.png"/></Link>
 						</div>
 					</div>
 					<div className="desciption">
 						<div className=".col-xs-6.col-sm-6 col-md-6 nopadding"></div>
 						<div className=".col-xs-6.col-sm-6 col-md-6 nopadding">
-							<h3>"{ hoop.description }</h3>
+							<h3>{ hoop.description }</h3>
 						</div>
 					</div>
 
