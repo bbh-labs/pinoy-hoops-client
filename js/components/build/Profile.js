@@ -77,19 +77,26 @@ var Profile = function (_React$Component) {
 			switch (tab) {
 				case 'my-hoops':
 					return myHoops ? myHoops.map(function (hoop) {
+						var featuredStories = hoop.data.featured_stories;
+
+						var story = featuredStories['hoop'] ? featuredStories['hoop'] : featuredStories['court'] ? featuredStories['court'] : featuredStories['crew'] ? featuredStories['crew'] : null;
+
 						return _react2.default.createElement(
 							_reactRouter.Link,
 							{ key: hoop.id, to: '/hoop/' + hoop.id },
-							_react2.default.createElement('img', { key: hoop.data.featured_story.id, src: contentURL(hoop.data.featured_story.image_url) })
+							_react2.default.createElement('img', { key: story.id, src: contentURL(story.image_url) })
 						);
 					}) : null;
 
 				case 'other-hoops':
 					return otherHoops ? otherHoops.map(function (hoop) {
+						var featuredStories = hoop.data.featured_stories;
+
+						var story = featuredStories['hoop'] ? featuredStories['hoop'] : featuredStories['court'] ? featuredStories['court'] : featuredStories['crew'] ? featuredStories['crew'] : null;
 						return _react2.default.createElement(
 							_reactRouter.Link,
 							{ key: hoop.id, to: '/hoop/' + hoop.id },
-							_react2.default.createElement('img', { key: hoop.data.featured_story.id, src: contentURL(hoop.data.featured_story.image_url) })
+							_react2.default.createElement('img', { key: story.id, src: contentURL(story.image_url) })
 						);
 					}) : null;
 			}

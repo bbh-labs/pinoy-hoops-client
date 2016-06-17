@@ -171,13 +171,8 @@ section.content {
 
 }
 
-.MapSearch img{
-  max-width: 16px;
-  margin-right: 10px;
-}
 .MapSearch input{
-  min-width: 200px;
-  padding: 5px 10px;
+
 }
 
 /*About*/
@@ -477,6 +472,10 @@ section.content {
   padding-right: 50px;
 }
 
+#story .gallery label{
+  margin: 0;
+  padding: 0;
+}
 #story .gallery img{
   max-width: 100%;
   margin: 0;
