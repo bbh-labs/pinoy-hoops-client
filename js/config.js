@@ -36,6 +36,15 @@ var MAP_STYLE = [
         ]
     },
     {
+        "featureType": "administrative.neighborhood",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
         "featureType": "landscape",
         "elementType": "all",
         "stylers": [

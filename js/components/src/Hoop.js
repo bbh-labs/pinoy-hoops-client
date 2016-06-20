@@ -45,7 +45,7 @@ class Hoop extends React.Component {
 					</div>
 
 					<div className="gallery">
-						<form ref='storyForm' className=".col-xs-4.col-sm-3 col-md-3 nopadding">
+						<form ref='storyForm' className=".col-xs-4.col-sm-3 col-md-2 nopadding">
 							<label htmlFor='uploadhoop' className='uploadhoop file-label'>
 								<input id='uploadhoop' type='file' name='image' accept='image/*' onChange={ this.submit } />
 								<img src="/images/uploadimage.jpg"/>
@@ -171,7 +171,7 @@ class Story extends React.Component {
 			return null;
 
 		return (
-			<div className=".col-xs-4.col-sm-3 col-md-3 nopadding">
+			<div className=".col-xs-4.col-sm-3 col-md-2 nopadding">
 				<img src={ contentURL(story.image_url) } />
 			</div>
 		)

@@ -59,11 +59,7 @@ var Home = function (_React$Component) {
 								_react2.default.createElement('img', { src: 'images/hero05.jpg' }),
 								_react2.default.createElement('img', { src: 'images/hero06.jpg' }),
 								_react2.default.createElement('img', { src: 'images/hero07.jpg' }),
-								_react2.default.createElement('img', { src: 'images/hero08.jpg' }),
-								_react2.default.createElement('img', { src: 'images/hero09.jpg' }),
-								_react2.default.createElement('img', { src: 'images/hero10.jpg' }),
-								_react2.default.createElement('img', { src: 'images/hero11.jpg' }),
-								_react2.default.createElement('img', { src: 'images/hero12.jpg' })
+								_react2.default.createElement('img', { src: 'images/hero08.jpg' })
 							),
 							_react2.default.createElement(
 								_reactRouter.Link,
