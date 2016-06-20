@@ -25,6 +25,8 @@ class Home extends React.Component {
 		            <img src="images/hero08.jpg"/>
 		            <img src="images/hero09.jpg"/>
 		            <img src="images/hero10.jpg"/>
+								<img src="images/hero11.jpg"/>
+								<img src="images/hero12.jpg"/>
 		          </div>
 		          <Link to='/map'>
 		            <div className="arrow bounce">

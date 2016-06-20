@@ -182,7 +182,7 @@ var Hoop = function (_React$Component) {
 						{ className: 'gallery' },
 						_react2.default.createElement(
 							'form',
-							{ ref: 'storyForm', className: '.col-xs-4.col-sm-4 col-md-4 nopadding' },
+							{ ref: 'storyForm', className: '.col-xs-4.col-sm-3 col-md-3 nopadding' },
 							_react2.default.createElement(
 								'label',
 								{ htmlFor: 'uploadhoop', className: 'uploadhoop file-label' },
@@ -272,7 +272,7 @@ var Story = function (_React$Component3) {
 
 			return _react2.default.createElement(
 				'div',
-				{ className: '.col-xs-4.col-sm-4 col-md-4 nopadding' },
+				{ className: '.col-xs-4.col-sm-3 col-md-3 nopadding' },
 				_react2.default.createElement('img', { src: contentURL(story.image_url) })
 			);
 		}
