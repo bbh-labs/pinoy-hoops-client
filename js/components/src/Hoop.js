@@ -34,6 +34,8 @@ class Hoop extends React.Component {
 							<a href="#" onClick={ this.like } ><img src="/images/icon_like.png"/></a>
 							<Link to="/hoop/comment"><img src="/images/icon_comment.png"/></Link>
 								<div className="networks">
+									<a href="#"><img src="/images/facebook.png"/></a>
+									<a href="#"><img src="/images/twitter.png"/></a>
 								</div>
 						</div>
 					</div>
@@ -48,7 +50,7 @@ class Hoop extends React.Component {
 						<form ref='storyForm' className=".col-xs-4.col-sm-3 col-md-2 nopadding">
 							<label htmlFor='uploadhoop' className='uploadhoop file-label'>
 								<input id='uploadhoop' type='file' name='image' accept='image/*' onChange={ this.submit } />
-								<img src="/images/uploadimage.jpg"/>
+								<img src="/images/upload.jpg"/>
 							</label>
 							<input type='hidden' name='hoop_id' value={ hoop.id } />
 						</form>

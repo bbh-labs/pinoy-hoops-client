@@ -8,9 +8,16 @@
     font-family: hoopfont;
     src: url(../fonts/DINSRG__.ttf);
 }
+
+body{
+    overflow: hidden;
+}
+
+
 html, body, #root, #app {
 	font-family: 'TradeGothic', sans-serif;
-  height: 100%; width: 100%:
+  height: 100%; width: 100%;
+
 }
 
 h1,h2,h3,h4,h5,h6,p,a,button{
@@ -473,7 +480,7 @@ section.content {
 
 #story .heroimage img{
   max-width: 600px;
-  margin-bottom: 60px;
+
 }
 
 #story .title{
@@ -508,6 +515,10 @@ section.content {
   padding: 0 10px;
 }
 
+#story .social .networks{
+  display: inline-block;
+}
+
 #story .desciption{
   position: absolute;
   z-index: 4;
@@ -519,6 +530,12 @@ section.content {
   line-height: 20pt;
   padding-right: 50px;
 }
+
+#story .gallery {
+  display: inline-block;
+  margin-top: 60px;
+}
+
 
 #story .gallery label{
   margin: 0;

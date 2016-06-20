@@ -155,7 +155,20 @@ var Hoop = function (_React$Component) {
 								{ to: '/hoop/comment' },
 								_react2.default.createElement('img', { src: '/images/icon_comment.png' })
 							),
-							_react2.default.createElement('div', { className: 'networks' })
+							_react2.default.createElement(
+								'div',
+								{ className: 'networks' },
+								_react2.default.createElement(
+									'a',
+									{ href: '#' },
+									_react2.default.createElement('img', { src: '/images/facebook.png' })
+								),
+								_react2.default.createElement(
+									'a',
+									{ href: '#' },
+									_react2.default.createElement('img', { src: '/images/twitter.png' })
+								)
+							)
 						)
 					),
 					_react2.default.createElement(
@@ -182,7 +195,7 @@ var Hoop = function (_React$Component) {
 								'label',
 								{ htmlFor: 'uploadhoop', className: 'uploadhoop file-label' },
 								_react2.default.createElement('input', { id: 'uploadhoop', type: 'file', name: 'image', accept: 'image/*', onChange: this.submit }),
-								_react2.default.createElement('img', { src: '/images/uploadimage.jpg' })
+								_react2.default.createElement('img', { src: '/images/upload.jpg' })
 							),
 							_react2.default.createElement('input', { type: 'hidden', name: 'hoop_id', value: hoop.id })
 						),
