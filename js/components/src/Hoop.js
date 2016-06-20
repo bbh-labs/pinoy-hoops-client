@@ -29,12 +29,12 @@ class Hoop extends React.Component {
 						<HeroImageItem imageURL={ crewImageURL } left={ true } />
 					</div>
 					<div className="title">
-						<img src="/images/hoop_frame.png"/>
-						<h3>{ hoop.name }</h3>
+						<h1>{ hoop.name }</h1>
 						<div className="social">
-							<a href="#"><img src="/images/icon_share.png"/></a>
 							<a href="#" onClick={ this.like } ><img src="/images/icon_like.png"/></a>
 							<Link to="/hoop/comment"><img src="/images/icon_comment.png"/></Link>
+								<div className="networks">
+								</div>
 						</div>
 					</div>
 					<div className="desciption">

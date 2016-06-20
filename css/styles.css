@@ -347,7 +347,7 @@ section.content {
 
 #addhoop h6{
   font-weight: bold;
-  color: green;
+  color: #2bc77d;
 }
 
 #addhoop .close{
@@ -462,7 +462,7 @@ section.content {
 }
 
 #story .heroimage img{
-  max-width: 800px;
+  max-width: 600px;
   margin-bottom: 60px;
 }
 
@@ -470,41 +470,43 @@ section.content {
   position: absolute;
   z-index: 4;
   top:2%;
-  right: 13%;
+  left: 50%;
 }
 
 #story .title img{
   max-width: 200px;
 }
 
-#story .title h3{
-  margin-top: -45%;
+#story .title h1{
+  margin-top: 10%;
   text-align: center;
   font-family: 'hoopfont';
   text-transform: uppercase;
+  font-size: 42pt;
 }
 
 #story .social{
   position: absolute;
   z-index: 4;
-  margin-top: 35%;
-  left: 5%;
+  margin: 0 auto;
+  width: 100%;
+  text-align: left;
 }
 
 #story .social img{
-  max-width: 32px;
-  margin-left: 20px;
+  max-width: 42px;
+  padding: 0 10px;
 }
 
 #story .desciption{
   position: absolute;
   z-index: 4;
-  top:50%;
+  top:20%;
 }
 
 #story .desciption h3{
-  font-size: 20pt;
-  line-height: 26pt;
+  font-size: 14pt;
+  line-height: 20pt;
   padding-right: 50px;
 }
 
@@ -515,6 +517,10 @@ section.content {
 #story .gallery img{
   max-width: 100%;
   margin: 0;
+}
+
+#story .gallery img:hover{
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 #uploadhoop {

@@ -137,20 +137,14 @@ var Hoop = function (_React$Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'title' },
-						_react2.default.createElement('img', { src: '/images/hoop_frame.png' }),
 						_react2.default.createElement(
-							'h3',
+							'h1',
 							null,
 							hoop.name
 						),
 						_react2.default.createElement(
 							'div',
 							{ className: 'social' },
-							_react2.default.createElement(
-								'a',
-								{ href: '#' },
-								_react2.default.createElement('img', { src: '/images/icon_share.png' })
-							),
 							_react2.default.createElement(
 								'a',
 								{ href: '#', onClick: this.like },
@@ -160,7 +154,8 @@ var Hoop = function (_React$Component) {
 								_reactRouter.Link,
 								{ to: '/hoop/comment' },
 								_react2.default.createElement('img', { src: '/images/icon_comment.png' })
-							)
+							),
+							_react2.default.createElement('div', { className: 'networks' })
 						)
 					),
 					_react2.default.createElement(
