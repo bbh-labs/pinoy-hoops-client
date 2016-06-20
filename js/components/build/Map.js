@@ -197,9 +197,9 @@ var MapView = function (_React$Component2) {
 			// Basic options for a simple Google Map
 			// For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
 			var mapOptions = {
-				zoom: 13,
+				zoom: 5,
 				scrollwheel: true,
-				center: new google.maps.LatLng(14.5980, 120.9446), // Manila
+				center: new google.maps.LatLng(11.5771104, 113.5495458), // Philippines
 				styles: MAP_STYLE
 			};
 
