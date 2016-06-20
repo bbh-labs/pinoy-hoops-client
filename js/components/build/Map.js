@@ -393,7 +393,7 @@ var AddHoop = function (_React$Component4) {
 					_react2.default.createElement('img', { src: 'images/close.png', onClick: this.close })
 				),
 				_react2.default.createElement(
-					'h2',
+					'h1',
 					null,
 					'Tell us about the hoop'
 				),
@@ -404,12 +404,12 @@ var AddHoop = function (_React$Component4) {
 				) : null,
 				_react2.default.createElement('input', { type: 'text', name: 'name', placeholder: 'Hoop Name' }),
 				_react2.default.createElement('br', null),
-				_react2.default.createElement('textarea', { rows: '4', cols: '50', name: 'description', placeholder: 'description' }),
+				_react2.default.createElement('textarea', { rows: '4', cols: '50', name: 'Hoop Story', placeholder: 'Hoop Story' }),
 				_react2.default.createElement('br', null),
 				_react2.default.createElement(
-					'h5',
+					'h1',
 					null,
-					'Submit your hoop photos under below categories(Mininum one)'
+					'Add your hoop photos (Mininum one)'
 				),
 				_react2.default.createElement(
 					'div',

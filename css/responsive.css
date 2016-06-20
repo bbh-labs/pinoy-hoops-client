@@ -17,6 +17,27 @@
     margin-top: 50%;
   }
 
+  #addhoop h1{
+    font-size: 16pt;
+    margin-top: 20px;
+  }
+
+  #addhoop input{
+    width: 300px;
+  }
+
+  #addhoop textarea{
+    width: 300px;
+    height: 150px;
+  }
+
+  #addhoop h6{
+    font-weight: bold;
+    color: #2bc77d;
+    font-size: 14pt;
+    margin-top: 10px;
+  }
+
   .MapSearch{
     right: 2%;
     top: 1%;
