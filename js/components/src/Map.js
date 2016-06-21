@@ -225,7 +225,7 @@ class SearchBar extends React.Component {
 	render() {
 		return (
 			<div className="MapSearch">
-				<img src="images/icon_locate.png" onClick={ this.gotoCurrentLocation } />
+				<img src={ contentURL('images/icon_locate.png') } onClick={ this.gotoCurrentLocation } />
 				 <input type="text" placeholder="Search..." ref='input' required></input>
 			</div>
 		)
@@ -281,7 +281,7 @@ class AddHoop extends React.Component {
 			return (
 				<form id="addhoop" onSubmit={ this.submit } enctype='multipart/form-data' >
 					<div className="close">
-						<img src="images/close.png" onClick={ this.close } />
+						<img src={ contentURL('images/close.png') } onClick={ this.close } />
 					</div>
 					<h1>Tell us about the hoop</h1>
 					{ address ? <h6>{ address }</h6> : null }

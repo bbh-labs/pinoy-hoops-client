@@ -308,7 +308,7 @@ var SearchBar = function (_React$Component3) {
 			return _react2.default.createElement(
 				'div',
 				{ className: 'MapSearch' },
-				_react2.default.createElement('img', { src: 'images/icon_locate.png', onClick: this.gotoCurrentLocation }),
+				_react2.default.createElement('img', { src: contentURL('images/icon_locate.png'), onClick: this.gotoCurrentLocation }),
 				_react2.default.createElement('input', { type: 'text', placeholder: 'Search...', ref: 'input', required: true })
 			);
 		}
@@ -427,7 +427,7 @@ var AddHoop = function (_React$Component4) {
 				_react2.default.createElement(
 					'div',
 					{ className: 'close' },
-					_react2.default.createElement('img', { src: 'images/close.png', onClick: this.close })
+					_react2.default.createElement('img', { src: contentURL('images/close.png'), onClick: this.close })
 				),
 				_react2.default.createElement(
 					'h1',
