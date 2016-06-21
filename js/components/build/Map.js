@@ -28,6 +28,10 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var map = void 0;
+var geocoder = void 0;
+var searchBox = void 0;
+
 var Map = function (_React$Component) {
 	_inherits(Map, _React$Component);
 
@@ -152,7 +156,7 @@ var MapView = function (_React$Component2) {
 
 					var marker = new google.maps.Marker({
 						position: new google.maps.LatLng(hoops[i].latitude, hoops[i].longitude),
-						map: _this3.map,
+						map: map,
 						title: hoops[i].name,
 						icon: image
 					});
@@ -177,7 +181,7 @@ var MapView = function (_React$Component2) {
 			if (name.length > 0) _this3.getHoops({ name: name });else _this3.getHoops();
 		}, _this3.gotoCurrentLocation = function () {
 			navigator.geolocation.getCurrentPosition(function (position) {
-				_this3.map.setCenter({ lat: position.coords.latitude, lng: position.coords.longitude });
+				map.setCenter({ lat: position.coords.latitude, lng: position.coords.longitude });
 			});
 		}, _temp2), _possibleConstructorReturn(_this3, _ret2);
 	}
@@ -204,12 +208,12 @@ var MapView = function (_React$Component2) {
 			};
 
 			// Create the Google Map using our element and options defined above
-			this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+			map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
 			// Create a reverse geocoder
-			this.geocoder = new google.maps.Geocoder();
+			geocoder = new google.maps.Geocoder();
 
-			this.map.addListener('click', function (event) {
+			map.addListener('click', function (event) {
 				if (user) {
 					var latlng = { lat: event.latLng.lat(), lng: event.latLng.lng() };
 
@@ -222,11 +226,11 @@ var MapView = function (_React$Component2) {
 
 					_this4.marker = new google.maps.Marker({
 						position: new google.maps.LatLng(latlng.lat, latlng.lng),
-						map: _this4.map,
+						map: map,
 						title: 'Hoop'
 					});
 
-					_this4.geocoder.geocode({ location: latlng }, function (results, status) {
+					geocoder.geocode({ location: latlng }, function (results, status) {
 						if (status == google.maps.GeocoderStatus.OK) {
 							if (results[1]) _Dispatcher2.default.dispatch({ type: 'set-address', address: results[1].formatted_address });
 						}
@@ -269,8 +273,8 @@ var MapView = function (_React$Component2) {
 	}, {
 		key: 'componentWillUnmount',
 		value: function componentWillUnmount() {
-			this.map = null;
-			this.geocoder = null;
+			map = null;
+			geocoder = null;
 
 			_Dispatcher2.default.unregister(this.dispatcherID);
 		}
@@ -295,9 +299,7 @@ var SearchBar = function (_React$Component3) {
 
 		return _ret4 = (_temp3 = (_this5 = _possibleConstructorReturn(this, (_Object$getPrototypeO3 = Object.getPrototypeOf(SearchBar)).call.apply(_Object$getPrototypeO3, [this].concat(args))), _this5), _this5.gotoCurrentLocation = function () {
 			_Dispatcher2.default.dispatch({ type: 'go-to-current-location' });
-		}, _this5.handleSearch = function (event) {
-			_Dispatcher2.default.dispatch({ type: 'search-hoops', name: event.target.value });
-		}, _temp3), _possibleConstructorReturn(_this5, _ret4);
+		}, _this5.handleSearch = function (event) {}, _temp3), _possibleConstructorReturn(_this5, _ret4);
 	}
 
 	_createClass(SearchBar, [{
@@ -307,8 +309,43 @@ var SearchBar = function (_React$Component3) {
 				'div',
 				{ className: 'MapSearch' },
 				_react2.default.createElement('img', { src: 'images/icon_locate.png', onClick: this.gotoCurrentLocation }),
-				_react2.default.createElement('input', { type: 'text', placeholder: 'Search...', onChange: this.handleSearch, required: true })
+				_react2.default.createElement('input', { type: 'text', placeholder: 'Search...', ref: 'input', required: true })
 			);
+		}
+	}, {
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var input = this.refs.input;
+
+			searchBox = new google.maps.places.SearchBox(input);
+			map.addListener('bounds_changed', function () {
+				searchBox.setBounds(map.getBounds());
+			});
+
+			searchBox.addListener('places_changed', function () {
+				var places = searchBox.getPlaces();
+				var bounds = new google.maps.LatLngBounds();
+				var location = void 0;
+				var viewport = void 0;
+
+				if (places.length == 0) return;
+
+				location = places[0].geometry.location;
+				viewport = places[0].geometry.viewport;
+
+				map.setCenter({ lat: location.lat(), lng: location.lng() });
+
+				if (viewport) bounds.union(viewport);else bounds.extend(location);
+
+				map.fitBounds(bounds);
+			});
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			searchBox = null;
+
+			$('.pac-container').remove();
 		}
 	}]);
 

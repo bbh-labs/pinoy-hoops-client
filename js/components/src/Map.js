@@ -7,6 +7,10 @@ import browserHistory from './browserHistory'
 import API from './API'
 import Dispatcher from './Dispatcher'
 
+let map;
+let geocoder;
+let searchBox;
+
 class Map extends React.Component {
 	render() {
 		let user = this.props.user;
@@ -67,12 +71,12 @@ class MapView extends React.Component {
 		};
 
 		// Create the Google Map using our element and options defined above
-		this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+		map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
 		// Create a reverse geocoder
-		this.geocoder = new google.maps.Geocoder;
+		geocoder = new google.maps.Geocoder;
 
-		this.map.addListener('click', (event) => {
+		map.addListener('click', (event) => {
 			if (user) {
 				let latlng = { lat: event.latLng.lat(), lng: event.latLng.lng() };
 
@@ -85,11 +89,11 @@ class MapView extends React.Component {
 
 				this.marker = new google.maps.Marker({
 					position: new google.maps.LatLng(latlng.lat, latlng.lng),
-					map: this.map,
+					map: map,
 					title: 'Hoop',
 				});
 
-				this.geocoder.geocode({ location: latlng }, (results, status) => {
+				geocoder.geocode({ location: latlng }, (results, status) => {
 					if (status == google.maps.GeocoderStatus.OK) {
 						if (results[1])
 							Dispatcher.dispatch({ type: 'set-address', address: results[1].formatted_address });
@@ -131,8 +135,8 @@ class MapView extends React.Component {
 		});
 	}
 	componentWillUnmount() {
-		this.map = null;
-		this.geocoder = null;
+		map = null;
+		geocoder = null;
 
 		Dispatcher.unregister(this.dispatcherID);
 	}
@@ -184,7 +188,7 @@ class MapView extends React.Component {
 
 				let marker = new google.maps.Marker({
 					position: new google.maps.LatLng(hoops[i].latitude, hoops[i].longitude),
-					map: this.map,
+					map: map,
 					title: hoops[i].name,
 					icon: image,
 				});
@@ -212,7 +216,7 @@ class MapView extends React.Component {
 	}
 	gotoCurrentLocation = () => {
 		navigator.geolocation.getCurrentPosition((position) => {
-			this.map.setCenter({ lat: position.coords.latitude, lng: position.coords.longitude });
+			map.setCenter({ lat: position.coords.latitude, lng: position.coords.longitude });
 		});
 	}
 }
@@ -222,15 +226,49 @@ class SearchBar extends React.Component {
 		return (
 			<div className="MapSearch">
 				<img src="images/icon_locate.png" onClick={ this.gotoCurrentLocation } />
-				 <input type="text" placeholder="Search..." onChange={ this.handleSearch } required></input>
+				 <input type="text" placeholder="Search..." ref='input' required></input>
 			</div>
 		)
+	}
+	componentDidMount() {
+		let input = this.refs.input;
+
+		searchBox = new google.maps.places.SearchBox(input);
+		map.addListener('bounds_changed', function() {
+			searchBox.setBounds(map.getBounds());
+		});
+
+		searchBox.addListener('places_changed', function() {
+			let places = searchBox.getPlaces();
+			let bounds = new google.maps.LatLngBounds();
+			let location;
+			let viewport;
+
+			if (places.length == 0)
+				return;
+
+			location = places[0].geometry.location;
+			viewport = places[0].geometry.viewport;
+
+			map.setCenter({ lat: location.lat(), lng: location.lng() });
+
+			if (viewport)
+				bounds.union(viewport);
+			else
+				bounds.extend(location);
+
+			map.fitBounds(bounds);
+		});
+	}
+	componentWillUnmount() {
+		searchBox = null;
+
+		$('.pac-container').remove();
 	}
 	gotoCurrentLocation = () => {
 		Dispatcher.dispatch({ type: 'go-to-current-location' });
 	}
 	handleSearch = (event) => {
-		Dispatcher.dispatch({ type: 'search-hoops', name: event.target.value });
 	}
 }
 
