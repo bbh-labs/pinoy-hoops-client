@@ -141,6 +141,7 @@ class Hoop extends React.Component {
 	}
 	submit = (event) => {
 		API.addStory(new FormData(this.refs.storyForm), () => {
+			this.fetchData();
 			alert('Successfully added story!');
 		}, () => {
 			alert('Failed to add story!');

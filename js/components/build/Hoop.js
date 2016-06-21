@@ -100,6 +100,7 @@ var Hoop = function (_React$Component) {
 			});
 		}, _this.submit = function (event) {
 			_API2.default.addStory(new FormData(_this.refs.storyForm), function () {
+				_this.fetchData();
 				alert('Successfully added story!');
 			}, function () {
 				alert('Failed to add story!');
