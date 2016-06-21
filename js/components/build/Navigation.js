@@ -83,7 +83,7 @@ var Navigation = function (_React$Component) {
 						_react2.default.createElement(
 							_reactRouter.Link,
 							{ to: '/map', onClick: this.props.hideMenu },
-							_react2.default.createElement('img', { src: 'images/logo_light.png' })
+							_react2.default.createElement('img', { src: contentURL("images/logo_light.png") })
 						)
 					),
 					_react2.default.createElement(
