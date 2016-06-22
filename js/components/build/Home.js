@@ -52,14 +52,14 @@ var Home = function (_React$Component) {
 							_react2.default.createElement(
 								'div',
 								{ className: 'fadein' },
-								_react2.default.createElement('img', { src: 'images/hero01.jpg' }),
-								_react2.default.createElement('img', { src: 'images/hero02.jpg' }),
-								_react2.default.createElement('img', { src: 'images/hero03.jpg' }),
-								_react2.default.createElement('img', { src: 'images/hero04.jpg' }),
-								_react2.default.createElement('img', { src: 'images/hero05.jpg' }),
-								_react2.default.createElement('img', { src: 'images/hero06.jpg' }),
-								_react2.default.createElement('img', { src: 'images/hero07.jpg' }),
-								_react2.default.createElement('img', { src: 'images/hero08.jpg' })
+								_react2.default.createElement('div', { className: 'background-1' }),
+								_react2.default.createElement('div', { className: 'background-2' }),
+								_react2.default.createElement('div', { className: 'background-3' }),
+								_react2.default.createElement('div', { className: 'background-4' }),
+								_react2.default.createElement('div', { className: 'background-5' }),
+								_react2.default.createElement('div', { className: 'background-6' }),
+								_react2.default.createElement('div', { className: 'background-7' }),
+								_react2.default.createElement('div', { className: 'background-8' })
 							),
 							_react2.default.createElement(
 								_reactRouter.Link,
@@ -74,10 +74,13 @@ var Home = function (_React$Component) {
 	}, {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
+			var _this2 = this;
+
 			(0, _jquery2.default)(function () {
-				(0, _jquery2.default)('.fadein img:gt(0)').hide();
-				this.intervalID = setInterval(function () {
-					(0, _jquery2.default)('.fadein :first-child').fadeOut().next('img').fadeIn().end().appendTo('.fadein');
+				(0, _jquery2.default)('.fadein div:gt(0)').hide();
+
+				_this2.intervalID = setInterval(function () {
+					(0, _jquery2.default)('.fadein :first-child').fadeOut().next('div').fadeIn().end().appendTo('.fadein');
 				}, 5000);
 			});
 		}

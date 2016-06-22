@@ -15,14 +15,14 @@ class Home extends React.Component {
 		            <img src="images/logo_light.png"/>
 		          </div>
 		          <div className="fadein">
-		            <img src="images/hero01.jpg"/>
-		            <img src="images/hero02.jpg"/>
-		            <img src="images/hero03.jpg"/>
-		            <img src="images/hero04.jpg"/>
-		            <img src="images/hero05.jpg"/>
-		            <img src="images/hero06.jpg"/>
-		            <img src="images/hero07.jpg"/>
-		            <img src="images/hero08.jpg"/>
+		            <div className='background-1' />
+		            <div className='background-2' />
+		            <div className='background-3' />
+		            <div className='background-4' />
+		            <div className='background-5' />
+		            <div className='background-6' />
+		            <div className='background-7' />
+		            <div className='background-8' />
 		          </div>
 		          <Link to='/map'>
 		            <div className="arrow bounce">
@@ -35,10 +35,18 @@ class Home extends React.Component {
 		)
 	}
 	componentDidMount(){
-		$(function(){
-			 $('.fadein img:gt(0)').hide();
-				this.intervalID = setInterval(function(){$('.fadein :first-child').fadeOut().next('img').fadeIn().end().appendTo('.fadein');}, 5000);
-			});
+		$(() => {
+			$('.fadein div:gt(0)').hide();
+
+			this.intervalID = setInterval(function(){
+				$('.fadein :first-child')
+					.fadeOut()
+					.next('div')
+					.fadeIn()
+					.end()
+					.appendTo('.fadein');
+			}, 5000);
+		});
 	}
 	componentWillUnmount() {
 		clearInterval(this.intervalID);
