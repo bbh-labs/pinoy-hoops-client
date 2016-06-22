@@ -560,8 +560,36 @@ section.content {
   width: 100%;
 }
 
-#comment .commentbox{
+#comment .imagegallery img{
+  width: 100%;
+  margin: 0;
+}
+
+#comment .commentarea .usercomment{
+  width: 100%;
+  height: 100%;
+}
+
+#comment .commentarea .usercomment img{
+  max-width: 60px;
+}
+
+#comment .commentarea .usercomment h3{
+  display: inline-block;
+  margin: 0;
+  margin-left: 20px;
+  width: 100%:
+}
+
+#comment .commentarea .usercomment p{
+
+
+}
+
+#comment .commentarea .mycomment{
+  bottom: 0;
+  right: 0;
+  height: 100%;
   position: absolute;
   z-index: 4;
-  bottom: 0;
 }

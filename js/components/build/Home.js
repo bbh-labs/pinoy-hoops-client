@@ -78,7 +78,7 @@ var Home = function (_React$Component) {
 				(0, _jquery2.default)('.fadein img:gt(0)').hide();
 				this.intervalID = setInterval(function () {
 					(0, _jquery2.default)('.fadein :first-child').fadeOut().next('img').fadeIn().end().appendTo('.fadein');
-				}, 3000);
+				}, 5000);
 			});
 		}
 	}, {

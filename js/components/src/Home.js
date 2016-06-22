@@ -37,7 +37,7 @@ class Home extends React.Component {
 	componentDidMount(){
 		$(function(){
 			 $('.fadein img:gt(0)').hide();
-				this.intervalID = setInterval(function(){$('.fadein :first-child').fadeOut().next('img').fadeIn().end().appendTo('.fadein');}, 3000);
+				this.intervalID = setInterval(function(){$('.fadein :first-child').fadeOut().next('img').fadeIn().end().appendTo('.fadein');}, 5000);
 			});
 	}
 	componentWillUnmount() {
