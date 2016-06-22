@@ -16,8 +16,8 @@ class Profile extends React.Component {
 			return null;
 
 		let coverStyle = user.background_url ?
-				{ background: 'url(' + contentURL(user.background_url) + ')' } :
-				{ background: 'url(/images/cover_default.jpg)' };
+				{ background: 'url(' + contentURL(user.background_url) + ') center / cover' } :
+				{ background: 'url(/images/cover_default.jpg) center / cover' };
 
 		return (
 				<div id="profile">
