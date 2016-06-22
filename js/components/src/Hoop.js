@@ -126,6 +126,8 @@ class Hoop extends React.Component {
 		});
 	}
 	getLikes = () => {
+		let hoopID = this.props.params.hoopID;
+
 		API.hasLikedHoop({ hoopID: hoopID }, (liked) => {
 			this.setState({ liked: liked });
 		}, () => {

@@ -81,6 +81,8 @@ var Hoop = function (_React$Component) {
 				console.log('failed to like hoop');
 			});
 		}, _this.getLikes = function () {
+			var hoopID = _this.props.params.hoopID;
+
 			_API2.default.hasLikedHoop({ hoopID: hoopID }, function (liked) {
 				_this.setState({ liked: liked });
 			}, function () {
