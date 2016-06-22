@@ -87,35 +87,35 @@ section.content {
 }
 
 #landingpage .fadein .background-1 {
-	background: url('../images/hero01.jpg') center / cover;
+	background: url('../images/hero01.jpg') center;
 }
 
 #landingpage .fadein .background-2 {
-	background: url('../images/hero02.jpg') center / cover;
+	background: url('../images/hero02.jpg') center;
 }
 
 #landingpage .fadein .background-3 {
-	background: url('../images/hero03.jpg') center / cover;
+	background: url('../images/hero03.jpg') center;
 }
 
 #landingpage .fadein .background-4 {
-	background: url('../images/hero04.jpg') center / cover;
+	background: url('../images/hero04.jpg') center;
 }
 
 #landingpage .fadein .background-5 {
-	background: url('../images/hero05.jpg') center / cover;
+	background: url('../images/hero05.jpg') center;
 }
 
 #landingpage .fadein .background-6 {
-	background: url('../images/hero06.jpg') center / cover;
+	background: url('../images/hero06.jpg') center;
 }
 
 #landingpage .fadein .background-7 {
-	background: url('../images/hero07.jpg') center / cover;
+	background: url('../images/hero07.jpg') center;
 }
 
 #landingpage .fadein .background-8 {
-	background: url('../images/hero08.jpg') center / cover;
+	background: url('../images/hero08.jpg') center;
 }
 
 .arrow {
