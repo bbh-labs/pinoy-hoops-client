@@ -238,7 +238,7 @@ class SearchBar extends React.Component {
 			searchBox.setBounds(map.getBounds());
 		});
 
-		searchBox.addListener('places_changed', function() {
+		this.searchListener = searchBox.addListener('places_changed', function() {
 			let places = searchBox.getPlaces();
 			let bounds = new google.maps.LatLngBounds();
 			let location;
@@ -261,6 +261,7 @@ class SearchBar extends React.Component {
 		});
 	}
 	componentWillUnmount() {
+		google.maps.event.removeListener(this.searchListener);
 		searchBox = null;
 
 		$('.pac-container').remove();

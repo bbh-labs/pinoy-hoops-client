@@ -322,7 +322,7 @@ var SearchBar = function (_React$Component3) {
 				searchBox.setBounds(map.getBounds());
 			});
 
-			searchBox.addListener('places_changed', function () {
+			this.searchListener = searchBox.addListener('places_changed', function () {
 				var places = searchBox.getPlaces();
 				var bounds = new google.maps.LatLngBounds();
 				var location = void 0;
@@ -343,6 +343,7 @@ var SearchBar = function (_React$Component3) {
 	}, {
 		key: 'componentWillUnmount',
 		value: function componentWillUnmount() {
+			google.maps.event.removeListener(this.searchListener);
 			searchBox = null;
 
 			$('.pac-container').remove();
