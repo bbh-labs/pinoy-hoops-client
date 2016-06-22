@@ -286,8 +286,8 @@ class AddHoop extends React.Component {
 					</div>
 					<h1>Tell us about the hoop</h1>
 					{ address ? <h6>{ address }</h6> : null }
-					<input type='text' name='name' placeholder="Hoop Name" /><br/>
-					<textarea rows="4" cols="50"  name='Hoop Story' placeholder="Hoop Story"/><br/>
+					<input type='text' name='name' placeholder='Hoop Name' pattern='.{3,}' required /><br/>
+					<textarea rows='4' cols='50' name='description' placeholder='Hoop Story' minlength='140' required /><br/>
 					<h1>Add your hoop photos (Mininum one)</h1>
 					<div className="hoopcategory">
 						<label className=".col-xs-12 col-md-4" htmlFor='hoop-image-input'>
@@ -338,6 +338,7 @@ class AddHoop extends React.Component {
 			reader.readAsDataURL(file);
 	}
 	submit = (event) => {
+		let form = event.target;
 		let latlng = this.props.latlng;
 
 		event.preventDefault();
@@ -347,7 +348,17 @@ class AddHoop extends React.Component {
 			return;
 		}
 
-		API.addHoop(new FormData(event.target), () => {
+		if (form.elements['name'].value.length < 3) {
+			alert('Hoop name must be at least 3 characters long');
+			return;
+		}
+
+		if (form.elements['description'].value.length < 140) {
+			alert('Hoop description must be at least 140 characters long');
+			return;
+		}
+
+		API.addHoop(new FormData(form), () => {
 			alert('Successfully added hoop!');
 			Dispatcher.dispatch({ type: 'get-hoops' });
 			Dispatcher.dispatch({ type: 'get-activities' });

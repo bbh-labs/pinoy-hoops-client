@@ -392,6 +392,7 @@ var AddHoop = function (_React$Component4) {
 
 			if (file) reader.readAsDataURL(file);
 		}, _this6.submit = function (event) {
+			var form = event.target;
 			var latlng = _this6.props.latlng;
 
 			event.preventDefault();
@@ -401,7 +402,17 @@ var AddHoop = function (_React$Component4) {
 				return;
 			}
 
-			_API2.default.addHoop(new FormData(event.target), function () {
+			if (form.elements['name'].value.length < 3) {
+				alert('Hoop name must be at least 3 characters long');
+				return;
+			}
+
+			if (form.elements['description'].value.length < 140) {
+				alert('Hoop description must be at least 140 characters long');
+				return;
+			}
+
+			_API2.default.addHoop(new FormData(form), function () {
 				alert('Successfully added hoop!');
 				_Dispatcher2.default.dispatch({ type: 'get-hoops' });
 				_Dispatcher2.default.dispatch({ type: 'get-activities' });
@@ -440,9 +451,9 @@ var AddHoop = function (_React$Component4) {
 					null,
 					address
 				) : null,
-				_react2.default.createElement('input', { type: 'text', name: 'name', placeholder: 'Hoop Name' }),
+				_react2.default.createElement('input', { type: 'text', name: 'name', placeholder: 'Hoop Name', pattern: '.{3,}', required: true }),
 				_react2.default.createElement('br', null),
-				_react2.default.createElement('textarea', { rows: '4', cols: '50', name: 'Hoop Story', placeholder: 'Hoop Story' }),
+				_react2.default.createElement('textarea', { rows: '4', cols: '50', name: 'description', placeholder: 'Hoop Story', minlength: '140', required: true }),
 				_react2.default.createElement('br', null),
 				_react2.default.createElement(
 					'h1',
