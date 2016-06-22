@@ -132,13 +132,6 @@ var Hoop = function (_React$Component) {
 					{ className: 'row' },
 					_react2.default.createElement(
 						'div',
-						{ className: 'heroimage' },
-						_react2.default.createElement(HeroImageItem, { imageURL: hoopImageURL, left: true }),
-						_react2.default.createElement(HeroImageItem, { imageURL: courtImageURL, left: false }),
-						_react2.default.createElement(HeroImageItem, { imageURL: crewImageURL, left: true })
-					),
-					_react2.default.createElement(
-						'div',
 						{ className: 'title' },
 						_react2.default.createElement(
 							'h1',
@@ -187,6 +180,13 @@ var Hoop = function (_React$Component) {
 								hoop.description
 							)
 						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'heroimage' },
+						_react2.default.createElement(HeroImageItem, { imageURL: hoopImageURL, left: true }),
+						_react2.default.createElement(HeroImageItem, { imageURL: courtImageURL, left: false }),
+						_react2.default.createElement(HeroImageItem, { imageURL: crewImageURL, left: true })
 					),
 					_react2.default.createElement(
 						'div',

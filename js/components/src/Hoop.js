@@ -25,11 +25,6 @@ class Hoop extends React.Component {
 		return (
 			<div id="story">
 				<div className="row">
-					<div className="heroimage">
-						<HeroImageItem imageURL={ hoopImageURL } left={ true } />
-						<HeroImageItem imageURL={ courtImageURL } left={ false } />
-						<HeroImageItem imageURL={ crewImageURL } left={ true } />
-					</div>
 					<div className="title">
 						<h1>{ hoop.name }</h1>
 						<div className="social">
@@ -48,6 +43,12 @@ class Hoop extends React.Component {
 						</div>
 					</div>
 
+					<div className="heroimage">
+						<HeroImageItem imageURL={ hoopImageURL } left={ true } />
+						<HeroImageItem imageURL={ courtImageURL } left={ false } />
+						<HeroImageItem imageURL={ crewImageURL } left={ true } />
+					</div>
+					
 					<div className="gallery">
 						<form ref='storyForm' className=".col-xs-4.col-sm-3 col-md-2 nopadding">
 							<label htmlFor='uploadhoop' className='uploadhoop file-label'>

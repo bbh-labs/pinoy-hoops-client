@@ -10,6 +10,9 @@
     margin-top: 50px;
   }
 
+  #nav_list{
+    margin-left: -20px;
+  }
   #login{
     background-image: url('../images/login_mobile.jpg');
   }
@@ -29,7 +32,7 @@
 
   #addhoop h1{
     font-size: 16pt;
-    margin-top: 20px;
+    margin: 20px;
   }
 
   #addhoop input{
@@ -46,6 +49,7 @@
     color: #2bc77d;
     font-size: 14pt;
     margin-top: 10px;
+    margin: auto 20px;
   }
 
   .MapSearch{
@@ -108,7 +112,8 @@
 
 
   #story .heroimage {
-    margin-top: 100%;
+
+    position: relative;
   }
 
   #story .heroimage img{
@@ -117,8 +122,7 @@
   }
 
   #story .title{
-    position: absolute;
-    z-index: 4;
+    position: relative;
     top:2%;
     right: 0;
     left: 0;
@@ -151,11 +155,8 @@
   }
 
   #story .desciption{
-    position: absolute;
-    z-index: 4;
-    top:15%;
-    left: 5%;
-    right: 5%;
+    position: relative;
+    margin: 0 20px;
   }
 
   #story .desciption h3{
