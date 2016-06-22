@@ -203,7 +203,7 @@ var Hoop = function (_React$Component) {
 							_react2.default.createElement('input', { type: 'hidden', name: 'hoop_id', value: hoop.id })
 						),
 						latestStories ? latestStories.map(function (story) {
-							return _react2.default.createElement(Story, { story: story });
+							return _react2.default.createElement(Story, { key: story.id, story: story });
 						}) : null
 					)
 				)

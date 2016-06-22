@@ -58,7 +58,7 @@ class Hoop extends React.Component {
 						</form>
 						{
 							latestStories ? latestStories.map(function(story) {
-								return <Story story={ story } />;
+								return <Story key={ story.id } story={ story } />;
 							}) : null
 						}
 					</div>
