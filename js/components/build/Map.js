@@ -407,8 +407,11 @@ var AddHoop = function (_React$Component4) {
 				return;
 			}
 
-			if (form.elements['description'].value.length < 140) {
-				alert('Hoop description must be at least 140 characters long');
+			if (form.elements['description'].value.length < 2) {
+				alert('Hoop description must be at least 2 characters long');
+				return;
+			} else if (form.elements['description'].value.length > 140) {
+				alert('Hoop description cannot be longer than 140 characters');
 				return;
 			}
 
