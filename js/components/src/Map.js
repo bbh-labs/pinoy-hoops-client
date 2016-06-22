@@ -348,13 +348,13 @@ class AddHoop extends React.Component {
 
 		API.addHoop(new FormData(event.target), () => {
 			alert('Successfully added hoop!');
-			this.setState({ latlng: null });
 			Dispatcher.dispatch({ type: 'get-hoops' });
 			Dispatcher.dispatch({ type: 'get-activities' });
 			browserHistory.replace('/map');
+			this.close();
 		}, (response) => {
-			this.setState({ latlng: null });
 			alert(response.statusText);
+			this.close();
 		});
 	}
 	close = (event) => {

@@ -402,13 +402,13 @@ var AddHoop = function (_React$Component4) {
 
 			_API2.default.addHoop(new FormData(event.target), function () {
 				alert('Successfully added hoop!');
-				_this6.setState({ latlng: null });
 				_Dispatcher2.default.dispatch({ type: 'get-hoops' });
 				_Dispatcher2.default.dispatch({ type: 'get-activities' });
 				_browserHistory2.default.replace('/map');
+				_this6.close();
 			}, function (response) {
-				_this6.setState({ latlng: null });
 				alert(response.statusText);
+				_this6.close();
 			});
 		}, _this6.close = function (event) {
 			_Dispatcher2.default.dispatch({ type: 'close-AddHoop' });
