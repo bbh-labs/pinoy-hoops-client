@@ -42,7 +42,8 @@ var Hoop = function (_React$Component) {
 			hoop: null,
 			latestStories: null,
 			tab: 'most-recent',
-			liked: false
+			liked: false,
+			likes: 0
 		}, _this.stories = function () {
 			var latestStories = _this.state.latestStories;
 
@@ -74,9 +75,22 @@ var Hoop = function (_React$Component) {
 			var hoopID = _this.props.params.hoopID;
 
 			_API2.default.likeHoop({ hoopID: hoopID }, function () {
+				_this.getLikes();
 				console.log('liked hoop');
 			}, function () {
 				console.log('failed to like hoop');
+			});
+		}, _this.getLikes = function () {
+			_API2.default.hasLikedHoop({ hoopID: hoopID }, function (liked) {
+				_this.setState({ liked: liked });
+			}, function () {
+				console.log('Failed to get my hoop like');
+			});
+
+			_API2.default.getHoopLikes({ hoopID: hoopID }, function (likes) {
+				_this.setState({ likes: likes });
+			}, function () {
+				console.log('Failed to hoop likes');
 			});
 		}, _this.fetchData = function () {
 			var hoopID = _this.props.params.hoopID;
@@ -93,11 +107,13 @@ var Hoop = function (_React$Component) {
 				alert('Failed to get latest stories');
 			});
 
-			_API2.default.hasLikedHoop({ hoopID: hoopID }, function (liked) {
-				_this.setState({ liked: liked });
+			_API2.default.getHoopLikes({ hoopID: hoopID }, function (likes) {
+				_this.setState({ likes: likes });
 			}, function () {
-				console.log('Failed to get my hoop like');
+				console.log('Failed to hoop likes');
 			});
+
+			_this.getLikes();
 		}, _this.submit = function (event) {
 			_API2.default.addStory(new FormData(_this.refs.storyForm), function () {
 				_this.fetchData();
@@ -121,6 +137,8 @@ var Hoop = function (_React$Component) {
 			var hoopImageURL = featuredStories.hoop ? featuredStories.hoop.image_url : null;
 			var courtImageURL = featuredStories.court ? featuredStories.court.image_url : null;
 			var crewImageURL = featuredStories.crew ? featuredStories.crew.image_url : null;
+			var liked = this.state.liked;
+			var likes = this.state.likes;
 
 			var shareURL = BASE_URL + '/hoop/' + hoop.id;
 
@@ -144,7 +162,9 @@ var Hoop = function (_React$Component) {
 							_react2.default.createElement(
 								'a',
 								{ href: '#', onClick: this.like },
-								_react2.default.createElement('img', { src: '/images/icon_like.png' })
+								likes,
+								' ',
+								_react2.default.createElement('img', { src: liked ? "/images/icon_like.png" : "/images/icon_like_fill.png" })
 							),
 							_react2.default.createElement(
 								_reactRouter.Link,

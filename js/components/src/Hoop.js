@@ -19,6 +19,8 @@ class Hoop extends React.Component {
 		let hoopImageURL = featuredStories.hoop ? featuredStories.hoop.image_url : null;
 		let courtImageURL = featuredStories.court ? featuredStories.court.image_url : null;
 		let crewImageURL = featuredStories.crew ? featuredStories.crew.image_url : null;
+		let liked = this.state.liked;
+		let likes = this.state.likes;
 
 		let shareURL = BASE_URL + '/hoop/' + hoop.id;
 
@@ -28,7 +30,7 @@ class Hoop extends React.Component {
 					<div className="title">
 						<h1>{ hoop.name }</h1>
 						<div className="social">
-							<a href="#" onClick={ this.like } ><img src="/images/icon_like.png"/></a>
+							<a href="#" onClick={ this.like } >{ likes } <img src={ liked ? "/images/icon_like.png" : "/images/icon_like_fill.png" } /></a>
 							<Link to="/hoop/comment"><img src="/images/icon_comment.png"/></Link>
 								<div className="networks">
 									<a href={ 'http://www.facebook.com/sharer.php?u=' + shareURL } target='_blank'><img src="/images/facebook.png"/></a>
@@ -72,6 +74,7 @@ class Hoop extends React.Component {
 		latestStories: null,
 		tab: 'most-recent',
 		liked: false,
+		likes: 0,
 	}
 	componentDidMount() {
 		this.fetchData();
@@ -116,9 +119,23 @@ class Hoop extends React.Component {
 		let hoopID = this.props.params.hoopID;
 
 		API.likeHoop({ hoopID: hoopID }, () => {
+			this.getLikes();
 			console.log('liked hoop');
 		}, () => {
 			console.log('failed to like hoop');
+		});
+	}
+	getLikes = () => {
+		API.hasLikedHoop({ hoopID: hoopID }, (liked) => {
+			this.setState({ liked: liked });
+		}, () => {
+			console.log('Failed to get my hoop like');
+		});
+
+		API.getHoopLikes({ hoopID: hoopID }, (likes) => {
+			this.setState({ likes: likes });
+		}, () => {
+			console.log('Failed to hoop likes');
 		});
 	}
 	fetchData = () => {
@@ -136,11 +153,13 @@ class Hoop extends React.Component {
 			alert('Failed to get latest stories');
 		});
 
-		API.hasLikedHoop({ hoopID: hoopID }, (liked) => {
-			this.setState({ liked: liked });
+		API.getHoopLikes({ hoopID: hoopID }, (likes) => {
+			this.setState({ likes: likes });
 		}, () => {
-			console.log('Failed to get my hoop like');
+			console.log('Failed to hoop likes');
 		});
+
+		this.getLikes();
 	}
 	submit = (event) => {
 		API.addStory(new FormData(this.refs.storyForm), () => {
