@@ -555,9 +555,10 @@ section.content {
 }
 
 #story .desciption{
-  position: absolute;
-  z-index: 4;
-  top:20%;
+  position: absolute;;
+  z-index: 5;
+  top: 30%;
+  width: 100%;
 }
 
 #story .desciption h3{
