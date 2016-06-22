@@ -291,15 +291,15 @@ class AddHoop extends React.Component {
 					<div className="hoopcategory">
 						<label className=".col-xs-12 col-md-4" htmlFor='hoop-image-input'>
 							<div ref='hoopImage' className="hoopupload"></div>
-							<input id='hoop-image-input' type='file' name='hoop-image' accept='image/*' onChange={ this.previewImage } />
+							<input id='hoop-image-input' type='file' name='hoop-image' accept='image/jpeg' onChange={ this.previewImage } />
 						</label>
 						<label className=".col-xs-12 col-md-4" htmlFor='court-image-input'>
 							<div ref='courtImage' className="courtupload"></div>
-							<input id='court-image-input' type='file' name='court-image' accept='image/*' onChange={ this.previewImage } />
+							<input id='court-image-input' type='file' name='court-image' accept='image/jpeg' onChange={ this.previewImage } />
 						</label>
 						<label className=".col-xs-12 col-md-4" htmlFor='crew-image-input'>
 							<div ref='crewImage' className="crewupload"></div>
-							<input id='crew-image-input' type='file' name='crew-image' accept='image/*' onChange={ this.previewImage } />
+							<input id='crew-image-input' type='file' name='crew-image' accept='image/jpeg' onChange={ this.previewImage } />
 						</label>
 						<button type='submit'>DONE</button>
 					</div>

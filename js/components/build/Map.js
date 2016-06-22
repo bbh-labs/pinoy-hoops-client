@@ -455,19 +455,19 @@ var AddHoop = function (_React$Component4) {
 						'label',
 						{ className: '.col-xs-12 col-md-4', htmlFor: 'hoop-image-input' },
 						_react2.default.createElement('div', { ref: 'hoopImage', className: 'hoopupload' }),
-						_react2.default.createElement('input', { id: 'hoop-image-input', type: 'file', name: 'hoop-image', accept: 'image/*', onChange: this.previewImage })
+						_react2.default.createElement('input', { id: 'hoop-image-input', type: 'file', name: 'hoop-image', accept: 'image/jpeg', onChange: this.previewImage })
 					),
 					_react2.default.createElement(
 						'label',
 						{ className: '.col-xs-12 col-md-4', htmlFor: 'court-image-input' },
 						_react2.default.createElement('div', { ref: 'courtImage', className: 'courtupload' }),
-						_react2.default.createElement('input', { id: 'court-image-input', type: 'file', name: 'court-image', accept: 'image/*', onChange: this.previewImage })
+						_react2.default.createElement('input', { id: 'court-image-input', type: 'file', name: 'court-image', accept: 'image/jpeg', onChange: this.previewImage })
 					),
 					_react2.default.createElement(
 						'label',
 						{ className: '.col-xs-12 col-md-4', htmlFor: 'crew-image-input' },
 						_react2.default.createElement('div', { ref: 'crewImage', className: 'crewupload' }),
-						_react2.default.createElement('input', { id: 'crew-image-input', type: 'file', name: 'crew-image', accept: 'image/*', onChange: this.previewImage })
+						_react2.default.createElement('input', { id: 'crew-image-input', type: 'file', name: 'crew-image', accept: 'image/jpeg', onChange: this.previewImage })
 					),
 					_react2.default.createElement(
 						'button',

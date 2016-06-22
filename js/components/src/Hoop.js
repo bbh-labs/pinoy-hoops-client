@@ -51,7 +51,7 @@ class Hoop extends React.Component {
 					<div className="gallery">
 						<form ref='storyForm' className=".col-xs-4.col-sm-3 col-md-2 nopadding">
 							<label htmlFor='uploadhoop' className='uploadhoop file-label'>
-								<input id='uploadhoop' type='file' name='image' accept='image/*' onChange={ this.submit } />
+								<input id='uploadhoop' type='file' name='image' accept='image/jpeg' onChange={ this.submit } />
 								<img src="/images/upload.jpg"/>
 							</label>
 							<input type='hidden' name='hoop_id' value={ hoop.id } />
