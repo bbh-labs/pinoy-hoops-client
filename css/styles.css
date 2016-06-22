@@ -8,6 +8,7 @@
     src: url(../fonts/DINSRG__.ttf);
 }
 
+
 body{
     overflow: hidden;
 }
@@ -553,6 +554,11 @@ section.content {
 	display: none;
 }
 
+#uploadhoop img{
+  width: 100%;
+  height: 100%:
+}
+
 
 #comment{
   height: 100%;
@@ -581,8 +587,6 @@ section.content {
 }
 
 #comment .commentarea .usercomment p{
-
-
 }
 
 #comment .commentarea .mycomment{
