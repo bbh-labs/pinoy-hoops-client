@@ -203,7 +203,7 @@ var MapView = function (_React$Component2) {
 			var mapOptions = {
 				zoom: 5,
 				scrollwheel: true,
-				center: new google.maps.LatLng(11.5771104, 113.5495458), // Philippines
+				center: new google.maps.LatLng(12.8797, 121.7740), // Philippines
 				styles: MAP_STYLE
 			};
 

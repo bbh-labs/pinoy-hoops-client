@@ -1,12 +1,13 @@
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
   .fadein img{
-    height: 45%;
-    margin: 45% -29%;
+    max-height: 1080px;
+    margin: 40% -35%;
   }
 
   .logo img{
-    max-width: 160px;
+    max-width: 250px;
+    margin-top: 50px;
   }
 
   #login{
@@ -14,7 +15,16 @@
   }
 
   #login .logo{
-    margin-top: 50%;
+    margin-top: 30%;
+  }
+
+  #login .logo img{
+    max-width: 200px;
+  }
+
+  #login h3{
+    font-size: 16pt;
+    margin: 20px auto;
   }
 
   #addhoop h1{
@@ -49,11 +59,12 @@
 
   #about{
     position: absolute;
-    background-image: url('../images/about_mobile.jpg');
+    /*background-image: url('../images/about_mobile.jpg');
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: cover;*/
+    background-color: white;
   }
 
   #about p{
@@ -97,50 +108,54 @@
 
 
   #story .heroimage {
-    margin-top: 40%;
+    margin-top: 100%;
   }
 
   #story .heroimage img{
-    max-width: 250px;
-    margin-bottom: 15%;
+    max-width: 220px;
+
   }
 
   #story .title{
     position: absolute;
     z-index: 4;
-    top:1%;
-    right: 5%;
+    top:2%;
+    right: 0;
+    left: 0;
+    text-align: center;
   }
 
   #story .title img{
-    max-width: 120px;
-  }
-  #story .title h3{
-    margin-top: -45%;
-    text-align: center;
-    font-size: 12pt;
-  }
+    max-width: 100px;
 
+  }
+  #story .title h1{
+    text-align: center;
+    font-size: 24pt;
+  }
   #story .social{
     position: absolute;
     z-index: 4;
-    margin-top: 35%;
-    left: 0%;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;;
   }
 
   #story .social img{
-    max-width: 20px;
-    margin-left: 15px;
+    max-width: 42px;
+    padding: 0 10px;
+  }
+
+  #story .social .networks{
+    display: inline-block;
   }
 
   #story .desciption{
     position: absolute;
     z-index: 4;
-    top:40%;
-    left: 10%;
-    right: 10%;
-    max-width: 300px;
-    background: rgba(255, 255, 255, 0.7);
+    top:15%;
+    left: 5%;
+    right: 5%;
   }
 
   #story .desciption h3{
@@ -151,7 +166,18 @@
   }
 
   #story .gallery{
-      clear: both;
+    clear: both;
+    display: inline-block;
+  }
+
+  #story .gallery label{
+
+    display: inherit;
+  }
+
+  #story .gallery label img{
+    margin: 0;
+    padding: 0;
   }
 
   #story .gallery img{
