@@ -2,7 +2,7 @@
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
   .fadein img{
     max-height: 1080px;
-    margin: 40% -35%;
+    margin: 40% -30%;
   }
 
   .logo img{
@@ -112,7 +112,7 @@
   }
 
   #story .heroimage img{
-    max-width: 220px;
+    max-width: 100%;
 
   }
 
