@@ -30,7 +30,7 @@ class Hoop extends React.Component {
 					<div className="title">
 						<h1>{ hoop.name }</h1>
 						<div className="social">
-							<a href="#" onClick={ this.like } >{ likes } <img src={ liked ? "/images/icon_like.png" : "/images/icon_like_fill.png" } /></a>
+							<a href="#" onClick={ this.like } >{ likes } <img src={ liked ? "/images/icon_like_fill.png" : "/images/icon_like.png" } /></a>
 							<Link to="/hoop/comment"><img src="/images/icon_comment.png"/></Link>
 								<div className="networks">
 									<a href={ 'http://www.facebook.com/sharer.php?u=' + shareURL } target='_blank'><img src="/images/facebook.png"/></a>
@@ -153,12 +153,6 @@ class Hoop extends React.Component {
 			this.setState({ latestStories: stories });
 		}, (response) => {
 			alert('Failed to get latest stories');
-		});
-
-		API.getHoopLikes({ hoopID: hoopID }, (likes) => {
-			this.setState({ likes: likes });
-		}, () => {
-			console.log('Failed to hoop likes');
 		});
 
 		this.getLikes();

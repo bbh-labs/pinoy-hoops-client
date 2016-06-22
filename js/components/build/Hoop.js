@@ -109,12 +109,6 @@ var Hoop = function (_React$Component) {
 				alert('Failed to get latest stories');
 			});
 
-			_API2.default.getHoopLikes({ hoopID: hoopID }, function (likes) {
-				_this.setState({ likes: likes });
-			}, function () {
-				console.log('Failed to hoop likes');
-			});
-
 			_this.getLikes();
 		}, _this.submit = function (event) {
 			_API2.default.addStory(new FormData(_this.refs.storyForm), function () {
@@ -166,7 +160,7 @@ var Hoop = function (_React$Component) {
 								{ href: '#', onClick: this.like },
 								likes,
 								' ',
-								_react2.default.createElement('img', { src: liked ? "/images/icon_like.png" : "/images/icon_like_fill.png" })
+								_react2.default.createElement('img', { src: liked ? "/images/icon_like_fill.png" : "/images/icon_like.png" })
 							),
 							_react2.default.createElement(
 								_reactRouter.Link,
