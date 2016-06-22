@@ -194,6 +194,8 @@ var App = function (_React$Component) {
 
 			_API2.default.isLoggedIn(function (user) {
 				_this3.setState({ user: user });
+
+				if (_this3.props.location.pathname == '/') _browserHistory2.default.replace('/map');
 			}, function () {
 				_this3.setState({ user: null });
 			});

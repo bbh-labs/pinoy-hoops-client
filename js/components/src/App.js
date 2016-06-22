@@ -88,6 +88,9 @@ class App extends React.Component {
 	checkLoggedIn() {
 		API.isLoggedIn((user) => {
 			this.setState({ user: user });
+
+			if (this.props.location.pathname == '/')
+				browserHistory.replace('/map');
 		}, () => {
 			this.setState({ user: null });
 		});
