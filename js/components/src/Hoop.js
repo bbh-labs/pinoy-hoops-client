@@ -20,6 +20,8 @@ class Hoop extends React.Component {
 		let courtImageURL = featuredStories.court ? featuredStories.court.image_url : null;
 		let crewImageURL = featuredStories.crew ? featuredStories.crew.image_url : null;
 
+		let shareURL = BASE_URL + '/hoop/' + hoop.id;
+
 		return (
 			<div id="story">
 				<div className="row">
@@ -34,8 +36,8 @@ class Hoop extends React.Component {
 							<a href="#" onClick={ this.like } ><img src="/images/icon_like.png"/></a>
 							<Link to="/hoop/comment"><img src="/images/icon_comment.png"/></Link>
 								<div className="networks">
-									<a href="#"><img src="/images/facebook.png"/></a>
-									<a href="#"><img src="/images/twitter.png"/></a>
+									<a href={ 'http://www.facebook.com/sharer.php?u=' + shareURL } target='_blank'><img src="/images/facebook.png"/></a>
+									<a href={ 'https://twitter.com/share?url=' + shareURL } target='_blank'><img src="/images/twitter.png"/></a>
 								</div>
 						</div>
 					</div>

@@ -122,6 +122,8 @@ var Hoop = function (_React$Component) {
 			var courtImageURL = featuredStories.court ? featuredStories.court.image_url : null;
 			var crewImageURL = featuredStories.crew ? featuredStories.crew.image_url : null;
 
+			var shareURL = BASE_URL + '/hoop/' + hoop.id;
+
 			return _react2.default.createElement(
 				'div',
 				{ id: 'story' },
@@ -161,12 +163,12 @@ var Hoop = function (_React$Component) {
 								{ className: 'networks' },
 								_react2.default.createElement(
 									'a',
-									{ href: '#' },
+									{ href: 'http://www.facebook.com/sharer.php?u=' + shareURL, target: '_blank' },
 									_react2.default.createElement('img', { src: '/images/facebook.png' })
 								),
 								_react2.default.createElement(
 									'a',
-									{ href: '#' },
+									{ href: 'https://twitter.com/share?url=' + shareURL, target: '_blank' },
 									_react2.default.createElement('img', { src: '/images/twitter.png' })
 								)
 							)
