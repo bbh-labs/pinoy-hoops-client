@@ -17,7 +17,7 @@ class Navigation extends React.Component {
 			return (
 					<nav className={cx('pushmenu pushmenu-left', pushMenuOpen && 'pushmenu-open')}>
 						<div className="menulogo">
-							<Link to='/map' onClick={ this.props.hideMenu }><img src={ contentURL("images/logo_light.png") } /></Link>
+							<Link to='/map' onClick={ this.props.hideMenu }><img src={ '/images/logo_light.png' } /></Link>
 						</div>
 						<Link to='/profile' onClick={ this.props.hideMenu }>
 							<div className="sidebar_userprofile">
@@ -34,7 +34,7 @@ class Navigation extends React.Component {
 			return (
 					<nav className={cx('pushmenu pushmenu-left', pushMenuOpen && 'pushmenu-open')}>
 						<div className="menulogo">
-							<Link to='/map' onClick={ this.props.hideMenu }><img src="images/logo_light.png"/></Link>
+							<Link to='/map' onClick={ this.props.hideMenu }><img src='/images/logo_light.png'/></Link>
 						</div>
 						<a href="#" onClick={ this.login }>Login</a>
 						<Link to='/about' onClick={ this.props.hideMenu }>About</Link>
