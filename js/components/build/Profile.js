@@ -120,7 +120,7 @@ var Profile = function (_React$Component) {
 
 			if (!user) return null;
 
-			var coverStyle = user.background_url ? { background: 'url(' + contentURL(user.background_url) + ')' } : {};
+			var coverStyle = user.background_url ? { background: 'url(' + contentURL(user.background_url) + ')' } : { background: 'url(/images/cover_default.jpg)' };
 
 			return _react2.default.createElement(
 				'div',
